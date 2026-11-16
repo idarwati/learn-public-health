@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Mengukur hubungan dan dampak: rasio risiko, selisih risiko, dan rasio odds | Learn Public Health</title>
+<meta name="description" content="Modul epidemiologi jenjang menengah: rasio risiko, selisih risiko, rasio odds, fraksi atribut, dan perkiraan kasus yang dapat dicegah.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header class="kepala">
+  <div class="wadah">
+    <a class="merek" href="index.html">
+      <svg viewBox="0 0 32 32" aria-hidden="true"><path d="M2 30V22h7v-7h7V8h7V2h7v28z" fill="#075443"/></svg>
+      Learn Public Health
+    </a>
+    <nav aria-label="Menu utama">
+      <ul class="menu">
+        <li><a href="index.html">Beranda</a></li>
+        <li><a href="kurikulum.html">Peta kurikulum</a></li>
+        <li><a href="sumber.html">Sumber belajar</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<main>
+
+<div class="modul-kepala">
+  <div class="wadah">
+    <p class="remah"><a href="kurikulum.html">Peta kurikulum</a> / Epidemiologi / Jenjang 2: Menengah</p>
+    <h1>Mengukur hubungan dan dampak: rasio risiko, selisih risiko, dan rasio odds</h1>
+    <p class="ringkas">Kepala dinas akan mengusulkan program rumah bebas asap rokok. Ia meminta tiga angka: seberapa besar bahayanya, berapa kasus yang disebabkannya, dan berapa yang dapat dicegah.</p>
+    <ul class="modul-info">
+      <li>Waktu belajar: sekitar 60 menit</li>
+      <li>Prasyarat: <a href="epidemiologi-06.html">Memilih desain studi yang tepat</a></li>
+      <li>Alat: kalkulator biasa</li>
+    </ul>
+  </div>
+</div>
+
+<div class="modul-isi wadah">
+
+<section aria-labelledby="m-tujuan">
+  <h2 id="m-tujuan">Setelah modul ini, Anda bisa</h2>
+  <ul>
+    <li>menghitung dan menafsirkan rasio risiko, selisih risiko, dan rasio odds;</li>
+    <li>menjelaskan kapan rasio odds mendekati rasio risiko dan kapan tidak;</li>
+    <li>menghitung berapa kasus yang dapat dicegah bila suatu paparan dihilangkan.</li>
+  </ul>
+</section>
+
+<section aria-labelledby="m-kasus">
+  <h2 id="m-kasus">Kasus</h2>
+  <div class="kasus-cerita">
+    <p>Studi tentang asap rokok dan pneumonia balita di Kabupaten Saloka sudah selesai, dan sebuah studi kohort di kabupaten yang sama menguatkan hasilnya: dalam setahun, 10% balita yang tinggal serumah dengan perokok terkena pneumonia, dibanding 5% balita yang tidak.</p>
+    <p>Kepala dinas kesehatan akan mengusulkan program rumah bebas asap rokok kepada bupati. Ia meminta tiga angka dari Anda: "Seberapa besar bahayanya? Berapa kasus pneumonia yang disebabkan asap rokok di kabupaten kita setiap tahun? Dan kalau program berhasil pada seperempat keluarga perokok, berapa kasus yang tercegah?"</p>
+    <p>Di Saloka ada 20.000 balita, dan 40% di antaranya tinggal serumah dengan perokok.</p>
+  </div>
+  <p class="keterangan">Nama kabupaten dan seluruh angka rekaan, disusun untuk latihan. Kasus ini melanjutkan modul <a href="epidemiologi-06.html">Memilih desain studi yang tepat</a>.</p>
+</section>
+
+<section aria-labelledby="m-l1">
+  <span class="langkah">Langkah 1</span>
+  <h2 id="m-l1">Bedakan ukuran relatif dan ukuran mutlak</h2>
+  <p>Ada dua cara membandingkan risiko dua kelompok, dan keduanya menjawab pertanyaan yang berbeda.</p>
+  <ul>
+    <li><strong>Rasio risiko (RR)</strong> = risiko pada yang terpapar ÷ risiko pada yang tidak terpapar. Ukuran <em>relatif</em> ini menunjukkan kekuatan hubungan: berapa kali lipat.</li>
+    <li><strong>Selisih risiko</strong> = risiko pada yang terpapar − risiko pada yang tidak terpapar. Ukuran <em>mutlak</em> ini menunjukkan beban: berapa kasus tambahan per sekian orang.</li>
+  </ul>
+  <p>Hitung keduanya untuk asap rokok dan pneumonia.</p>
+  <details>
+    <summary>Lihat jawaban</summary>
+    <p>RR = 10% ÷ 5% = <strong>2,0</strong>. Balita yang terpapar dua kali lebih mungkin terkena pneumonia.</p>
+    <p>Selisih risiko = 10% − 5% = <strong>5 kasus per 100 balita terpapar per tahun</strong>.</p>
+    <p>Untuk menilai apakah paparan itu berbahaya, lihat RR. Untuk merencanakan program dan menghitung manfaatnya, lihat selisih risiko. RR yang besar pada penyakit yang sangat jarang bisa berarti hanya segelintir kasus tambahan.</p>
+  </details>
+</section>
+
+<section class="lebar" aria-labelledby="m-l2">
+  <span class="langkah">Langkah 2</span>
+  <h2 id="m-l2">Pahami rasio odds dan batasnya</h2>
+  <p class="baca"><strong>Odds</strong> adalah perbandingan antara yang mengalami dan yang tidak mengalami. Bila risiko 10%, odds-nya 10 berbanding 90, atau 0,11. <strong>Rasio odds (OR)</strong> membandingkan odds dua kelompok. Rasio odds adalah satu-satunya ukuran yang dapat dihitung dari studi kasus-kontrol, dan merupakan keluaran regresi logistik.</p>
+  <p class="baca">Dua kohort berikut sama-sama memiliki RR 2,0. Hitung rasio odds masing-masing.</p>
+  <div class="tabel-gulir">
+    <table>
+      <thead>
+        <tr><th scope="col">Kohort</th><th scope="col">Terpapar:<br>sakit / jumlah</th><th scope="col">Tidak terpapar:<br>sakit / jumlah</th><th scope="col"><span class="tak-terlihat">Kalkulator</span></th></tr>
+      </thead>
+      <tbody>
+        <tr><th scope="row">Penyakit jarang</th><td>10 / 1.000</td><td>5 / 1.000</td>
+          <td><button type="button" class="tombol garis kecil" data-isi="10,1000,5,1000" data-nama="Penyakit jarang">Hitung</button></td></tr>
+        <tr><th scope="row">Penyakit sering</th><td>400 / 1.000</td><td>200 / 1.000</td>
+          <td><button type="button" class="tombol garis kecil" data-isi="400,1000,200,1000" data-nama="Penyakit sering">Hitung</button></td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <form class="kalkulator" id="kalkulator" novalidate>
+    <h3>Kalkulator risiko <span class="keterangan" id="nama-makanan"></span></h3>
+    <div class="isian">
+      <fieldset>
+        <legend>Kelompok terpapar</legend>
+        <label>Jumlah yang sakit <input type="number" name="ts" min="0" step="1" inputmode="numeric"></label>
+        <label>Jumlah orang <input type="number" name="tt" min="0" step="1" inputmode="numeric"></label>
+      </fieldset>
+      <fieldset>
+        <legend>Kelompok tidak terpapar</legend>
+        <label>Jumlah yang sakit <input type="number" name="ns" min="0" step="1" inputmode="numeric"></label>
+        <label>Jumlah orang <input type="number" name="nt" min="0" step="1" inputmode="numeric"></label>
+      </fieldset>
+    </div>
+    <button type="submit" class="tombol">Hitung</button>
+    <p class="pesan" id="pesan-kalkulator" role="alert" hidden></p>
+    <dl class="hasil" id="hasil-kalkulator" aria-live="polite" hidden>
+      <div><dt>Risiko pada yang terpapar</dt><dd id="k-ar1"></dd></div>
+      <div><dt>Risiko pada yang tidak terpapar</dt><dd id="k-ar0"></dd></div>
+      <div><dt>Selisih risiko</dt><dd id="k-selisih"></dd></div>
+      <div><dt>Rasio risiko (RR)</dt><dd id="k-rr"></dd></div>
+      <div><dt>Selang kepercayaan 95% untuk RR</dt><dd id="k-ci"></dd></div>
+      <div><dt>Rasio odds (OR)</dt><dd id="k-or"></dd></div>
+    </dl>
+  </form>
+
+  <details>
+    <summary>Lihat rasio odds kedua kohort</summary>
+    <p><strong>Penyakit jarang:</strong> odds terpapar 10 ÷ 990; odds tidak terpapar 5 ÷ 995. OR = (10 × 995) ÷ (990 × 5) = <strong>2,01</strong>.</p>
+    <p><strong>Penyakit sering:</strong> odds terpapar 400 ÷ 600; odds tidak terpapar 200 ÷ 800. OR = (400 × 800) ÷ (600 × 200) = <strong>2,67</strong>.</p>
+    <p>Bila penyakitnya jarang, rasio odds hampir sama dengan rasio risiko. Bila penyakitnya sering, rasio odds menjauh dari 1 lebih jauh daripada rasio risiko. Membaca OR 2,67 sebagai "risikonya 2,67 kali" adalah kekeliruan yang sangat umum dalam laporan penelitian.</p>
+  </details>
+</section>
+
+<section aria-labelledby="m-l3">
+  <span class="langkah">Langkah 3</span>
+  <h2 id="m-l3">Hitung beban yang disebabkan paparan</h2>
+  <p>Sekarang jawab pertanyaan kedua kepala dinas. Dari 20.000 balita, 40% terpapar. Hitung berturut-turut: jumlah balita terpapar dan tidak terpapar, kasus pneumonia di tiap kelompok, dan berapa kasus pada kelompok terpapar yang tidak akan terjadi seandainya risiko mereka sama dengan kelompok tidak terpapar.</p>
+  <details>
+    <summary>Lihat jawaban</summary>
+    <ul>
+      <li>Terpapar: 40% × 20.000 = 8.000 balita. Tidak terpapar: 12.000 balita.</li>
+      <li>Kasus pada yang terpapar: 10% × 8.000 = 800. Kasus pada yang tidak terpapar: 5% × 12.000 = 600. Seluruhnya 1.400 kasus setahun.</li>
+      <li>Seandainya balita terpapar memiliki risiko 5%, kasusnya 400. Kelebihannya: 800 − 400 = <strong>400 kasus setahun</strong>.</li>
+    </ul>
+    <p>Dua ukuran lahir dari angka ini.</p>
+    <p><strong>Fraksi atribut pada yang terpapar:</strong> 400 ÷ 800 = <strong>50%</strong>. Separuh kasus pneumonia pada balita terpapar terkait asap rokok. Rumus ringkasnya (RR − 1) ÷ RR.</p>
+    <p><strong>Fraksi atribut populasi:</strong> 400 ÷ 1.400 = <strong>28,6%</strong>. Lebih dari seperempat seluruh pneumonia balita di kabupaten ini terkait asap rokok. Ukuran ini bergantung pada dua hal: besarnya RR dan banyaknya orang yang terpapar.</p>
+  </details>
+</section>
+
+<section aria-labelledby="m-l4">
+  <span class="langkah">Langkah 4</span>
+  <h2 id="m-l4">Perkirakan manfaat program</h2>
+  <p>Program rumah bebas asap ditargetkan berhasil pada seperempat keluarga perokok. Berapa kasus pneumonia yang tercegah setahun? Berapa keluarga yang harus berhasil diubah untuk mencegah satu kasus?</p>
+  <details>
+    <summary>Lihat jawaban</summary>
+    <p>Seperempat dari 8.000 balita terpapar adalah 2.000 balita. Risiko mereka turun dari 10% menjadi 5%, sehingga kasus yang tercegah: 5% × 2.000 = <strong>100 kasus setahun</strong>.</p>
+    <p>Selisih risiko 5 per 100 berarti satu kasus tercegah untuk tiap 1 ÷ 0,05 = <strong>20 balita</strong> yang rumahnya menjadi bebas asap.</p>
+    <p>Angka ini memungkinkan kepala dinas membandingkan biaya program dengan biaya merawat 100 kasus pneumonia.</p>
+  </details>
+</section>
+
+<section aria-labelledby="m-l5">
+  <span class="langkah">Langkah 5</span>
+  <h2 id="m-l5">Sebutkan anggapan di balik hitungan</h2>
+  <p>Semua hitungan pada Langkah 3 dan 4 hanya sah bila dua anggapan terpenuhi.</p>
+  <ul>
+    <li><strong>Hubungannya sebab akibat.</strong> Bila keluarga perokok juga lebih miskin dan rumahnya lebih padat, sebagian dari selisih 5% itu bukan akibat asap rokok, dan menghilangkan asap tidak akan mencegah seluruhnya.</li>
+    <li><strong>Risiko benar-benar turun setelah paparan dihilangkan.</strong> Anggapan ini masuk akal untuk pneumonia, tetapi tidak selalu untuk penyakit yang kerusakannya menetap.</li>
+  </ul>
+  <details>
+    <summary>Lihat contoh kalimat laporan untuk bupati</summary>
+    <p>"Balita yang tinggal serumah dengan perokok dua kali lebih mungkin terkena pneumonia. Kami memperkirakan sekitar 400 dari 1.400 kasus pneumonia balita per tahun di Saloka terkait asap rokok di rumah. Bila program berhasil pada seperempat keluarga perokok, sekitar 100 kasus dapat dicegah setiap tahun. Perkiraan ini mengandaikan bahwa hubungan tersebut bersifat sebab akibat; sebagian mungkin disebabkan kemiskinan dan kepadatan hunian, sehingga angka sebenarnya bisa lebih rendah."</p>
+  </details>
+</section>
+
+<section aria-labelledby="m-kuis">
+  <h2 id="m-kuis">Uji diri</h2>
+
+  <fieldset class="soal" data-benar="b">
+    <legend>1. Risiko pada kelompok terpapar 12% dan pada kelompok tidak terpapar 4%. Berapa rasio risiko dan selisih risikonya?</legend>
+    <button type="button" class="pilihan" data-nilai="a">RR 8; selisih 3%</button>
+    <button type="button" class="pilihan" data-nilai="b">RR 3; selisih 8 per 100</button>
+    <button type="button" class="pilihan" data-nilai="c">RR 0,33; selisih 8 per 100</button>
+    <button type="button" class="pilihan" data-nilai="d">RR 3; selisih 16 per 100</button>
+    <p class="penjelasan" hidden>12 ÷ 4 = 3, dan 12% − 4% = 8 per 100.</p>
+  </fieldset>
+
+  <fieldset class="soal" data-benar="d">
+    <legend>2. Kapan rasio odds mendekati rasio risiko?</legend>
+    <button type="button" class="pilihan" data-nilai="a">Bila sampelnya besar.</button>
+    <button type="button" class="pilihan" data-nilai="b">Bila paparannya sering.</button>
+    <button type="button" class="pilihan" data-nilai="c">Selalu.</button>
+    <button type="button" class="pilihan" data-nilai="d">Bila penyakitnya jarang.</button>
+    <p class="penjelasan" hidden>Bila penyakit jarang, jumlah yang tidak sakit hampir sama dengan jumlah seluruhnya, sehingga odds hampir sama dengan risiko.</p>
+  </fieldset>
+
+  <fieldset class="soal" data-benar="a">
+    <legend>3. Rasio risiko suatu paparan adalah 4. Berapa fraksi atribut pada yang terpapar?</legend>
+    <button type="button" class="pilihan" data-nilai="a">75%</button>
+    <button type="button" class="pilihan" data-nilai="b">25%</button>
+    <button type="button" class="pilihan" data-nilai="c">40%</button>
+    <button type="button" class="pilihan" data-nilai="d">400%</button>
+    <p class="penjelasan" hidden>(RR − 1) ÷ RR = 3 ÷ 4 = 75%.</p>
+  </fieldset>
+
+  <fieldset class="soal" data-benar="c">
+    <legend>4. Dua paparan sama-sama memiliki RR 2. Paparan A dialami 5% penduduk, paparan B dialami 50% penduduk. Mana yang menyumbang kasus lebih banyak di masyarakat?</legend>
+    <button type="button" class="pilihan" data-nilai="a">Paparan A</button>
+    <button type="button" class="pilihan" data-nilai="b">Sama saja</button>
+    <button type="button" class="pilihan" data-nilai="c">Paparan B</button>
+    <button type="button" class="pilihan" data-nilai="d">Tidak dapat ditentukan</button>
+    <p class="penjelasan" hidden>Fraksi atribut populasi bergantung pada RR dan pada banyaknya orang yang terpapar. Paparan yang lebih luas menyumbang lebih banyak kasus.</p>
+  </fieldset>
+
+  <fieldset class="soal" data-benar="b">
+    <legend>5. Selisih risiko suatu intervensi adalah 2 per 100. Berapa orang yang harus menerima intervensi untuk mencegah satu kasus?</legend>
+    <button type="button" class="pilihan" data-nilai="a">2</button>
+    <button type="button" class="pilihan" data-nilai="b">50</button>
+    <button type="button" class="pilihan" data-nilai="c">100</button>
+    <button type="button" class="pilihan" data-nilai="d">200</button>
+    <p class="penjelasan" hidden>1 ÷ 0,02 = 50 orang.</p>
+  </fieldset>
+
+  <p class="skor" id="skor" role="status" hidden></p>
+</section>
+
+<section aria-labelledby="m-naik">
+  <h2 id="m-naik">Naik jenjang</h2>
+  <p>Ukuran hubungan adalah titik temu antara temuan penelitian dan keputusan program.</p>
+
+  <div class="naik j3">
+    <h3>Jenjang 3: ketika hubungannya berbeda di tiap kelompok</h3>
+    <p>Mungkin asap rokok jauh lebih berbahaya bagi bayi di bawah satu tahun daripada bagi anak yang lebih besar. Anda akan mempelajari modifikasi efek, dan mengapa kesimpulannya bisa berbeda tergantung apakah Anda melihat skala rasio atau skala selisih. Anda juga akan memperoleh rasio risiko yang sudah disesuaikan terhadap perancu dari model regresi.</p>
+  </div>
+
+  <div class="naik j4">
+    <h3>Jenjang 4: dari ukuran hubungan ke efek kausal</h3>
+    <p>Seorang ahli merumuskan dengan tepat efek yang ingin ditaksir, misalnya "apa yang terjadi bila semua rumah menjadi bebas asap", memilih metode yang sesuai, dan menguji seberapa peka hasilnya terhadap perancu yang tidak terukur.</p>
+  </div>
+</section>
+
+<section aria-labelledby="m-terap">
+  <h2 id="m-terap">Terapkan</h2>
+  <ol>
+    <li>Ambil satu artikel yang melaporkan rasio odds. Seberapa sering penyakitnya? Wajarkah bila OR itu dibaca sebagai rasio risiko?</li>
+    <li>Untuk satu faktor risiko di wilayah Anda, cari perkiraan RR dan persentase penduduk yang terpapar. Hitung fraksi atribut populasinya.</li>
+    <li>Tulis satu paragraf untuk pimpinan yang memuat ukuran relatif, ukuran mutlak, dan anggapan di baliknya.</li>
+  </ol>
+  <div class="deret-tombol">
+    <button type="button" class="tombol" id="tandai-selesai" data-modul="epidemiologi-07">Tandai modul ini selesai</button>
+    <a class="tombol garis" href="kurikulum.html">Kembali ke peta kurikulum</a>
+  </div>
+</section>
+
+<section aria-labelledby="m-rujuk">
+  <h2 id="m-rujuk">Rujukan dan bacaan lanjut</h2>
+  <ul class="rujukan">
+    <li>CDC. <a href="https://stacks.cdc.gov/view/cdc/13178"><em>Principles of Epidemiology in Public Health Practice</em>, edisi ketiga</a>. Pelajaran 3 memuat ukuran hubungan dan ukuran dampak kesehatan masyarakat. Domain publik.</li>
+    <li>Celentano dan Szklo. <em>Gordis Epidemiology</em>. Bab tentang memperkirakan risiko dan potensi pencegahan.</li>
+    <li>Szklo dan Nieto. <em>Epidemiology: Beyond the Basics</em>. Bab tentang ukuran hubungan antara paparan dan hasil.</li>
+  </ul>
+  <p class="keterangan">Modul ini ditulis orisinal untuk Learn Public Health.</p>
+</section>
+
+</div>
+</main>
+
+<footer class="kaki">
+  <div class="wadah">
+    <p><strong>Learn Public Health</strong>. Materi ini untuk pendidikan. Data kasus dalam modul adalah rekaan, kecuali disebutkan lain.</p>
+    <p><a href="index.html">Beranda</a> | <a href="kurikulum.html">Peta kurikulum</a> | <a href="sumber.html">Sumber belajar</a></p>
+  </div>
+</footer>
+
+<script src="app.js"></script>
+</body>
+</html>

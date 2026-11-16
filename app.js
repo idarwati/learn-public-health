@@ -63,6 +63,13 @@
     return hasil;
   }
 
+  /* Rasio odds dari tabel 2 x 2: (a × d) ÷ (b × c). */
+  function rasioOdds(ts, tt, ns, nt) {
+    var b = tt - ts, d = nt - ns;
+    if (b <= 0 || ns <= 0) return null;
+    return (ts * d) / (b * ns);
+  }
+
   function pasangKalkulator(form) {
     var keluaran = document.getElementById('hasil-kalkulator');
     var pesan = document.getElementById('pesan-kalkulator');
@@ -85,8 +92,13 @@
       document.getElementById('k-ar0').textContent = angka(h.ar0 * 100, 1) + '%';
       document.getElementById('k-selisih').textContent = angka(h.selisih * 100, 1) + ' poin persen';
       document.getElementById('k-rr').textContent = h.rr === null
-        ? 'Tidak dapat dihitung (tidak ada yang sakit di kelompok tidak makan)'
+        ? 'Tidak dapat dihitung (tidak ada yang sakit di kelompok pembanding)'
         : angka(h.rr, 2);
+      var orEl = document.getElementById('k-or');
+      if (orEl) {
+        var or = rasioOdds(nilai[0], nilai[1], nilai[2], nilai[3]);
+        orEl.textContent = or === null ? 'Tidak dapat dihitung' : angka(or, 2);
+      }
       document.getElementById('k-ci').textContent = h.bawah === null
         ? 'Tidak dapat dihitung'
         : angka(h.bawah, 2) + ' sampai ' + angka(h.atas, 2);
@@ -218,6 +230,27 @@
     });
   }
 
+  /* ---------- Kalkulator nilai p dari z ---------- */
+  function nilaiP(z) {
+    return 2 * (1 - peluangNormal(Math.abs(z)));
+  }
+
+  function pasangNilaiP(form) {
+    var keluaran = document.getElementById('hasil-nilaip');
+    var pesan = document.getElementById('pesan-nilaip');
+    form.addEventListener('submit', function (e) {
+      e.preventDefault();
+      var teks = String(form.elements.z.value).trim().replace(',', '.');
+      var z = Number(teks);
+      if (teks === '' || !isFinite(z)) {
+        pesan.textContent = 'Isi nilai z dengan angka, misalnya 2,12.'; pesan.hidden = false; keluaran.hidden = true; return;
+      }
+      var p = nilaiP(z);
+      pesan.hidden = true; keluaran.hidden = false;
+      document.getElementById('p-dua').textContent = p < 0.001 ? 'kurang dari 0,001' : angka(p, 3);
+    });
+  }
+
   /* ---------- Kuis ----------
      <fieldset class="soal" data-benar="b"> berisi tombol .pilihan[data-nilai]
      dan <p class="penjelasan" hidden>. */
@@ -290,6 +323,8 @@
       if (normal) pasangNormal(normal);
       var selang = document.getElementById('selang');
       if (selang) pasangSelang(selang);
+      var formP = document.getElementById('nilaip');
+      if (formP) pasangNilaiP(formP);
       pasangKuis();
       pasangPenanda();
     });
@@ -297,6 +332,6 @@
 
   /* Agar rumus bisa diuji di luar peramban. */
   if (typeof module !== 'undefined' && module.exports) {
-    module.exports = { hitungRisiko: hitungRisiko, hitungRingkasan: hitungRingkasan, peluangNormal: peluangNormal, selangProporsi: selangProporsi };
+    module.exports = { hitungRisiko: hitungRisiko, hitungRingkasan: hitungRingkasan, peluangNormal: peluangNormal, selangProporsi: selangProporsi, nilaiP: nilaiP, rasioOdds: rasioOdds };
   }
 })();

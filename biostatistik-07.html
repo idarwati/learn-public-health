@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Menguji hipotesis dan memahami nilai p | Learn Public Health</title>
+<meta name="description" content="Modul biostatistik jenjang menengah: hipotesis nol dan alternatif, statistik uji, nilai p, dua jenis kesalahan, dan beda bermakna statistik dengan bermakna praktis.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header class="kepala">
+  <div class="wadah">
+    <a class="merek" href="index.html">
+      <svg viewBox="0 0 32 32" aria-hidden="true"><path d="M2 30V22h7v-7h7V8h7V2h7v28z" fill="#075443"/></svg>
+      Learn Public Health
+    </a>
+    <nav aria-label="Menu utama">
+      <ul class="menu">
+        <li><a href="index.html">Beranda</a></li>
+        <li><a href="kurikulum.html">Peta kurikulum</a></li>
+        <li><a href="sumber.html">Sumber belajar</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<main>
+
+<div class="modul-kepala">
+  <div class="wadah">
+    <p class="remah"><a href="kurikulum.html">Peta kurikulum</a> / Biostatistik / Jenjang 2: Menengah</p>
+    <h1>Menguji hipotesis dan memahami nilai p</h1>
+    <p class="ringkas">Setelah sistem antrean diganti, rata-rata lama tunggu turun dari 52 menjadi 46 menit. Kepala poliklinik menyebutnya berhasil; bagian keuangan menduga kebetulan. Anda diminta menengahi.</p>
+    <ul class="modul-info">
+      <li>Waktu belajar: sekitar 60 menit</li>
+      <li>Prasyarat: <a href="biostatistik-04.html">Distribusi normal</a> dan <a href="biostatistik-06.html">Selang kepercayaan</a></li>
+      <li>Alat: kalkulator dengan tombol akar</li>
+    </ul>
+  </div>
+</div>
+
+<div class="modul-isi wadah">
+
+<section aria-labelledby="m-tujuan">
+  <h2 id="m-tujuan">Setelah modul ini, Anda bisa</h2>
+  <ul>
+    <li>merumuskan hipotesis nol dan hipotesis alternatif untuk sebuah pertanyaan;</li>
+    <li>menghitung statistik uji sederhana dan menafsirkan nilai p dengan benar;</li>
+    <li>membedakan bermakna secara statistik dari bermakna dalam praktik.</li>
+  </ul>
+</section>
+
+<section aria-labelledby="m-kasus">
+  <h2 id="m-kasus">Kasus</h2>
+  <div class="kasus-cerita">
+    <p>Poliklinik RSUD Lontara mengganti sistem antrean: pasien kini mendapat perkiraan jam layanan lewat pesan singkat. Sebelum perubahan, 100 pasien yang dipilih acak menunggu rata-rata <strong>52 menit</strong>. Sesudahnya, 100 pasien lain menunggu rata-rata <strong>46 menit</strong>. Simpangan baku pada kedua kelompok 20 menit.</p>
+    <p>Kepala poliklinik gembira: "Turun enam menit. Sistem baru berhasil." Bagian keuangan, yang harus membayar langganan sistem itu, kurang yakin: "Lama tunggu memang naik turun tiap hari. Bagaimana kami tahu ini bukan kebetulan?"</p>
+    <p>Anda diminta menengahi dengan data.</p>
+  </div>
+  <p class="keterangan">Nama rumah sakit dan seluruh angka rekaan, disusun untuk latihan.</p>
+</section>
+
+<section aria-labelledby="m-l1">
+  <span class="langkah">Langkah 1</span>
+  <h2 id="m-l1">Rumuskan dua hipotesis</h2>
+  <p>Uji hipotesis memulai dari sikap ragu, seperti bagian keuangan.</p>
+  <ul>
+    <li><strong>Hipotesis nol (H₀):</strong> tidak ada perbedaan. Rata-rata lama tunggu seluruh pasien sama saja sebelum dan sesudah; selisih enam menit pada sampel hanya variasi sampling.</li>
+    <li><strong>Hipotesis alternatif (H₁):</strong> ada perbedaan rata-rata lama tunggu.</li>
+  </ul>
+  <p>Logikanya: andaikan H₀ benar, lalu tanyakan seberapa mengejutkan data yang kita peroleh. Bila sangat mengejutkan, kita meragukan H₀.</p>
+  <details>
+    <summary>Mengapa yang diuji justru "tidak ada perbedaan"?</summary>
+    <p>Karena pernyataan itu spesifik, sehingga kita dapat menghitung apa yang diharapkan terjadi bila ia benar. "Ada perbedaan" tidak menyebut berapa besarnya, sehingga tidak dapat dihitung langsung. Cara ini mirip asas praduga tak bersalah: H₀ dipertahankan sampai bukti cukup kuat untuk menolaknya.</p>
+  </details>
+</section>
+
+<section aria-labelledby="m-l2">
+  <span class="langkah">Langkah 2</span>
+  <h2 id="m-l2">Hitung statistik uji</h2>
+  <p>Selisih enam menit harus dibandingkan dengan besarnya variasi sampling yang wajar. Untuk selisih dua rata-rata dari sampel besar:</p>
+  <div class="rumus">Galat baku selisih = √( SB₁² ÷ n₁ + SB₂² ÷ n₂ )</div>
+  <div class="rumus">z = selisih rata-rata ÷ galat baku selisih</div>
+  <p>Hitung galat baku selisih dan nilai z.</p>
+  <details>
+    <summary>Lihat jawaban</summary>
+    <p>Galat baku selisih = √(400 ÷ 100 + 400 ÷ 100) = √8 = <strong>2,83 menit</strong>.</p>
+    <p>z = 6 ÷ 2,83 = <strong>2,12</strong>.</p>
+    <p>Selisih yang teramati sebesar 2,12 galat baku dari nol. Dari modul distribusi normal Anda tahu bahwa nilai sejauh 2 simpangan baku atau lebih jarang terjadi.</p>
+  </details>
+</section>
+
+<section aria-labelledby="m-l3">
+  <span class="langkah">Langkah 3</span>
+  <h2 id="m-l3">Tafsirkan nilai p</h2>
+  <p><strong>Nilai p</strong> adalah peluang memperoleh selisih sebesar yang teramati, atau lebih besar, <em>seandainya hipotesis nol benar</em>. Makin kecil nilai p, makin sulit data itu dijelaskan sebagai kebetulan.</p>
+
+  <form class="kalkulator" id="nilaip" novalidate>
+    <h3>Kalkulator nilai p dari z</h3>
+    <div class="isian">
+      <label>Nilai z <input type="text" name="z" inputmode="decimal" value="2,12"></label>
+    </div>
+    <button type="submit" class="tombol">Hitung</button>
+    <p class="pesan" id="pesan-nilaip" role="alert" hidden></p>
+    <dl class="hasil" id="hasil-nilaip" aria-live="polite" hidden>
+      <div><dt>Nilai p dua sisi</dt><dd id="p-dua"></dd></div>
+    </dl>
+  </form>
+
+  <p style="margin-top:1rem">Untuk z = 2,12, nilai p dua sisi adalah 0,034. Mana tafsiran yang benar?</p>
+  <ol type="A">
+    <li>"Peluang sistem baru tidak berpengaruh adalah 3,4%."</li>
+    <li>"Bila sistem baru sebenarnya tidak berpengaruh, selisih sebesar ini atau lebih hanya muncul pada sekitar 3,4% dari sampel-sampel seperti ini."</li>
+    <li>"Sistem baru mengurangi lama tunggu sebesar 3,4%."</li>
+  </ol>
+  <details>
+    <summary>Lihat jawaban</summary>
+    <p>Hanya <strong>B</strong> yang benar. Nilai p dihitung dengan mengandaikan H₀ benar, sehingga tidak dapat sekaligus menjadi peluang bahwa H₀ benar. Tafsiran A adalah kekeliruan yang paling sering dijumpai.</p>
+    <p>Menurut kebiasaan, nilai p di bawah 0,05 disebut <strong>bermakna secara statistik</strong>. Dengan p = 0,034, kita menolak H₀: selisih enam menit sulit dijelaskan sebagai kebetulan semata. Batas 0,05 adalah kesepakatan, bukan hukum alam; p = 0,049 dan p = 0,051 menceritakan hal yang hampir sama.</p>
+  </details>
+</section>
+
+<section aria-labelledby="m-l4">
+  <span class="langkah">Langkah 4</span>
+  <h2 id="m-l4">Kenali dua jenis kesalahan dan peran besar sampel</h2>
+  <p>Keputusan dari uji hipotesis bisa salah dengan dua cara.</p>
+  <ul>
+    <li><strong>Kesalahan jenis I:</strong> menolak H₀ padahal benar. Kita menyimpulkan ada perbedaan padahal tidak ada. Peluangnya dibatasi oleh batas nilai p yang dipakai, biasanya 5%.</li>
+    <li><strong>Kesalahan jenis II:</strong> gagal menolak H₀ padahal salah. Perbedaan itu ada, tetapi sampel terlalu kecil untuk menangkapnya.</li>
+  </ul>
+  <p>Seandainya hasil yang sama, 52 dan 46 menit dengan simpangan baku 20, diperoleh dari 25 pasien per kelompok, berapa z dan nilai p-nya?</p>
+  <details>
+    <summary>Lihat jawaban</summary>
+    <p>Galat baku selisih = √(400 ÷ 25 + 400 ÷ 25) = √32 = 5,66 menit. z = 6 ÷ 5,66 = <strong>1,06</strong>. Nilai p dua sisi = <strong>0,29</strong>.</p>
+    <p>Selisihnya tetap enam menit, tetapi dengan sampel kecil hasilnya tidak bermakna secara statistik. Itu <em>tidak</em> membuktikan bahwa sistem baru tidak berpengaruh. Artinya hanya: data ini belum cukup untuk membedakan pengaruh nyata dari kebetulan. "Tidak terbukti ada" berbeda dari "terbukti tidak ada".</p>
+  </details>
+</section>
+
+<section aria-labelledby="m-l5">
+  <span class="langkah">Langkah 5</span>
+  <h2 id="m-l5">Tanyakan apakah perbedaannya penting</h2>
+  <p>Bermakna secara statistik hanya menjawab "apakah ini kebetulan?". Ia tidak menjawab "apakah ini cukup besar untuk diperhatikan?". Untuk itu lihat besar selisih dan selang kepercayaannya.</p>
+  <details>
+    <summary>Hitung selang kepercayaan 95% untuk selisih lama tunggu, lalu jawab bagian keuangan</summary>
+    <p>6 ± 1,96 × 2,83 = 6 ± 5,5, yaitu <strong>0,5 sampai 11,5 menit</strong>.</p>
+    <p>Jawaban untuk kedua pihak: "Penurunan ini kemungkinan besar nyata, bukan kebetulan (p = 0,034). Namun besarnya belum pasti: bisa hanya setengah menit, bisa sebelas menit. Sebelum memperpanjang langganan, tetapkan dulu penurunan berapa menit yang sepadan dengan biayanya, lalu kumpulkan data sebulan lagi untuk mempersempit selang ini."</p>
+    <p>Selang kepercayaan memuat semua yang dikatakan nilai p dan lebih. Karena selang itu tidak mencakup nol, kita tahu p di bawah 0,05. Selain itu ia menunjukkan rentang besar pengaruh yang masih sesuai dengan data.</p>
+  </details>
+  <p>Dua peringatan terakhir. Dengan sampel sangat besar, selisih yang remeh pun menjadi bermakna secara statistik. Dan bila dua puluh uji dilakukan sekaligus, rata-rata satu akan "bermakna" hanya karena kebetulan.</p>
+</section>
+
+<section aria-labelledby="m-kuis">
+  <h2 id="m-kuis">Uji diri</h2>
+
+  <fieldset class="soal" data-benar="c">
+    <legend>1. Apa arti nilai p = 0,02?</legend>
+    <button type="button" class="pilihan" data-nilai="a">Peluang hipotesis nol benar adalah 2%.</button>
+    <button type="button" class="pilihan" data-nilai="b">Pengaruhnya sebesar 2%.</button>
+    <button type="button" class="pilihan" data-nilai="c">Bila hipotesis nol benar, hasil seekstrem ini atau lebih muncul pada 2% sampel.</button>
+    <button type="button" class="pilihan" data-nilai="d">Sebanyak 98% pasien mendapat manfaat.</button>
+    <p class="penjelasan" hidden>Nilai p selalu dihitung dengan mengandaikan hipotesis nol benar.</p>
+  </fieldset>
+
+  <fieldset class="soal" data-benar="a">
+    <legend>2. Selisih rata-rata dua kelompok 4, dengan galat baku selisih 2. Berapa nilai z?</legend>
+    <button type="button" class="pilihan" data-nilai="a">2</button>
+    <button type="button" class="pilihan" data-nilai="b">0,5</button>
+    <button type="button" class="pilihan" data-nilai="c">8</button>
+    <button type="button" class="pilihan" data-nilai="d">6</button>
+    <p class="penjelasan" hidden>z = selisih ÷ galat baku = 4 ÷ 2 = 2.</p>
+  </fieldset>
+
+  <fieldset class="soal" data-benar="d">
+    <legend>3. Sebuah studi kecil menghasilkan p = 0,30. Kesimpulan mana yang tepat?</legend>
+    <button type="button" class="pilihan" data-nilai="a">Terbukti tidak ada pengaruh.</button>
+    <button type="button" class="pilihan" data-nilai="b">Pengaruhnya 30%.</button>
+    <button type="button" class="pilihan" data-nilai="c">Hipotesis nol pasti benar.</button>
+    <button type="button" class="pilihan" data-nilai="d">Data belum cukup untuk menyimpulkan ada pengaruh; mungkin sampelnya terlalu kecil.</button>
+    <p class="penjelasan" hidden>Hasil yang tidak bermakna bukan bukti ketiadaan pengaruh, terutama pada sampel kecil.</p>
+  </fieldset>
+
+  <fieldset class="soal" data-benar="b">
+    <legend>4. Studi dengan 200.000 peserta menemukan obat menurunkan tekanan darah 0,3 mmHg dengan p &lt; 0,001. Apa yang dapat dikatakan?</legend>
+    <button type="button" class="pilihan" data-nilai="a">Obat itu sangat manjur.</button>
+    <button type="button" class="pilihan" data-nilai="b">Bermakna secara statistik, tetapi terlalu kecil untuk berarti bagi pasien.</button>
+    <button type="button" class="pilihan" data-nilai="c">Hasilnya pasti kebetulan.</button>
+    <button type="button" class="pilihan" data-nilai="d">Nilai p-nya salah hitung.</button>
+    <p class="penjelasan" hidden>Sampel sangat besar membuat selisih yang remeh pun bermakna secara statistik. Kepentingan praktis dinilai dari besar pengaruhnya.</p>
+  </fieldset>
+
+  <fieldset class="soal" data-benar="c">
+    <legend>5. Selang kepercayaan 95% untuk selisih dua rata-rata adalah −1 sampai 9. Apa artinya?</legend>
+    <button type="button" class="pilihan" data-nilai="a">Bermakna secara statistik pada batas 0,05.</button>
+    <button type="button" class="pilihan" data-nilai="b">Selisihnya pasti 4.</button>
+    <button type="button" class="pilihan" data-nilai="c">Tidak bermakna pada batas 0,05, karena selang mencakup nol.</button>
+    <button type="button" class="pilihan" data-nilai="d">Datanya salah.</button>
+    <p class="penjelasan" hidden>Selang yang mencakup nol berarti "tidak ada perbedaan" masih sesuai dengan data.</p>
+  </fieldset>
+
+  <p class="skor" id="skor" role="status" hidden></p>
+</section>
+
+<section aria-labelledby="m-naik">
+  <h2 id="m-naik">Naik jenjang</h2>
+  <p>Logika uji hipotesis sama untuk semua uji statistik. Yang berbeda hanya cara menghitung statistik ujinya.</p>
+
+  <div class="naik j3">
+    <h3>Jenjang 3: menguji di dalam model</h3>
+    <p>Anda akan menguji koefisien regresi sambil mengendalikan faktor lain, menangani pengujian berganda, dan merencanakan analisis sebelum melihat data supaya tidak tergoda mencari-cari hasil yang bermakna.</p>
+  </div>
+
+  <div class="naik j4">
+    <h3>Jenjang 4: melampaui nilai p</h3>
+    <p>Seorang ahli mengenal kritik terhadap batas 0,05, memakai pendekatan Bayes untuk menyatakan seberapa besar keyakinan terhadap suatu hipotesis, dan menilai kumpulan penelitian dengan mempertimbangkan bahwa hasil yang bermakna lebih mudah diterbitkan.</p>
+  </div>
+</section>
+
+<section aria-labelledby="m-terap">
+  <h2 id="m-terap">Terapkan</h2>
+  <ol>
+    <li>Ambil satu artikel penelitian. Temukan satu nilai p dan tuliskan tafsirannya dalam satu kalimat yang benar.</li>
+    <li>Cari satu hasil yang disebut "tidak bermakna". Berapa besar sampelnya? Apakah penulis menyimpulkan "tidak ada pengaruh"?</li>
+    <li>Untuk satu perubahan di tempat kerja Anda, tentukan lebih dulu: selisih sebesar apa yang Anda anggap penting dalam praktik?</li>
+  </ol>
+  <div class="deret-tombol">
+    <button type="button" class="tombol" id="tandai-selesai" data-modul="biostatistik-07">Tandai modul ini selesai</button>
+    <a class="tombol garis" href="kurikulum.html">Kembali ke peta kurikulum</a>
+  </div>
+</section>
+
+<section aria-labelledby="m-rujuk">
+  <h2 id="m-rujuk">Rujukan dan bacaan lanjut</h2>
+  <ul class="rujukan">
+    <li>OpenStax. <a href="https://openstax.org/books/introductory-statistics-2e/pages/preface"><em>Introductory Statistics 2e</em></a>. Bab tentang uji hipotesis satu sampel dan dua sampel. Lisensi CC BY 4.0.</li>
+    <li>Wasserstein dan Lazar (2016). "The ASA Statement on p-Values: Context, Process, and Purpose". <em>The American Statistician</em>. Pernyataan resmi tentang tafsiran nilai p.</li>
+    <li>Kirkwood dan Sterne. <em>Essential Medical Statistics</em>. Bab tentang nilai p dan selang kepercayaan.</li>
+  </ul>
+  <p class="keterangan">Modul ini ditulis orisinal untuk Learn Public Health.</p>
+</section>
+
+</div>
+</main>
+
+<footer class="kaki">
+  <div class="wadah">
+    <p><strong>Learn Public Health</strong>. Materi ini untuk pendidikan. Data kasus dalam modul adalah rekaan, kecuali disebutkan lain.</p>
+    <p><a href="index.html">Beranda</a> | <a href="kurikulum.html">Peta kurikulum</a> | <a href="sumber.html">Sumber belajar</a></p>
+  </div>
+</footer>
+
+<script src="app.js"></script>
+</body>
+</html>
