@@ -1,5 +1,5 @@
 /* Learn Public Health — skrip bersama.
-   Isi: kurva epidemi, kuis, kalkulator risiko, kalkulator ringkasan data, kalkulator distribusi normal, dan penanda "modul selesai". */
+   Isi: kurva epidemi, kuis, kalkulator risiko, kalkulator ringkasan data, kalkulator distribusi normal, kalkulator selang kepercayaan, dan penanda "modul selesai". */
 (function () {
   'use strict';
 
@@ -190,6 +190,34 @@
     });
   }
 
+  /* ---------- Kalkulator selang kepercayaan proporsi ----------
+     Selang kepercayaan 95% dengan hampiran normal: p ± 1,96 × √(p(1−p)/n). */
+  function selangProporsi(x, n) {
+    if (!isFinite(x) || !isFinite(n) || Math.floor(x) !== x || Math.floor(n) !== n || x < 0) {
+      return { galat: 'Isi kedua kotak dengan bilangan bulat, 0 atau lebih.' };
+    }
+    if (n < 1) return { galat: 'Besar sampel harus sedikitnya 1.' };
+    if (x > n) return { galat: 'Jumlah yang memiliki ciri tidak boleh melebihi besar sampel.' };
+    var p = x / n;
+    var se = Math.sqrt(p * (1 - p) / n);
+    return { p: p, se: se, bawah: Math.max(0, p - 1.96 * se), atas: Math.min(1, p + 1.96 * se) };
+  }
+
+  function pasangSelang(form) {
+    var keluaran = document.getElementById('hasil-selang');
+    var pesan = document.getElementById('pesan-selang');
+    form.addEventListener('submit', function (e) {
+      e.preventDefault();
+      var vx = form.elements.x.value, vn = form.elements.n.value;
+      var h = selangProporsi(vx === '' ? NaN : Number(vx), vn === '' ? NaN : Number(vn));
+      if (h.galat) { pesan.textContent = h.galat; pesan.hidden = false; keluaran.hidden = true; return; }
+      pesan.hidden = true; keluaran.hidden = false;
+      document.getElementById('s-p').textContent = angka(h.p * 100, 1) + '%';
+      document.getElementById('s-se').textContent = angka(h.se * 100, 2) + ' poin persen';
+      document.getElementById('s-ci').textContent = angka(h.bawah * 100, 1) + '% sampai ' + angka(h.atas * 100, 1) + '%';
+    });
+  }
+
   /* ---------- Kuis ----------
      <fieldset class="soal" data-benar="b"> berisi tombol .pilihan[data-nilai]
      dan <p class="penjelasan" hidden>. */
@@ -260,6 +288,8 @@
       if (ringkas) pasangRingkasan(ringkas);
       var normal = document.getElementById('normal');
       if (normal) pasangNormal(normal);
+      var selang = document.getElementById('selang');
+      if (selang) pasangSelang(selang);
       pasangKuis();
       pasangPenanda();
     });
@@ -267,6 +297,6 @@
 
   /* Agar rumus bisa diuji di luar peramban. */
   if (typeof module !== 'undefined' && module.exports) {
-    module.exports = { hitungRisiko: hitungRisiko, hitungRingkasan: hitungRingkasan, peluangNormal: peluangNormal };
+    module.exports = { hitungRisiko: hitungRisiko, hitungRingkasan: hitungRingkasan, peluangNormal: peluangNormal, selangProporsi: selangProporsi };
   }
 })();

@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Memilih desain studi yang tepat | Learn Public Health</title>
+<meta name="description" content="Modul epidemiologi jenjang menengah: studi potong lintang, kasus-kontrol, kohort, dan uji acak, beserta ukuran hubungan dan cara memilihnya.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header class="kepala">
+  <div class="wadah">
+    <a class="merek" href="index.html">
+      <svg viewBox="0 0 32 32" aria-hidden="true"><path d="M2 30V22h7v-7h7V8h7V2h7v28z" fill="#075443"/></svg>
+      Learn Public Health
+    </a>
+    <nav aria-label="Menu utama">
+      <ul class="menu">
+        <li><a href="index.html">Beranda</a></li>
+        <li><a href="kurikulum.html">Peta kurikulum</a></li>
+        <li><a href="sumber.html">Sumber belajar</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<main>
+
+<div class="modul-kepala">
+  <div class="wadah">
+    <p class="remah"><a href="kurikulum.html">Peta kurikulum</a> / Epidemiologi / Jenjang 2: Menengah</p>
+    <h1>Memilih desain studi yang tepat</h1>
+    <p class="ringkas">Apakah asap rokok di rumah meningkatkan pneumonia pada balita? Empat rekan mengusulkan empat cara meneliti. Anda punya enam bulan dan anggaran terbatas untuk memilih satu.</p>
+    <ul class="modul-info">
+      <li>Waktu belajar: sekitar 60 menit</li>
+      <li>Prasyarat: <a href="epidemiologi-01.html">Menyelidiki KLB</a> dan <a href="epidemiologi-03.html">Insidens dan prevalens</a></li>
+      <li>Alat: kalkulator biasa</li>
+    </ul>
+  </div>
+</div>
+
+<div class="modul-isi wadah">
+
+<section aria-labelledby="m-tujuan">
+  <h2 id="m-tujuan">Setelah modul ini, Anda bisa</h2>
+  <ul>
+    <li>menjelaskan cara kerja empat desain studi: potong lintang, kasus-kontrol, kohort, dan uji acak;</li>
+    <li>menghitung ukuran hubungan yang sesuai untuk tiap desain;</li>
+    <li>memilih desain berdasarkan pertanyaan, waktu, biaya, dan pertimbangan etis.</li>
+  </ul>
+</section>
+
+<section aria-labelledby="m-kasus">
+  <h2 id="m-kasus">Kasus</h2>
+  <div class="kasus-cerita">
+    <p>Pneumonia adalah penyebab utama rawat inap balita di Kabupaten Saloka. Banyak balita tinggal serumah dengan perokok. Kepala dinas kesehatan ingin tahu: <strong>apakah paparan asap rokok di rumah meningkatkan risiko pneumonia pada balita di sini?</strong> Jawabannya akan dipakai untuk memutuskan program rumah bebas asap rokok.</p>
+    <p>Ia memberi Anda waktu enam bulan dan anggaran terbatas. Empat rekan mengusulkan empat cara yang berbeda. Tugas Anda memilih satu dan mempertanggungjawabkannya.</p>
+  </div>
+  <p class="keterangan">Nama kabupaten dan seluruh angka rekaan, disusun untuk latihan. Pada modul ini "terpapar" berarti tinggal serumah dengan perokok.</p>
+</section>
+
+<section aria-labelledby="m-l1">
+  <span class="langkah">Langkah 1</span>
+  <h2 id="m-l1">Usul pertama: studi potong lintang</h2>
+  <p>Pada <strong>studi potong lintang</strong>, paparan dan penyakit diukur pada waktu yang sama, seperti memotret populasi. Rekan pertama mengusulkan survei terhadap 1.000 balita yang dipilih acak: ditanyakan apakah ada perokok di rumah, dan diperiksa apakah balita sedang menderita pneumonia.</p>
+  <p>Misalkan hasilnya: 400 balita terpapar, 40 di antaranya sedang pneumonia; 600 tidak terpapar, 30 di antaranya sedang pneumonia. Hitung prevalens di tiap kelompok dan rasionya.</p>
+  <details>
+    <summary>Lihat jawaban dan penilaiannya</summary>
+    <p>Prevalens pada yang terpapar: 40 ÷ 400 = 10%. Pada yang tidak terpapar: 30 ÷ 600 = 5%. <strong>Rasio prevalens = 2,0.</strong></p>
+    <p><strong>Kekuatan:</strong> cepat, murah, dan sekaligus memberi gambaran berapa banyak balita yang terpapar.</p>
+    <p><strong>Kelemahan:</strong> hanya menangkap balita yang sedang sakit pada hari survei. Pneumonia berlangsung singkat, sehingga kasus yang tertangkap sedikit dan yang sakit berat mungkin sedang dirawat di rumah sakit dan terlewat. Untuk penyakit lain, potong lintang juga sering tidak dapat menunjukkan mana yang terjadi lebih dulu, paparan atau penyakit.</p>
+  </details>
+</section>
+
+<section aria-labelledby="m-l2">
+  <span class="langkah">Langkah 2</span>
+  <h2 id="m-l2">Usul kedua: studi kasus-kontrol</h2>
+  <p>Pada <strong>studi kasus-kontrol</strong>, peneliti mulai dari penyakitnya. Dikumpulkan sekelompok orang yang sakit (kasus) dan sekelompok yang tidak sakit (kontrol), lalu ditelusuri ke belakang: seberapa sering masing-masing terpapar?</p>
+  <p>Rekan kedua mengusulkan mengambil 100 balita yang dirawat karena pneumonia dan 200 balita tanpa pneumonia dari wilayah yang sama. Misalkan hasilnya: 60 kasus terpapar dan 40 tidak; 80 kontrol terpapar dan 120 tidak.</p>
+  <p>Di sini risiko tidak dapat dihitung, karena jumlah kasus dan kontrol ditentukan peneliti. Yang dihitung adalah <strong>rasio odds</strong>: perbandingan odds terpapar pada kasus dengan odds terpapar pada kontrol.</p>
+  <div class="rumus">Rasio odds = (kasus terpapar × kontrol tidak terpapar) ÷ (kasus tidak terpapar × kontrol terpapar)</div>
+  <details>
+    <summary>Lihat jawaban dan penilaiannya</summary>
+    <p>Rasio odds = (60 × 120) ÷ (40 × 80) = 7.200 ÷ 3.200 = <strong>2,25</strong>.</p>
+    <p><strong>Kekuatan:</strong> efisien untuk penyakit yang tidak terlalu sering, karena kasus dikumpulkan langsung dari rumah sakit. Cepat dan relatif murah.</p>
+    <p><strong>Kelemahan:</strong> rawan bias. Orang tua balita yang sakit mungkin mengingat atau melaporkan paparan secara berbeda dari orang tua kontrol (bias ingatan). Kontrol harus berasal dari populasi yang sama dengan kasus; bila tidak, perbandingannya tidak adil.</p>
+  </details>
+</section>
+
+<section aria-labelledby="m-l3">
+  <span class="langkah">Langkah 3</span>
+  <h2 id="m-l3">Usul ketiga: studi kohort</h2>
+  <p>Pada <strong>studi kohort</strong>, peneliti mulai dari paparannya. Sekelompok orang yang belum sakit dikelompokkan menurut paparan, lalu diikuti ke depan untuk melihat siapa yang jatuh sakit.</p>
+  <p>Rekan ketiga mengusulkan mengikuti 2.000 balita sehat selama setahun. Misalkan hasilnya: dari 800 yang terpapar, 80 terkena pneumonia; dari 1.200 yang tidak terpapar, 60 terkena. Hitung risiko di tiap kelompok, rasio risiko, dan selisih risikonya.</p>
+  <details>
+    <summary>Lihat jawaban dan penilaiannya</summary>
+    <p>Risiko pada yang terpapar: 80 ÷ 800 = 10%. Pada yang tidak terpapar: 60 ÷ 1.200 = 5%. <strong>Rasio risiko = 2,0.</strong> Selisih risiko = 5 kasus per 100 balita per tahun.</p>
+    <p><strong>Kekuatan:</strong> paparan dicatat sebelum penyakit muncul, sehingga urutan waktunya jelas dan bias ingatan terhindar. Risiko dapat dihitung langsung.</p>
+    <p><strong>Kelemahan:</strong> lama dan mahal, dan peserta yang hilang dari pengamatan dapat membiaskan hasil. Studi ini tidak mungkin selesai dalam enam bulan.</p>
+  </details>
+</section>
+
+<section aria-labelledby="m-l4">
+  <span class="langkah">Langkah 4</span>
+  <h2 id="m-l4">Usul keempat: uji acak</h2>
+  <p>Pada <strong>uji acak terkendali</strong>, peneliti sendiri yang menentukan siapa menerima perlakuan, dengan undian. Karena undian membuat kedua kelompok serupa dalam segala hal lain, perbedaan hasil dapat disimpulkan sebagai akibat perlakuan. Itulah sebabnya desain ini paling kuat untuk menilai sebab akibat.</p>
+  <details>
+    <summary>Dapatkah pertanyaan kepala dinas dijawab dengan uji acak?</summary>
+    <p>Tidak secara langsung. Mengundi balita untuk dipaparkan asap rokok jelas tidak etis.</p>
+    <p>Yang dapat diacak adalah <em>program</em>-nya: misalnya 40 desa diundi, 20 menerima program rumah bebas asap lebih dulu dan 20 menyusul tahun berikutnya, lalu angka pneumonia balita dibandingkan. Rancangan ini menjawab pertanyaan yang sedikit berbeda dan lebih berguna bagi kebijakan: apakah program itu menurunkan pneumonia? Namun ia memerlukan waktu dan biaya jauh di atas yang tersedia sekarang.</p>
+  </details>
+</section>
+
+<section class="lebar" aria-labelledby="m-l5">
+  <span class="langkah">Langkah 5</span>
+  <h2 id="m-l5">Bandingkan dan putuskan</h2>
+  <div class="tabel-gulir">
+    <table class="teks">
+      <thead>
+        <tr><th scope="col">Desain</th><th scope="col">Mulai dari</th><th scope="col">Ukuran hubungan</th><th scope="col">Paling cocok bila</th><th scope="col">Kelemahan utama</th></tr>
+      </thead>
+      <tbody>
+        <tr><th scope="row">Potong lintang</th><td>Populasi pada satu waktu</td><td>Rasio prevalens</td><td>Ingin gambaran cepat tentang besarnya masalah</td><td>Urutan waktu tidak jelas; kasus singkat terlewat</td></tr>
+        <tr><th scope="row">Kasus-kontrol</th><td>Penyakit</td><td>Rasio odds</td><td>Penyakit jarang; waktu dan biaya terbatas</td><td>Bias ingatan; sulit memilih kontrol</td></tr>
+        <tr><th scope="row">Kohort</th><td>Paparan</td><td>Rasio risiko, selisih risiko</td><td>Paparan jarang; ingin urutan waktu yang jelas</td><td>Lama, mahal, peserta hilang</td></tr>
+        <tr><th scope="row">Uji acak</th><td>Perlakuan yang diundi</td><td>Rasio risiko, selisih risiko</td><td>Menilai manfaat suatu intervensi</td><td>Mahal; tidak selalu etis atau mungkin</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <details>
+    <summary>Desain mana yang Anda pilih untuk enam bulan dan anggaran terbatas?</summary>
+    <p><strong>Kasus-kontrol.</strong> Kasus pneumonia tersedia di rumah sakit, studi dapat selesai dalam beberapa bulan, dan biayanya terjangkau.</p>
+    <p>Pertanggungjawaban Anda harus menyebut kelemahannya dan cara menguranginya: kontrol diambil dari desa yang sama dengan kasus; pertanyaan tentang merokok diajukan dengan cara yang sama kepada kedua kelompok oleh pewawancara yang tidak mengetahui dugaan penelitian; dan umur, kepadatan hunian, serta status gizi dicatat karena dapat mengacaukan hubungan.</p>
+    <p>Perhatikan pula bahwa rasio odds (2,25) sedikit lebih besar daripada rasio risiko (2,0) pada contoh ini. Rasio odds mendekati rasio risiko hanya bila penyakitnya jarang.</p>
+  </details>
+</section>
+
+<section aria-labelledby="m-kuis">
+  <h2 id="m-kuis">Uji diri</h2>
+
+  <fieldset class="soal" data-benar="c">
+    <legend>1. Peneliti mengumpulkan 150 penderita kanker paru dan 300 orang tanpa kanker, lalu menanyakan riwayat merokok mereka. Desain apa ini?</legend>
+    <button type="button" class="pilihan" data-nilai="a">Kohort</button>
+    <button type="button" class="pilihan" data-nilai="b">Potong lintang</button>
+    <button type="button" class="pilihan" data-nilai="c">Kasus-kontrol</button>
+    <button type="button" class="pilihan" data-nilai="d">Uji acak</button>
+    <p class="penjelasan" hidden>Peneliti mulai dari penyakit, lalu menelusuri paparan ke belakang.</p>
+  </fieldset>
+
+  <fieldset class="soal" data-benar="a">
+    <legend>2. Dalam studi kasus-kontrol: 30 kasus terpapar, 20 kasus tidak terpapar, 20 kontrol terpapar, 80 kontrol tidak terpapar. Berapa rasio odds-nya?</legend>
+    <button type="button" class="pilihan" data-nilai="a">6,0</button>
+    <button type="button" class="pilihan" data-nilai="b">3,0</button>
+    <button type="button" class="pilihan" data-nilai="c">1,5</button>
+    <button type="button" class="pilihan" data-nilai="d">0,17</button>
+    <p class="penjelasan" hidden>(30 × 80) ÷ (20 × 20) = 2.400 ÷ 400 = 6,0.</p>
+  </fieldset>
+
+  <fieldset class="soal" data-benar="d">
+    <legend>3. Mengapa risiko tidak dapat dihitung langsung dari studi kasus-kontrol?</legend>
+    <button type="button" class="pilihan" data-nilai="a">Karena sampelnya terlalu kecil.</button>
+    <button type="button" class="pilihan" data-nilai="b">Karena paparannya tidak diukur.</button>
+    <button type="button" class="pilihan" data-nilai="c">Karena tidak ada kelompok pembanding.</button>
+    <button type="button" class="pilihan" data-nilai="d">Karena perbandingan jumlah kasus dan kontrol ditentukan peneliti.</button>
+    <p class="penjelasan" hidden>Bagian yang sakit dalam sampel tidak mencerminkan bagian yang sakit dalam populasi.</p>
+  </fieldset>
+
+  <fieldset class="soal" data-benar="b">
+    <legend>4. Apa keunggulan utama uji acak dibanding studi observasional?</legend>
+    <button type="button" class="pilihan" data-nilai="a">Selalu lebih murah.</button>
+    <button type="button" class="pilihan" data-nilai="b">Pengacakan membuat kelompok serupa, sehingga perbedaan hasil dapat disimpulkan akibat perlakuan.</button>
+    <button type="button" class="pilihan" data-nilai="c">Tidak memerlukan persetujuan peserta.</button>
+    <button type="button" class="pilihan" data-nilai="d">Dapat dipakai untuk semua pertanyaan.</button>
+    <p class="penjelasan" hidden>Undian menyeimbangkan faktor lain, baik yang diketahui maupun yang tidak, di antara kelompok.</p>
+  </fieldset>
+
+  <fieldset class="soal" data-benar="a">
+    <legend>5. Anda ingin meneliti akibat suatu paparan kerja yang jarang, misalnya bahan kimia di satu pabrik. Desain mana yang paling sesuai?</legend>
+    <button type="button" class="pilihan" data-nilai="a">Kohort pekerja pabrik itu dibanding pekerja lain</button>
+    <button type="button" class="pilihan" data-nilai="b">Kasus-kontrol dari seluruh kota</button>
+    <button type="button" class="pilihan" data-nilai="c">Potong lintang seluruh penduduk</button>
+    <button type="button" class="pilihan" data-nilai="d">Uji acak yang memaparkan sukarelawan</button>
+    <p class="penjelasan" hidden>Bila paparannya jarang, mulailah dari kelompok yang terpapar. Kasus-kontrol dari populasi umum hampir tidak akan menemukan orang yang terpapar.</p>
+  </fieldset>
+
+  <p class="skor" id="skor" role="status" hidden></p>
+</section>
+
+<section aria-labelledby="m-naik">
+  <h2 id="m-naik">Naik jenjang</h2>
+  <p>Memilih desain adalah keputusan terpenting dalam sebuah penelitian. Analisis yang canggih tidak dapat menyelamatkan desain yang keliru.</p>
+
+  <div class="naik j3">
+    <h3>Jenjang 3: mengendalikan perancu</h3>
+    <p>Keluarga perokok mungkin juga lebih miskin dan tinggal di rumah yang lebih padat. Anda akan menggambar diagram kausal untuk menentukan faktor mana yang harus dikendalikan dan mana yang justru tidak boleh, lalu mengendalikannya lewat pencocokan, stratifikasi, atau regresi. Anda juga akan mengenal desain gabungan seperti kasus-kontrol tersarang di dalam kohort.</p>
+  </div>
+
+  <div class="naik j4">
+    <h3>Jenjang 4: meniru uji acak dengan data observasional</h3>
+    <p>Bila uji acak tidak mungkin, seorang ahli merumuskan dulu uji acak yang ideal, lalu menirunya sedekat mungkin dengan data yang ada. Ia juga memanfaatkan eksperimen alami, misalnya kebijakan yang berlaku di satu daerah tetapi tidak di daerah tetangganya.</p>
+  </div>
+</section>
+
+<section aria-labelledby="m-terap">
+  <h2 id="m-terap">Terapkan</h2>
+  <ol>
+    <li>Ambil satu artikel penelitian kesehatan. Tentukan desainnya dan ukuran hubungan yang dilaporkan.</li>
+    <li>Tulis satu pertanyaan penelitian dari tempat kerja atau kampus Anda. Desain mana yang paling sesuai, dan apa kelemahan utamanya?</li>
+    <li>Untuk pertanyaan itu, dari mana kelompok pembandingnya akan diambil agar perbandingannya adil?</li>
+  </ol>
+  <div class="deret-tombol">
+    <button type="button" class="tombol" id="tandai-selesai" data-modul="epidemiologi-06">Tandai modul ini selesai</button>
+    <a class="tombol garis" href="kurikulum.html">Kembali ke peta kurikulum</a>
+  </div>
+</section>
+
+<section aria-labelledby="m-rujuk">
+  <h2 id="m-rujuk">Rujukan dan bacaan lanjut</h2>
+  <ul class="rujukan">
+    <li>Celentano dan Szklo. <em>Gordis Epidemiology</em>. Bab-bab tentang studi kohort, kasus-kontrol, dan uji acak.</li>
+    <li>Kenneth Rothman. <em>Epidemiology: An Introduction</em>. Bab tentang jenis studi epidemiologi.</li>
+    <li>Szklo dan Nieto. <em>Epidemiology: Beyond the Basics</em>. Bab tentang desain studi dasar.</li>
+    <li>CDC. <a href="https://stacks.cdc.gov/view/cdc/13178"><em>Principles of Epidemiology in Public Health Practice</em>, edisi ketiga</a>. Pelajaran 1 memuat bagian tentang epidemiologi analitik. Domain publik.</li>
+  </ul>
+  <p class="keterangan">Modul ini ditulis orisinal untuk Learn Public Health.</p>
+</section>
+
+</div>
+</main>
+
+<footer class="kaki">
+  <div class="wadah">
+    <p><strong>Learn Public Health</strong>. Materi ini untuk pendidikan. Data kasus dalam modul adalah rekaan, kecuali disebutkan lain.</p>
+    <p><a href="index.html">Beranda</a> | <a href="kurikulum.html">Peta kurikulum</a> | <a href="sumber.html">Sumber belajar</a></p>
+  </div>
+</footer>
+
+<script src="app.js"></script>
+</body>
+</html>

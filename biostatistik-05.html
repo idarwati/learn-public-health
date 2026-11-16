@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Memilih sampel yang bisa dipercaya | Learn Public Health</title>
+<meta name="description" content="Modul biostatistik jenjang dasar: populasi dan sampel, bias seleksi, serta sampel acak sederhana, sistematik, berstrata, dan klaster.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header class="kepala">
+  <div class="wadah">
+    <a class="merek" href="index.html">
+      <svg viewBox="0 0 32 32" aria-hidden="true"><path d="M2 30V22h7v-7h7V8h7V2h7v28z" fill="#075443"/></svg>
+      Learn Public Health
+    </a>
+    <nav aria-label="Menu utama">
+      <ul class="menu">
+        <li><a href="index.html">Beranda</a></li>
+        <li><a href="kurikulum.html">Peta kurikulum</a></li>
+        <li><a href="sumber.html">Sumber belajar</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<main>
+
+<div class="modul-kepala">
+  <div class="wadah">
+    <p class="remah"><a href="kurikulum.html">Peta kurikulum</a> / Biostatistik / Jenjang 1: Dasar</p>
+    <h1>Memilih sampel yang bisa dipercaya</h1>
+    <p class="ringkas">Survei daring sukarela menyimpulkan hanya 4% siswa SMA yang merokok. Para guru menduga jauh lebih banyak. Anda diminta menilai survei itu dan merancang yang lebih baik.</p>
+    <ul class="modul-info">
+      <li>Waktu belajar: sekitar 45 menit</li>
+      <li>Prasyarat: tidak ada</li>
+      <li>Alat: kalkulator biasa</li>
+    </ul>
+  </div>
+</div>
+
+<div class="modul-isi wadah">
+
+<section aria-labelledby="m-tujuan">
+  <h2 id="m-tujuan">Setelah modul ini, Anda bisa</h2>
+  <ul>
+    <li>membedakan populasi dari sampel, dan parameter dari statistik;</li>
+    <li>menjelaskan mengapa sampel acak dapat dipercaya sedangkan sampel sukarela tidak;</li>
+    <li>merancang sampel acak sederhana, sistematik, berstrata, dan klaster.</li>
+  </ul>
+</section>
+
+<section aria-labelledby="m-kasus">
+  <h2 id="m-kasus">Kasus</h2>
+  <div class="kasus-cerita">
+    <p>Dinas Kesehatan Kabupaten Saloka ingin mengetahui berapa persen siswa SMA yang merokok. Di kabupaten ini ada <strong>12.000 siswa</strong> di 20 sekolah. Menanyai semuanya terlalu mahal.</p>
+    <p>Seorang staf sudah bergerak cepat. Ia menyebarkan kuesioner daring lewat grup media sosial pelajar. Dalam seminggu <strong>600 siswa</strong> mengisi, dan 4% di antaranya mengaku merokok. Ia siap melaporkan: "Prevalens merokok siswa SMA Saloka 4%."</p>
+    <p>Kepala dinas ragu. Guru-guru yang ia temui menduga angkanya jauh lebih tinggi. Ia meminta Anda menilai survei itu dan, bila perlu, merancang yang lebih baik dengan jumlah responden yang sama.</p>
+  </div>
+  <p class="keterangan">Nama kabupaten dan seluruh angka rekaan, disusun untuk latihan.</p>
+</section>
+
+<section aria-labelledby="m-l1">
+  <span class="langkah">Langkah 1</span>
+  <h2 id="m-l1">Bedakan populasi dan sampel</h2>
+  <ul>
+    <li><strong>Populasi</strong> adalah seluruh kelompok yang ingin Anda ketahui. Di sini: 12.000 siswa SMA di Saloka.</li>
+    <li><strong>Sampel</strong> adalah sebagian anggota populasi yang benar-benar Anda amati.</li>
+    <li><strong>Parameter</strong> adalah angka yang sebenarnya pada populasi, misalnya persentase seluruh siswa yang merokok. Angka ini hampir tidak pernah diketahui.</li>
+    <li><strong>Statistik</strong> adalah angka yang dihitung dari sampel dan dipakai untuk menaksir parameter.</li>
+  </ul>
+  <p>Seluruh ilmu statistik inferensial bertumpu pada satu syarat: sampel harus <strong>mewakili</strong> populasinya.</p>
+  <details>
+    <summary>Berapa persen dari populasi yang masuk sampel staf itu? Apakah itu terlalu sedikit?</summary>
+    <p>600 ÷ 12.000 = <strong>5%</strong>. Itu tidak terlalu sedikit. Mutu sampel ditentukan oleh cara memilihnya, bukan oleh berapa persen populasi yang terambil. Enam ratus siswa yang dipilih dengan benar sudah cukup untuk taksiran yang baik.</p>
+  </details>
+</section>
+
+<section aria-labelledby="m-l2">
+  <span class="langkah">Langkah 2</span>
+  <h2 id="m-l2">Temukan apa yang salah dengan sampel sukarela</h2>
+  <p>Pada survei daring itu, siswa sendiri yang memutuskan ikut atau tidak. Pikirkan: siswa seperti apa yang cenderung mengisi, dan siapa yang cenderung tidak?</p>
+  <details>
+    <summary>Lihat jawaban</summary>
+    <ul>
+      <li>Hanya siswa yang tergabung dalam grup itu yang menerima kuesioner.</li>
+      <li>Siswa yang rajin dan peduli kesehatan lebih mungkin mengisi.</li>
+      <li>Siswa yang merokok mungkin enggan mengisi, apalagi bila khawatir jawabannya diketahui sekolah.</li>
+    </ul>
+    <p>Ketiganya mendorong angka ke arah yang sama: terlalu rendah. Kesalahan yang arahnya tetap seperti ini disebut <strong>bias seleksi</strong>. Bias tidak berkurang dengan menambah responden. Enam ribu jawaban sukarela akan sama menyesatkannya dengan enam ratus.</p>
+    <p>Contoh terkenal terjadi pada pemilihan presiden Amerika Serikat tahun 1936. Sebuah majalah mengumpulkan lebih dari dua juta jawaban dan meramalkan pemenang yang keliru, karena daftar alamat yang dipakainya tidak mewakili pemilih.</p>
+  </details>
+</section>
+
+<section aria-labelledby="m-l3">
+  <span class="langkah">Langkah 3</span>
+  <h2 id="m-l3">Gunakan pengacakan</h2>
+  <p>Pada <strong>sampel acak</strong>, peluang tiap anggota populasi untuk terpilih diketahui dan ditentukan oleh undian, bukan oleh peneliti atau responden. Untuk itu diperlukan <strong>kerangka sampel</strong>: daftar seluruh anggota populasi. Di sini, daftar 12.000 siswa dari dinas pendidikan.</p>
+  <p>Dua cara yang paling sederhana:</p>
+  <ul>
+    <li><strong>Acak sederhana.</strong> Setiap siswa diberi nomor, lalu 600 nomor diundi.</li>
+    <li><strong>Sistematik.</strong> Daftar diurutkan, satu titik awal diundi, lalu diambil setiap siswa ke-<em>k</em>.</li>
+  </ul>
+  <details>
+    <summary>Untuk sampel sistematik 600 dari 12.000 siswa, berapa selangnya, dan bagaimana memulainya?</summary>
+    <p>Selang <em>k</em> = 12.000 ÷ 600 = <strong>20</strong>. Undi satu angka antara 1 dan 20, misalnya 7. Yang terpilih adalah siswa nomor 7, 27, 47, dan seterusnya sampai terkumpul 600.</p>
+  </details>
+</section>
+
+<section aria-labelledby="m-l4">
+  <span class="langkah">Langkah 4</span>
+  <h2 id="m-l4">Sesuaikan rancangan dengan keadaan</h2>
+  <ul>
+    <li><strong>Acak berstrata.</strong> Populasi dibagi menjadi kelompok (strata) yang penting bagi pertanyaan, lalu sampel diambil acak dari tiap strata. Hasilnya menjamin tiap kelompok terwakili.</li>
+    <li><strong>Acak klaster.</strong> Yang diundi adalah kelompok utuh, misalnya sekolah atau kelas, lalu anggota kelompok terpilih yang disurvei. Lebih murah karena petugas hanya mendatangi beberapa tempat, tetapi ketelitiannya lebih rendah karena siswa satu sekolah cenderung mirip.</li>
+  </ul>
+  <p>Kerjakan dua rancangan berikut.</p>
+  <ol>
+    <li>Dari 12.000 siswa, 5.400 laki-laki dan 6.600 perempuan. Untuk sampel berstrata 600 siswa yang sebanding dengan populasinya, berapa siswa diambil dari tiap strata?</li>
+    <li>Untuk sampel klaster, Anda mengundi 5 dari 20 sekolah, lalu mengundi 120 siswa di tiap sekolah terpilih. Berapa besar sampelnya?</li>
+  </ol>
+  <details>
+    <summary>Lihat jawaban</summary>
+    <ol>
+      <li>Laki-laki 5.400 ÷ 12.000 = 45%, sehingga 45% × 600 = <strong>270 siswa</strong>. Perempuan 55% × 600 = <strong>330 siswa</strong>.</li>
+      <li>5 × 120 = <strong>600 siswa</strong>. Petugas cukup mendatangi lima sekolah, bukan dua puluh.</li>
+    </ol>
+    <p>Untuk kasus ini, rancangan berstrata menurut jenis kelamin masuk akal karena perilaku merokok biasanya sangat berbeda antara laki-laki dan perempuan. Bila biaya perjalanan menjadi kendala utama, rancangan klaster lebih realistis.</p>
+  </details>
+</section>
+
+<section aria-labelledby="m-l5">
+  <span class="langkah">Langkah 5</span>
+  <h2 id="m-l5">Jaga agar yang terpilih benar-benar menjawab</h2>
+  <p>Sampel acak yang baik masih bisa rusak di lapangan.</p>
+  <ul>
+    <li><strong>Tidak menjawab.</strong> Bila banyak siswa terpilih tidak hadir atau menolak, yang tersisa tidak lagi acak. Catat dan laporkan angka responsnya.</li>
+    <li><strong>Penggantian sembarangan.</strong> Mengganti siswa yang tidak hadir dengan "siapa saja yang ada" mengembalikan bias seleksi.</li>
+    <li><strong>Jawaban tidak jujur.</strong> Untuk topik peka seperti merokok, kuesioner tanpa nama yang diisi sendiri dan dimasukkan ke kotak tertutup menghasilkan jawaban yang lebih jujur.</li>
+  </ul>
+  <details>
+    <summary>Survei ulang dengan sampel acak berstrata menemukan 72 dari 600 siswa merokok. Apa yang Anda laporkan?</summary>
+    <p>72 ÷ 600 = <strong>12%</strong>, tiga kali angka survei sukarela. Laporkan pula cara pemilihan sampel dan angka responsnya.</p>
+    <p>Angka 12% pun masih taksiran: sampel acak lain akan memberi angka yang sedikit berbeda. Seberapa besar selisih yang wajar dibahas dalam modul <a href="biostatistik-06.html">Menaksir dengan selang kepercayaan</a>.</p>
+  </details>
+</section>
+
+<section aria-labelledby="m-kuis">
+  <h2 id="m-kuis">Uji diri</h2>
+
+  <fieldset class="soal" data-benar="b">
+    <legend>1. Rata-rata tekanan darah seluruh penduduk dewasa suatu kota disebut apa?</legend>
+    <button type="button" class="pilihan" data-nilai="a">Statistik</button>
+    <button type="button" class="pilihan" data-nilai="b">Parameter</button>
+    <button type="button" class="pilihan" data-nilai="c">Sampel</button>
+    <button type="button" class="pilihan" data-nilai="d">Kerangka sampel</button>
+    <p class="penjelasan" hidden>Angka yang menggambarkan seluruh populasi adalah parameter. Angka dari sampel disebut statistik.</p>
+  </fieldset>
+
+  <fieldset class="soal" data-benar="d">
+    <legend>2. Sebuah survei kepuasan hanya diisi pasien yang bersedia tinggal setelah berobat. Apa masalah utamanya?</legend>
+    <button type="button" class="pilihan" data-nilai="a">Sampelnya terlalu kecil.</button>
+    <button type="button" class="pilihan" data-nilai="b">Kuesionernya terlalu panjang.</button>
+    <button type="button" class="pilihan" data-nilai="c">Tidak ada masalah.</button>
+    <button type="button" class="pilihan" data-nilai="d">Bias seleksi: yang bersedia mengisi berbeda dari yang tidak.</button>
+    <p class="penjelasan" hidden>Pasien yang terburu-buru atau kecewa mungkin langsung pulang, sehingga hasilnya terlalu baik.</p>
+  </fieldset>
+
+  <fieldset class="soal" data-benar="a">
+    <legend>3. Dari daftar 3.000 pasien akan diambil sampel sistematik 150 orang. Berapa selangnya?</legend>
+    <button type="button" class="pilihan" data-nilai="a">20</button>
+    <button type="button" class="pilihan" data-nilai="b">15</button>
+    <button type="button" class="pilihan" data-nilai="c">30</button>
+    <button type="button" class="pilihan" data-nilai="d">150</button>
+    <p class="penjelasan" hidden>3.000 ÷ 150 = 20. Diambil setiap pasien ke-20 setelah titik awal yang diundi.</p>
+  </fieldset>
+
+  <fieldset class="soal" data-benar="c">
+    <legend>4. Peneliti mengundi 10 desa, lalu mewawancarai semua ibu balita di desa terpilih. Rancangan apa ini?</legend>
+    <button type="button" class="pilihan" data-nilai="a">Acak sederhana</button>
+    <button type="button" class="pilihan" data-nilai="b">Acak berstrata</button>
+    <button type="button" class="pilihan" data-nilai="c">Acak klaster</button>
+    <button type="button" class="pilihan" data-nilai="d">Sampel sukarela</button>
+    <p class="penjelasan" hidden>Yang diundi adalah kelompok utuh (desa), bukan orang satu per satu.</p>
+  </fieldset>
+
+  <fieldset class="soal" data-benar="b">
+    <legend>5. Survei sukarela menghasilkan angka yang bias. Apa akibatnya bila jumlah respondennya ditambah sepuluh kali lipat?</legend>
+    <button type="button" class="pilihan" data-nilai="a">Biasnya hilang.</button>
+    <button type="button" class="pilihan" data-nilai="b">Biasnya tetap; hasilnya hanya tampak lebih meyakinkan.</button>
+    <button type="button" class="pilihan" data-nilai="c">Biasnya berbalik arah.</button>
+    <button type="button" class="pilihan" data-nilai="d">Hasilnya menjadi parameter.</button>
+    <p class="penjelasan" hidden>Menambah responden mengurangi kesalahan acak, tidak mengurangi bias seleksi.</p>
+  </fieldset>
+
+  <p class="skor" id="skor" role="status" hidden></p>
+</section>
+
+<section aria-labelledby="m-naik">
+  <h2 id="m-naik">Naik jenjang</h2>
+  <p>Dengan modul ini jenjang dasar biostatistik selesai. Semua metode berikutnya mengandaikan sampel yang dipilih dengan baik.</p>
+
+  <div class="naik">
+    <h3>Jenjang 2: berapa besar sampel yang diperlukan?</h3>
+    <p>Anda akan menghitung galat baku dan selang kepercayaan sebuah taksiran, lalu menentukan besar sampel yang dibutuhkan untuk ketelitian tertentu sebelum survei dimulai.</p>
+  </div>
+
+  <div class="naik j3">
+    <h3>Jenjang 3: menganalisis survei dengan rancangan rumit</h3>
+    <p>Sampel klaster dan berstrata tidak boleh dianalisis seolah-olah acak sederhana. Anda akan memakai bobot, memperhitungkan efek rancangan, dan memperbaiki taksiran saat sebagian responden tidak menjawab.</p>
+  </div>
+
+  <div class="naik j4">
+    <h3>Jenjang 4: merancang survei berskala besar</h3>
+    <p>Seorang ahli merancang survei bertahap ganda untuk satu provinsi atau negara, menyeimbangkan biaya dan ketelitian, serta menghasilkan taksiran untuk wilayah kecil yang sampelnya sedikit.</p>
+  </div>
+</section>
+
+<section aria-labelledby="m-terap">
+  <h2 id="m-terap">Terapkan</h2>
+  <ol>
+    <li>Temukan satu hasil survei dalam berita. Bagaimana respondennya dipilih? Bila tidak disebutkan, apa yang perlu Anda tanyakan?</li>
+    <li>Untuk satu pertanyaan di kampus atau tempat kerja Anda, tentukan populasinya dan dari mana kerangka sampelnya dapat diperoleh.</li>
+    <li>Rancang sampel sistematik 50 orang dari daftar yang Anda miliki. Berapa selangnya?</li>
+  </ol>
+  <div class="deret-tombol">
+    <button type="button" class="tombol" id="tandai-selesai" data-modul="biostatistik-05">Tandai modul ini selesai</button>
+    <a class="tombol garis" href="kurikulum.html">Kembali ke peta kurikulum</a>
+  </div>
+</section>
+
+<section aria-labelledby="m-rujuk">
+  <h2 id="m-rujuk">Rujukan dan bacaan lanjut</h2>
+  <ul class="rujukan">
+    <li>OpenStax. <a href="https://openstax.org/books/introductory-statistics-2e/pages/preface"><em>Introductory Statistics 2e</em></a>. Bab 1 membahas populasi, sampel, dan cara pengambilan sampel. Lisensi CC BY 4.0.</li>
+    <li>Daniel dan Cross. <em>Biostatistics: A Foundation for Analysis in the Health Sciences</em>. Bagian tentang pengambilan sampel.</li>
+    <li>Lwanga dan Lemeshow (1991). <em>Sample Size Determination in Health Studies: A Practical Manual</em>. WHO.</li>
+    <li>Leslie Kish. <em>Survey Sampling</em>. Rujukan klasik rancangan sampel.</li>
+  </ul>
+  <p class="keterangan">Modul ini ditulis orisinal untuk Learn Public Health.</p>
+</section>
+
+</div>
+</main>
+
+<footer class="kaki">
+  <div class="wadah">
+    <p><strong>Learn Public Health</strong>. Materi ini untuk pendidikan. Data kasus dalam modul adalah rekaan, kecuali disebutkan lain.</p>
+    <p><a href="index.html">Beranda</a> | <a href="kurikulum.html">Peta kurikulum</a> | <a href="sumber.html">Sumber belajar</a></p>
+  </div>
+</footer>
+
+<script src="app.js"></script>
+</body>
+</html>

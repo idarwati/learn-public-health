@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Menaksir dengan selang kepercayaan | Learn Public Health</title>
+<meta name="description" content="Modul biostatistik jenjang menengah: variasi sampling, galat baku, dan selang kepercayaan 95% untuk proporsi dan rata-rata, dengan kalkulator.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header class="kepala">
+  <div class="wadah">
+    <a class="merek" href="index.html">
+      <svg viewBox="0 0 32 32" aria-hidden="true"><path d="M2 30V22h7v-7h7V8h7V2h7v28z" fill="#075443"/></svg>
+      Learn Public Health
+    </a>
+    <nav aria-label="Menu utama">
+      <ul class="menu">
+        <li><a href="index.html">Beranda</a></li>
+        <li><a href="kurikulum.html">Peta kurikulum</a></li>
+        <li><a href="sumber.html">Sumber belajar</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<main>
+
+<div class="modul-kepala">
+  <div class="wadah">
+    <p class="remah"><a href="kurikulum.html">Peta kurikulum</a> / Biostatistik / Jenjang 2: Menengah</p>
+    <h1>Menaksir dengan selang kepercayaan</h1>
+    <p class="ringkas">Survei menemukan 12% siswa merokok. Kepala dinas bertanya apakah angkanya tepat 12% dan apakah kabupatennya lebih buruk daripada tetangga yang melaporkan 10%.</p>
+    <ul class="modul-info">
+      <li>Waktu belajar: sekitar 60 menit</li>
+      <li>Prasyarat: <a href="biostatistik-04.html">Distribusi normal</a> dan <a href="biostatistik-05.html">Memilih sampel</a></li>
+      <li>Alat: kalkulator dengan tombol akar</li>
+    </ul>
+  </div>
+</div>
+
+<div class="modul-isi wadah">
+
+<section aria-labelledby="m-tujuan">
+  <h2 id="m-tujuan">Setelah modul ini, Anda bisa</h2>
+  <ul>
+    <li>menghitung galat baku dan selang kepercayaan 95% untuk sebuah proporsi dan sebuah rata-rata;</li>
+    <li>menafsirkan selang kepercayaan dengan benar;</li>
+    <li>menjelaskan bagaimana besar sampel memengaruhi ketelitian taksiran.</li>
+  </ul>
+</section>
+
+<section aria-labelledby="m-kasus">
+  <h2 id="m-kasus">Kasus</h2>
+  <div class="kasus-cerita">
+    <p>Survei acak terhadap 600 dari 12.000 siswa SMA di Kabupaten Saloka menemukan <strong>72 siswa merokok</strong>, atau 12%. Anda menyerahkan angka itu kepada kepala dinas kesehatan.</p>
+    <p>Ia bertanya dua hal. "Jadi tepat 12% siswa kita merokok? Berapa orang yang harus saya anggarkan untuk program berhenti merokok?" Lalu: "Tahun lalu kabupaten tetangga melaporkan 10%. Apakah kita lebih buruk?"</p>
+    <p>Jawaban yang jujur untuk keduanya memerlukan satu hal yang belum Anda laporkan: seberapa teliti angka 12% itu.</p>
+  </div>
+  <p class="keterangan">Nama kabupaten dan seluruh angka rekaan, disusun untuk latihan. Kasus ini melanjutkan modul <a href="biostatistik-05.html">Memilih sampel yang bisa dipercaya</a>.</p>
+</section>
+
+<section aria-labelledby="m-l1">
+  <span class="langkah">Langkah 1</span>
+  <h2 id="m-l1">Sadari bahwa sampel lain memberi angka lain</h2>
+  <p>Angka 12% disebut <strong>taksiran titik</strong>: tebakan terbaik untuk persentase yang sebenarnya pada 12.000 siswa. Namun bila survei diulang dengan 600 siswa lain yang juga dipilih acak, hasilnya mungkin 11% atau 13,5%. Naik turun dari sampel ke sampel ini disebut <strong>variasi sampling</strong>.</p>
+  <p>Besarnya variasi itu diukur dengan <strong>galat baku</strong> (<em>standard error</em>): simpangan baku dari taksiran, seandainya survei diulang berkali-kali. Untuk sebuah proporsi <em>p</em> dari sampel sebesar <em>n</em>:</p>
+  <div class="rumus">Galat baku proporsi = √( p × (1 − p) ÷ n )</div>
+  <p>Hitung galat baku untuk p = 0,12 dan n = 600.</p>
+  <details>
+    <summary>Lihat jawaban</summary>
+    <p>√(0,12 × 0,88 ÷ 600) = √0,000176 = 0,0133, atau <strong>1,33 poin persen</strong>.</p>
+    <p>Jangan tertukar dengan simpangan baku. Simpangan baku menggambarkan sebaran antarorang. Galat baku menggambarkan ketelitian sebuah taksiran, dan mengecil bila sampel membesar.</p>
+  </details>
+</section>
+
+<section aria-labelledby="m-l2">
+  <span class="langkah">Langkah 2</span>
+  <h2 id="m-l2">Bangun selang kepercayaan 95%</h2>
+  <p>Taksiran dari sampel acak yang cukup besar menyebar mendekati distribusi normal di sekitar nilai yang sebenarnya. Pada distribusi normal, 95% nilai berada dalam 1,96 simpangan baku dari pusatnya. Dari situ diperoleh <strong>selang kepercayaan 95%</strong>:</p>
+  <div class="rumus">Selang kepercayaan 95% = taksiran ± 1,96 × galat baku</div>
+  <p>Hitung selang kepercayaan untuk persentase siswa yang merokok, lalu ubah menjadi jumlah siswa.</p>
+  <details>
+    <summary>Lihat jawaban</summary>
+    <p>1,96 × 1,33 = 2,6 poin persen. Selang kepercayaan 95%: 12% ± 2,6%, yaitu <strong>9,4% sampai 14,6%</strong>.</p>
+    <p>Dalam jumlah siswa: 9,4% × 12.000 = sekitar 1.130, dan 14,6% × 12.000 = sekitar 1.750. Jawaban untuk kepala dinas: "Perkiraan terbaik 1.440 siswa, dan angka yang sebenarnya sangat mungkin berada antara 1.130 dan 1.750."</p>
+  </details>
+
+  <form class="kalkulator" id="selang" novalidate>
+    <h3>Kalkulator selang kepercayaan proporsi</h3>
+    <div class="isian">
+      <label>Jumlah yang memiliki ciri <input type="number" name="x" min="0" step="1" inputmode="numeric" value="72"></label>
+      <label>Besar sampel <input type="number" name="n" min="1" step="1" inputmode="numeric" value="600"></label>
+    </div>
+    <button type="submit" class="tombol">Hitung</button>
+    <p class="pesan" id="pesan-selang" role="alert" hidden></p>
+    <dl class="hasil" id="hasil-selang" aria-live="polite" hidden>
+      <div><dt>Proporsi</dt><dd id="s-p"></dd></div>
+      <div><dt>Galat baku</dt><dd id="s-se"></dd></div>
+      <div><dt>Selang kepercayaan 95%</dt><dd id="s-ci"></dd></div>
+    </dl>
+  </form>
+</section>
+
+<section aria-labelledby="m-l3">
+  <span class="langkah">Langkah 3</span>
+  <h2 id="m-l3">Tafsirkan dengan benar</h2>
+  <p>Selang kepercayaan sering disalahartikan. Tentukan mana dari tiga pernyataan ini yang benar.</p>
+  <ol type="A">
+    <li>"Sebanyak 95% siswa merokok antara 9,4% dan 14,6% dari waktunya."</li>
+    <li>"Bila survei seperti ini diulang berkali-kali, sekitar 95% selang yang dihasilkan akan memuat persentase yang sebenarnya."</li>
+    <li>"Selang ini memperhitungkan semua kemungkinan kesalahan dalam survei."</li>
+  </ol>
+  <details>
+    <summary>Lihat jawaban</summary>
+    <p>Hanya <strong>B</strong> yang benar. Angka 95% menggambarkan keandalan <em>cara</em> membuat selang, bukan sebaran antarsiswa.</p>
+    <p>Pernyataan C keliru dan paling berbahaya. Selang kepercayaan hanya memperhitungkan variasi sampling. Ia tidak memperhitungkan bias: siswa yang berbohong, yang tidak hadir, atau sampel yang tidak acak. Survei sukarela dalam modul sebelumnya menghasilkan 4% dengan selang yang sama sempitnya, dan tetap salah.</p>
+  </details>
+</section>
+
+<section aria-labelledby="m-l4">
+  <span class="langkah">Langkah 4</span>
+  <h2 id="m-l4">Lihat pengaruh besar sampel</h2>
+  <p>Seandainya anggaran hanya cukup untuk 150 siswa dan hasilnya tetap 12%, berapa selang kepercayaannya? Bandingkan lebarnya dengan sampel 600.</p>
+  <details>
+    <summary>Lihat jawaban</summary>
+    <p>Galat baku = √(0,12 × 0,88 ÷ 150) = 0,0265. Dikali 1,96 menjadi 5,2 poin persen. Selang kepercayaan: <strong>6,8% sampai 17,2%</strong>.</p>
+    <p>Sampel 600 memberi ± 2,6; sampel 150 memberi ± 5,2. Sampel empat kali lebih besar hanya membuat selang dua kali lebih sempit, karena galat baku mengecil menurut akar besar sampel. Menggandakan ketelitian berarti melipatempatkan biaya.</p>
+  </details>
+  <h3>Menjawab pertanyaan kedua</h3>
+  <p>Kabupaten tetangga melaporkan 10%. Apakah Saloka lebih buruk?</p>
+  <details>
+    <summary>Lihat jawaban</summary>
+    <p>Angka 10% berada di dalam selang 9,4% sampai 14,6%. Data ini tidak cukup untuk menyimpulkan bahwa Saloka berbeda dari tetangganya. Selain itu, angka tetangga pun sebuah taksiran yang memiliki selangnya sendiri. Membandingkan dua taksiran secara resmi dibahas dalam modul uji hipotesis.</p>
+  </details>
+</section>
+
+<section aria-labelledby="m-l5">
+  <span class="langkah">Langkah 5</span>
+  <h2 id="m-l5">Terapkan pada kelompok dan pada rata-rata</h2>
+  <p>Sampel itu terdiri atas 270 laki-laki dan 330 perempuan. Yang merokok: 54 laki-laki dan 18 perempuan. Hitung persentase dan selang kepercayaan tiap kelompok, dengan tangan atau dengan kalkulator di atas.</p>
+  <details>
+    <summary>Lihat jawaban</summary>
+    <p><strong>Laki-laki:</strong> 54 ÷ 270 = 20%. Galat baku 2,43 poin persen. Selang kepercayaan <strong>15,2% sampai 24,8%</strong>.</p>
+    <p><strong>Perempuan:</strong> 18 ÷ 330 = 5,5%. Galat baku 1,25 poin persen. Selang kepercayaan <strong>3,0% sampai 7,9%</strong>.</p>
+    <p>Kedua selang terpisah jauh, sehingga perbedaan antara siswa laki-laki dan perempuan meyakinkan. Perhatikan juga bahwa selang tiap kelompok lebih lebar daripada selang gabungan, karena sampelnya lebih kecil.</p>
+  </details>
+  <p>Cara yang sama berlaku untuk rata-rata, dengan galat baku yang berbeda:</p>
+  <div class="rumus">Galat baku rata-rata = simpangan baku ÷ √n</div>
+  <details>
+    <summary>Dari 64 pasien, rata-rata lama tunggu 35 menit dengan simpangan baku 12 menit. Berapa selang kepercayaan 95% untuk rata-ratanya?</summary>
+    <p>Galat baku = 12 ÷ √64 = 12 ÷ 8 = 1,5 menit. Selang: 35 ± 1,96 × 1,5 = 35 ± 2,9, yaitu <strong>32,1 sampai 37,9 menit</strong>.</p>
+    <p>Untuk sampel kecil, misalnya di bawah 30, pengali 1,96 diganti nilai dari distribusi t yang sedikit lebih besar.</p>
+  </details>
+</section>
+
+<section aria-labelledby="m-kuis">
+  <h2 id="m-kuis">Uji diri</h2>
+
+  <fieldset class="soal" data-benar="b">
+    <legend>1. Dari 400 ibu yang disurvei acak, 100 memberi ASI eksklusif. Berapa galat baku proporsinya?</legend>
+    <button type="button" class="pilihan" data-nilai="a">0,25</button>
+    <button type="button" class="pilihan" data-nilai="b">0,0217</button>
+    <button type="button" class="pilihan" data-nilai="c">0,0469</button>
+    <button type="button" class="pilihan" data-nilai="d">0,00047</button>
+    <p class="penjelasan" hidden>p = 0,25. √(0,25 × 0,75 ÷ 400) = √0,00046875 = 0,0217.</p>
+  </fieldset>
+
+  <fieldset class="soal" data-benar="c">
+    <legend>2. Dengan data soal 1, berapa selang kepercayaan 95% untuk persentase ASI eksklusif?</legend>
+    <button type="button" class="pilihan" data-nilai="a">22,8% sampai 27,2%</button>
+    <button type="button" class="pilihan" data-nilai="b">24,0% sampai 26,0%</button>
+    <button type="button" class="pilihan" data-nilai="c">20,8% sampai 29,2%</button>
+    <button type="button" class="pilihan" data-nilai="d">15,8% sampai 34,2%</button>
+    <p class="penjelasan" hidden>1,96 × 2,17 = 4,2 poin persen. 25% ± 4,2% memberi 20,8% sampai 29,2%.</p>
+  </fieldset>
+
+  <fieldset class="soal" data-benar="a">
+    <legend>3. Apa arti "selang kepercayaan 95%" yang paling tepat?</legend>
+    <button type="button" class="pilihan" data-nilai="a">Cara ini, bila diulang pada banyak sampel, menghasilkan selang yang memuat nilai sebenarnya pada sekitar 95% ulangan.</button>
+    <button type="button" class="pilihan" data-nilai="b">Sebanyak 95% data berada di dalam selang.</button>
+    <button type="button" class="pilihan" data-nilai="c">Survei ini 95% bebas dari bias.</button>
+    <button type="button" class="pilihan" data-nilai="d">Nilai sebenarnya berubah-ubah di dalam selang.</button>
+    <p class="penjelasan" hidden>Angka 95% adalah sifat cara membuat selang. Nilai sebenarnya tetap; selangnyalah yang berubah dari sampel ke sampel.</p>
+  </fieldset>
+
+  <fieldset class="soal" data-benar="d">
+    <legend>4. Anda ingin selang kepercayaan yang separuh lebarnya. Sampel harus menjadi berapa kali?</legend>
+    <button type="button" class="pilihan" data-nilai="a">Setengah kali</button>
+    <button type="button" class="pilihan" data-nilai="b">Dua kali</button>
+    <button type="button" class="pilihan" data-nilai="c">Tiga kali</button>
+    <button type="button" class="pilihan" data-nilai="d">Empat kali</button>
+    <p class="penjelasan" hidden>Galat baku berbanding terbalik dengan akar besar sampel. Akar dari 4 adalah 2.</p>
+  </fieldset>
+
+  <fieldset class="soal" data-benar="b">
+    <legend>5. Sebuah survei sukarela daring melaporkan selang kepercayaan yang sangat sempit. Apa artinya?</legend>
+    <button type="button" class="pilihan" data-nilai="a">Hasilnya pasti mendekati kebenaran.</button>
+    <button type="button" class="pilihan" data-nilai="b">Variasi samplingnya kecil, tetapi bias seleksi tidak tercermin dalam selang itu.</button>
+    <button type="button" class="pilihan" data-nilai="c">Sampelnya pasti acak.</button>
+    <button type="button" class="pilihan" data-nilai="d">Selang kepercayaan tidak bisa dihitung untuk survei daring.</button>
+    <p class="penjelasan" hidden>Selang yang sempit hanya berarti responden banyak. Ia tidak mengatakan apa pun tentang apakah responden itu mewakili populasi.</p>
+  </fieldset>
+
+  <p class="skor" id="skor" role="status" hidden></p>
+</section>
+
+<section aria-labelledby="m-naik">
+  <h2 id="m-naik">Naik jenjang</h2>
+  <p>Melaporkan taksiran tanpa selang kepercayaan sama dengan menyembunyikan seberapa teliti angkanya.</p>
+
+  <div class="naik j3">
+    <h3>Jenjang 3: selang untuk ukuran lain dan rancangan lain</h3>
+    <p>Anda akan menghitung selang kepercayaan untuk rasio risiko, rasio odds, dan koefisien regresi; memperlebarnya dengan benar untuk sampel klaster; dan memakai cara yang lebih baik saat proporsinya dekat nol atau sampelnya kecil, ketika rumus sederhana di modul ini tidak lagi andal.</p>
+  </div>
+
+  <div class="naik j4">
+    <h3>Jenjang 4: menyampaikan ketidakpastian untuk keputusan</h3>
+    <p>Seorang ahli menggabungkan ketidakpastian dari beberapa sumber, memakai cara Bayes bila ada pengetahuan sebelumnya, dan menyajikan rentang kemungkinan kepada pengambil keputusan sedemikian rupa sehingga keputusan tetap dapat diambil walaupun angkanya tidak pasti.</p>
+  </div>
+</section>
+
+<section aria-labelledby="m-terap">
+  <h2 id="m-terap">Terapkan</h2>
+  <ol>
+    <li>Ambil satu persentase dari laporan survei yang menyebut besar sampelnya. Hitung selang kepercayaan 95%-nya.</li>
+    <li>Cari dua angka yang dibandingkan dalam sebuah berita, misalnya cakupan dua tahun berturut-turut. Apakah selang kepercayaannya bertumpang-tindih?</li>
+    <li>Untuk survei yang ingin Anda lakukan, berapa besar sampel yang diperlukan agar selangnya tidak lebih lebar dari ± 5 poin persen bila proporsinya sekitar 50%?</li>
+  </ol>
+  <div class="deret-tombol">
+    <button type="button" class="tombol" id="tandai-selesai" data-modul="biostatistik-06">Tandai modul ini selesai</button>
+    <a class="tombol garis" href="kurikulum.html">Kembali ke peta kurikulum</a>
+  </div>
+</section>
+
+<section aria-labelledby="m-rujuk">
+  <h2 id="m-rujuk">Rujukan dan bacaan lanjut</h2>
+  <ul class="rujukan">
+    <li>OpenStax. <a href="https://openstax.org/books/introductory-statistics-2e/pages/preface"><em>Introductory Statistics 2e</em></a>. Bab tentang selang kepercayaan. Lisensi CC BY 4.0.</li>
+    <li>Altman, Machin, Bryant, dan Gardner. <em>Statistics with Confidence</em>. Rujukan utama selang kepercayaan dalam penelitian kesehatan.</li>
+    <li>Kirkwood dan Sterne. <em>Essential Medical Statistics</em>. Bab tentang selang kepercayaan untuk rata-rata dan proporsi.</li>
+  </ul>
+  <p class="keterangan">Modul ini ditulis orisinal untuk Learn Public Health.</p>
+</section>
+
+</div>
+</main>
+
+<footer class="kaki">
+  <div class="wadah">
+    <p><strong>Learn Public Health</strong>. Materi ini untuk pendidikan. Data kasus dalam modul adalah rekaan, kecuali disebutkan lain.</p>
+    <p><a href="index.html">Beranda</a> | <a href="kurikulum.html">Peta kurikulum</a> | <a href="sumber.html">Sumber belajar</a></p>
+  </div>
+</footer>
+
+<script src="app.js"></script>
+</body>
+</html>
