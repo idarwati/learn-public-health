@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Mengukur hubungan dengan korelasi dan regresi linear | Learn Public Health</title>
+<meta name="description" content="Modul biostatistik jenjang menengah: diagram tebar, koefisien korelasi, garis regresi linear sederhana, dan batas pemakaiannya, dengan kalkulator.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header class="kepala">
+  <div class="wadah">
+    <a class="merek" href="index.html">
+      <svg viewBox="0 0 32 32" aria-hidden="true"><path d="M2 30V22h7v-7h7V8h7V2h7v28z" fill="#075443"/></svg>
+      Learn Public Health
+    </a>
+    <nav aria-label="Menu utama">
+      <ul class="menu">
+        <li><a href="index.html">Beranda</a></li>
+        <li><a href="kurikulum.html">Peta kurikulum</a></li>
+        <li><a href="sumber.html">Sumber belajar</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<main>
+
+<div class="modul-kepala">
+  <div class="wadah">
+    <p class="remah"><a href="kurikulum.html">Peta kurikulum</a> / Biostatistik / Jenjang 2: Menengah</p>
+    <h1>Mengukur hubungan dengan korelasi dan regresi linear</h1>
+    <p class="ringkas">Kepala seksi gizi menduga jumlah kader menentukan cakupan penimbangan balita, dan ingin mengusulkan anggaran untuk menambah kader. Anda diminta memeriksa datanya lebih dulu.</p>
+    <ul class="modul-info">
+      <li>Waktu belajar: sekitar 60 menit</li>
+      <li>Prasyarat: <a href="biostatistik-02.html">Rata-rata dan sebaran</a> dan <a href="biostatistik-03.html">Membaca grafik</a></li>
+      <li>Alat: kalkulator biasa</li>
+    </ul>
+  </div>
+</div>
+
+<div class="modul-isi wadah">
+
+<section aria-labelledby="m-tujuan">
+  <h2 id="m-tujuan">Setelah modul ini, Anda bisa</h2>
+  <ul>
+    <li>membaca diagram tebar dan menafsirkan koefisien korelasi;</li>
+    <li>menyusun persamaan garis regresi linear sederhana dan menafsirkan kemiringannya;</li>
+    <li>menyebut batas pemakaian regresi: sebab akibat, ekstrapolasi, dan pencilan.</li>
+  </ul>
+</section>
+
+<section class="lebar" aria-labelledby="m-kasus">
+  <h2 id="m-kasus">Kasus</h2>
+  <div class="kasus-cerita baca">
+    <p>Cakupan penimbangan balita di Kabupaten Saloka sangat berbeda antarpuskesmas. Kepala seksi gizi menduga jumlah kader posyandu yang aktif menjadi kuncinya, dan berencana mengusulkan anggaran untuk menambah kader.</p>
+    <p>Sebelum mengusulkan, ia meminta Anda memeriksa datanya: "Benarkah puskesmas yang kadernya lebih banyak cakupannya lebih tinggi? Kalau kader ditambah satu orang per 1.000 balita, kira-kira cakupan naik berapa?"</p>
+  </div>
+  <div class="tabel-gulir" style="margin-top:1.25rem">
+    <table>
+      <caption>Data delapan puskesmas</caption>
+      <thead>
+        <tr><th scope="col">Puskesmas</th><th scope="col">Kader aktif<br>per 1.000 balita</th><th scope="col">Cakupan<br>penimbangan (%)</th></tr>
+      </thead>
+      <tbody>
+        <tr><th scope="row">A</th><td>2</td><td>53</td></tr>
+        <tr><th scope="row">B</th><td>3</td><td>55</td></tr>
+        <tr><th scope="row">C</th><td>4</td><td>59</td></tr>
+        <tr><th scope="row">D</th><td>5</td><td>65</td></tr>
+        <tr><th scope="row">E</th><td>6</td><td>69</td></tr>
+        <tr><th scope="row">F</th><td>7</td><td>71</td></tr>
+        <tr><th scope="row">G</th><td>8</td><td>75</td></tr>
+        <tr><th scope="row">H</th><td>9</td><td>81</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p class="keterangan baca" style="margin-top:0.8rem">Nama tempat dan seluruh angka rekaan, disusun untuk latihan. Data nyata jarang serapi ini.</p>
+</section>
+
+<section aria-labelledby="m-l1">
+  <span class="langkah">Langkah 1</span>
+  <h2 id="m-l1">Gambarkan dulu, hitung kemudian</h2>
+  <p>Langkah pertama selalu <strong>diagram tebar</strong>: tiap puskesmas menjadi satu titik, dengan kader pada sumbu mendatar dan cakupan pada sumbu tegak. Dari gambar Anda melihat tiga hal: arah hubungan (naik atau turun), bentuknya (lurus atau melengkung), dan adakah titik yang menyendiri.</p>
+  <p>Gambarlah delapan titik itu di kertas sebelum membuka jawaban.</p>
+  <details>
+    <summary>Apa yang terlihat?</summary>
+    <p>Titik-titik naik dari kiri bawah ke kanan atas dan hampir membentuk garis lurus. Tidak ada titik yang jauh menyendiri. Hubungannya positif, lurus, dan kuat, sehingga korelasi dan regresi linear layak dipakai.</p>
+    <p>Bila titik-titik membentuk lengkung, atau ada satu titik yang jauh dari yang lain, angka korelasi dan garis regresi bisa sangat menyesatkan. Karena itu gambar tidak boleh dilewati.</p>
+  </details>
+</section>
+
+<section aria-labelledby="m-l2">
+  <span class="langkah">Langkah 2</span>
+  <h2 id="m-l2">Ukur kekuatan hubungan dengan korelasi</h2>
+  <p><strong>Koefisien korelasi</strong> (r) mengukur seberapa rapat titik-titik mengikuti sebuah garis lurus. Nilainya antara −1 dan +1.</p>
+  <ul>
+    <li>r mendekati +1: makin besar x, makin besar y, hampir tepat pada garis.</li>
+    <li>r mendekati −1: makin besar x, makin kecil y.</li>
+    <li>r mendekati 0: tidak ada hubungan <em>lurus</em>. Hubungan melengkung masih mungkin.</li>
+  </ul>
+  <p>Kuadratnya, <strong>r²</strong>, menyatakan bagian dari keragaman y yang dapat dijelaskan oleh garis lurus terhadap x.</p>
+  <details>
+    <summary>Untuk data ini r = 0,994. Berapa r² dan apa artinya?</summary>
+    <p>r² = 0,994 × 0,994 = <strong>0,988</strong>. Sekitar 99% keragaman cakupan antarpuskesmas dapat dijelaskan oleh perbedaan jumlah kader, menurut garis lurus.</p>
+    <p>Korelasi tidak memiliki satuan dan tidak membedakan mana sebab dan mana akibat: korelasi kader dengan cakupan sama dengan korelasi cakupan dengan kader.</p>
+  </details>
+</section>
+
+<section class="lebar" aria-labelledby="m-l3">
+  <span class="langkah">Langkah 3</span>
+  <h2 id="m-l3">Susun garis regresi</h2>
+  <p class="baca">Korelasi menjawab "seberapa erat". <strong>Regresi linear</strong> menjawab "berapa besar": garis lurus yang paling dekat dengan semua titik.</p>
+  <div class="rumus baca">y = a + b × x</div>
+  <ul class="baca">
+    <li><strong>b</strong> (kemiringan): perubahan y untuk tiap kenaikan satu satuan x.</li>
+    <li><strong>a</strong> (titik potong): nilai y saat x bernilai nol.</li>
+  </ul>
+  <p class="baca">Kemiringan dihitung dari simpangan tiap titik terhadap rata-ratanya:</p>
+  <div class="rumus baca">b = jumlah (x − rata-rata x)(y − rata-rata y) ÷ jumlah (x − rata-rata x)², lalu a = rata-rata y − b × rata-rata x</div>
+  <p class="baca">Rata-rata kader 5,5 dan rata-rata cakupan 66. Jumlah hasil kali simpangan 168, dan jumlah kuadrat simpangan x 42. Hitung b dan a, atau gunakan kalkulator.</p>
+
+  <form class="kalkulator" id="regresi" novalidate>
+    <h3>Kalkulator korelasi dan regresi</h3>
+    <label for="g-x">Nilai x, pisahkan dengan spasi</label>
+    <textarea id="g-x" name="x" rows="2" inputmode="decimal">2 3 4 5 6 7 8 9</textarea>
+    <label for="g-y" style="margin-top:0.8rem">Nilai y, dengan urutan yang sama</label>
+    <textarea id="g-y" name="y" rows="2" inputmode="decimal">53 55 59 65 69 71 75 81</textarea>
+    <div class="deret-tombol"><button type="submit" class="tombol">Hitung</button></div>
+    <p class="pesan" id="pesan-regresi" role="alert" hidden></p>
+    <dl class="hasil" id="hasil-regresi" aria-live="polite" hidden>
+      <div><dt>Banyaknya pasangan</dt><dd id="g-n"></dd></div>
+      <div><dt>Korelasi (r)</dt><dd id="g-r"></dd></div>
+      <div><dt>r²</dt><dd id="g-r2"></dd></div>
+      <div><dt>Kemiringan (b)</dt><dd id="g-b"></dd></div>
+      <div><dt>Titik potong (a)</dt><dd id="g-a"></dd></div>
+    </dl>
+  </form>
+
+  <details>
+    <summary>Lihat jawaban dan tafsirannya</summary>
+    <p>b = 168 ÷ 42 = <strong>4</strong>. a = 66 − 4 × 5,5 = <strong>44</strong>. Persamaannya:</p>
+    <div class="rumus">Cakupan = 44 + 4 × (kader per 1.000 balita)</div>
+    <p>Tafsiran kemiringan: puskesmas yang memiliki satu kader lebih banyak per 1.000 balita rata-rata memiliki cakupan 4 poin persen lebih tinggi.</p>
+    <p>Tafsiran titik potong: 44% adalah perkiraan cakupan bila kader nol. Tidak ada puskesmas dalam data yang kadernya nol, sehingga angka ini hanya titik tumpu garis, bukan temuan.</p>
+  </details>
+</section>
+
+<section aria-labelledby="m-l4">
+  <span class="langkah">Langkah 4</span>
+  <h2 id="m-l4">Gunakan garis untuk memperkirakan, dengan hati-hati</h2>
+  <ol>
+    <li>Berapa perkiraan cakupan untuk puskesmas dengan 6,5 kader per 1.000 balita?</li>
+    <li>Berapa perkiraan cakupan bila kader dinaikkan menjadi 15 per 1.000 balita?</li>
+  </ol>
+  <details>
+    <summary>Lihat jawaban</summary>
+    <ol>
+      <li>44 + 4 × 6,5 = <strong>70%</strong>. Nilai 6,5 berada di dalam rentang data (2 sampai 9), sehingga perkiraan ini wajar.</li>
+      <li>44 + 4 × 15 = 104%. Cakupan tidak mungkin melebihi 100%. Nilai 15 jauh di luar rentang data, dan garis lurus tidak berlaku selamanya: makin dekat ke 100%, tambahan kader makin kecil pengaruhnya.</li>
+    </ol>
+    <p>Memperkirakan di luar rentang data disebut <strong>ekstrapolasi</strong>, dan makin jauh dari data makin tidak dapat dipercaya.</p>
+  </details>
+</section>
+
+<section aria-labelledby="m-l5">
+  <span class="langkah">Langkah 5</span>
+  <h2 id="m-l5">Jawab kepala seksi gizi dengan jujur</h2>
+  <p>Hubungannya erat. Apakah itu berarti menambah kader <em>akan menaikkan</em> cakupan 4 poin persen?</p>
+  <details>
+    <summary>Lihat jawaban</summary>
+    <p>Belum tentu. Data ini menunjukkan bahwa puskesmas berkader banyak memiliki cakupan tinggi. Itu belum membuktikan bahwa kader <em>menyebabkan</em> cakupan tinggi. Penjelasan lain:</p>
+    <ul>
+      <li><strong>Perancu:</strong> puskesmas yang dipimpin dengan baik mungkin sekaligus mampu merekrut banyak kader dan menjalankan posyandu dengan baik.</li>
+      <li><strong>Arah terbalik:</strong> posyandu yang ramai mungkin lebih mudah menarik warga menjadi kader.</li>
+      <li><strong>Jumlah data:</strong> delapan puskesmas adalah sampel kecil.</li>
+    </ul>
+    <p>Jawaban yang jujur: "Datanya sejalan dengan dugaan Ibu, dan hubungannya erat. Namun data ini belum membuktikan sebab akibat. Saya menyarankan menambah kader di dua atau tiga puskesmas lebih dulu dan membandingkan perubahan cakupannya dengan puskesmas lain, sebelum mengusulkan anggaran untuk seluruh kabupaten."</p>
+  </details>
+</section>
+
+<section aria-labelledby="m-kuis">
+  <h2 id="m-kuis">Uji diri</h2>
+
+  <fieldset class="soal" data-benar="c">
+    <legend>1. Korelasi antara dua variabel adalah −0,85. Apa artinya?</legend>
+    <button type="button" class="pilihan" data-nilai="a">Hubungan lemah.</button>
+    <button type="button" class="pilihan" data-nilai="b">Tidak ada hubungan.</button>
+    <button type="button" class="pilihan" data-nilai="c">Hubungan kuat dan berlawanan arah: makin besar yang satu, makin kecil yang lain.</button>
+    <button type="button" class="pilihan" data-nilai="d">Terjadi salah hitung, karena korelasi tidak boleh negatif.</button>
+    <p class="penjelasan" hidden>Tanda menunjukkan arah, besarnya menunjukkan kekuatan. Nilai −0,85 dekat dengan −1.</p>
+  </fieldset>
+
+  <fieldset class="soal" data-benar="a">
+    <legend>2. Persamaan regresi: berat lahir (gram) = 2.400 + 30 × (kenaikan berat ibu selama hamil, kg). Apa arti angka 30?</legend>
+    <button type="button" class="pilihan" data-nilai="a">Tiap tambahan 1 kg kenaikan berat ibu berkaitan dengan berat lahir rata-rata 30 gram lebih tinggi.</button>
+    <button type="button" class="pilihan" data-nilai="b">Berat lahir rata-rata 30 gram.</button>
+    <button type="button" class="pilihan" data-nilai="c">Korelasinya 30%.</button>
+    <button type="button" class="pilihan" data-nilai="d">Ibu harus naik 30 kg.</button>
+    <p class="penjelasan" hidden>Kemiringan adalah perubahan y untuk tiap kenaikan satu satuan x.</p>
+  </fieldset>
+
+  <fieldset class="soal" data-benar="d">
+    <legend>3. Bila r = 0,6, berapa bagian keragaman y yang dijelaskan oleh x?</legend>
+    <button type="button" class="pilihan" data-nilai="a">60%</button>
+    <button type="button" class="pilihan" data-nilai="b">6%</button>
+    <button type="button" class="pilihan" data-nilai="c">77%</button>
+    <button type="button" class="pilihan" data-nilai="d">36%</button>
+    <p class="penjelasan" hidden>r² = 0,6 × 0,6 = 0,36.</p>
+  </fieldset>
+
+  <fieldset class="soal" data-benar="b">
+    <legend>4. Data berasal dari anak berumur 2 sampai 10 tahun. Garis regresinya dipakai untuk memperkirakan tinggi badan orang berumur 40 tahun. Apa masalahnya?</legend>
+    <button type="button" class="pilihan" data-nilai="a">Tidak ada masalah.</button>
+    <button type="button" class="pilihan" data-nilai="b">Ekstrapolasi jauh di luar rentang data.</button>
+    <button type="button" class="pilihan" data-nilai="c">Korelasinya terlalu tinggi.</button>
+    <button type="button" class="pilihan" data-nilai="d">Sampelnya terlalu besar.</button>
+    <p class="penjelasan" hidden>Hubungan lurus pada anak tidak berlanjut pada orang dewasa.</p>
+  </fieldset>
+
+  <fieldset class="soal" data-benar="c">
+    <legend>5. Di antara kota-kota, jumlah apotek berkorelasi kuat dengan jumlah kematian. Kesimpulan mana yang paling masuk akal?</legend>
+    <button type="button" class="pilihan" data-nilai="a">Apotek menyebabkan kematian.</button>
+    <button type="button" class="pilihan" data-nilai="b">Kematian menyebabkan apotek dibuka.</button>
+    <button type="button" class="pilihan" data-nilai="c">Keduanya dipengaruhi jumlah penduduk; kota besar memiliki lebih banyak apotek dan lebih banyak kematian.</button>
+    <button type="button" class="pilihan" data-nilai="d">Datanya pasti salah.</button>
+    <p class="penjelasan" hidden>Jumlah penduduk adalah perancu. Korelasi tidak membuktikan sebab akibat.</p>
+  </fieldset>
+
+  <p class="skor" id="skor" role="status" hidden></p>
+</section>
+
+<section aria-labelledby="m-naik">
+  <h2 id="m-naik">Naik jenjang</h2>
+  <p>Regresi linear sederhana adalah pintu masuk ke hampir semua model statistik.</p>
+
+  <div class="naik j3">
+    <h3>Jenjang 3: lebih dari satu variabel penjelas</h3>
+    <p>Dengan regresi berganda Anda memasukkan jumlah kader, jarak ke posyandu, dan pendidikan ibu sekaligus, sehingga pengaruh tiap faktor dapat ditaksir sambil mengendalikan yang lain. Anda juga akan memeriksa anggapan model lewat sisaan, dan memakai regresi logistik bila hasilnya berupa ya atau tidak.</p>
+  </div>
+
+  <div class="naik j4">
+    <h3>Jenjang 4: data bertingkat dan pertanyaan sebab akibat</h3>
+    <p>Balita berada di dalam posyandu, dan posyandu di dalam puskesmas. Seorang ahli memakai model bertingkat untuk data seperti itu, waspada terhadap kekeliruan menyimpulkan perilaku orang dari data wilayah, dan merancang analisis yang dapat mendukung kesimpulan sebab akibat.</p>
+  </div>
+</section>
+
+<section aria-labelledby="m-terap">
+  <h2 id="m-terap">Terapkan</h2>
+  <ol>
+    <li>Ambil dua variabel numerik dari data fasilitas atau wilayah Anda. Gambar diagram tebarnya dengan tangan atau lembar kerja.</li>
+    <li>Hitung korelasi dan garis regresinya dengan kalkulator di atas. Tuliskan tafsiran kemiringannya dalam satu kalimat.</li>
+    <li>Sebutkan satu perancu yang mungkin menjelaskan hubungan itu.</li>
+  </ol>
+  <div class="deret-tombol">
+    <button type="button" class="tombol" id="tandai-selesai" data-modul="biostatistik-09">Tandai modul ini selesai</button>
+    <a class="tombol garis" href="kurikulum.html">Kembali ke peta kurikulum</a>
+  </div>
+</section>
+
+<section aria-labelledby="m-rujuk">
+  <h2 id="m-rujuk">Rujukan dan bacaan lanjut</h2>
+  <ul class="rujukan">
+    <li>OpenStax. <a href="https://openstax.org/books/introductory-statistics-2e/pages/preface"><em>Introductory Statistics 2e</em></a>. Bab tentang regresi linear dan korelasi. Lisensi CC BY 4.0.</li>
+    <li>Pagano dan Gauvreau. <em>Principles of Biostatistics</em>. Bab tentang korelasi dan regresi linear sederhana.</li>
+    <li>Vittinghoff dan rekan. <em>Regression Methods in Biostatistics</em>. Untuk pendalaman ke regresi berganda.</li>
+  </ul>
+  <p class="keterangan">Modul ini ditulis orisinal untuk Learn Public Health.</p>
+</section>
+
+</div>
+</main>
+
+<footer class="kaki">
+  <div class="wadah">
+    <p><strong>Learn Public Health</strong>. Materi ini untuk pendidikan. Data kasus dalam modul adalah rekaan, kecuali disebutkan lain.</p>
+    <p><a href="index.html">Beranda</a> | <a href="kurikulum.html">Peta kurikulum</a> | <a href="sumber.html">Sumber belajar</a></p>
+  </div>
+</footer>
+
+<script src="app.js"></script>
+</body>
+</html>

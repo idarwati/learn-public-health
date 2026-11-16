@@ -284,6 +284,77 @@
     });
   }
 
+  /* ---------- Kalkulator skrining ---------- */
+  function hitungSkrining(n, prev, sens, spes) {
+    var semua = [n, prev, sens, spes];
+    for (var i = 0; i < 4; i++) { if (!isFinite(semua[i])) return { galat: 'Isi keempat kotak dengan angka.' }; }
+    if (n < 1) return { galat: 'Jumlah orang harus sedikitnya 1.' };
+    if (prev < 0 || prev > 100 || sens < 0 || sens > 100 || spes < 0 || spes > 100) {
+      return { galat: 'Prevalens, sensitivitas, dan spesifisitas harus antara 0 dan 100.' };
+    }
+    var sakit = n * prev / 100, sehat = n - sakit;
+    var pb = sakit * sens / 100, np = sakit - pb;
+    var nb = sehat * spes / 100, pp = sehat - nb;
+    return { pb: pb, pp: pp, np: np, nb: nb,
+      npp: pb + pp > 0 ? pb / (pb + pp) : null, npn: nb + np > 0 ? nb / (nb + np) : null };
+  }
+
+  function pasangSkrining(form) {
+    var keluaran = document.getElementById('hasil-skrining');
+    var pesan = document.getElementById('pesan-skrining');
+    function baca(nama) { var t = String(form.elements[nama].value).trim().replace(',', '.'); return t === '' ? NaN : Number(t); }
+    function bulat(x) { return String(Math.round(x)).replace(/\B(?=(\d{3})+(?!\d))/g, '.'); }
+    form.addEventListener('submit', function (e) {
+      e.preventDefault();
+      var h = hitungSkrining(baca('n'), baca('prev'), baca('sens'), baca('spes'));
+      if (h.galat) { pesan.textContent = h.galat; pesan.hidden = false; keluaran.hidden = true; return; }
+      pesan.hidden = true; keluaran.hidden = false;
+      document.getElementById('sk-pb').textContent = bulat(h.pb);
+      document.getElementById('sk-pp').textContent = bulat(h.pp);
+      document.getElementById('sk-np').textContent = bulat(h.np);
+      document.getElementById('sk-nb').textContent = bulat(h.nb);
+      document.getElementById('sk-npp').textContent = h.npp === null ? 'Tidak dapat dihitung' : angka(h.npp * 100, 1) + '%';
+      document.getElementById('sk-npn').textContent = h.npn === null ? 'Tidak dapat dihitung' : angka(h.npn * 100, 1) + '%';
+    });
+  }
+
+  /* ---------- Kalkulator korelasi dan regresi linear ---------- */
+  function bacaDeret(teks) {
+    return String(teks).split(/[\s;]+/).map(function (t) { return t.replace(/,+$/, ''); })
+      .filter(function (t) { return t !== ''; }).map(function (t) { return Number(t.replace(',', '.')); });
+  }
+
+  function hitungRegresi(xs, ys) {
+    if (xs.length !== ys.length) return { galat: 'Banyaknya nilai x dan y harus sama. Sekarang ' + xs.length + ' dan ' + ys.length + '.' };
+    if (xs.length < 3) return { galat: 'Ketik sedikitnya tiga pasang nilai.' };
+    if (xs.concat(ys).some(function (v) { return !isFinite(v); })) return { galat: 'Ada isian yang bukan angka. Pisahkan tiap angka dengan spasi.' };
+    var n = xs.length;
+    var rx = xs.reduce(function (a, b) { return a + b; }, 0) / n;
+    var ry = ys.reduce(function (a, b) { return a + b; }, 0) / n;
+    var sxx = 0, syy = 0, sxy = 0;
+    for (var i = 0; i < n; i++) { sxx += (xs[i] - rx) * (xs[i] - rx); syy += (ys[i] - ry) * (ys[i] - ry); sxy += (xs[i] - rx) * (ys[i] - ry); }
+    if (sxx === 0 || syy === 0) return { galat: 'Nilai x atau y semuanya sama, sehingga hubungan tidak dapat dihitung.' };
+    var b = sxy / sxx;
+    var r = sxy / Math.sqrt(sxx * syy);
+    return { n: n, r: r, r2: r * r, b: b, a: ry - b * rx };
+  }
+
+  function pasangRegresi(form) {
+    var keluaran = document.getElementById('hasil-regresi');
+    var pesan = document.getElementById('pesan-regresi');
+    form.addEventListener('submit', function (e) {
+      e.preventDefault();
+      var h = hitungRegresi(bacaDeret(form.elements.x.value), bacaDeret(form.elements.y.value));
+      if (h.galat) { pesan.textContent = h.galat; pesan.hidden = false; keluaran.hidden = true; return; }
+      pesan.hidden = true; keluaran.hidden = false;
+      document.getElementById('g-n').textContent = h.n;
+      document.getElementById('g-r').textContent = angka(h.r, 3);
+      document.getElementById('g-r2').textContent = angka(h.r2, 3);
+      document.getElementById('g-b').textContent = rapi(h.b);
+      document.getElementById('g-a').textContent = rapi(h.a);
+    });
+  }
+
   /* ---------- Kuis ----------
      <fieldset class="soal" data-benar="b"> berisi tombol .pilihan[data-nilai]
      dan <p class="penjelasan" hidden>. */
@@ -360,6 +431,10 @@
       if (formP) pasangNilaiP(formP);
       var formKai = document.getElementById('kai');
       if (formKai) pasangKai(formKai);
+      var formSk = document.getElementById('skrining');
+      if (formSk) pasangSkrining(formSk);
+      var formReg = document.getElementById('regresi');
+      if (formReg) pasangRegresi(formReg);
       pasangKuis();
       pasangPenanda();
     });
@@ -367,6 +442,6 @@
 
   /* Agar rumus bisa diuji di luar peramban. */
   if (typeof module !== 'undefined' && module.exports) {
-    module.exports = { hitungRisiko: hitungRisiko, hitungRingkasan: hitungRingkasan, peluangNormal: peluangNormal, selangProporsi: selangProporsi, nilaiP: nilaiP, rasioOdds: rasioOdds, kaiKuadrat: kaiKuadrat };
+    module.exports = { hitungRisiko: hitungRisiko, hitungRingkasan: hitungRingkasan, peluangNormal: peluangNormal, selangProporsi: selangProporsi, nilaiP: nilaiP, rasioOdds: rasioOdds, kaiKuadrat: kaiKuadrat, hitungSkrining: hitungSkrining, hitungRegresi: hitungRegresi };
   }
 })();

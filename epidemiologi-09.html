@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Menilai tes dan program skrining | Learn Public Health</title>
+<meta name="description" content="Modul epidemiologi jenjang menengah: sensitivitas, spesifisitas, nilai prediksi, pengaruh prevalens, dan kelayakan program skrining, dengan kalkulator.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header class="kepala">
+  <div class="wadah">
+    <a class="merek" href="index.html">
+      <svg viewBox="0 0 32 32" aria-hidden="true"><path d="M2 30V22h7v-7h7V8h7V2h7v28z" fill="#075443"/></svg>
+      Learn Public Health
+    </a>
+    <nav aria-label="Menu utama">
+      <ul class="menu">
+        <li><a href="index.html">Beranda</a></li>
+        <li><a href="kurikulum.html">Peta kurikulum</a></li>
+        <li><a href="sumber.html">Sumber belajar</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<main>
+
+<div class="modul-kepala">
+  <div class="wadah">
+    <p class="remah"><a href="kurikulum.html">Peta kurikulum</a> / Epidemiologi / Jenjang 2: Menengah</p>
+    <h1>Menilai tes dan program skrining</h1>
+    <p class="ringkas">Puskesmas akan menskrining diabetes pada 10.000 orang dewasa dengan tes yang disebut "akurat". Kepala puskesmas bertanya: kalau hasilnya positif, seberapa besar kemungkinan orang itu benar-benar sakit?</p>
+    <ul class="modul-info">
+      <li>Waktu belajar: sekitar 60 menit</li>
+      <li>Prasyarat: <a href="epidemiologi-03.html">Insidens dan prevalens</a></li>
+      <li>Alat: kalkulator biasa</li>
+    </ul>
+  </div>
+</div>
+
+<div class="modul-isi wadah">
+
+<section aria-labelledby="m-tujuan">
+  <h2 id="m-tujuan">Setelah modul ini, Anda bisa</h2>
+  <ul>
+    <li>menghitung sensitivitas, spesifisitas, dan nilai prediksi sebuah tes skrining;</li>
+    <li>menjelaskan mengapa nilai prediksi positif bergantung pada prevalens;</li>
+    <li>menilai apakah sebuah program skrining layak dijalankan.</li>
+  </ul>
+</section>
+
+<section aria-labelledby="m-kasus">
+  <h2 id="m-kasus">Kasus</h2>
+  <div class="kasus-cerita">
+    <p>Puskesmas Lontara berencana menskrining diabetes pada seluruh <strong>10.000 orang dewasa</strong> di wilayahnya dengan tes gula darah cepat dari ujung jari. Diperkirakan 5% di antara mereka menderita diabetes yang belum terdiagnosis.</p>
+    <p>Penjual alat menyebut tesnya "akurat": sensitivitas 80% dan spesifisitas 90%. Kepala puskesmas bertanya kepada Anda: "Kalau seseorang hasilnya positif, seberapa besar kemungkinan ia benar-benar diabetes? Dan berapa orang yang harus kami periksa ulang di laboratorium?"</p>
+  </div>
+  <p class="keterangan">Nama tempat dan seluruh angka rekaan, disusun untuk latihan. Angka sensitivitas dan spesifisitas adalah contoh, bukan sifat alat tertentu.</p>
+</section>
+
+<section aria-labelledby="m-l1">
+  <span class="langkah">Langkah 1</span>
+  <h2 id="m-l1">Pahami dua sifat tes</h2>
+  <p><strong>Skrining</strong> adalah pemeriksaan pada orang yang tampak sehat untuk menemukan mereka yang mungkin sakit, supaya dapat diperiksa lebih lanjut. Tes skrining bukan diagnosis.</p>
+  <ul>
+    <li><strong>Sensitivitas:</strong> di antara orang yang <em>sakit</em>, berapa persen yang hasil tesnya positif. Tes yang sensitif jarang melewatkan orang sakit.</li>
+    <li><strong>Spesifisitas:</strong> di antara orang yang <em>tidak sakit</em>, berapa persen yang hasil tesnya negatif. Tes yang spesifik jarang membunyikan tanda bahaya palsu.</li>
+  </ul>
+  <p>Keduanya sifat tes itu sendiri dan diukur dengan membandingkannya terhadap pemeriksaan baku.</p>
+</section>
+
+<section class="lebar" aria-labelledby="m-l2">
+  <span class="langkah">Langkah 2</span>
+  <h2 id="m-l2">Isi tabel dua kali dua</h2>
+  <p class="baca">Dari 10.000 orang dengan prevalens 5%, hitung berturut-turut: jumlah yang sakit dan yang tidak; di antara yang sakit, berapa yang tesnya positif (sensitivitas 80%); di antara yang tidak sakit, berapa yang tesnya negatif (spesifisitas 90%).</p>
+  <details>
+    <summary>Lihat tabelnya</summary>
+    <div class="tabel-gulir">
+      <table>
+        <thead>
+          <tr><th scope="col">Hasil tes</th><th scope="col">Diabetes</th><th scope="col">Tidak diabetes</th><th scope="col">Jumlah</th></tr>
+        </thead>
+        <tbody>
+          <tr><th scope="row">Positif</th><td>400</td><td>950</td><td>1.350</td></tr>
+          <tr><th scope="row">Negatif</th><td>100</td><td>8.550</td><td>8.650</td></tr>
+          <tr><th scope="row">Jumlah</th><td>500</td><td>9.500</td><td>10.000</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p style="margin-top:1rem">Empat sel itu punya nama: 400 <strong>positif benar</strong>, 950 <strong>positif palsu</strong>, 100 <strong>negatif palsu</strong>, dan 8.550 <strong>negatif benar</strong>.</p>
+  </details>
+</section>
+
+<section aria-labelledby="m-l3">
+  <span class="langkah">Langkah 3</span>
+  <h2 id="m-l3">Jawab pertanyaan kepala puskesmas</h2>
+  <p>Pertanyaannya dibaca dari arah lain: dari hasil tes ke penyakit.</p>
+  <ul>
+    <li><strong>Nilai prediksi positif:</strong> di antara yang tesnya positif, berapa persen yang benar-benar sakit.</li>
+    <li><strong>Nilai prediksi negatif:</strong> di antara yang tesnya negatif, berapa persen yang benar-benar tidak sakit.</li>
+  </ul>
+  <p>Hitung keduanya dari tabel.</p>
+  <details>
+    <summary>Lihat jawaban</summary>
+    <p>Nilai prediksi positif: 400 ÷ 1.350 = <strong>29,6%</strong>. Nilai prediksi negatif: 8.550 ÷ 8.650 = <strong>98,8%</strong>.</p>
+    <p>Dari tiap sepuluh orang yang tesnya positif, tujuh tidak menderita diabetes. Sebanyak 1.350 orang harus diperiksa ulang di laboratorium untuk menemukan 400 penderita, dan 100 penderita tetap terlewat.</p>
+    <p>Tes itu tidak buruk. Hasil ini muncul karena orang yang tidak sakit jauh lebih banyak: 10% dari 9.500 orang sehat sudah berjumlah 950, lebih dari dua kali jumlah positif benar.</p>
+  </details>
+</section>
+
+<section class="lebar" aria-labelledby="m-l4">
+  <span class="langkah">Langkah 4</span>
+  <h2 id="m-l4">Lihat pengaruh prevalens</h2>
+  <p class="baca">Seorang rekan mengusulkan skrining hanya pada 2.000 orang yang berisiko tinggi: gemuk, berusia di atas 45 tahun, atau memiliki keluarga penderita diabetes. Pada kelompok ini prevalensnya 20%. Dengan tes yang sama, hitung nilai prediksi positifnya. Gunakan kalkulator di bawah.</p>
+
+  <form class="kalkulator" id="skrining" novalidate>
+    <h3>Kalkulator skrining</h3>
+    <div class="isian">
+      <label>Jumlah orang yang diskrining <input type="number" name="n" min="1" step="1" inputmode="numeric" value="2000"></label>
+      <label>Prevalens (%) <input type="text" name="prev" inputmode="decimal" value="20"></label>
+      <label>Sensitivitas (%) <input type="text" name="sens" inputmode="decimal" value="80"></label>
+      <label>Spesifisitas (%) <input type="text" name="spes" inputmode="decimal" value="90"></label>
+    </div>
+    <button type="submit" class="tombol">Hitung</button>
+    <p class="pesan" id="pesan-skrining" role="alert" hidden></p>
+    <dl class="hasil" id="hasil-skrining" aria-live="polite" hidden>
+      <div><dt>Positif benar</dt><dd id="sk-pb"></dd></div>
+      <div><dt>Positif palsu</dt><dd id="sk-pp"></dd></div>
+      <div><dt>Negatif palsu</dt><dd id="sk-np"></dd></div>
+      <div><dt>Negatif benar</dt><dd id="sk-nb"></dd></div>
+      <div><dt>Nilai prediksi positif</dt><dd id="sk-npp"></dd></div>
+      <div><dt>Nilai prediksi negatif</dt><dd id="sk-npn"></dd></div>
+    </dl>
+  </form>
+
+  <details>
+    <summary>Lihat jawaban dan perbandingannya</summary>
+    <p>Dari 2.000 orang, 400 sakit dan 1.600 tidak. Positif benar 320, negatif palsu 80, positif palsu 160, negatif benar 1.440. Nilai prediksi positif: 320 ÷ 480 = <strong>66,7%</strong>.</p>
+    <div class="tabel-gulir">
+      <table>
+        <thead>
+          <tr><th scope="col">Ukuran</th><th scope="col">Semua dewasa</th><th scope="col">Kelompok berisiko</th></tr>
+        </thead>
+        <tbody>
+          <tr><th scope="row">Orang yang dites</th><td>10.000</td><td>2.000</td></tr>
+          <tr><th scope="row">Penderita yang ditemukan</th><td>400</td><td>320</td></tr>
+          <tr><th scope="row">Positif palsu</th><td>950</td><td>160</td></tr>
+          <tr><th scope="row">Nilai prediksi positif</th><td>29,6%</td><td>66,7%</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p style="margin-top:1rem">Dengan seperlima jumlah tes, skrining terarah menemukan 320 penderita, empat perlima dari hasil skrining massal, dan positif palsunya hanya seperenam. Sensitivitas dan spesifisitas tidak berubah. Yang berubah hanya prevalens, dan nilai prediksi positif naik lebih dari dua kali.</p>
+  </details>
+</section>
+
+<section aria-labelledby="m-l5">
+  <span class="langkah">Langkah 5</span>
+  <h2 id="m-l5">Nilai kelayakan programnya</h2>
+  <p>Tes yang baik belum menjamin program yang baik. Sebelum skrining dijalankan, tanyakan:</p>
+  <ul>
+    <li>Apakah penyakitnya masalah kesehatan yang penting dan memiliki tahap awal yang dapat dikenali?</li>
+    <li>Apakah pengobatan pada tahap awal memberi hasil lebih baik daripada pengobatan setelah bergejala?</li>
+    <li>Apakah tersedia sarana untuk memastikan diagnosis dan mengobati semua yang ditemukan?</li>
+    <li>Apakah tesnya aman, dapat diterima masyarakat, dan biayanya sepadan?</li>
+  </ul>
+  <details>
+    <summary>Apa saran Anda kepada kepala puskesmas?</summary>
+    <p>Mulai dengan skrining pada kelompok berisiko. Pastikan lebih dulu laboratorium sanggup memeriksa ulang sekitar 480 orang, dan puskesmas sanggup menangani sekitar 320 penderita baru secara berkelanjutan. Menemukan penderita tanpa mampu mengobatinya hanya menambah kecemasan.</p>
+    <p>Orang dengan hasil positif perlu diberi tahu bahwa hasil itu belum diagnosis. Orang dengan hasil negatif perlu diberi tahu bahwa tes dapat melewatkan sebagian penderita, sehingga gejala yang muncul kemudian tetap harus diperiksakan.</p>
+  </details>
+  <p>Ambang tes juga sebuah pilihan. Bila ambang gula darah diturunkan, lebih banyak penderita tertangkap (sensitivitas naik) tetapi lebih banyak orang sehat ikut positif (spesifisitas turun). Ambang dipilih dengan menimbang kerugian melewatkan penderita terhadap kerugian memeriksa ulang orang sehat.</p>
+</section>
+
+<section aria-labelledby="m-kuis">
+  <h2 id="m-kuis">Uji diri</h2>
+
+  <fieldset class="soal" data-benar="b">
+    <legend>1. Dari 200 penderita, tes memberi hasil positif pada 170 orang. Berapa sensitivitasnya?</legend>
+    <button type="button" class="pilihan" data-nilai="a">15%</button>
+    <button type="button" class="pilihan" data-nilai="b">85%</button>
+    <button type="button" class="pilihan" data-nilai="c">30%</button>
+    <button type="button" class="pilihan" data-nilai="d">70%</button>
+    <p class="penjelasan" hidden>170 ÷ 200 = 85%.</p>
+  </fieldset>
+
+  <fieldset class="soal" data-benar="d">
+    <legend>2. Hasil skrining: 90 positif benar dan 210 positif palsu. Berapa nilai prediksi positifnya?</legend>
+    <button type="button" class="pilihan" data-nilai="a">90%</button>
+    <button type="button" class="pilihan" data-nilai="b">70%</button>
+    <button type="button" class="pilihan" data-nilai="c">43%</button>
+    <button type="button" class="pilihan" data-nilai="d">30%</button>
+    <p class="penjelasan" hidden>90 ÷ (90 + 210) = 90 ÷ 300 = 30%.</p>
+  </fieldset>
+
+  <fieldset class="soal" data-benar="a">
+    <legend>3. Tes yang sama dipakai pada populasi dengan prevalens lebih rendah. Apa yang terjadi?</legend>
+    <button type="button" class="pilihan" data-nilai="a">Nilai prediksi positif turun.</button>
+    <button type="button" class="pilihan" data-nilai="b">Sensitivitas turun.</button>
+    <button type="button" class="pilihan" data-nilai="c">Spesifisitas naik.</button>
+    <button type="button" class="pilihan" data-nilai="d">Tidak ada yang berubah.</button>
+    <p class="penjelasan" hidden>Sensitivitas dan spesifisitas adalah sifat tes. Nilai prediksi bergantung pada prevalens.</p>
+  </fieldset>
+
+  <fieldset class="soal" data-benar="c">
+    <legend>4. Untuk penyakit berbahaya yang mudah diobati bila ditemukan dini, sifat tes skrining mana yang paling diutamakan?</legend>
+    <button type="button" class="pilihan" data-nilai="a">Spesifisitas tinggi</button>
+    <button type="button" class="pilihan" data-nilai="b">Harga tinggi</button>
+    <button type="button" class="pilihan" data-nilai="c">Sensitivitas tinggi</button>
+    <button type="button" class="pilihan" data-nilai="d">Nilai prediksi negatif rendah</button>
+    <p class="penjelasan" hidden>Melewatkan penderita sangat merugikan, sehingga tes harus jarang menghasilkan negatif palsu. Positif palsu disaring dengan tes konfirmasi.</p>
+  </fieldset>
+
+  <fieldset class="soal" data-benar="b">
+    <legend>5. Ambang tes diturunkan sehingga lebih banyak orang dinyatakan positif. Apa akibatnya?</legend>
+    <button type="button" class="pilihan" data-nilai="a">Sensitivitas dan spesifisitas sama-sama naik.</button>
+    <button type="button" class="pilihan" data-nilai="b">Sensitivitas naik, spesifisitas turun.</button>
+    <button type="button" class="pilihan" data-nilai="c">Sensitivitas turun, spesifisitas naik.</button>
+    <button type="button" class="pilihan" data-nilai="d">Keduanya turun.</button>
+    <p class="penjelasan" hidden>Lebih banyak penderita tertangkap, tetapi lebih banyak orang sehat ikut dinyatakan positif.</p>
+  </fieldset>
+
+  <p class="skor" id="skor" role="status" hidden></p>
+</section>
+
+<section aria-labelledby="m-naik">
+  <h2 id="m-naik">Naik jenjang</h2>
+  <p>Skrining tampak selalu baik, dan justru karena itu perlu dinilai dengan sangat teliti.</p>
+
+  <div class="naik j3">
+    <h3>Jenjang 3: memilih ambang dan menilai manfaat sebenarnya</h3>
+    <p>Anda akan memakai kurva ROC untuk membandingkan tes dan memilih ambang, serta mempelajari mengapa orang yang ditemukan lewat skrining tampak hidup lebih lama walaupun skrining tidak menolong: diagnosis yang lebih awal memperpanjang masa "diketahui sakit", dan skrining lebih mudah menangkap penyakit yang berjalan lambat.</p>
+  </div>
+
+  <div class="naik j4">
+    <h3>Jenjang 4: memutuskan program skrining untuk satu negara</h3>
+    <p>Seorang ahli menimbang manfaat terhadap kerugian, termasuk diagnosis berlebih pada penyakit yang tidak akan pernah mengganggu, menghitung biaya per kasus yang ditemukan dan per tahun kehidupan yang diselamatkan, dan menilai bukti dari uji acak sebelum merekomendasikan skrining massal.</p>
+  </div>
+</section>
+
+<section aria-labelledby="m-terap">
+  <h2 id="m-terap">Terapkan</h2>
+  <ol>
+    <li>Pilih satu skrining yang berjalan di tempat Anda. Cari sensitivitas dan spesifisitas tesnya serta perkiraan prevalens penyakitnya, lalu hitung nilai prediksi positifnya.</li>
+    <li>Dari tiap 100 orang yang hasilnya positif, berapa yang benar-benar sakit? Apakah hal itu dijelaskan kepada peserta?</li>
+    <li>Apa yang terjadi pada peserta dengan hasil positif? Gambarlah alurnya sampai diagnosis dan pengobatan.</li>
+  </ol>
+  <div class="deret-tombol">
+    <button type="button" class="tombol" id="tandai-selesai" data-modul="epidemiologi-09">Tandai modul ini selesai</button>
+    <a class="tombol garis" href="kurikulum.html">Kembali ke peta kurikulum</a>
+  </div>
+</section>
+
+<section aria-labelledby="m-rujuk">
+  <h2 id="m-rujuk">Rujukan dan bacaan lanjut</h2>
+  <ul class="rujukan">
+    <li>Celentano dan Szklo. <em>Gordis Epidemiology</em>. Bab tentang menilai validitas dan reliabilitas tes diagnostik dan skrining.</li>
+    <li>Wilson dan Jungner (1968). <em>Principles and Practice of Screening for Disease</em>. WHO. Sumber kriteria kelayakan program skrining.</li>
+    <li>Bonita, Beaglehole, dan Kjellström. <em>Basic Epidemiology</em>. WHO. Bagian tentang skrining.</li>
+  </ul>
+  <p class="keterangan">Modul ini ditulis orisinal untuk Learn Public Health. Modul ini membahas penilaian program skrining, bukan petunjuk diagnosis untuk perorangan.</p>
+</section>
+
+</div>
+</main>
+
+<footer class="kaki">
+  <div class="wadah">
+    <p><strong>Learn Public Health</strong>. Materi ini untuk pendidikan. Data kasus dalam modul adalah rekaan, kecuali disebutkan lain.</p>
+    <p><a href="index.html">Beranda</a> | <a href="kurikulum.html">Peta kurikulum</a> | <a href="sumber.html">Sumber belajar</a></p>
+  </div>
+</footer>
+
+<script src="app.js"></script>
+</body>
+</html>
