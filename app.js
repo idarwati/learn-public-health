@@ -355,6 +355,62 @@
     });
   }
 
+  /* ---------- Kalkulator besar sampel ---------- */
+  function sampelProporsi(pPersen, dPersen) {
+    if (!isFinite(pPersen) || !isFinite(dPersen)) return { galat: 'Isi kedua kotak dengan angka.' };
+    if (pPersen <= 0 || pPersen >= 100) return { galat: 'Perkiraan proporsi harus di antara 0 dan 100.' };
+    if (dPersen <= 0 || dPersen >= 50) return { galat: 'Ketelitian harus lebih dari 0 dan kurang dari 50.' };
+    var p = pPersen / 100, d = dPersen / 100;
+    return { n: Math.ceil(1.96 * 1.96 * p * (1 - p) / (d * d) - 1e-9) };
+  }
+
+  function sampelRata(sb, delta) {
+    if (!isFinite(sb) || !isFinite(delta)) return { galat: 'Isi kedua kotak dengan angka.' };
+    if (sb <= 0 || delta <= 0) return { galat: 'Simpangan baku dan selisih harus lebih dari 0.' };
+    return { n: Math.ceil(2 * Math.pow(1.96 + 0.84, 2) * sb * sb / (delta * delta) - 1e-9) };
+  }
+
+  function ribuan(x) { return String(x).replace(/\B(?=(\d{3})+(?!\d))/g, '.'); }
+  function bacaAngka(form, nama) { var t = String(form.elements[nama].value).trim().replace(',', '.'); return t === '' ? NaN : Number(t); }
+
+  function pasangSampel() {
+    var f1 = document.getElementById('sampel-proporsi');
+    if (f1) f1.addEventListener('submit', function (e) {
+      e.preventDefault();
+      var h = sampelProporsi(bacaAngka(f1, 'p'), bacaAngka(f1, 'd'));
+      var pesan = document.getElementById('pesan-sp'), keluaran = document.getElementById('hasil-sp');
+      if (h.galat) { pesan.textContent = h.galat; pesan.hidden = false; keluaran.hidden = true; return; }
+      pesan.hidden = true; keluaran.hidden = false;
+      document.getElementById('sp-n').textContent = ribuan(h.n) + ' orang';
+    });
+    var f2 = document.getElementById('sampel-rata');
+    if (f2) f2.addEventListener('submit', function (e) {
+      e.preventDefault();
+      var h = sampelRata(bacaAngka(f2, 'sb'), bacaAngka(f2, 'delta'));
+      var pesan = document.getElementById('pesan-sr'), keluaran = document.getElementById('hasil-sr');
+      if (h.galat) { pesan.textContent = h.galat; pesan.hidden = false; keluaran.hidden = true; return; }
+      pesan.hidden = true; keluaran.hidden = false;
+      document.getElementById('sr-n').textContent = ribuan(h.n);
+      document.getElementById('sr-total').textContent = ribuan(h.n * 2);
+    });
+  }
+
+  /* ---------- Kalkulator peluang dari model logistik ----------
+     Koefisien dibaca dari atribut data-b0, data-b1, data-b2 pada form. */
+  function peluangLogistik(logOdds) { return 1 / (1 + Math.exp(-logOdds)); }
+
+  function pasangLogistik(form) {
+    var b0 = Number(form.getAttribute('data-b0')), b1 = Number(form.getAttribute('data-b1')), b2 = Number(form.getAttribute('data-b2'));
+    form.addEventListener('submit', function (e) {
+      e.preventDefault();
+      var lo = b0 + (form.elements.asap.checked ? b1 : 0) + (form.elements.padat.checked ? b2 : 0);
+      document.getElementById('hasil-logistik').hidden = false;
+      document.getElementById('lg-lo').textContent = angka(lo, 3);
+      document.getElementById('lg-odds').textContent = angka(Math.exp(lo), 3);
+      document.getElementById('lg-p').textContent = angka(peluangLogistik(lo) * 100, 1) + '%';
+    });
+  }
+
   /* ---------- Kuis ----------
      <fieldset class="soal" data-benar="b"> berisi tombol .pilihan[data-nilai]
      dan <p class="penjelasan" hidden>. */
@@ -435,6 +491,9 @@
       if (formSk) pasangSkrining(formSk);
       var formReg = document.getElementById('regresi');
       if (formReg) pasangRegresi(formReg);
+      pasangSampel();
+      var formLog = document.getElementById('logistik');
+      if (formLog) pasangLogistik(formLog);
       pasangKuis();
       pasangPenanda();
     });
@@ -442,6 +501,7 @@
 
   /* Agar rumus bisa diuji di luar peramban. */
   if (typeof module !== 'undefined' && module.exports) {
-    module.exports = { hitungRisiko: hitungRisiko, hitungRingkasan: hitungRingkasan, peluangNormal: peluangNormal, selangProporsi: selangProporsi, nilaiP: nilaiP, rasioOdds: rasioOdds, kaiKuadrat: kaiKuadrat, hitungSkrining: hitungSkrining, hitungRegresi: hitungRegresi };
+    module.exports = { hitungRisiko: hitungRisiko, hitungRingkasan: hitungRingkasan, peluangNormal: peluangNormal, selangProporsi: selangProporsi, nilaiP: nilaiP, rasioOdds: rasioOdds, kaiKuadrat: kaiKuadrat, hitungSkrining: hitungSkrining, hitungRegresi: hitungRegresi,
+      sampelProporsi: sampelProporsi, sampelRata: sampelRata, peluangLogistik: peluangLogistik };
   }
 })();

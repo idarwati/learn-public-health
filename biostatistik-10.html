@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Menentukan besar sampel dan kekuatan uji | Learn Public Health</title>
+<meta name="description" content="Modul biostatistik jenjang menengah: besar sampel untuk menaksir proporsi, efek rancangan, kekuatan uji, dan besar sampel untuk membandingkan dua rata-rata, dengan kalkulator.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header class="kepala">
+  <div class="wadah">
+    <a class="merek" href="index.html">
+      <svg viewBox="0 0 32 32" aria-hidden="true"><path d="M2 30V22h7v-7h7V8h7V2h7v28z" fill="#075443"/></svg>
+      Learn Public Health
+    </a>
+    <nav aria-label="Menu utama">
+      <ul class="menu">
+        <li><a href="index.html">Beranda</a></li>
+        <li><a href="kurikulum.html">Peta kurikulum</a></li>
+        <li><a href="sumber.html">Sumber belajar</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<main>
+
+<div class="modul-kepala">
+  <div class="wadah">
+    <p class="remah"><a href="kurikulum.html">Peta kurikulum</a> / Biostatistik / Jenjang 2: Menengah</p>
+    <h1>Menentukan besar sampel dan kekuatan uji</h1>
+    <p class="ringkas">Dua rencana penelitian menanyakan hal yang sama: berapa orang yang harus diambil? Satu pengusul berencana 200 orang supaya cepat, yang lain 25 pasien per kelompok karena itu yang tersedia.</p>
+    <ul class="modul-info">
+      <li>Waktu belajar: sekitar 60 menit</li>
+      <li>Prasyarat: <a href="biostatistik-06.html">Selang kepercayaan</a> dan <a href="biostatistik-07.html">Uji hipotesis</a></li>
+      <li>Alat: kalkulator biasa</li>
+    </ul>
+  </div>
+</div>
+
+<div class="modul-isi wadah">
+
+<section aria-labelledby="m-tujuan">
+  <h2 id="m-tujuan">Setelah modul ini, Anda bisa</h2>
+  <ul>
+    <li>menghitung besar sampel untuk menaksir sebuah proporsi dengan ketelitian tertentu;</li>
+    <li>menjelaskan kekuatan uji dan empat hal yang menentukannya;</li>
+    <li>menghitung besar sampel untuk membandingkan dua rata-rata.</li>
+  </ul>
+</section>
+
+<section aria-labelledby="m-kasus">
+  <h2 id="m-kasus">Kasus</h2>
+  <div class="kasus-cerita">
+    <p>Dua rencana penelitian sampai ke meja Anda pada minggu yang sama, dan keduanya menanyakan hal serupa: "Berapa orang yang harus kami ambil?"</p>
+    <ol>
+      <li>Dinas Kesehatan Kabupaten Saloka akan menyurvei prevalens hipertensi pada orang dewasa. Mereka ingin hasil yang teliti sampai tiga poin persen. Survei sebelumnya di provinsi menemukan angka sekitar 30%.</li>
+      <li>RSUD Lontara akan menguji sistem antrean baru. Mereka menganggap penurunan lama tunggu enam menit sudah layak. Simpangan baku lama tunggu sekitar 20 menit.</li>
+    </ol>
+    <p>Pengusul pertama berencana mengambil 200 orang "supaya cepat". Pengusul kedua berencana mengambil 25 pasien per kelompok "karena itu yang tersedia minggu ini".</p>
+  </div>
+  <p class="keterangan">Nama tempat dan seluruh angka rekaan, disusun untuk latihan.</p>
+</section>
+
+<section aria-labelledby="m-l1">
+  <span class="langkah">Langkah 1</span>
+  <h2 id="m-l1">Hitung besar sampel untuk menaksir proporsi</h2>
+  <p>Dari modul selang kepercayaan: lebar selang bergantung pada besar sampel. Rumus itu dapat dibalik untuk mencari besar sampel yang menghasilkan ketelitian yang diinginkan.</p>
+  <div class="rumus">n = 1,96² × p × (1 − p) ÷ d²</div>
+  <p>Di sini <em>p</em> adalah perkiraan proporsi dan <em>d</em> adalah ketelitian yang diinginkan (separuh lebar selang kepercayaan 95%), keduanya ditulis sebagai pecahan. Hitung n untuk survei hipertensi dengan p = 0,30 dan d = 0,03. Berapa ketelitian yang diperoleh bila hanya mengambil 200 orang?</p>
+  <details>
+    <summary>Lihat jawaban</summary>
+    <p>n = 3,8416 × 0,30 × 0,70 ÷ 0,0009 = 896,4, dibulatkan ke atas menjadi <strong>897 orang</strong>.</p>
+    <p>Dengan 200 orang: galat baku = √(0,30 × 0,70 ÷ 200) = 0,0324, sehingga ketelitiannya 1,96 × 0,0324 = ± 6,4 poin persen. Selangnya dari 23,6% sampai 36,4%, terlalu lebar untuk merencanakan program.</p>
+    <p>Bila perkiraan p tidak tersedia, pakai 0,50. Nilai itu menghasilkan sampel terbesar, sehingga aman: untuk d = 0,03 hasilnya 1.068 orang.</p>
+  </details>
+
+  <form class="kalkulator" id="sampel-proporsi" novalidate>
+    <h3>Kalkulator besar sampel untuk proporsi</h3>
+    <div class="isian">
+      <label>Perkiraan proporsi (%) <input type="text" name="p" inputmode="decimal" value="30"></label>
+      <label>Ketelitian yang diinginkan (± poin persen) <input type="text" name="d" inputmode="decimal" value="3"></label>
+    </div>
+    <button type="submit" class="tombol">Hitung</button>
+    <p class="pesan" id="pesan-sp" role="alert" hidden></p>
+    <dl class="hasil" id="hasil-sp" aria-live="polite" hidden>
+      <div><dt>Besar sampel</dt><dd id="sp-n"></dd></div>
+    </dl>
+  </form>
+</section>
+
+<section aria-labelledby="m-l2">
+  <span class="langkah">Langkah 2</span>
+  <h2 id="m-l2">Sesuaikan dengan keadaan lapangan</h2>
+  <p>Angka 897 mengandaikan sampel acak sederhana dan semua orang menjawab. Dua penyesuaian hampir selalu diperlukan.</p>
+  <ul>
+    <li><strong>Efek rancangan.</strong> Pada sampel klaster, orang dalam satu desa cenderung mirip, sehingga tiap orang menyumbang informasi lebih sedikit. Besar sampel dikalikan efek rancangan, sering sekitar 1,5 sampai 2.</li>
+    <li><strong>Tidak menjawab.</strong> Bila diperkirakan 10% tidak dapat ditemui atau menolak, besar sampel dibagi 0,90.</li>
+  </ul>
+  <details>
+    <summary>Survei memakai sampel klaster dengan efek rancangan 1,5 dan perkiraan 10% tidak menjawab. Berapa besar sampelnya?</summary>
+    <p>897 × 1,5 = 1.345,5, dibulatkan menjadi 1.346. Lalu 1.346 ÷ 0,90 = 1.495,6, dibulatkan menjadi <strong>1.496 orang</strong>.</p>
+    <p>Angka akhirnya hampir dua kali hitungan awal. Rencana anggaran yang memakai 897 akan kekurangan dana di tengah jalan.</p>
+  </details>
+  <p>Perhatikan pula bahwa ketelitian mahal harganya. Untuk p = 0,50, ketelitian ± 5 memerlukan 385 orang, sedangkan ± 3 memerlukan 1.068 orang. Menggandakan ketelitian berarti melipatempatkan sampel.</p>
+</section>
+
+<section aria-labelledby="m-l3">
+  <span class="langkah">Langkah 3</span>
+  <h2 id="m-l3">Pahami kekuatan uji</h2>
+  <p>Untuk penelitian yang membandingkan dua kelompok, pertanyaannya berbeda: seberapa besar peluang studi ini menemukan perbedaan <em>bila perbedaan itu memang ada</em>? Peluang itu disebut <strong>kekuatan uji</strong> (<em>power</em>). Kebiasaan yang lazim adalah merancang studi dengan kekuatan sedikitnya 80%.</p>
+  <p>Kekuatan uji ditentukan empat hal:</p>
+  <ul>
+    <li><strong>besar perbedaan</strong> yang ingin ditemukan: perbedaan kecil lebih sulit ditangkap;</li>
+    <li><strong>keragaman data</strong> (simpangan baku): data yang beragam mengaburkan perbedaan;</li>
+    <li><strong>besar sampel;</strong></li>
+    <li><strong>batas nilai p</strong> yang dipakai, biasanya 0,05.</li>
+  </ul>
+  <p>Pada modul uji hipotesis, studi dengan 25 pasien per kelompok menghasilkan p = 0,29 untuk selisih enam menit. Seandainya perbedaan sebenarnya memang enam menit, kekuatan studi itu hanya 18%.</p>
+  <details>
+    <summary>Apa arti kekuatan 18% bagi rencana RSUD Lontara?</summary>
+    <p>Bila sistem baru benar-benar menurunkan lama tunggu enam menit, studi dengan 25 pasien per kelompok hanya berpeluang 18% untuk menunjukkannya. Dengan peluang 82%, hasilnya akan "tidak bermakna", dan sistem yang sebenarnya berguna bisa dihentikan.</p>
+    <p>Studi yang terlalu kecil bukan studi yang hemat. Ia membuang waktu pasien dan petugas untuk pertanyaan yang hampir pasti tidak terjawab.</p>
+  </details>
+</section>
+
+<section aria-labelledby="m-l4">
+  <span class="langkah">Langkah 4</span>
+  <h2 id="m-l4">Hitung besar sampel untuk membandingkan dua rata-rata</h2>
+  <p>Untuk kekuatan 80% dan batas nilai p 0,05 dua sisi:</p>
+  <div class="rumus">n tiap kelompok = 2 × (1,96 + 0,84)² × SB² ÷ selisih² = 15,68 × SB² ÷ selisih²</div>
+  <p>Angka 1,96 berasal dari batas nilai p, dan 0,84 dari kekuatan 80%. Hitung n untuk RSUD Lontara: simpangan baku 20 menit, selisih yang ingin ditemukan 6 menit. Lalu hitung lagi bila selisih yang dianggap penting hanya 3 menit.</p>
+  <details>
+    <summary>Lihat jawaban</summary>
+    <p>Selisih 6 menit: 15,68 × 400 ÷ 36 = 174,2, dibulatkan menjadi <strong>175 pasien tiap kelompok</strong>, atau 350 seluruhnya.</p>
+    <p>Selisih 3 menit: 15,68 × 400 ÷ 9 = 696,9, dibulatkan menjadi <strong>697 pasien tiap kelompok</strong>.</p>
+    <p>Separuh selisih memerlukan empat kali sampel. Karena itu selisih yang ingin ditemukan harus ditetapkan dari pertimbangan praktis, yaitu perbedaan terkecil yang masih berarti bagi pasien atau pengelola, bukan dipilih supaya sampelnya kecil.</p>
+  </details>
+
+  <form class="kalkulator" id="sampel-rata" novalidate>
+    <h3>Kalkulator besar sampel untuk dua rata-rata</h3>
+    <div class="isian">
+      <label>Simpangan baku <input type="text" name="sb" inputmode="decimal" value="20"></label>
+      <label>Selisih yang ingin ditemukan <input type="text" name="delta" inputmode="decimal" value="6"></label>
+    </div>
+    <button type="submit" class="tombol">Hitung</button>
+    <p class="pesan" id="pesan-sr" role="alert" hidden></p>
+    <dl class="hasil" id="hasil-sr" aria-live="polite" hidden>
+      <div><dt>Besar sampel tiap kelompok</dt><dd id="sr-n"></dd></div>
+      <div><dt>Seluruhnya</dt><dd id="sr-total"></dd></div>
+    </dl>
+  </form>
+  <p class="keterangan">Kalkulator ini memakai kekuatan 80% dan batas nilai p 0,05 dua sisi.</p>
+</section>
+
+<section aria-labelledby="m-l5">
+  <span class="langkah">Langkah 5</span>
+  <h2 id="m-l5">Jawab kedua pengusul</h2>
+  <details>
+    <summary>Lihat contoh jawaban</summary>
+    <p><strong>Untuk dinas kesehatan:</strong> "Dengan 200 orang, hasil hanya teliti sampai ± 6 poin persen. Untuk ± 3 poin persen dengan sampel klaster dan cadangan 10% tidak menjawab, diperlukan sekitar 1.500 orang. Bila dananya tidak cukup, pilihannya menerima ketelitian ± 4 poin persen, yang memerlukan sekitar 840 orang dengan penyesuaian yang sama."</p>
+    <p><strong>Untuk RSUD:</strong> "Dengan 25 pasien per kelompok, peluang menemukan penurunan enam menit hanya 18%. Diperlukan 175 pasien per kelompok. Karena poliklinik melayani ratusan pasien seminggu, pengumpulan data cukup diperpanjang menjadi beberapa minggu."</p>
+  </details>
+  <p>Besar sampel selalu merupakan kesepakatan antara ketelitian yang diinginkan dan sumber daya yang ada. Yang tidak boleh dilakukan adalah menentukan besar sampel dulu, lalu berharap hasilnya cukup teliti.</p>
+</section>
+
+<section aria-labelledby="m-kuis">
+  <h2 id="m-kuis">Uji diri</h2>
+
+  <fieldset class="soal" data-benar="b">
+    <legend>1. Anda ingin menaksir sebuah proporsi yang belum diketahui dengan ketelitian ± 5 poin persen. Berapa besar sampelnya?</legend>
+    <button type="button" class="pilihan" data-nilai="a">100</button>
+    <button type="button" class="pilihan" data-nilai="b">385</button>
+    <button type="button" class="pilihan" data-nilai="c">1.068</button>
+    <button type="button" class="pilihan" data-nilai="d">30</button>
+    <p class="penjelasan" hidden>Dengan p = 0,50: 3,8416 × 0,25 ÷ 0,0025 = 384,2, dibulatkan ke atas menjadi 385.</p>
+  </fieldset>
+
+  <fieldset class="soal" data-benar="d">
+    <legend>2. Apa arti kekuatan uji 80%?</legend>
+    <button type="button" class="pilihan" data-nilai="a">Sebanyak 80% peserta mendapat manfaat.</button>
+    <button type="button" class="pilihan" data-nilai="b">Peluang hipotesis nol benar adalah 80%.</button>
+    <button type="button" class="pilihan" data-nilai="c">Nilai p akan sebesar 0,80.</button>
+    <button type="button" class="pilihan" data-nilai="d">Bila perbedaan yang dicari memang ada, studi berpeluang 80% menemukannya.</button>
+    <p class="penjelasan" hidden>Kekuatan uji adalah peluang menolak hipotesis nol saat hipotesis nol memang salah.</p>
+  </fieldset>
+
+  <fieldset class="soal" data-benar="a">
+    <legend>3. Selisih yang ingin ditemukan diperkecil menjadi separuhnya. Apa yang terjadi pada besar sampel?</legend>
+    <button type="button" class="pilihan" data-nilai="a">Menjadi empat kali.</button>
+    <button type="button" class="pilihan" data-nilai="b">Menjadi dua kali.</button>
+    <button type="button" class="pilihan" data-nilai="c">Menjadi separuh.</button>
+    <button type="button" class="pilihan" data-nilai="d">Tetap.</button>
+    <p class="penjelasan" hidden>Besar sampel berbanding terbalik dengan kuadrat selisih.</p>
+  </fieldset>
+
+  <fieldset class="soal" data-benar="c">
+    <legend>4. Hitungan untuk sampel acak sederhana menghasilkan 400. Survei memakai sampel klaster dengan efek rancangan 2. Berapa besar sampelnya?</legend>
+    <button type="button" class="pilihan" data-nilai="a">200</button>
+    <button type="button" class="pilihan" data-nilai="b">402</button>
+    <button type="button" class="pilihan" data-nilai="c">800</button>
+    <button type="button" class="pilihan" data-nilai="d">1.600</button>
+    <p class="penjelasan" hidden>400 × 2 = 800.</p>
+  </fieldset>
+
+  <fieldset class="soal" data-benar="b">
+    <legend>5. Sebuah studi kecil dengan kekuatan 20% menghasilkan "tidak bermakna". Kesimpulan mana yang tepat?</legend>
+    <button type="button" class="pilihan" data-nilai="a">Perlakuan terbukti tidak berpengaruh.</button>
+    <button type="button" class="pilihan" data-nilai="b">Studi ini hampir tidak mampu menemukan pengaruh walaupun ada, sehingga hasilnya tidak memberi banyak keterangan.</button>
+    <button type="button" class="pilihan" data-nilai="c">Perlakuan merugikan.</button>
+    <button type="button" class="pilihan" data-nilai="d">Datanya salah.</button>
+    <p class="penjelasan" hidden>Dengan kekuatan 20%, hasil "tidak bermakna" adalah hasil yang paling mungkin, baik perlakuan itu berguna maupun tidak.</p>
+  </fieldset>
+
+  <p class="skor" id="skor" role="status" hidden></p>
+</section>
+
+<section aria-labelledby="m-naik">
+  <h2 id="m-naik">Naik jenjang</h2>
+  <p>Dengan modul ini jenjang menengah biostatistik selesai. Besar sampel dihitung sebelum penelitian dimulai, dan itulah saat terbaik untuk berunding dengan seorang ahli statistik.</p>
+
+  <div class="naik j3">
+    <h3>Jenjang 3: besar sampel untuk rancangan lain</h3>
+    <p>Anda akan menghitung besar sampel untuk membandingkan dua proporsi, untuk studi kasus-kontrol, untuk analisis kesintasan yang bergantung pada jumlah kejadian, dan untuk uji acak klaster yang memerlukan koefisien korelasi dalam klaster.</p>
+  </div>
+
+  <div class="naik j4">
+    <h3>Jenjang 4: merancang lewat simulasi</h3>
+    <p>Untuk rancangan yang rumit tidak ada rumus siap pakai. Seorang ahli membangkitkan ribuan data tiruan dengan komputer untuk melihat seberapa sering rancangannya berhasil, merencanakan analisis sela dengan aturan berhenti, dan menimbang rancangan adaptif.</p>
+  </div>
+</section>
+
+<section aria-labelledby="m-terap">
+  <h2 id="m-terap">Terapkan</h2>
+  <ol>
+    <li>Untuk survei yang ingin Anda lakukan, tentukan perkiraan proporsi dan ketelitian yang diperlukan, lalu hitung besar sampelnya dengan penyesuaian tidak menjawab.</li>
+    <li>Ambil satu artikel yang hasilnya "tidak bermakna". Berapa besar sampelnya? Apakah penulis melaporkan kekuatan ujinya?</li>
+    <li>Untuk satu perbandingan di tempat kerja Anda, berapa selisih terkecil yang masih berarti dalam praktik? Hitung besar sampel yang diperlukan.</li>
+  </ol>
+  <div class="deret-tombol">
+    <button type="button" class="tombol" id="tandai-selesai" data-modul="biostatistik-10">Tandai modul ini selesai</button>
+    <a class="tombol garis" href="kurikulum.html">Kembali ke peta kurikulum</a>
+  </div>
+</section>
+
+<section aria-labelledby="m-rujuk">
+  <h2 id="m-rujuk">Rujukan dan bacaan lanjut</h2>
+  <ul class="rujukan">
+    <li>Lwanga dan Lemeshow (1991). <em>Sample Size Determination in Health Studies: A Practical Manual</em>. WHO.</li>
+    <li>Kirkwood dan Sterne. <em>Essential Medical Statistics</em>. Bab tentang penghitungan besar sampel.</li>
+    <li>Pagano dan Gauvreau. <em>Principles of Biostatistics</em>. Bagian tentang kekuatan uji.</li>
+  </ul>
+  <p class="keterangan">Modul ini ditulis orisinal untuk Learn Public Health. Rumus dalam modul ini memakai hampiran normal dan cocok untuk perencanaan awal.</p>
+</section>
+
+</div>
+</main>
+
+<footer class="kaki">
+  <div class="wadah">
+    <p><strong>Learn Public Health</strong>. Materi ini untuk pendidikan. Data kasus dalam modul adalah rekaan, kecuali disebutkan lain.</p>
+    <p><a href="index.html">Beranda</a> | <a href="kurikulum.html">Peta kurikulum</a> | <a href="sumber.html">Sumber belajar</a></p>
+  </div>
+</footer>
+
+<script src="app.js"></script>
+</body>
+</html>

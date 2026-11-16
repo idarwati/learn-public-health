@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Memilih program dengan evaluasi ekonomi | Learn Public Health</title>
+<meta name="description" content="Modul ekonomi kesehatan jenjang lanjut: biaya peluang, empat jenis evaluasi ekonomi, QALY, dominasi, rasio biaya-efektivitas inkremental, ambang, dan analisis sensitivitas.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header class="kepala">
+  <div class="wadah">
+    <a class="merek" href="index.html">
+      <svg viewBox="0 0 32 32" aria-hidden="true"><path d="M2 30V22h7v-7h7V8h7V2h7v28z" fill="#075443"/></svg>
+      Learn Public Health
+    </a>
+    <nav aria-label="Menu utama">
+      <ul class="menu">
+        <li><a href="index.html">Beranda</a></li>
+        <li><a href="kurikulum.html">Peta kurikulum</a></li>
+        <li><a href="sumber.html">Sumber belajar</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<main>
+
+<div class="modul-kepala">
+  <div class="wadah">
+    <p class="remah"><a href="kurikulum.html">Peta kurikulum</a> / Administrasi, manajemen, dan kebijakan kesehatan / Jenjang 3: Lanjut</p>
+    <h1>Memilih program dengan evaluasi ekonomi</h1>
+    <p class="ringkas">Tiga program hipertensi bersaing untuk anggaran Rp600 juta. Kepala dinas memilih yang hasilnya terbesar, bagian keuangan memilih yang termurah. Anda diminta memberi dasar yang lebih kuat.</p>
+    <ul class="modul-info">
+      <li>Waktu belajar: sekitar 75 menit</li>
+      <li>Prasyarat: <a href="akk-06.html">Perencanaan dan penganggaran</a></li>
+      <li>Alat: kalkulator biasa</li>
+    </ul>
+  </div>
+</div>
+
+<div class="modul-isi wadah">
+
+<section aria-labelledby="m-tujuan">
+  <h2 id="m-tujuan">Setelah modul ini, Anda bisa</h2>
+  <ul>
+    <li>menjelaskan biaya peluang dan mengapa evaluasi ekonomi diperlukan di bidang kesehatan;</li>
+    <li>membedakan empat jenis evaluasi ekonomi dan menghitung rasio biaya-efektivitas inkremental;</li>
+    <li>memakai hasilnya untuk memilih di antara beberapa program dengan anggaran terbatas.</li>
+  </ul>
+</section>
+
+<section class="lebar" aria-labelledby="m-kasus">
+  <h2 id="m-kasus">Kasus</h2>
+  <div class="kasus-cerita baca">
+    <p>Dinas Kesehatan Kabupaten Saloka memperoleh tambahan anggaran <strong>Rp600 juta</strong> untuk pengendalian hipertensi. Tiga usulan masuk, dan tim Anda sudah memperkirakan biaya serta hasilnya selama lima tahun, dibandingkan dengan keadaan tanpa program tambahan.</p>
+    <p>Kepala dinas condong ke Program B: "Hasilnya paling besar, jadi itu yang terbaik." Kepala bagian keuangan condong ke Program A: "Paling murah." Anda diminta memberi dasar yang lebih kuat daripada keduanya.</p>
+  </div>
+  <div class="tabel-gulir" style="margin-top:1.25rem">
+    <table>
+      <caption>Biaya dan hasil tiga program, dibanding tanpa program</caption>
+      <thead>
+        <tr><th scope="col">Program</th><th scope="col">Biaya tambahan<br>(juta rupiah)</th><th scope="col">QALY yang<br>diperoleh</th></tr>
+      </thead>
+      <tbody>
+        <tr><th scope="row">A. Skrining dan pemantauan oleh kader posbindu</th><td>400</td><td>40</td></tr>
+        <tr><th scope="row">B. Program A ditambah klinik hipertensi dengan dokter</th><td>900</td><td>60</td></tr>
+        <tr><th scope="row">C. Kampanye media massa</th><td>500</td><td>35</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p class="keterangan baca" style="margin-top:0.8rem">Nama tempat dan seluruh angka rekaan, disusun untuk latihan. QALY dijelaskan pada Langkah 2.</p>
+</section>
+
+<section aria-labelledby="m-l1">
+  <span class="langkah">Langkah 1</span>
+  <h2 id="m-l1">Mulai dari biaya peluang</h2>
+  <p>Sumber daya kesehatan selalu lebih sedikit daripada kebutuhan. Setiap rupiah yang dipakai untuk satu program tidak lagi tersedia untuk program lain. Manfaat yang hilang dari pilihan terbaik yang tidak diambil itu disebut <strong>biaya peluang</strong>.</p>
+  <p><strong>Evaluasi ekonomi</strong> adalah perbandingan dua pilihan atau lebih dari sisi biaya <em>dan</em> hasilnya. Tujuannya bukan menghemat uang, tetapi memperoleh kesehatan sebanyak mungkin dari uang yang ada.</p>
+  <details>
+    <summary>Apa yang keliru pada alasan kepala dinas dan kepala bagian keuangan?</summary>
+    <p>Kepala dinas hanya melihat hasil, kepala bagian keuangan hanya melihat biaya. Program dengan hasil terbesar belum tentu pilihan terbaik bila biayanya menyedot dana yang dapat menghasilkan lebih banyak kesehatan di tempat lain. Program termurah belum tentu terbaik bila hasilnya sedikit. Keduanya harus dilihat bersama.</p>
+  </details>
+</section>
+
+<section class="lebar" aria-labelledby="m-l2">
+  <span class="langkah">Langkah 2</span>
+  <h2 id="m-l2">Kenali empat jenis evaluasi ekonomi</h2>
+  <p class="baca">Semua jenis mengukur biaya dalam uang. Perbedaannya pada cara mengukur hasil.</p>
+  <div class="tabel-gulir">
+    <table class="teks">
+      <thead>
+        <tr><th scope="col">Jenis</th><th scope="col">Hasil diukur dalam</th><th scope="col">Dipakai bila</th></tr>
+      </thead>
+      <tbody>
+        <tr><th scope="row">Minimalisasi biaya</th><td>Tidak diukur; hasil dianggap sama</td><td>Dua pilihan terbukti sama manjurnya</td></tr>
+        <tr><th scope="row">Biaya-efektivitas</th><td>Satuan alamiah: kasus tercegah, tahun hidup</td><td>Membandingkan program dengan tujuan yang sama</td></tr>
+        <tr><th scope="row">Biaya-utilitas</th><td>QALY</td><td>Membandingkan program dengan tujuan berbeda</td></tr>
+        <tr><th scope="row">Biaya-manfaat</th><td>Uang</td><td>Membandingkan dengan belanja di luar kesehatan</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p class="baca" style="margin-top:1rem"><strong>QALY</strong> (<em>quality-adjusted life year</em>) adalah tahun kehidupan yang disesuaikan dengan mutunya. Satu tahun dalam keadaan sehat penuh bernilai 1 QALY. Satu tahun dengan mutu hidup 0,7 bernilai 0,7 QALY. Dengan satuan ini, program yang memperpanjang hidup dan program yang memperbaiki mutu hidup dapat dibandingkan.</p>
+  <details>
+    <summary>Seseorang hidup 10 tahun setelah stroke dengan mutu hidup 0,6. Berapa QALY-nya? Bila stroke itu tercegah dan ia hidup 10 tahun dengan mutu 0,9, berapa QALY yang diperoleh?</summary>
+    <p>Dengan stroke: 10 × 0,6 = 6 QALY. Tanpa stroke: 10 × 0,9 = 9 QALY. Pencegahan itu menghasilkan <strong>3 QALY</strong>, walaupun lama hidupnya sama.</p>
+  </details>
+</section>
+
+<section aria-labelledby="m-l3">
+  <span class="langkah">Langkah 3</span>
+  <h2 id="m-l3">Singkirkan pilihan yang terdominasi</h2>
+  <p>Sebuah pilihan disebut <strong>terdominasi</strong> bila ada pilihan lain yang lebih murah sekaligus hasilnya lebih baik. Pilihan seperti itu tidak perlu dihitung lebih lanjut.</p>
+  <details>
+    <summary>Adakah program yang terdominasi?</summary>
+    <p><strong>Program C.</strong> Biayanya Rp500 juta dengan hasil 35 QALY, sedangkan Program A lebih murah (Rp400 juta) dan hasilnya lebih besar (40 QALY). Tidak ada alasan ekonomi untuk memilih C.</p>
+  </details>
+</section>
+
+<section aria-labelledby="m-l4">
+  <span class="langkah">Langkah 4</span>
+  <h2 id="m-l4">Hitung rasio biaya-efektivitas inkremental</h2>
+  <p>Ukuran utama evaluasi ekonomi adalah <strong>rasio biaya-efektivitas inkremental</strong> (ICER): tambahan biaya dibagi tambahan hasil, saat berpindah dari satu pilihan ke pilihan berikutnya yang lebih mahal.</p>
+  <div class="rumus">ICER = (biaya pilihan baru − biaya pembanding) ÷ (hasil pilihan baru − hasil pembanding)</div>
+  <p>Hitung ICER Program A dibanding tanpa program, lalu ICER Program B dibanding Program A.</p>
+  <details>
+    <summary>Lihat jawaban</summary>
+    <p>A dibanding tanpa program: 400 ÷ 40 = <strong>Rp10 juta per QALY</strong>.</p>
+    <p>B dibanding A: (900 − 400) ÷ (60 − 40) = 500 ÷ 20 = <strong>Rp25 juta per QALY</strong>.</p>
+    <p>Jangan menghitung B dengan 900 ÷ 60 = Rp15 juta per QALY. Angka rata-rata itu menyembunyikan kenyataan bahwa 40 QALY pertama sudah dapat diperoleh dengan Rp400 juta. Pertanyaan yang benar untuk B: apakah <em>tambahan</em> 20 QALY sepadan dengan <em>tambahan</em> Rp500 juta?</p>
+  </details>
+</section>
+
+<section aria-labelledby="m-l5">
+  <span class="langkah">Langkah 5</span>
+  <h2 id="m-l5">Putuskan dengan anggaran dan ambang</h2>
+  <p>ICER dinilai terhadap dua hal: anggaran yang tersedia, dan <strong>ambang</strong>, yaitu jumlah tertinggi yang dianggap layak dibayar untuk satu QALY. Ambang berbeda antarnegara dan pada akhirnya merupakan keputusan kebijakan.</p>
+  <details>
+    <summary>Dengan anggaran Rp600 juta, apa rekomendasi Anda? Bagaimana bila anggaran bertambah dan ambangnya Rp50 juta per QALY?</summary>
+    <p><strong>Dengan Rp600 juta:</strong> jalankan Program A. Biayanya Rp400 juta dan menghasilkan 40 QALY dengan Rp10 juta per QALY. Program B tidak terjangkau. Sisa Rp200 juta dipakai untuk kegiatan lain yang ICER-nya rendah, bukan untuk Program C.</p>
+    <p><strong>Bila anggaran mencukupi:</strong> tambahan dari A ke B berharga Rp25 juta per QALY. Angka itu di bawah ambang Rp50 juta, sehingga B layak dipilih. Bila ambangnya Rp20 juta, B tidak layak dan A tetap pilihan terbaik.</p>
+    <p>Kepala dinas dan kepala bagian keuangan sama-sama dapat benar, bergantung pada anggaran dan ambang. Evaluasi ekonomi membuat dasar pilihan itu terbuka.</p>
+  </details>
+  <p>Tiga hal lain menentukan mutu sebuah evaluasi ekonomi.</p>
+  <ul>
+    <li><strong>Sudut pandang:</strong> biaya siapa yang dihitung? Dari sudut pandang masyarakat, ongkos perjalanan dan hari kerja pasien yang hilang ikut dihitung.</li>
+    <li><strong>Diskonto:</strong> biaya dan hasil pada tahun-tahun mendatang dinilai lebih kecil daripada yang terjadi sekarang.</li>
+    <li><strong>Analisis sensitivitas:</strong> angka biaya dan hasil adalah perkiraan. Apakah kesimpulan berubah bila perkiraannya digeser?</li>
+  </ul>
+  <details>
+    <summary>Bila hasil Program A ternyata hanya 25 QALY, apakah C masih terdominasi?</summary>
+    <p>Tidak. A menjadi Rp400 juta untuk 25 QALY (Rp16 juta per QALY), sedangkan C Rp500 juta untuk 35 QALY. C kini lebih mahal tetapi hasilnya lebih besar, dengan ICER terhadap A sebesar (500 − 400) ÷ (35 − 25) = Rp10 juta per QALY. Kesimpulan berubah, sehingga perkiraan hasil Program A perlu diperiksa dengan teliti sebelum keputusan diambil.</p>
+  </details>
+</section>
+
+<section aria-labelledby="m-kuis">
+  <h2 id="m-kuis">Uji diri</h2>
+
+  <fieldset class="soal" data-benar="c">
+    <legend>1. Apa yang dimaksud biaya peluang?</legend>
+    <button type="button" class="pilihan" data-nilai="a">Biaya yang muncul secara tidak terduga.</button>
+    <button type="button" class="pilihan" data-nilai="b">Biaya administrasi program.</button>
+    <button type="button" class="pilihan" data-nilai="c">Manfaat yang hilang karena sumber daya tidak dipakai untuk pilihan terbaik lainnya.</button>
+    <button type="button" class="pilihan" data-nilai="d">Biaya yang dibayar pasien.</button>
+    <p class="penjelasan" hidden>Setiap pemakaian sumber daya berarti melepaskan manfaat dari pemakaian lain.</p>
+  </fieldset>
+
+  <fieldset class="soal" data-benar="a">
+    <legend>2. Dua program imunisasi dibandingkan menurut biaya per anak yang terimunisasi lengkap. Jenis evaluasi apa ini?</legend>
+    <button type="button" class="pilihan" data-nilai="a">Biaya-efektivitas</button>
+    <button type="button" class="pilihan" data-nilai="b">Biaya-manfaat</button>
+    <button type="button" class="pilihan" data-nilai="c">Biaya-utilitas</button>
+    <button type="button" class="pilihan" data-nilai="d">Minimalisasi biaya</button>
+    <p class="penjelasan" hidden>Hasil diukur dalam satuan alamiah, yaitu anak yang terimunisasi.</p>
+  </fieldset>
+
+  <fieldset class="soal" data-benar="d">
+    <legend>3. Obat baru berbiaya Rp30 juta dan memberi 2,5 QALY. Obat lama berbiaya Rp10 juta dan memberi 2,0 QALY. Berapa ICER obat baru?</legend>
+    <button type="button" class="pilihan" data-nilai="a">Rp12 juta per QALY</button>
+    <button type="button" class="pilihan" data-nilai="b">Rp5 juta per QALY</button>
+    <button type="button" class="pilihan" data-nilai="c">Rp20 juta per QALY</button>
+    <button type="button" class="pilihan" data-nilai="d">Rp40 juta per QALY</button>
+    <p class="penjelasan" hidden>(30 − 10) ÷ (2,5 − 2,0) = 20 ÷ 0,5 = Rp40 juta per QALY.</p>
+  </fieldset>
+
+  <fieldset class="soal" data-benar="b">
+    <legend>4. Program X lebih mahal dan hasilnya lebih sedikit daripada Program Y. Apa sebutannya?</legend>
+    <button type="button" class="pilihan" data-nilai="a">X lebih efisien.</button>
+    <button type="button" class="pilihan" data-nilai="b">X terdominasi oleh Y.</button>
+    <button type="button" class="pilihan" data-nilai="c">X dan Y setara.</button>
+    <button type="button" class="pilihan" data-nilai="d">Y terdominasi oleh X.</button>
+    <p class="penjelasan" hidden>Pilihan yang lebih mahal dan kurang manjur tidak layak dipilih.</p>
+  </fieldset>
+
+  <fieldset class="soal" data-benar="c">
+    <legend>5. Seseorang hidup 5 tahun dengan mutu hidup 0,8. Berapa QALY-nya?</legend>
+    <button type="button" class="pilihan" data-nilai="a">5</button>
+    <button type="button" class="pilihan" data-nilai="b">0,8</button>
+    <button type="button" class="pilihan" data-nilai="c">4</button>
+    <button type="button" class="pilihan" data-nilai="d">6,25</button>
+    <p class="penjelasan" hidden>5 × 0,8 = 4 QALY.</p>
+  </fieldset>
+
+  <p class="skor" id="skor" role="status" hidden></p>
+</section>
+
+<section aria-labelledby="m-naik">
+  <h2 id="m-naik">Naik jenjang</h2>
+  <p>Evaluasi ekonomi tidak memutuskan untuk kita. Ia memperjelas apa yang dikorbankan oleh setiap pilihan.</p>
+
+  <div class="naik j4">
+    <h3>Jenjang 4: memodelkan dan menimbang keadilan</h3>
+    <p>Seorang ahli membangun model keputusan yang mengikuti perjalanan penyakit selama puluhan tahun, menggambarkan ketidakpastian dengan analisis sensitivitas probabilistik, menghitung dampak anggaran bagi pembayar, dan menimbang keadilan: apakah satu QALY bagi kelompok yang paling tertinggal layak dinilai lebih tinggi?</p>
+  </div>
+</section>
+
+<section aria-labelledby="m-terap">
+  <h2 id="m-terap">Terapkan</h2>
+  <ol>
+    <li>Pilih dua cara menangani satu masalah di tempat Anda. Perkirakan biaya dan satu ukuran hasil untuk masing-masing, lalu hitung ICER-nya.</li>
+    <li>Biaya apa yang ditanggung pasien dan keluarganya tetapi tidak tercatat dalam anggaran fasilitas?</li>
+    <li>Angka mana dalam hitungan Anda yang paling tidak pasti? Apakah kesimpulan berubah bila angka itu digeser 30%?</li>
+  </ol>
+  <div class="deret-tombol">
+    <button type="button" class="tombol" id="tandai-selesai" data-modul="akk-12">Tandai modul ini selesai</button>
+    <a class="tombol garis" href="kurikulum.html">Kembali ke peta kurikulum</a>
+  </div>
+</section>
+
+<section aria-labelledby="m-rujuk">
+  <h2 id="m-rujuk">Rujukan dan bacaan lanjut</h2>
+  <ul class="rujukan">
+    <li>Drummond dan rekan. <em>Methods for the Economic Evaluation of Health Care Programmes</em>. Rujukan utama.</li>
+    <li>Folland, Goodman, dan Stano. <em>The Economics of Health and Health Care</em>.</li>
+    <li>Laksono Trisnantoro. <em>Memahami Penggunaan Ilmu Ekonomi dalam Manajemen Rumah Sakit</em>.</li>
+    <li>Indonesia memiliki lembaga dan pedoman penilaian teknologi kesehatan untuk program jaminan kesehatan. Periksa pedoman yang berlaku saat ini, termasuk ketentuan tentang sudut pandang, diskonto, dan ambang.</li>
+  </ul>
+  <p class="keterangan">Modul ini ditulis orisinal untuk Learn Public Health.</p>
+</section>
+
+</div>
+</main>
+
+<footer class="kaki">
+  <div class="wadah">
+    <p><strong>Learn Public Health</strong>. Materi ini untuk pendidikan. Data kasus dalam modul adalah rekaan, kecuali disebutkan lain.</p>
+    <p><a href="index.html">Beranda</a> | <a href="kurikulum.html">Peta kurikulum</a> | <a href="sumber.html">Sumber belajar</a></p>
+  </div>
+</footer>
+
+<script src="app.js"></script>
+</body>
+</html>

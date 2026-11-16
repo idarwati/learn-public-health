@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Memodelkan hasil ya atau tidak dengan regresi logistik | Learn Public Health</title>
+<meta name="description" content="Modul biostatistik jenjang lanjut: log odds, membaca keluaran regresi logistik, rasio odds kasar dan yang disesuaikan, peluang dari model, dan batas pemakaiannya.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header class="kepala">
+  <div class="wadah">
+    <a class="merek" href="index.html">
+      <svg viewBox="0 0 32 32" aria-hidden="true"><path d="M2 30V22h7v-7h7V8h7V2h7v28z" fill="#075443"/></svg>
+      Learn Public Health
+    </a>
+    <nav aria-label="Menu utama">
+      <ul class="menu">
+        <li><a href="index.html">Beranda</a></li>
+        <li><a href="kurikulum.html">Peta kurikulum</a></li>
+        <li><a href="sumber.html">Sumber belajar</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<main>
+
+<div class="modul-kepala">
+  <div class="wadah">
+    <p class="remah"><a href="kurikulum.html">Peta kurikulum</a> / Biostatistik / Jenjang 3: Lanjut</p>
+    <h1>Memodelkan hasil ya atau tidak dengan regresi logistik</h1>
+    <p class="ringkas">Kepala dinas ingin gizi, umur, dan pendidikan ibu ikut diperhitungkan. Memecah tabel tidak lagi mungkin. Anda memerlukan model, dan memulainya dengan dua faktor yang sudah Anda kenal.</p>
+    <ul class="modul-info">
+      <li>Waktu belajar: sekitar 75 menit</li>
+      <li>Prasyarat: <a href="biostatistik-09.html">Korelasi dan regresi linear</a> dan <a href="epidemiologi-08.html">Bias dan perancu</a></li>
+      <li>Alat: kalkulator ilmiah</li>
+    </ul>
+  </div>
+</div>
+
+<div class="modul-isi wadah">
+
+<section aria-labelledby="m-tujuan">
+  <h2 id="m-tujuan">Setelah modul ini, Anda bisa</h2>
+  <ul>
+    <li>menjelaskan mengapa hasil ya atau tidak dimodelkan dengan regresi logistik;</li>
+    <li>membaca keluaran regresi logistik: koefisien, rasio odds, selang kepercayaan, dan nilai p;</li>
+    <li>menafsirkan rasio odds yang disesuaikan dan menghitung peluang dari model.</li>
+  </ul>
+</section>
+
+<section class="lebar" aria-labelledby="m-kasus">
+  <h2 id="m-kasus">Kasus</h2>
+  <div class="kasus-cerita baca">
+    <p>Pada modul tentang perancu, Anda memisahkan kohort 2.000 balita menurut kepadatan hunian dan menemukan bahwa hubungan asap rokok dengan pneumonia melemah setelah kepadatan diperhitungkan. Kepala dinas kini bertanya lebih jauh: "Bagaimana kalau gizi, umur, dan pendidikan ibu juga diperhitungkan? Apakah tabelnya harus dipecah lagi?"</p>
+    <p>Memecah tabel menurut empat faktor akan menghasilkan puluhan sel yang isinya terlalu sedikit. Anda memerlukan <strong>model</strong>. Sebagai langkah awal, Anda memasukkan dua faktor yang sudah ada, asap rokok dan kepadatan, ke dalam regresi logistik dan membandingkan hasilnya dengan tabel yang sudah Anda kenal.</p>
+  </div>
+  <div class="tabel-gulir" style="margin-top:1.25rem">
+    <table>
+      <caption>Kohort 2.000 balita selama setahun</caption>
+      <thead>
+        <tr><th scope="col">Asap rokok</th><th scope="col">Rumah padat</th><th scope="col">Balita</th><th scope="col">Pneumonia</th><th scope="col">Risiko</th></tr>
+      </thead>
+      <tbody>
+        <tr><th scope="row">Tidak</th><td>Tidak</td><td>800</td><td>32</td><td>4%</td></tr>
+        <tr><th scope="row">Ya</th><td>Tidak</td><td>200</td><td>12</td><td>6%</td></tr>
+        <tr><th scope="row">Tidak</th><td>Ya</td><td>400</td><td>40</td><td>10%</td></tr>
+        <tr><th scope="row">Ya</th><td>Ya</td><td>600</td><td>90</td><td>15%</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p class="keterangan baca" style="margin-top:0.8rem">Nama tempat dan seluruh angka rekaan, disusun untuk latihan. Kasus ini melanjutkan modul <a href="epidemiologi-08.html">Mengenali bias seleksi, bias informasi, dan perancu</a>.</p>
+</section>
+
+<section aria-labelledby="m-l1">
+  <span class="langkah">Langkah 1</span>
+  <h2 id="m-l1">Pahami mengapa bukan regresi linear</h2>
+  <p>Hasilnya di sini biner: pneumonia atau tidak. Yang ingin dimodelkan adalah <em>peluang</em> pneumonia, dan peluang harus berada antara 0 dan 1. Garis lurus tidak mengenal batas itu; untuk nilai tertentu ia akan meramalkan peluang di bawah 0 atau di atas 1.</p>
+  <p>Regresi logistik mengatasinya dengan memodelkan <strong>log odds</strong>. Odds adalah peluang terjadi dibagi peluang tidak terjadi. Log odds dapat bernilai berapa pun, dari sangat negatif sampai sangat positif, sehingga cocok dihubungkan dengan garis lurus.</p>
+  <div class="rumus">log odds pneumonia = b₀ + b₁ × asap + b₂ × padat</div>
+  <p>Variabel asap dan padat bernilai 1 bila ya dan 0 bila tidak.</p>
+  <details>
+    <summary>Hitung odds dan log odds untuk balita tanpa asap di rumah tidak padat (risiko 4%)</summary>
+    <p>Odds = 0,04 ÷ 0,96 = 0,0417. Log odds = ln(0,0417) = <strong>−3,18</strong>.</p>
+    <p>Inilah kelompok dengan asap = 0 dan padat = 0, sehingga log odds-nya sama dengan b₀. Titik potong model adalah log odds kelompok acuan.</p>
+  </details>
+</section>
+
+<section class="lebar" aria-labelledby="m-l2">
+  <span class="langkah">Langkah 2</span>
+  <h2 id="m-l2">Baca keluaran model</h2>
+  <p class="baca">Inilah hasil regresi logistik untuk data di atas, seperti yang ditampilkan perangkat statistik.</p>
+  <div class="tabel-gulir">
+    <table>
+      <thead>
+        <tr><th scope="col">Variabel</th><th scope="col">Koefisien</th><th scope="col">Galat baku</th><th scope="col">Rasio odds</th><th scope="col">Selang kepercayaan 95%</th><th scope="col">Nilai p</th></tr>
+      </thead>
+      <tbody>
+        <tr><th scope="row">Titik potong</th><td>−3,185</td><td>0,162</td><td></td><td></td><td></td></tr>
+        <tr><th scope="row">Asap rokok</th><td>0,453</td><td>0,174</td><td>1,57</td><td>1,12 sampai 2,22</td><td>0,009</td></tr>
+        <tr><th scope="row">Rumah padat</th><td>0,994</td><td>0,194</td><td>2,70</td><td>1,85 sampai 3,95</td><td>&lt; 0,001</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p class="baca" style="margin-top:1rem">Koefisien adalah perubahan log odds, yang sulit dibayangkan. Karena itu koefisien dipangkatkan menjadi <strong>rasio odds</strong>: OR = e pangkat koefisien.</p>
+  <details>
+    <summary>Periksa: berapa e pangkat 0,453? Bagaimana menafsirkan baris "asap rokok"?</summary>
+    <p>e pangkat 0,453 = <strong>1,57</strong>.</p>
+    <p>Tafsirannya: di antara balita dengan kepadatan hunian yang sama, odds pneumonia pada yang terpapar asap rokok 1,57 kali odds pada yang tidak terpapar. Selang kepercayaannya, 1,12 sampai 2,22, tidak mencakup 1, dan nilai p-nya 0,009.</p>
+    <p>Frasa "dengan kepadatan hunian yang sama" adalah inti regresi berganda. Tiap koefisien menggambarkan pengaruh satu variabel sementara variabel lain dalam model dipegang tetap.</p>
+  </details>
+</section>
+
+<section aria-labelledby="m-l3">
+  <span class="langkah">Langkah 3</span>
+  <h2 id="m-l3">Bandingkan rasio odds kasar dan yang disesuaikan</h2>
+  <p>Bila hanya asap rokok yang dimasukkan ke dalam model, rasio odds-nya <strong>2,29</strong> (selang kepercayaan 1,67 sampai 3,14). Ini disebut rasio odds <strong>kasar</strong>. Setelah kepadatan ditambahkan, rasio odds asap rokok menjadi 1,57, disebut rasio odds yang <strong>disesuaikan</strong>.</p>
+  <details>
+    <summary>Apa yang dikatakan perubahan dari 2,29 menjadi 1,57?</summary>
+    <p>Sebagian hubungan kasar berasal dari kepadatan hunian, yang berkaitan dengan asap rokok sekaligus menaikkan risiko pneumonia. Kepadatan merancukan hubungan itu. Perubahan lebih dari sekitar 10% antara angka kasar dan angka yang disesuaikan lazim dianggap tanda perancuan yang perlu diperhatikan; di sini perubahannya sekitar 30%.</p>
+    <p>Bandingkan dengan tabel berstrata: rasio odds di rumah padat 1,59 dan di rumah tidak padat 1,53. Model merangkum keduanya menjadi satu angka, 1,57. Untuk dua faktor, model dan tabel memberi jawaban yang sama. Keunggulan model baru terasa saat faktornya banyak.</p>
+  </details>
+</section>
+
+<section aria-labelledby="m-l4">
+  <span class="langkah">Langkah 4</span>
+  <h2 id="m-l4">Ubah kembali menjadi peluang</h2>
+  <p>Pengambil keputusan lebih mudah memahami peluang daripada rasio odds. Model dapat menghitung peluang untuk kombinasi apa pun:</p>
+  <div class="rumus">peluang = 1 ÷ (1 + e pangkat −(log odds))</div>
+  <p>Hitung peluang pneumonia untuk balita yang terpapar asap dan tinggal di rumah padat, atau gunakan kalkulator.</p>
+
+  <form class="kalkulator" id="logistik" data-b0="-3.18536" data-b1="0.45349" data-b2="0.99434" novalidate>
+    <h3>Kalkulator peluang dari model</h3>
+    <div class="isian">
+      <label><input type="checkbox" name="asap" checked> Ada perokok di rumah</label>
+      <label><input type="checkbox" name="padat" checked> Rumah padat</label>
+    </div>
+    <button type="submit" class="tombol">Hitung</button>
+    <dl class="hasil" id="hasil-logistik" aria-live="polite" hidden>
+      <div><dt>Log odds</dt><dd id="lg-lo"></dd></div>
+      <div><dt>Odds</dt><dd id="lg-odds"></dd></div>
+      <div><dt>Peluang pneumonia setahun</dt><dd id="lg-p"></dd></div>
+    </dl>
+  </form>
+
+  <details>
+    <summary>Lihat jawaban</summary>
+    <p>Log odds = −3,185 + 0,453 + 0,994 = −1,738. Peluang = 1 ÷ (1 + e pangkat 1,738) = 1 ÷ 6,69 = <strong>15,0%</strong>.</p>
+    <p>Peluang dari model untuk keempat kelompok: 4,0%; 6,1%; 10,1%; dan 15,0%. Angka itu hampir sama dengan risiko yang teramati (4%, 6%, 10%, 15%), tanda bahwa model ini cocok dengan datanya.</p>
+  </details>
+</section>
+
+<section aria-labelledby="m-l5">
+  <span class="langkah">Langkah 5</span>
+  <h2 id="m-l5">Kenali batas-batasnya</h2>
+  <ul>
+    <li><strong>Rasio odds bukan rasio risiko.</strong> Rasio risiko asap rokok pada tiap strata adalah 1,5, sedangkan rasio odds-nya 1,57. Selisihnya kecil karena pneumonia tidak terlalu sering; pada hasil yang sering, selisihnya besar.</li>
+    <li><strong>Model hanya menyesuaikan variabel yang dimasukkan.</strong> Gizi dan kemiskinan yang tidak diukur tetap dapat merancukan.</li>
+    <li><strong>Jumlah kejadian membatasi jumlah variabel.</strong> Pedoman kasar: sedikitnya sepuluh kejadian untuk tiap variabel. Dengan 174 kasus pneumonia, model ini masih leluasa.</li>
+    <li><strong>Model ini mengandaikan pengaruh asap sama di rumah padat dan tidak padat.</strong> Bila pengaruhnya berbeda, diperlukan suku interaksi.</li>
+    <li><strong>Variabel dipilih dari pemahaman sebab akibat,</strong> bukan dengan memasukkan semua yang tersedia atau membuang yang nilai p-nya besar.</li>
+  </ul>
+  <details>
+    <summary>Lihat contoh kalimat laporan</summary>
+    <p>"Setelah disesuaikan terhadap kepadatan hunian, balita yang tinggal serumah dengan perokok memiliki odds pneumonia 1,57 kali lebih tinggi (selang kepercayaan 95%: 1,12 sampai 2,22). Menurut model, peluang pneumonia setahun pada balita di rumah padat naik dari 10% menjadi 15% bila ada perokok di rumah. Gizi dan keadaan ekonomi keluarga belum diperhitungkan."</p>
+  </details>
+</section>
+
+<section aria-labelledby="m-kuis">
+  <h2 id="m-kuis">Uji diri</h2>
+
+  <fieldset class="soal" data-benar="b">
+    <legend>1. Untuk hasil mana regresi logistik dipakai?</legend>
+    <button type="button" class="pilihan" data-nilai="a">Tekanan darah dalam mmHg</button>
+    <button type="button" class="pilihan" data-nilai="b">Sembuh atau tidak sembuh</button>
+    <button type="button" class="pilihan" data-nilai="c">Lama rawat dalam hari</button>
+    <button type="button" class="pilihan" data-nilai="d">Biaya dalam rupiah</button>
+    <p class="penjelasan" hidden>Regresi logistik dipakai untuk hasil biner.</p>
+  </fieldset>
+
+  <fieldset class="soal" data-benar="d">
+    <legend>2. Koefisien sebuah variabel adalah 0,693. Berapa rasio odds-nya?</legend>
+    <button type="button" class="pilihan" data-nilai="a">0,69</button>
+    <button type="button" class="pilihan" data-nilai="b">1,69</button>
+    <button type="button" class="pilihan" data-nilai="c">0,5</button>
+    <button type="button" class="pilihan" data-nilai="d">2,0</button>
+    <p class="penjelasan" hidden>e pangkat 0,693 = 2,0.</p>
+  </fieldset>
+
+  <fieldset class="soal" data-benar="a">
+    <legend>3. Rasio odds yang disesuaikan untuk merokok adalah 1,8 dengan selang kepercayaan 0,9 sampai 3,6. Apa tafsirannya?</legend>
+    <button type="button" class="pilihan" data-nilai="a">Taksirannya menunjukkan kenaikan odds, tetapi data masih sesuai dengan tidak ada hubungan.</button>
+    <button type="button" class="pilihan" data-nilai="b">Merokok terbukti menaikkan odds 1,8 kali.</button>
+    <button type="button" class="pilihan" data-nilai="c">Merokok melindungi.</button>
+    <button type="button" class="pilihan" data-nilai="d">Modelnya salah.</button>
+    <p class="penjelasan" hidden>Selang yang mencakup 1 berarti hasilnya tidak bermakna pada batas 0,05, walaupun taksiran titiknya di atas 1.</p>
+  </fieldset>
+
+  <fieldset class="soal" data-benar="c">
+    <legend>4. Rasio odds kasar 3,0 turun menjadi 1,4 setelah umur dimasukkan ke dalam model. Apa artinya?</legend>
+    <button type="button" class="pilihan" data-nilai="a">Umur tidak berhubungan dengan apa pun.</button>
+    <button type="button" class="pilihan" data-nilai="b">Terjadi salah hitung.</button>
+    <button type="button" class="pilihan" data-nilai="c">Umur merancukan hubungan; sebagian besar hubungan kasar berasal dari perbedaan umur.</button>
+    <button type="button" class="pilihan" data-nilai="d">Paparan tidak berbahaya sama sekali.</button>
+    <p class="penjelasan" hidden>Perubahan besar antara angka kasar dan angka yang disesuaikan adalah tanda perancuan.</p>
+  </fieldset>
+
+  <fieldset class="soal" data-benar="b">
+    <legend>5. Sebuah studi memiliki 40 kejadian. Kira-kira berapa variabel yang masih wajar dimasukkan ke dalam model?</legend>
+    <button type="button" class="pilihan" data-nilai="a">40</button>
+    <button type="button" class="pilihan" data-nilai="b">Sekitar 4</button>
+    <button type="button" class="pilihan" data-nilai="c">20</button>
+    <button type="button" class="pilihan" data-nilai="d">Tidak terbatas</button>
+    <p class="penjelasan" hidden>Pedoman kasar sepuluh kejadian per variabel memberi sekitar empat variabel.</p>
+  </fieldset>
+
+  <p class="skor" id="skor" role="status" hidden></p>
+</section>
+
+<section aria-labelledby="m-naik">
+  <h2 id="m-naik">Naik jenjang</h2>
+  <p>Regresi logistik adalah model yang paling sering Anda jumpai dalam jurnal kesehatan.</p>
+
+  <div class="naik j4">
+    <h3>Jenjang 4: dari menjelaskan ke meramalkan, dan sebaliknya</h3>
+    <p>Model untuk menaksir pengaruh satu paparan dibangun dengan cara berbeda dari model untuk meramalkan risiko seseorang. Seorang ahli membedakan keduanya, menilai model peramalan dengan diskriminasi dan kalibrasi pada data baru, memakai model bertingkat untuk data berkelompok, dan menaksir rasio risiko secara langsung bila hasilnya sering terjadi.</p>
+  </div>
+</section>
+
+<section aria-labelledby="m-terap">
+  <h2 id="m-terap">Terapkan</h2>
+  <ol>
+    <li>Ambil satu artikel yang memuat tabel regresi logistik. Tuliskan tafsiran satu rasio odds yang disesuaikan dalam satu kalimat lengkap, termasuk "disesuaikan terhadap apa".</li>
+    <li>Bandingkan rasio odds kasar dan yang disesuaikan dalam artikel itu. Variabel mana yang tampaknya merancukan?</li>
+    <li>Hitung jumlah kejadian dan jumlah variabel dalam modelnya. Apakah memenuhi pedoman sepuluh kejadian per variabel?</li>
+  </ol>
+  <div class="deret-tombol">
+    <button type="button" class="tombol" id="tandai-selesai" data-modul="biostatistik-11">Tandai modul ini selesai</button>
+    <a class="tombol garis" href="kurikulum.html">Kembali ke peta kurikulum</a>
+  </div>
+</section>
+
+<section aria-labelledby="m-rujuk">
+  <h2 id="m-rujuk">Rujukan dan bacaan lanjut</h2>
+  <ul class="rujukan">
+    <li>Vittinghoff dan rekan. <em>Regression Methods in Biostatistics</em>. Bab tentang regresi logistik.</li>
+    <li>Hosmer, Lemeshow, dan Sturdivant. <em>Applied Logistic Regression</em>. Rujukan utama.</li>
+    <li>Kirkwood dan Sterne. <em>Essential Medical Statistics</em>. Bab tentang regresi logistik.</li>
+  </ul>
+  <p class="keterangan">Modul ini ditulis orisinal untuk Learn Public Health. Keluaran model dihitung dari data pada tabel kasus.</p>
+</section>
+
+</div>
+</main>
+
+<footer class="kaki">
+  <div class="wadah">
+    <p><strong>Learn Public Health</strong>. Materi ini untuk pendidikan. Data kasus dalam modul adalah rekaan, kecuali disebutkan lain.</p>
+    <p><a href="index.html">Beranda</a> | <a href="kurikulum.html">Peta kurikulum</a> | <a href="sumber.html">Sumber belajar</a></p>
+  </div>
+</footer>
+
+<script src="app.js"></script>
+</body>
+</html>

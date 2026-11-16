@@ -212,6 +212,7 @@ pre.keluaran { background: var(--putih); color: var(--tinta); border: 1px solid 
 .kalkulator > label { display: block; font-weight: 700; margin-bottom: 0.3rem; }
 .kalkulator textarea { display: block; width: 100%; font: inherit; padding: 0.5rem 0.6rem; border: 1px solid var(--tinta-lunak); border-radius: 0.3rem; }
 .kalkulator .deret-tombol { margin-top: 0.8rem; }
+.isian input[type="checkbox"] { display: inline-block; width: auto; margin: 0 0.4rem 0 0; transform: scale(1.2); }
 .hasil { margin: 1rem 0 0; padding: 0; }
 .hasil div { display: flex; justify-content: space-between; gap: 1rem; padding: 0.45rem 0; border-top: 1px solid var(--garis); }
 .hasil dt { color: var(--tinta-lunak); }
