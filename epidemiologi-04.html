@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Membandingkan angka kematian secara adil | Learn Public Health</title>
+<meta name="description" content="Modul epidemiologi jenjang dasar: angka kematian kasar, angka kematian menurut umur, dan standardisasi langsung untuk membandingkan dua wilayah.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header class="kepala">
+  <div class="wadah">
+    <a class="merek" href="index.html">
+      <svg viewBox="0 0 32 32" aria-hidden="true"><path d="M2 30V22h7v-7h7V8h7V2h7v28z" fill="#075443"/></svg>
+      Learn Public Health
+    </a>
+    <nav aria-label="Menu utama">
+      <ul class="menu">
+        <li><a href="index.html">Beranda</a></li>
+        <li><a href="kurikulum.html">Peta kurikulum</a></li>
+        <li><a href="sumber.html">Sumber belajar</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<main>
+
+<div class="modul-kepala">
+  <div class="wadah">
+    <p class="remah"><a href="kurikulum.html">Peta kurikulum</a> / Epidemiologi / Jenjang 1: Dasar</p>
+    <h1>Membandingkan angka kematian secara adil</h1>
+    <p class="ringkas">Sebuah surat kabar menulis bahwa angka kematian satu kabupaten hampir dua kali kabupaten tetangganya. Anda diminta memeriksa apakah perbandingan itu adil.</p>
+    <ul class="modul-info">
+      <li>Waktu belajar: sekitar 45 menit</li>
+      <li>Prasyarat: tidak ada</li>
+      <li>Alat: kalkulator biasa</li>
+    </ul>
+  </div>
+</div>
+
+<div class="modul-isi wadah">
+
+<section aria-labelledby="m-tujuan">
+  <h2 id="m-tujuan">Setelah modul ini, Anda bisa</h2>
+  <ul>
+    <li>menghitung angka kematian kasar dan angka kematian menurut kelompok umur;</li>
+    <li>menjelaskan mengapa angka kematian kasar bisa menyesatkan saat dua wilayah dibandingkan;</li>
+    <li>membandingkan dua wilayah secara adil dengan standardisasi langsung.</li>
+  </ul>
+</section>
+
+<section class="lebar" aria-labelledby="m-kasus">
+  <h2 id="m-kasus">Kasus</h2>
+  <div class="kasus-cerita baca">
+    <p>Sebuah surat kabar daerah menulis: "Angka kematian Kabupaten Saloka hampir dua kali Kabupaten Tirta. Layanan kesehatan Saloka dipertanyakan." Kedua kabupaten sama-sama berpenduduk 100.000 jiwa. Tahun lalu Saloka mencatat 1.070 kematian, sedangkan Tirta 610.</p>
+    <p>Kepala dinas kesehatan Saloka meminta Anda memeriksa apakah kesimpulan itu adil. Anda tahu satu hal tentang kedua kabupaten: Saloka adalah daerah lama yang banyak ditinggali pensiunan, sedangkan Tirta daerah industri baru yang penduduknya muda.</p>
+  </div>
+  <div class="tabel-gulir" style="margin-top:1.25rem">
+    <table>
+      <caption>Penduduk dan kematian setahun menurut kelompok umur</caption>
+      <thead>
+        <tr><th scope="col">Umur</th><th scope="col">Saloka:<br>penduduk</th><th scope="col">Saloka:<br>kematian</th><th scope="col">Tirta:<br>penduduk</th><th scope="col">Tirta:<br>kematian</th></tr>
+      </thead>
+      <tbody>
+        <tr><th scope="row">Di bawah 15 tahun</th><td>20.000</td><td>20</td><td>40.000</td><td>60</td></tr>
+        <tr><th scope="row">15 sampai 59 tahun</th><td>50.000</td><td>150</td><td>50.000</td><td>200</td></tr>
+        <tr><th scope="row">60 tahun ke atas</th><td>30.000</td><td>900</td><td>10.000</td><td>350</td></tr>
+        <tr><th scope="row">Semua umur</th><td>100.000</td><td>1.070</td><td>100.000</td><td>610</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p class="keterangan baca" style="margin-top:0.8rem">Nama kabupaten dan seluruh angka rekaan, disusun untuk latihan.</p>
+</section>
+
+<section aria-labelledby="m-l1">
+  <span class="langkah">Langkah 1</span>
+  <h2 id="m-l1">Hitung angka kematian kasar</h2>
+  <p><strong>Angka kematian kasar</strong> adalah jumlah seluruh kematian dalam setahun dibagi jumlah penduduk, biasanya dinyatakan per 1.000 penduduk. Disebut "kasar" karena tidak memperhitungkan susunan penduduknya.</p>
+  <div class="rumus">Angka kematian kasar = jumlah kematian ÷ jumlah penduduk × 1.000</div>
+  <details>
+    <summary>Lihat jawaban</summary>
+    <p>Saloka: 1.070 ÷ 100.000 × 1.000 = <strong>10,7 per 1.000</strong>. Tirta: 610 ÷ 100.000 × 1.000 = <strong>6,1 per 1.000</strong>.</p>
+    <p>Surat kabar itu tidak salah hitung. Pertanyaannya, apakah angka ini cukup untuk menilai layanan kesehatan.</p>
+  </details>
+</section>
+
+<section aria-labelledby="m-l2">
+  <span class="langkah">Langkah 2</span>
+  <h2 id="m-l2">Hitung angka kematian tiap kelompok umur</h2>
+  <p>Risiko meninggal sangat bergantung pada umur. Karena itu, bandingkan orang yang sebaya: hitung angka kematian untuk tiap kelompok umur di kedua kabupaten.</p>
+  <details>
+    <summary>Lihat jawaban</summary>
+    <div class="tabel-gulir">
+      <table>
+        <thead>
+          <tr><th scope="col">Umur</th><th scope="col">Saloka<br>(per 1.000)</th><th scope="col">Tirta<br>(per 1.000)</th></tr>
+        </thead>
+        <tbody>
+          <tr><th scope="row">Di bawah 15 tahun</th><td>1</td><td>1,5</td></tr>
+          <tr><th scope="row">15 sampai 59 tahun</th><td>3</td><td>4</td></tr>
+          <tr><th scope="row">60 tahun ke atas</th><td>30</td><td>35</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p style="margin-top:1rem">Di <em>setiap</em> kelompok umur, angka kematian Saloka lebih rendah daripada Tirta. Namun angka kasarnya lebih tinggi. Bagaimana mungkin?</p>
+    <p>Jawabannya ada pada susunan penduduk. Di Saloka, 30% penduduk berumur 60 tahun ke atas; di Tirta hanya 10%. Kelompok lanjut usia memiliki angka kematian tertinggi di mana pun, sehingga wilayah yang banyak lansianya akan mencatat lebih banyak kematian walaupun layanannya lebih baik.</p>
+  </details>
+</section>
+
+<section aria-labelledby="m-l3">
+  <span class="langkah">Langkah 3</span>
+  <h2 id="m-l3">Bandingkan dengan penduduk yang sama: standardisasi langsung</h2>
+  <p><strong>Standardisasi langsung</strong> menjawab pertanyaan: "Seandainya kedua kabupaten memiliki susunan umur yang sama, berapa angka kematiannya?" Caranya:</p>
+  <ol>
+    <li>Tetapkan satu <strong>penduduk baku</strong>. Di sini kita pakai gabungan kedua kabupaten: 60.000 anak, 100.000 dewasa, dan 40.000 lansia, seluruhnya 200.000 jiwa.</li>
+    <li>Kalikan angka kematian tiap kelompok umur di suatu kabupaten dengan penduduk baku kelompok itu. Hasilnya adalah kematian yang <em>diharapkan</em>.</li>
+    <li>Jumlahkan, lalu bagi dengan total penduduk baku.</li>
+  </ol>
+  <p>Kerjakan untuk Saloka dan Tirta.</p>
+  <details>
+    <summary>Lihat jawaban</summary>
+    <p><strong>Saloka:</strong> (60.000 × 1 + 100.000 × 3 + 40.000 × 30) ÷ 1.000 = 60 + 300 + 1.200 = 1.560 kematian yang diharapkan. Dibagi 200.000 menjadi <strong>7,8 per 1.000</strong>.</p>
+    <p><strong>Tirta:</strong> (60.000 × 1,5 + 100.000 × 4 + 40.000 × 35) ÷ 1.000 = 90 + 400 + 1.400 = 1.890. Dibagi 200.000 menjadi <strong>9,45 per 1.000</strong>.</p>
+    <p>Setelah susunan umur disamakan, urutannya berbalik: angka kematian Saloka lebih rendah daripada Tirta.</p>
+    <p>Angka terstandar hanya berguna untuk membandingkan. Angka itu bukan angka kematian yang benar-benar terjadi, dan nilainya berubah bila penduduk bakunya diganti.</p>
+  </details>
+</section>
+
+<section aria-labelledby="m-l4">
+  <span class="langkah">Langkah 4</span>
+  <h2 id="m-l4">Kenali ukuran kematian lain</h2>
+  <ul>
+    <li><strong>Angka kematian menurut penyebab:</strong> kematian akibat satu penyakit dibagi jumlah penduduk.</li>
+    <li><strong>Angka fatalitas kasus</strong> (<em>case fatality rate</em>): kematian akibat suatu penyakit dibagi jumlah penderitanya. Ukuran ini menggambarkan keganasan penyakit atau mutu penanganannya.</li>
+    <li><strong>Angka kematian bayi:</strong> kematian sebelum umur satu tahun per 1.000 kelahiran hidup.</li>
+    <li><strong>Angka kematian ibu:</strong> kematian ibu terkait kehamilan dan persalinan per 100.000 kelahiran hidup.</li>
+  </ul>
+  <p>Perhatikan penyebutnya. Setiap ukuran menjawab pertanyaan yang berbeda karena penyebutnya berbeda.</p>
+  <details>
+    <summary>Dari 200 penderita DBD yang dirawat, 4 meninggal. Berapa angka fatalitas kasusnya?</summary>
+    <p>4 ÷ 200 × 100% = <strong>2%</strong>. Penyebutnya penderita DBD, bukan seluruh penduduk.</p>
+  </details>
+</section>
+
+<section aria-labelledby="m-l5">
+  <span class="langkah">Langkah 5</span>
+  <h2 id="m-l5">Tulis tanggapan untuk surat kabar</h2>
+  <details>
+    <summary>Lihat contoh</summary>
+    <p>"Angka kematian kasar Saloka memang lebih tinggi, 10,7 dibanding 6,1 per 1.000, karena tiga dari sepuluh penduduk Saloka berusia 60 tahun ke atas, sedangkan di Tirta hanya satu dari sepuluh. Pada setiap kelompok umur, angka kematian Saloka justru lebih rendah. Bila susunan umur disamakan, angka kematian Saloka 7,8 dan Tirta 9,45 per 1.000."</p>
+    <p>Tanggapan ini tidak membuktikan bahwa layanan Saloka lebih baik. Banyak hal lain memengaruhi kematian, seperti pekerjaan, lingkungan, dan pendapatan. Yang dapat dipastikan: angka kasar bukan dasar yang adil untuk kesimpulan surat kabar itu.</p>
+  </details>
+</section>
+
+<section aria-labelledby="m-kuis">
+  <h2 id="m-kuis">Uji diri</h2>
+
+  <fieldset class="soal" data-benar="b">
+    <legend>1. Sebuah kota berpenduduk 50.000 mencatat 400 kematian setahun. Berapa angka kematian kasarnya?</legend>
+    <button type="button" class="pilihan" data-nilai="a">0,8 per 1.000</button>
+    <button type="button" class="pilihan" data-nilai="b">8 per 1.000</button>
+    <button type="button" class="pilihan" data-nilai="c">80 per 1.000</button>
+    <button type="button" class="pilihan" data-nilai="d">125 per 1.000</button>
+    <p class="penjelasan" hidden>400 ÷ 50.000 × 1.000 = 8 per 1.000.</p>
+  </fieldset>
+
+  <fieldset class="soal" data-benar="d">
+    <legend>2. Mengapa angka kematian kasar kurang adil untuk membandingkan dua wilayah?</legend>
+    <button type="button" class="pilihan" data-nilai="a">Karena sulit dihitung.</button>
+    <button type="button" class="pilihan" data-nilai="b">Karena tidak memakai penyebut.</button>
+    <button type="button" class="pilihan" data-nilai="c">Karena hanya menghitung kematian bayi.</button>
+    <button type="button" class="pilihan" data-nilai="d">Karena dipengaruhi susunan umur penduduk.</button>
+    <p class="penjelasan" hidden>Wilayah dengan lebih banyak lansia akan mencatat lebih banyak kematian walaupun risiko pada tiap umur sama atau lebih rendah.</p>
+  </fieldset>
+
+  <fieldset class="soal" data-benar="a">
+    <legend>3. Apa yang dilakukan standardisasi langsung?</legend>
+    <button type="button" class="pilihan" data-nilai="a">Menerapkan angka kematian tiap kelompok umur pada satu penduduk baku yang sama.</button>
+    <button type="button" class="pilihan" data-nilai="b">Menghapus kematian lansia dari hitungan.</button>
+    <button type="button" class="pilihan" data-nilai="c">Mengganti jumlah penduduk dengan jumlah kelahiran.</button>
+    <button type="button" class="pilihan" data-nilai="d">Menjumlahkan angka kematian dua wilayah.</button>
+    <p class="penjelasan" hidden>Dengan penduduk baku yang sama, perbedaan yang tersisa tidak lagi disebabkan oleh susunan umur.</p>
+  </fieldset>
+
+  <fieldset class="soal" data-benar="c">
+    <legend>4. Dari 500 penderita suatu penyakit, 25 meninggal. Berapa angka fatalitas kasusnya?</legend>
+    <button type="button" class="pilihan" data-nilai="a">0,5%</button>
+    <button type="button" class="pilihan" data-nilai="b">2,5%</button>
+    <button type="button" class="pilihan" data-nilai="c">5%</button>
+    <button type="button" class="pilihan" data-nilai="d">20%</button>
+    <p class="penjelasan" hidden>25 ÷ 500 × 100% = 5%.</p>
+  </fieldset>
+
+  <fieldset class="soal" data-benar="b">
+    <legend>5. Angka kematian terstandar Kabupaten X adalah 7 per 1.000. Pernyataan mana yang benar?</legend>
+    <button type="button" class="pilihan" data-nilai="a">Tepat 7 dari tiap 1.000 penduduk X meninggal tahun itu.</button>
+    <button type="button" class="pilihan" data-nilai="b">Angka itu hanya bermakna bila dibandingkan dengan wilayah lain yang distandarkan pada penduduk baku yang sama.</button>
+    <button type="button" class="pilihan" data-nilai="c">Angka itu tidak bergantung pada penduduk baku yang dipilih.</button>
+    <button type="button" class="pilihan" data-nilai="d">Angka itu sama dengan angka kematian kasar.</button>
+    <p class="penjelasan" hidden>Angka terstandar adalah angka buatan untuk perbandingan. Nilainya berubah bila penduduk bakunya diganti.</p>
+  </fieldset>
+
+  <p class="skor" id="skor" role="status" hidden></p>
+</section>
+
+<section aria-labelledby="m-naik">
+  <h2 id="m-naik">Naik jenjang</h2>
+  <p>Umur adalah perancu yang paling sering ditemui dalam epidemiologi. Cara menanganinya makin halus di jenjang berikutnya.</p>
+
+  <div class="naik">
+    <h3>Jenjang 2: ketika angka per kelompok umur tidak tersedia</h3>
+    <p>Di wilayah kecil, jumlah kematian per kelompok umur terlalu sedikit untuk menghasilkan angka yang stabil. Anda akan memakai standardisasi tidak langsung dan rasio kematian terstandar (SMR), yang hanya memerlukan jumlah kematian total wilayah itu dan angka kematian menurut umur dari penduduk acuan.</p>
+  </div>
+
+  <div class="naik j3">
+    <h3>Jenjang 3: dari jumlah kematian ke tahun kehidupan yang hilang</h3>
+    <p>Kematian pada umur 30 dan pada umur 85 dihitung sama dalam angka kematian. Anda akan menghitung harapan hidup dari tabel kematian, tahun kehidupan yang hilang, dan memodelkan angka kematian dengan regresi Poisson sambil mengendalikan beberapa faktor sekaligus.</p>
+  </div>
+
+  <div class="naik j4">
+    <h3>Jenjang 4: memperkirakan beban penyakit saat pencatatan tidak lengkap</h3>
+    <p>Di banyak tempat tidak semua kematian tercatat dan penyebabnya sering tidak jelas. Seorang ahli menilai kelengkapan pencatatan, memakai autopsi verbal untuk menaksir penyebab kematian, dan menyusun perkiraan beban penyakit yang jujur tentang ketidakpastiannya.</p>
+  </div>
+</section>
+
+<section aria-labelledby="m-terap">
+  <h2 id="m-terap">Terapkan</h2>
+  <ol>
+    <li>Cari angka kematian kasar dua kabupaten atau provinsi dari publikasi statistik. Bandingkan pula persentase penduduk lanjut usianya.</li>
+    <li>Temukan satu berita yang membandingkan angka kematian atau angka penyakit antarwilayah. Apakah susunan umur diperhitungkan?</li>
+    <li>Untuk satu penyakit di tempat Anda, hitung angka fatalitas kasusnya. Dari mana Anda memperoleh pembilang dan penyebutnya?</li>
+  </ol>
+  <div class="deret-tombol">
+    <button type="button" class="tombol" id="tandai-selesai" data-modul="epidemiologi-04">Tandai modul ini selesai</button>
+    <a class="tombol garis" href="kurikulum.html">Kembali ke peta kurikulum</a>
+  </div>
+</section>
+
+<section aria-labelledby="m-rujuk">
+  <h2 id="m-rujuk">Rujukan dan bacaan lanjut</h2>
+  <ul class="rujukan">
+    <li>CDC. <a href="https://stacks.cdc.gov/view/cdc/13178"><em>Principles of Epidemiology in Public Health Practice</em>, edisi ketiga</a>. Pelajaran 3 memuat bagian tentang ukuran frekuensi kematian. Domain publik.</li>
+    <li>Celentano dan Szklo. <em>Gordis Epidemiology</em>. Bab tentang ukuran kematian dan standardisasi.</li>
+    <li>Bonita, Beaglehole, dan Kjellström. <em>Basic Epidemiology</em>. WHO.</li>
+  </ul>
+  <p class="keterangan">Modul ini ditulis orisinal untuk Learn Public Health.</p>
+</section>
+
+</div>
+</main>
+
+<footer class="kaki">
+  <div class="wadah">
+    <p><strong>Learn Public Health</strong>. Materi ini untuk pendidikan. Data kasus dalam modul adalah rekaan, kecuali disebutkan lain.</p>
+    <p><a href="index.html">Beranda</a> | <a href="kurikulum.html">Peta kurikulum</a> | <a href="sumber.html">Sumber belajar</a></p>
+  </div>
+</footer>
+
+<script src="app.js"></script>
+</body>
+</html>

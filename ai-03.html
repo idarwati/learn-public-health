@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Merapikan data kesehatan sebelum dianalisis | Learn Public Health</title>
+<meta name="description" content="Modul data kesehatan jenjang dasar: masalah lazim pada data yang dimasukkan dengan tangan, tiga aturan data rapi, kamus data, dan perapian dengan Python.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header class="kepala">
+  <div class="wadah">
+    <a class="merek" href="index.html">
+      <svg viewBox="0 0 32 32" aria-hidden="true"><path d="M2 30V22h7v-7h7V8h7V2h7v28z" fill="#075443"/></svg>
+      Learn Public Health
+    </a>
+    <nav aria-label="Menu utama">
+      <ul class="menu">
+        <li><a href="index.html">Beranda</a></li>
+        <li><a href="kurikulum.html">Peta kurikulum</a></li>
+        <li><a href="sumber.html">Sumber belajar</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<main>
+
+<div class="modul-kepala">
+  <div class="wadah">
+    <p class="remah"><a href="kurikulum.html">Peta kurikulum</a> / AI dan data di kesehatan / Jenjang 1: Dasar</p>
+    <h1>Merapikan data kesehatan sebelum dianalisis</h1>
+    <p class="ringkas">Data kunjungan dari tiga petugas digabung, dan hasil hitungannya janggal: tujuh ejaan jenis kelamin dan rata-rata umur yang mustahil. Anda harus menemukan sebabnya dan merapikannya.</p>
+    <ul class="modul-info">
+      <li>Waktu belajar: sekitar 45 menit</li>
+      <li>Prasyarat: tidak ada</li>
+      <li>Alat: peramban; akun Google untuk bagian Python</li>
+    </ul>
+  </div>
+</div>
+
+<div class="modul-isi wadah">
+
+<section aria-labelledby="m-tujuan">
+  <h2 id="m-tujuan">Setelah modul ini, Anda bisa</h2>
+  <ul>
+    <li>menemukan masalah yang lazim dalam data kesehatan yang dimasukkan dengan tangan;</li>
+    <li>menata data menurut tiga aturan data rapi dan menyusun kamus data;</li>
+    <li>menyeragamkan kategori dan menemukan nilai yang tidak masuk akal dengan beberapa baris Python.</li>
+  </ul>
+</section>
+
+<section class="lebar" aria-labelledby="m-kasus">
+  <h2 id="m-kasus">Kasus</h2>
+  <div class="kasus-cerita baca">
+    <p>Tiga petugas Puskesmas Lontara mencatat kunjungan posbindu di lembar kerja masing-masing. Anda diminta menggabungkannya dan melaporkan jumlah peserta menurut jenis kelamin serta rata-rata umurnya.</p>
+    <p>Anda menggabungkan ketiganya dan langsung menghitung. Untuk delapan baris pertama saja hasilnya sudah janggal: tujuh "jenis kelamin" yang berbeda dan rata-rata umur hampir 69 tahun, padahal hanya dua peserta yang berusia di atas 60. Ada yang salah dengan datanya.</p>
+  </div>
+  <div class="tabel-gulir" style="margin-top:1.25rem">
+    <table class="teks">
+      <caption>Delapan baris pertama data gabungan</caption>
+      <thead>
+        <tr><th scope="col">No</th><th scope="col">Tanggal</th><th scope="col">Jenis kelamin</th><th scope="col">Umur</th><th scope="col">Berat</th><th scope="col">Desa</th></tr>
+      </thead>
+      <tbody>
+        <tr><th scope="row">1</th><td>03/04/2026</td><td>L</td><td>34</td><td>65</td><td>Lontara Utara</td></tr>
+        <tr><th scope="row">2</th><td>03/04/2026</td><td>Laki-laki</td><td>52</td><td>70 kg</td><td>Lontara Utara</td></tr>
+        <tr><th scope="row">3</th><td>2026-04-03</td><td>laki laki</td><td>250</td><td>58</td><td>lontara utara</td></tr>
+        <tr><th scope="row">4</th><td>4 April 2026</td><td>P</td><td>61</td><td></td><td>Lontara Sel.</td></tr>
+        <tr><th scope="row">5</th><td>04/04/2026</td><td>pr</td><td>45</td><td>0</td><td>Lontara Selatan</td></tr>
+        <tr><th scope="row">6</th><td>04/04/2026</td><td>Perempuan</td><td>19</td><td>51</td><td>Lontara Selatan</td></tr>
+        <tr><th scope="row">7</th><td>04/04/2026</td><td>Perempuan</td><td>19</td><td>51</td><td>Lontara Selatan</td></tr>
+        <tr><th scope="row">8</th><td>05/04/2026</td><td>p</td><td>70</td><td>49,5</td><td>Lontara Timur</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p class="keterangan baca" style="margin-top:0.8rem">Nama tempat dan seluruh data rekaan, disusun untuk latihan.</p>
+</section>
+
+<section aria-labelledby="m-l1">
+  <span class="langkah">Langkah 1</span>
+  <h2 id="m-l1">Temukan masalahnya</h2>
+  <p>Periksa tabel di atas kolom demi kolom. Tuliskan setiap hal yang akan menyulitkan penghitungan sebelum membuka jawaban.</p>
+  <details>
+    <summary>Lihat jawaban</summary>
+    <ul>
+      <li><strong>Tanggal</strong> ditulis dengan tiga cara. "03/04/2026" juga bermakna ganda: 3 April atau 4 Maret?</li>
+      <li><strong>Jenis kelamin</strong> punya tujuh ejaan untuk dua kategori: L, Laki-laki, laki laki, P, p, pr, dan Perempuan.</li>
+      <li><strong>Umur 250</strong> pada baris 3 mustahil. Kemungkinan salah ketik dari 25.</li>
+      <li><strong>Berat "70 kg"</strong> memuat satuan, sehingga dibaca komputer sebagai teks, bukan angka.</li>
+      <li><strong>Berat kosong</strong> pada baris 4 dan <strong>berat 0</strong> pada baris 5. Kosong berarti tidak diukur. Nol berarti beratnya nol, yang mustahil. Keduanya harus dibedakan.</li>
+      <li><strong>Baris 6 dan 7</strong> sama persis. Mungkin satu orang tercatat dua kali.</li>
+      <li><strong>Nama desa</strong> tidak seragam: beda huruf besar dan singkatan "Sel.".</li>
+    </ul>
+    <p>Rata-rata umur hampir 69 tahun berasal dari satu angka 250. Tujuh "jenis kelamin" berasal dari ejaan yang berbeda. Komputer menghitung persis apa yang tertulis.</p>
+  </details>
+</section>
+
+<section aria-labelledby="m-l2">
+  <span class="langkah">Langkah 2</span>
+  <h2 id="m-l2">Pegang tiga aturan data rapi</h2>
+  <ol>
+    <li><strong>Satu baris untuk satu pengamatan.</strong> Di sini, satu kunjungan satu orang.</li>
+    <li><strong>Satu kolom untuk satu variabel.</strong> Berat di satu kolom, satuannya di judul kolom.</li>
+    <li><strong>Satu sel untuk satu nilai.</strong> "70 kg" memuat dua hal: angka dan satuan.</li>
+  </ol>
+  <p>Tambahkan tiga kebiasaan: tulis tanggal dengan urutan tahun-bulan-tanggal (2026-04-03) agar tidak bermakna ganda; biarkan sel kosong bila data tidak ada, jangan diisi nol atau tanda strip; dan jangan memakai warna sel atau sel gabung untuk menyimpan informasi.</p>
+</section>
+
+<section class="lebar" aria-labelledby="m-l3">
+  <span class="langkah">Langkah 3</span>
+  <h2 id="m-l3">Susun kamus data</h2>
+  <p class="baca"><strong>Kamus data</strong> adalah daftar yang menyebut, untuk tiap kolom, apa isinya dan nilai apa yang boleh dimasukkan. Bila dibagikan sebelum pengumpulan data, sebagian besar masalah di atas tidak akan terjadi.</p>
+  <div class="tabel-gulir">
+    <table class="teks">
+      <thead>
+        <tr><th scope="col">Kolom</th><th scope="col">Isi</th><th scope="col">Nilai yang boleh</th></tr>
+      </thead>
+      <tbody>
+        <tr><th scope="row">tanggal</th><td>Tanggal kunjungan</td><td>Tahun-bulan-tanggal, misalnya 2026-04-03</td></tr>
+        <tr><th scope="row">jenis_kelamin</th><td>Jenis kelamin peserta</td><td>Hanya "Laki-laki" atau "Perempuan"</td></tr>
+        <tr><th scope="row">umur_tahun</th><td>Umur pada hari kunjungan</td><td>Bilangan bulat 0 sampai 120</td></tr>
+        <tr><th scope="row">berat_kg</th><td>Berat badan</td><td>Angka 20 sampai 250, tanpa satuan; kosong bila tidak diukur</td></tr>
+        <tr><th scope="row">desa</th><td>Desa tempat tinggal</td><td>Dipilih dari daftar nama desa yang baku</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p class="baca" style="margin-top:1rem">Di lembar kerja, aturan seperti ini dapat dipasang sebagai validasi data, sehingga petugas hanya bisa memilih dari daftar dan angka di luar rentang langsung ditolak.</p>
+</section>
+
+<section aria-labelledby="m-l4">
+  <span class="langkah">Langkah 4</span>
+  <h2 id="m-l4">Rapikan dengan Python</h2>
+  <p>Data yang sudah telanjur berantakan dapat dirapikan dengan program, sehingga langkahnya tercatat dan bisa diulang. Buka Google Colab dan jalankan kode berikut. Bila belum pernah memakai Colab, kerjakan dulu modul <a href="ai-02.html">Menulis program Python pertama di Google Colab</a>.</p>
+  <h3>Menyeragamkan kategori</h3>
+  <p>Buat "peta" dari setiap ejaan ke ejaan baku. Perintah <code>strip</code> membuang spasi di ujung teks dan <code>lower</code> mengubahnya menjadi huruf kecil, sehingga "P", "p", dan " p " diperlakukan sama.</p>
+<pre><code>jk = ["L", "Laki-laki", "laki laki", "P", "pr", "Perempuan", "Perempuan", "p"]
+
+peta = {"l": "Laki-laki", "laki-laki": "Laki-laki", "laki laki": "Laki-laki",
+        "p": "Perempuan", "pr": "Perempuan", "perempuan": "Perempuan"}
+
+rapi = [peta[x.strip().lower()] for x in jk]
+
+print("Laki-laki:", rapi.count("Laki-laki"))
+print("Perempuan:", rapi.count("Perempuan"))</code></pre>
+  <details>
+    <summary>Lihat keluarannya</summary>
+<pre class="keluaran"><code>Laki-laki: 3
+Perempuan: 5</code></pre>
+    <p>Bila ada ejaan yang belum masuk peta, Python berhenti dengan <code>KeyError</code> dan menyebut ejaan itu. Itu berguna: Anda jadi tahu ada ejaan baru yang harus diputuskan, alih-alih diam-diam salah hitung.</p>
+  </details>
+  <h3>Mencari nilai yang tidak masuk akal</h3>
+<pre><code>umur = [34, 52, 250, 61, 45, 19, 19, 70]
+
+for u in umur:
+    if u &lt; 0 or u &gt; 120:
+        print("Periksa umur:", u)
+
+print("Rata-rata:", round(sum(umur) / len(umur), 1))</code></pre>
+  <details>
+    <summary>Lihat keluarannya</summary>
+<pre class="keluaran"><code>Periksa umur: 250
+Rata-rata: 68.8</code></pre>
+    <p>Program hanya menandai. Ia tidak tahu umur yang benar. Anda harus kembali ke sumbernya, misalnya buku register atau petugas yang mencatat. Bila ternyata 25, rata-rata delapan baris ini menjadi 40,6 tahun.</p>
+  </details>
+</section>
+
+<section aria-labelledby="m-l5">
+  <span class="langkah">Langkah 5</span>
+  <h2 id="m-l5">Jaga jejak perubahannya</h2>
+  <ul>
+    <li><strong>Jangan mengubah data mentah.</strong> Simpan berkas asli apa adanya dan bekerjalah pada salinannya.</li>
+    <li><strong>Catat setiap perubahan:</strong> baris mana, dari nilai apa menjadi apa, atas dasar apa, dan oleh siapa.</li>
+    <li><strong>Jangan menebak.</strong> Nilai yang tidak dapat dipastikan dibiarkan kosong dan dilaporkan jumlahnya.</li>
+    <li><strong>Periksa baris ganda sebelum menghapus.</strong> Dua baris yang sama bisa berarti salah catat, atau memang dua orang yang kebetulan sama umur dan beratnya.</li>
+  </ul>
+  <details>
+    <summary>Bagaimana melaporkan hasil setelah dirapikan?</summary>
+    <p>Sebutkan apa yang Anda lakukan terhadap data, misalnya: "Dari delapan catatan, satu umur diperbaiki setelah dicocokkan dengan register, satu berat tidak diukur, satu berat bernilai nol dianggap kosong, dan satu pasang catatan ganda sedang dikonfirmasi ke petugas." Pembaca berhak tahu seberapa bersih data di balik angka Anda.</p>
+  </details>
+</section>
+
+<section aria-labelledby="m-kuis">
+  <h2 id="m-kuis">Uji diri</h2>
+
+  <fieldset class="soal" data-benar="b">
+    <legend>1. Sel berat badan berisi "70 kg". Aturan data rapi mana yang dilanggar?</legend>
+    <button type="button" class="pilihan" data-nilai="a">Satu baris untuk satu pengamatan</button>
+    <button type="button" class="pilihan" data-nilai="b">Satu sel untuk satu nilai</button>
+    <button type="button" class="pilihan" data-nilai="c">Data mentah tidak boleh diubah</button>
+    <button type="button" class="pilihan" data-nilai="d">Tidak ada yang dilanggar</button>
+    <p class="penjelasan" hidden>Sel itu memuat angka dan satuan sekaligus, sehingga komputer membacanya sebagai teks.</p>
+  </fieldset>
+
+  <fieldset class="soal" data-benar="d">
+    <legend>2. Berat badan seorang peserta tidak diukur. Apa yang ditulis di selnya?</legend>
+    <button type="button" class="pilihan" data-nilai="a">0</button>
+    <button type="button" class="pilihan" data-nilai="b">Tanda strip</button>
+    <button type="button" class="pilihan" data-nilai="c">Rata-rata peserta lain</button>
+    <button type="button" class="pilihan" data-nilai="d">Dibiarkan kosong</button>
+    <p class="penjelasan" hidden>Kosong berarti tidak ada data. Nol akan ikut dihitung sebagai berat nol dan menurunkan rata-rata.</p>
+  </fieldset>
+
+  <fieldset class="soal" data-benar="a">
+    <legend>3. Cara menulis tanggal mana yang paling aman dari salah baca?</legend>
+    <button type="button" class="pilihan" data-nilai="a">2026-04-03</button>
+    <button type="button" class="pilihan" data-nilai="b">03/04/2026</button>
+    <button type="button" class="pilihan" data-nilai="c">3/4/26</button>
+    <button type="button" class="pilihan" data-nilai="d">Sabtu lalu</button>
+    <p class="penjelasan" hidden>Urutan tahun-bulan-tanggal tidak bermakna ganda dan dapat diurutkan dengan benar.</p>
+  </fieldset>
+
+  <fieldset class="soal" data-benar="c">
+    <legend>4. Program menandai umur 250. Apa langkah yang benar?</legend>
+    <button type="button" class="pilihan" data-nilai="a">Menggantinya dengan 25 karena tampaknya itu maksudnya.</button>
+    <button type="button" class="pilihan" data-nilai="b">Menghapus barisnya.</button>
+    <button type="button" class="pilihan" data-nilai="c">Mencocokkannya dengan sumber asli, lalu mencatat perubahannya.</button>
+    <button type="button" class="pilihan" data-nilai="d">Membiarkannya dan tetap menghitung rata-rata.</button>
+    <p class="penjelasan" hidden>Tebakan bisa keliru; mungkin saja yang benar 50 atau 52. Perbaikan harus berdasar sumber dan tercatat.</p>
+  </fieldset>
+
+  <fieldset class="soal" data-benar="b">
+    <legend>5. Mengapa berkas data asli tidak boleh ditimpa saat dirapikan?</legend>
+    <button type="button" class="pilihan" data-nilai="a">Karena berkas asli lebih rapi.</button>
+    <button type="button" class="pilihan" data-nilai="b">Supaya setiap perubahan bisa diperiksa dan kesalahan saat merapikan bisa diperbaiki.</button>
+    <button type="button" class="pilihan" data-nilai="c">Karena komputer tidak mengizinkan.</button>
+    <button type="button" class="pilihan" data-nilai="d">Tidak ada alasannya.</button>
+    <p class="penjelasan" hidden>Tanpa berkas asli, Anda tidak dapat membuktikan apa yang berubah atau kembali bila perapian ternyata keliru.</p>
+  </fieldset>
+
+  <p class="skor" id="skor" role="status" hidden></p>
+</section>
+
+<section aria-labelledby="m-naik">
+  <h2 id="m-naik">Naik jenjang</h2>
+  <p>Dalam analisis nyata, merapikan data sering memakan waktu lebih banyak daripada menganalisisnya.</p>
+
+  <div class="naik">
+    <h3>Jenjang 2: merapikan ribuan baris</h3>
+    <p>Dengan pustaka pandas Anda akan membaca berkas lembar kerja, menyeragamkan kategori, mengubah teks menjadi tanggal dan angka, menemukan baris ganda, dan meringkas data hilang per kolom dalam beberapa baris kode.</p>
+  </div>
+
+  <div class="naik j3">
+    <h3>Jenjang 3: menggabungkan sumber dan menangani data hilang</h3>
+    <p>Anda akan mencocokkan catatan orang yang sama dari sumber berbeda walaupun ejaan namanya tidak persis sama, dan mempelajari mengapa cara data hilang menentukan cara menanganinya: membuang baris yang tidak lengkap bisa menghasilkan kesimpulan yang bias.</p>
+  </div>
+
+  <div class="naik j4">
+    <h3>Jenjang 4: tata kelola mutu data</h3>
+    <p>Seorang ahli merancang sistem agar data sudah bersih sejak dimasukkan: formulir dengan validasi, standar kode, pemeriksaan mutu berkala dengan ukuran kelengkapan dan ketepatan, serta alur perbaikan yang kembali ke sumber data.</p>
+  </div>
+</section>
+
+<section aria-labelledby="m-terap">
+  <h2 id="m-terap">Terapkan</h2>
+  <ol>
+    <li>Buka satu lembar kerja di tempat kerja atau kampus Anda. Temukan sedikitnya tiga masalah dari daftar pada Langkah 1.</li>
+    <li>Susun kamus data untuk lembar kerja itu.</li>
+    <li>Pasang validasi data pada satu kolom kategori sehingga hanya nilai baku yang bisa dipilih.</li>
+  </ol>
+  <div class="deret-tombol">
+    <button type="button" class="tombol" id="tandai-selesai" data-modul="ai-03">Tandai modul ini selesai</button>
+    <a class="tombol garis" href="kurikulum.html">Kembali ke peta kurikulum</a>
+  </div>
+</section>
+
+<section aria-labelledby="m-rujuk">
+  <h2 id="m-rujuk">Rujukan dan bacaan lanjut</h2>
+  <ul class="rujukan">
+    <li>Hadley Wickham (2014). "Tidy Data". <em>Journal of Statistical Software</em>. Sumber tiga aturan data rapi.</li>
+    <li>Broman dan Woo (2018). "Data Organization in Spreadsheets". <em>The American Statistician</em>. Panduan praktis menata data di lembar kerja.</li>
+    <li>Python Software Foundation. <a href="https://docs.python.org/3/tutorial/"><em>The Python Tutorial</em></a>.</li>
+  </ul>
+  <p class="keterangan">Modul ini ditulis orisinal untuk Learn Public Health. Semua kode sudah dijalankan dan keluarannya dicocokkan.</p>
+</section>
+
+</div>
+</main>
+
+<footer class="kaki">
+  <div class="wadah">
+    <p><strong>Learn Public Health</strong>. Materi ini untuk pendidikan. Data kasus dalam modul adalah rekaan, kecuali disebutkan lain.</p>
+    <p><a href="index.html">Beranda</a> | <a href="kurikulum.html">Peta kurikulum</a> | <a href="sumber.html">Sumber belajar</a></p>
+  </div>
+</footer>
+
+<script src="app.js"></script>
+</body>
+</html>

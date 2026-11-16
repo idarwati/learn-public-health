@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Menilai seberapa jarang sebuah nilai dengan distribusi normal | Learn Public Health</title>
+<meta name="description" content="Modul biostatistik jenjang dasar: peluang, distribusi normal, aturan 68-95-99,7, dan skor z, diterapkan pada berat lahir bayi.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header class="kepala">
+  <div class="wadah">
+    <a class="merek" href="index.html">
+      <svg viewBox="0 0 32 32" aria-hidden="true"><path d="M2 30V22h7v-7h7V8h7V2h7v28z" fill="#075443"/></svg>
+      Learn Public Health
+    </a>
+    <nav aria-label="Menu utama">
+      <ul class="menu">
+        <li><a href="index.html">Beranda</a></li>
+        <li><a href="kurikulum.html">Peta kurikulum</a></li>
+        <li><a href="sumber.html">Sumber belajar</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<main>
+
+<div class="modul-kepala">
+  <div class="wadah">
+    <p class="remah"><a href="kurikulum.html">Peta kurikulum</a> / Biostatistik / Jenjang 1: Dasar</p>
+    <h1>Menilai seberapa jarang sebuah nilai dengan distribusi normal</h1>
+    <p class="ringkas">Seorang bayi lahir dengan berat 2.400 gram. Bidan bertanya seberapa jarang hal itu terjadi dan berapa bayi seperti itu yang harus disiapkan perawatannya setahun.</p>
+    <ul class="modul-info">
+      <li>Waktu belajar: sekitar 45 menit</li>
+      <li>Prasyarat: tidak ada</li>
+      <li>Alat: kalkulator biasa</li>
+    </ul>
+  </div>
+</div>
+
+<div class="modul-isi wadah">
+
+<section aria-labelledby="m-tujuan">
+  <h2 id="m-tujuan">Setelah modul ini, Anda bisa</h2>
+  <ul>
+    <li>menjelaskan arti peluang dan menghitungnya dari frekuensi;</li>
+    <li>menggambarkan distribusi normal dengan rata-rata dan simpangan baku;</li>
+    <li>memakai aturan 68, 95, dan 99,7 serta skor z untuk menilai seberapa jarang sebuah nilai.</li>
+  </ul>
+</section>
+
+<section aria-labelledby="m-kasus">
+  <h2 id="m-kasus">Kasus</h2>
+  <div class="kasus-cerita">
+    <p>Di wilayah Puskesmas Lontara lahir sekitar 1.000 bayi setahun. Dari catatan beberapa tahun, berat lahir bayi di sana rata-rata <strong>3.200 gram</strong> dengan simpangan baku <strong>400 gram</strong>, dan sebarannya berbentuk lonceng.</p>
+    <p>Pagi ini seorang bidan melaporkan bayi lahir dengan berat 2.400 gram. Ia bertanya: "Seberapa jarang bayi sekecil ini? Dan berapa bayi seperti ini yang harus kami siapkan perawatannya dalam setahun?"</p>
+  </div>
+  <p class="keterangan">Nama tempat dan seluruh angka rekaan, disusun untuk latihan.</p>
+</section>
+
+<section aria-labelledby="m-l1">
+  <span class="langkah">Langkah 1</span>
+  <h2 id="m-l1">Pahami peluang sebagai frekuensi jangka panjang</h2>
+  <p><strong>Peluang</strong> suatu kejadian adalah seberapa sering kejadian itu muncul bila pengamatan diulang sangat banyak kali. Nilainya antara 0 (mustahil) dan 1 (pasti), dan sering ditulis sebagai persen.</p>
+  <div class="rumus">Peluang = banyaknya kejadian yang dimaksud ÷ banyaknya seluruh pengamatan</div>
+  <p>Dua sifat yang akan sering dipakai:</p>
+  <ul>
+    <li>Peluang sesuatu <em>tidak</em> terjadi adalah 1 dikurangi peluang terjadinya.</li>
+    <li>Peluang dikalikan banyaknya pengamatan memberi jumlah kejadian yang diharapkan.</li>
+  </ul>
+  <details>
+    <summary>Dari 1.000 bayi tahun lalu, 40 lahir dengan berat di bawah 2.500 gram. Berapa peluangnya, dan berapa peluang bayi lahir 2.500 gram atau lebih?</summary>
+    <p>Peluang berat di bawah 2.500 gram: 40 ÷ 1.000 = 0,04 atau <strong>4%</strong>. Peluang 2.500 gram atau lebih: 1 − 0,04 = 0,96 atau <strong>96%</strong>.</p>
+  </details>
+</section>
+
+<section aria-labelledby="m-l2">
+  <span class="langkah">Langkah 2</span>
+  <h2 id="m-l2">Kenali distribusi normal</h2>
+  <p>Banyak ukuran tubuh, seperti tinggi badan, berat lahir, dan tekanan darah, menyebar dengan pola yang sama: kebanyakan nilai berkumpul di sekitar rata-rata, dan makin jauh dari rata-rata makin jarang. Bila digambar, bentuknya seperti lonceng yang setangkup. Pola ini disebut <strong>distribusi normal</strong>.</p>
+  <p>Distribusi normal ditentukan sepenuhnya oleh dua angka: rata-rata menentukan letak puncaknya, dan simpangan baku menentukan lebarnya. Untuk setiap distribusi normal berlaku aturan berikut.</p>
+  <ul>
+    <li>Sekitar <strong>68%</strong> nilai berada dalam 1 simpangan baku dari rata-rata.</li>
+    <li>Sekitar <strong>95%</strong> berada dalam 2 simpangan baku.</li>
+    <li>Sekitar <strong>99,7%</strong> berada dalam 3 simpangan baku.</li>
+  </ul>
+  <p>Terapkan pada berat lahir di Lontara: antara berapa dan berapa gram 68% bayi berada? Bagaimana dengan 95%?</p>
+  <details>
+    <summary>Lihat jawaban</summary>
+    <p>68% bayi: 3.200 ± 400, yaitu antara <strong>2.800 dan 3.600 gram</strong>.</p>
+    <p>95% bayi: 3.200 ± 800, yaitu antara <strong>2.400 dan 4.000 gram</strong>.</p>
+  </details>
+</section>
+
+<section aria-labelledby="m-l3">
+  <span class="langkah">Langkah 3</span>
+  <h2 id="m-l3">Ubah nilai menjadi skor z</h2>
+  <p><strong>Skor z</strong> menyatakan berapa simpangan baku jarak suatu nilai dari rata-rata. Nilai di bawah rata-rata memiliki z negatif.</p>
+  <div class="rumus">z = (nilai − rata-rata) ÷ simpangan baku</div>
+  <p>Hitung skor z bayi 2.400 gram. Lalu, dengan aturan 95%, perkirakan berapa persen bayi yang lebih ringan daripadanya.</p>
+  <details>
+    <summary>Lihat jawaban</summary>
+    <p>z = (2.400 − 3.200) ÷ 400 = <strong>−2</strong>. Bayi itu berada 2 simpangan baku di bawah rata-rata.</p>
+    <p>Sebanyak 95% bayi berada di antara z = −2 dan z = +2, sehingga 5% berada di luarnya. Karena lonceng itu setangkup, separuhnya, yaitu sekitar <strong>2,5%</strong>, berada di bawah z = −2.</p>
+    <p>Jawaban untuk bidan: kira-kira 1 dari 40 bayi lahir seringan itu atau lebih ringan. Dari 1.000 kelahiran setahun, diharapkan sekitar 0,025 × 1.000 = <strong>25 bayi</strong>.</p>
+  </details>
+
+  <form class="kalkulator" id="normal" novalidate>
+    <h3>Kalkulator distribusi normal</h3>
+    <div class="isian">
+      <label>Rata-rata <input type="text" name="rata" inputmode="decimal" value="3200"></label>
+      <label>Simpangan baku <input type="text" name="sb" inputmode="decimal" value="400"></label>
+      <label>Nilai yang ditanyakan <input type="text" name="nilai" inputmode="decimal" value="2400"></label>
+    </div>
+    <button type="submit" class="tombol">Hitung</button>
+    <p class="pesan" id="pesan-normal" role="alert" hidden></p>
+    <dl class="hasil" id="hasil-normal" aria-live="polite" hidden>
+      <div><dt>Skor z</dt><dd id="n-z"></dd></div>
+      <div><dt>Persentase di bawah nilai ini</dt><dd id="n-bawah"></dd></div>
+      <div><dt>Persentase di atas nilai ini</dt><dd id="n-atas"></dd></div>
+    </dl>
+  </form>
+  <p style="margin-top:1rem">Kalkulator memberi angka yang lebih teliti daripada aturan 68, 95, dan 99,7. Untuk z = −2 hasilnya 2,3%, sedikit di bawah perkiraan 2,5%.</p>
+</section>
+
+<section aria-labelledby="m-l4">
+  <span class="langkah">Langkah 4</span>
+  <h2 id="m-l4">Jawab pertanyaan lain dengan cara yang sama</h2>
+  <p>Gunakan aturan 68 dan 95, lalu periksa dengan kalkulator.</p>
+  <ol>
+    <li>Berapa persen bayi lahir dengan berat di bawah 2.800 gram?</li>
+    <li>Berapa persen bayi lahir dengan berat di atas 4.000 gram?</li>
+    <li>Bayi dengan berat lahir di bawah 2.500 gram disebut berat badan lahir rendah. Berapa bayi seperti itu yang diharapkan dari 1.000 kelahiran?</li>
+  </ol>
+  <details>
+    <summary>Lihat jawaban</summary>
+    <ol>
+      <li>2.800 gram adalah z = −1. Sebanyak 68% berada di antara −1 dan +1, sehingga 32% di luarnya dan separuhnya, <strong>16%</strong>, di bawah −1.</li>
+      <li>4.000 gram adalah z = +2. Sekitar <strong>2,5%</strong> bayi berada di atasnya.</li>
+      <li>z = (2.500 − 3.200) ÷ 400 = −1,75. Aturan sederhana tidak mencakup nilai ini; kalkulator memberi 4,0%. Dari 1.000 kelahiran diharapkan sekitar <strong>40 bayi</strong>.</li>
+    </ol>
+  </details>
+</section>
+
+<section aria-labelledby="m-l5">
+  <span class="langkah">Langkah 5</span>
+  <h2 id="m-l5">Ketahui batas pemakaiannya</h2>
+  <ul>
+    <li><strong>Tidak semua data berdistribusi normal.</strong> Lama rawat, biaya, dan lama tunggu biasanya menceng ke kanan. Untuk data seperti itu aturan 68, 95, dan 99,7 tidak berlaku.</li>
+    <li><strong>"Jarang" tidak sama dengan "sakit".</strong> Nilai di luar 2 simpangan baku memang tidak biasa, tetapi 5 dari 100 orang sehat pun berada di sana.</li>
+    <li><strong>Rata-rata dan simpangan baku harus berasal dari kelompok yang sesuai.</strong> Angka dari satu wilayah belum tentu cocok untuk wilayah lain.</li>
+  </ul>
+</section>
+
+<section aria-labelledby="m-kuis">
+  <h2 id="m-kuis">Uji diri</h2>
+
+  <fieldset class="soal" data-benar="c">
+    <legend>1. Dari 200 pasien, 30 mengalami efek samping obat. Berapa peluang seorang pasien tidak mengalaminya?</legend>
+    <button type="button" class="pilihan" data-nilai="a">15%</button>
+    <button type="button" class="pilihan" data-nilai="b">30%</button>
+    <button type="button" class="pilihan" data-nilai="c">85%</button>
+    <button type="button" class="pilihan" data-nilai="d">170%</button>
+    <p class="penjelasan" hidden>Peluang mengalami: 30 ÷ 200 = 15%. Peluang tidak mengalami: 100% − 15% = 85%.</p>
+  </fieldset>
+
+  <fieldset class="soal" data-benar="a">
+    <legend>2. Tekanan darah sistolik sekelompok orang rata-rata 120 dengan simpangan baku 10 dan berdistribusi normal. Antara berapa 95% nilainya berada?</legend>
+    <button type="button" class="pilihan" data-nilai="a">100 sampai 140</button>
+    <button type="button" class="pilihan" data-nilai="b">110 sampai 130</button>
+    <button type="button" class="pilihan" data-nilai="c">90 sampai 150</button>
+    <button type="button" class="pilihan" data-nilai="d">115 sampai 125</button>
+    <p class="penjelasan" hidden>95% berada dalam 2 simpangan baku: 120 ± 20.</p>
+  </fieldset>
+
+  <fieldset class="soal" data-benar="d">
+    <legend>3. Rata-rata 50 dan simpangan baku 8. Berapa skor z untuk nilai 62?</legend>
+    <button type="button" class="pilihan" data-nilai="a">−1,5</button>
+    <button type="button" class="pilihan" data-nilai="b">0,67</button>
+    <button type="button" class="pilihan" data-nilai="c">12</button>
+    <button type="button" class="pilihan" data-nilai="d">1,5</button>
+    <p class="penjelasan" hidden>(62 − 50) ÷ 8 = 1,5.</p>
+  </fieldset>
+
+  <fieldset class="soal" data-benar="b">
+    <legend>4. Pada distribusi normal, kira-kira berapa persen nilai berada di atas z = +1?</legend>
+    <button type="button" class="pilihan" data-nilai="a">2,5%</button>
+    <button type="button" class="pilihan" data-nilai="b">16%</button>
+    <button type="button" class="pilihan" data-nilai="c">32%</button>
+    <button type="button" class="pilihan" data-nilai="d">68%</button>
+    <p class="penjelasan" hidden>68% berada di antara −1 dan +1. Sisanya 32% terbagi dua sama besar, sehingga 16% di atas +1.</p>
+  </fieldset>
+
+  <fieldset class="soal" data-benar="c">
+    <legend>5. Untuk data mana aturan 68, 95, dan 99,7 paling tidak cocok?</legend>
+    <button type="button" class="pilihan" data-nilai="a">Tinggi badan orang dewasa</button>
+    <button type="button" class="pilihan" data-nilai="b">Berat lahir bayi</button>
+    <button type="button" class="pilihan" data-nilai="c">Biaya rawat inap pasien</button>
+    <button type="button" class="pilihan" data-nilai="d">Kadar hemoglobin</button>
+    <p class="penjelasan" hidden>Biaya rawat inap menceng ke kanan: kebanyakan kecil, sebagian kecil sangat besar. Aturan itu hanya berlaku untuk distribusi normal.</p>
+  </fieldset>
+
+  <p class="skor" id="skor" role="status" hidden></p>
+</section>
+
+<section aria-labelledby="m-naik">
+  <h2 id="m-naik">Naik jenjang</h2>
+  <p>Distribusi normal adalah dasar sebagian besar statistik inferensial yang akan Anda pelajari.</p>
+
+  <div class="naik">
+    <h3>Jenjang 2: dari sebaran orang ke sebaran rata-rata</h3>
+    <p>Bila Anda mengambil banyak sampel dan menghitung rata-ratanya, rata-rata itu sendiri menyebar mendekati distribusi normal, bahkan ketika data aslinya menceng. Inilah teorema limit pusat, dasar selang kepercayaan dan uji hipotesis.</p>
+  </div>
+
+  <div class="naik j3">
+    <h3>Jenjang 3: distribusi untuk jenis data lain</h3>
+    <p>Jumlah kasus per minggu mengikuti distribusi Poisson, dan jumlah yang sembuh dari sejumlah pasien mengikuti distribusi binomial. Anda akan memilih distribusi yang sesuai dengan cara data dihasilkan, dan memeriksa dengan grafik apakah anggapan normal layak dipakai.</p>
+  </div>
+
+  <div class="naik j4">
+    <h3>Jenjang 4: membangun acuan dan memperbarui keyakinan</h3>
+    <p>Kurva pertumbuhan anak dibangun dari skor z pada tiap umur, dengan cara yang menangani kemencengan. Seorang ahli juga memakai peluang untuk memperbarui keyakinan saat data baru datang, yang menjadi inti statistik Bayes.</p>
+  </div>
+</section>
+
+<section aria-labelledby="m-terap">
+  <h2 id="m-terap">Terapkan</h2>
+  <ol>
+    <li>Cari rata-rata dan simpangan baku satu ukuran dari laporan atau jurnal. Antara berapa 95% nilainya berada, bila sebarannya normal?</li>
+    <li>Hitung skor z Anda sendiri untuk tinggi badan, memakai rata-rata dan simpangan baku kelompok Anda.</li>
+    <li>Sebutkan dua ukuran di tempat kerja atau kampus Anda yang menurut Anda tidak berdistribusi normal, beserta alasannya.</li>
+  </ol>
+  <div class="deret-tombol">
+    <button type="button" class="tombol" id="tandai-selesai" data-modul="biostatistik-04">Tandai modul ini selesai</button>
+    <a class="tombol garis" href="kurikulum.html">Kembali ke peta kurikulum</a>
+  </div>
+</section>
+
+<section aria-labelledby="m-rujuk">
+  <h2 id="m-rujuk">Rujukan dan bacaan lanjut</h2>
+  <ul class="rujukan">
+    <li>OpenStax. <a href="https://openstax.org/books/introductory-statistics-2e/pages/preface"><em>Introductory Statistics 2e</em></a>. Bab tentang peluang dan bab tentang distribusi normal. Lisensi CC BY 4.0.</li>
+    <li>Pagano dan Gauvreau. <em>Principles of Biostatistics</em>. Bab tentang peluang dan distribusi peluang teoretis.</li>
+    <li>Kirkwood dan Sterne. <em>Essential Medical Statistics</em>. Bab tentang distribusi normal.</li>
+  </ul>
+  <p class="keterangan">Modul ini ditulis orisinal untuk Learn Public Health.</p>
+</section>
+
+</div>
+</main>
+
+<footer class="kaki">
+  <div class="wadah">
+    <p><strong>Learn Public Health</strong>. Materi ini untuk pendidikan. Data kasus dalam modul adalah rekaan, kecuali disebutkan lain.</p>
+    <p><a href="index.html">Beranda</a> | <a href="kurikulum.html">Peta kurikulum</a> | <a href="sumber.html">Sumber belajar</a></p>
+  </div>
+</footer>
+
+<script src="app.js"></script>
+</body>
+</html>

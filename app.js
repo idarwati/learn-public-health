@@ -1,5 +1,5 @@
 /* Learn Public Health — skrip bersama.
-   Isi: kurva epidemi, kuis, kalkulator risiko, kalkulator ringkasan data, dan penanda "modul selesai". */
+   Isi: kurva epidemi, kuis, kalkulator risiko, kalkulator ringkasan data, kalkulator distribusi normal, dan penanda "modul selesai". */
 (function () {
   'use strict';
 
@@ -157,6 +157,39 @@
     });
   }
 
+  /* ---------- Kalkulator distribusi normal ----------
+     peluangNormal(z) = bagian distribusi normal baku yang berada di bawah z.
+     Fungsi galat dihampiri dengan rumus Abramowitz dan Stegun 7.1.26. */
+  function peluangNormal(z) {
+    var x = Math.abs(z) / Math.SQRT2;
+    var t = 1 / (1 + 0.3275911 * x);
+    var erf = 1 - (((((1.061405429 * t - 1.453152027) * t) + 1.421413741) * t - 0.284496736) * t + 0.254829592) * t * Math.exp(-x * x);
+    return z >= 0 ? 0.5 * (1 + erf) : 0.5 * (1 - erf);
+  }
+
+  function pasangNormal(form) {
+    var keluaran = document.getElementById('hasil-normal');
+    var pesan = document.getElementById('pesan-normal');
+    function baca(nama) { return Number(String(form.elements[nama].value).trim().replace(',', '.')); }
+    form.addEventListener('submit', function (e) {
+      e.preventDefault();
+      var rata = baca('rata'), sb = baca('sb'), nilai = baca('nilai');
+      var kosong = ['rata', 'sb', 'nilai'].some(function (n) { return String(form.elements[n].value).trim() === ''; });
+      if (kosong || !isFinite(rata) || !isFinite(sb) || !isFinite(nilai)) {
+        pesan.textContent = 'Isi ketiga kotak dengan angka.'; pesan.hidden = false; keluaran.hidden = true; return;
+      }
+      if (sb <= 0) {
+        pesan.textContent = 'Simpangan baku harus lebih dari 0.'; pesan.hidden = false; keluaran.hidden = true; return;
+      }
+      var z = (nilai - rata) / sb;
+      var bawah = peluangNormal(z);
+      pesan.hidden = true; keluaran.hidden = false;
+      document.getElementById('n-z').textContent = angka(z, 2);
+      document.getElementById('n-bawah').textContent = angka(bawah * 100, 1) + '%';
+      document.getElementById('n-atas').textContent = angka((1 - bawah) * 100, 1) + '%';
+    });
+  }
+
   /* ---------- Kuis ----------
      <fieldset class="soal" data-benar="b"> berisi tombol .pilihan[data-nilai]
      dan <p class="penjelasan" hidden>. */
@@ -225,6 +258,8 @@
       if (form) pasangKalkulator(form);
       var ringkas = document.getElementById('ringkasan');
       if (ringkas) pasangRingkasan(ringkas);
+      var normal = document.getElementById('normal');
+      if (normal) pasangNormal(normal);
       pasangKuis();
       pasangPenanda();
     });
@@ -232,6 +267,6 @@
 
   /* Agar rumus bisa diuji di luar peramban. */
   if (typeof module !== 'undefined' && module.exports) {
-    module.exports = { hitungRisiko: hitungRisiko, hitungRingkasan: hitungRingkasan };
+    module.exports = { hitungRisiko: hitungRisiko, hitungRingkasan: hitungRingkasan, peluangNormal: peluangNormal };
   }
 })();
