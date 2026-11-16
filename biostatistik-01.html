@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Mengenali jenis data sebelum menghitung | Learn Public Health</title>
+<meta name="description" content="Modul biostatistik jenjang dasar: data kategorik dan numerik, empat skala ukur, serta ringkasan dan grafik yang sesuai.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header class="kepala">
+  <div class="wadah">
+    <a class="merek" href="index.html">
+      <svg viewBox="0 0 32 32" aria-hidden="true"><path d="M2 30V22h7v-7h7V8h7V2h7v28z" fill="#075443"/></svg>
+      Learn Public Health
+    </a>
+    <nav aria-label="Menu utama">
+      <ul class="menu">
+        <li><a href="index.html">Beranda</a></li>
+        <li><a href="kurikulum.html">Peta kurikulum</a></li>
+        <li><a href="sumber.html">Sumber belajar</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<main>
+
+<div class="modul-kepala">
+  <div class="wadah">
+    <p class="remah"><a href="kurikulum.html">Peta kurikulum</a> / Biostatistik / Jenjang 1: Dasar</p>
+    <h1>Mengenali jenis data sebelum menghitung</h1>
+    <p class="ringkas">Sebuah draf laporan menyebut "rata-rata jenis kelamin pasien 1,6". Anda diminta memperbaikinya sebelum sampai ke meja kepala puskesmas.</p>
+    <ul class="modul-info">
+      <li>Waktu belajar: sekitar 40 menit</li>
+      <li>Prasyarat: tidak ada</li>
+      <li>Alat: kalkulator biasa</li>
+    </ul>
+  </div>
+</div>
+
+<div class="modul-isi wadah">
+
+<section aria-labelledby="m-tujuan">
+  <h2 id="m-tujuan">Setelah modul ini, Anda bisa</h2>
+  <ul>
+    <li>membedakan data kategorik dari data numerik;</li>
+    <li>menentukan skala ukur sebuah variabel: nominal, ordinal, interval, atau rasio;</li>
+    <li>memilih ringkasan dan grafik yang sesuai dengan jenis datanya.</li>
+  </ul>
+</section>
+
+<section class="lebar" aria-labelledby="m-kasus">
+  <h2 id="m-kasus">Kasus</h2>
+  <div class="kasus-cerita baca">
+    <p>Puskesmas Lontara baru menyelesaikan survei kepuasan pasien rawat jalan. Rekan Anda memasukkan jawaban ke lembar kerja dengan kode angka, lalu menekan tombol "rata-rata" untuk semua kolom.</p>
+    <p>Draf laporannya berbunyi: <strong>"Rata-rata jenis kelamin pasien 1,6. Rata-rata pendidikan 2,4. Rata-rata lama tunggu 35 menit."</strong></p>
+    <p>Kepala puskesmas akan membacakan laporan itu besok pagi. Anda diminta memeriksanya malam ini. Sebagai latihan, kita pakai delapan pasien pertama.</p>
+  </div>
+  <div class="tabel-gulir" style="margin-top:1.25rem">
+    <table>
+      <caption>Data delapan pasien pertama</caption>
+      <thead>
+        <tr><th scope="col">Pasien</th><th scope="col">Umur<br>(tahun)</th><th scope="col">Jenis<br>kelamin</th><th scope="col">Pendi&shy;dikan</th><th scope="col">Lama tunggu<br>(menit)</th><th scope="col">Kepu&shy;asan</th></tr>
+      </thead>
+      <tbody>
+        <tr><th scope="row">1</th><td>34</td><td>2</td><td>3</td><td>25</td><td>4</td></tr>
+        <tr><th scope="row">2</th><td>52</td><td>1</td><td>1</td><td>40</td><td>3</td></tr>
+        <tr><th scope="row">3</th><td>27</td><td>2</td><td>4</td><td>15</td><td>5</td></tr>
+        <tr><th scope="row">4</th><td>61</td><td>2</td><td>2</td><td>55</td><td>2</td></tr>
+        <tr><th scope="row">5</th><td>45</td><td>1</td><td>3</td><td>30</td><td>4</td></tr>
+        <tr><th scope="row">6</th><td>19</td><td>2</td><td>3</td><td>20</td><td>4</td></tr>
+        <tr><th scope="row">7</th><td>38</td><td>1</td><td>2</td><td>35</td><td>3</td></tr>
+        <tr><th scope="row">8</th><td>70</td><td>2</td><td>1</td><td>60</td><td>2</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p class="keterangan baca" style="margin-top:0.8rem">Kode: jenis kelamin 1 = laki-laki, 2 = perempuan. Pendidikan 1 = SD, 2 = SMP, 3 = SMA, 4 = perguruan tinggi. Kepuasan 1 = sangat tidak puas sampai 5 = sangat puas. Nama tempat dan seluruh data rekaan.</p>
+</section>
+
+<section aria-labelledby="m-l1">
+  <span class="langkah">Langkah 1</span>
+  <h2 id="m-l1">Tanyakan: angka ini ukuran atau label?</h2>
+  <p>Tidak semua angka di lembar kerja adalah bilangan yang boleh dijumlahkan. Sebagian hanya label yang kebetulan ditulis dengan angka.</p>
+  <ul>
+    <li><strong>Data numerik</strong> menyatakan jumlah atau ukuran. Umur 34 tahun memang 34 satuan dari sesuatu.</li>
+    <li><strong>Data kategorik</strong> menyatakan kelompok. Kode 2 pada jenis kelamin tidak berarti "dua kali" kode 1; ia hanya nama lain untuk "perempuan".</li>
+  </ul>
+  <details>
+    <summary>Mengapa "rata-rata jenis kelamin 1,6" tidak bermakna?</summary>
+    <p>Karena kodenya bisa diganti sesuka hati. Jika perempuan diberi kode 7 dan laki-laki 3, rata-ratanya berubah padahal pasiennya sama. Angka yang berubah hanya karena ganti label tidak menggambarkan apa pun.</p>
+    <p>Ada satu pengecualian yang berguna. Jika kodenya 0 = laki-laki dan 1 = perempuan, rata-ratanya menjadi 5 ÷ 8 = 0,625, persis sama dengan proporsi perempuan (62,5%). Rata-rata dari kode 0 dan 1 selalu sama dengan proporsi kelompok berkode 1.</p>
+  </details>
+</section>
+
+<section class="lebar" aria-labelledby="m-l2">
+  <span class="langkah">Langkah 2</span>
+  <h2 id="m-l2">Tentukan skala ukurnya</h2>
+  <p class="baca">Ada empat skala ukur. Makin ke bawah, makin banyak hal yang boleh dihitung.</p>
+  <div class="tabel-gulir">
+    <table class="teks">
+      <thead>
+        <tr><th scope="col">Skala</th><th scope="col">Ciri</th><th scope="col">Contoh</th><th scope="col">Yang boleh dihitung</th></tr>
+      </thead>
+      <tbody>
+        <tr><th scope="row">Nominal</th><td>Kelompok tanpa urutan</td><td>Jenis kelamin, golongan darah</td><td>Jumlah, persen, modus</td></tr>
+        <tr><th scope="row">Ordinal</th><td>Kelompok berurutan, tetapi jarak antartingkat tidak tentu sama</td><td>Pendidikan, kepuasan</td><td>Yang di atas, ditambah median</td></tr>
+        <tr><th scope="row">Interval</th><td>Jarak antarnilai sama, tetapi nol bukan berarti "tidak ada"</td><td>Suhu dalam °C, tahun kalender</td><td>Yang di atas, ditambah rata-rata dan selisih</td></tr>
+        <tr><th scope="row">Rasio</th><td>Jarak sama dan nol berarti benar-benar tidak ada</td><td>Umur, lama tunggu, berat badan</td><td>Semuanya, termasuk perbandingan "dua kali lipat"</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p class="baca" style="margin-top:1rem">Perbedaan interval dan rasio terlihat pada perbandingan. Menunggu 60 menit memang dua kali lebih lama daripada 30 menit. Tetapi suhu 40°C bukan "dua kali lebih panas" daripada 20°C, karena 0°C hanyalah titik yang disepakati, bukan ketiadaan panas.</p>
+  <p class="baca">Tentukan skala ukur enam variabel ini sebelum membuka jawaban: golongan darah, stadium kanker I sampai IV, berat badan, skor nyeri 0 sampai 10, tahun lahir, jumlah anak.</p>
+  <details>
+    <summary>Lihat jawaban</summary>
+    <ul>
+      <li>Golongan darah: nominal.</li>
+      <li>Stadium kanker: ordinal. Stadium IV lebih berat daripada II, tetapi bukan "dua kali" lebih berat.</li>
+      <li>Berat badan: rasio.</li>
+      <li>Skor nyeri: ordinal. Dalam praktik sering dianalisis seperti data numerik; perdebatan ini dibahas di jenjang lanjut.</li>
+      <li>Tahun lahir: interval. Tahun 0 bukan awal waktu.</li>
+      <li>Jumlah anak: rasio.</li>
+    </ul>
+  </details>
+</section>
+
+<section aria-labelledby="m-l3">
+  <span class="langkah">Langkah 3</span>
+  <h2 id="m-l3">Bedakan yang dicacah dari yang diukur</h2>
+  <p>Data numerik masih terbagi dua.</p>
+  <ul>
+    <li><strong>Diskret</strong>: hasil mencacah, nilainya bilangan bulat. Contoh: jumlah kunjungan, jumlah anak.</li>
+    <li><strong>Kontinu</strong>: hasil mengukur, nilainya bisa pecahan sehalus alat ukurnya. Contoh: lama tunggu, berat badan, tekanan darah.</li>
+  </ul>
+  <p>Pembedaan ini menentukan grafik dan, di jenjang berikutnya, model statistik yang cocok.</p>
+</section>
+
+<section aria-labelledby="m-l4">
+  <span class="langkah">Langkah 4</span>
+  <h2 id="m-l4">Perbaiki laporannya</h2>
+  <p>Sekarang hitung ringkasan yang tepat dari data delapan pasien di atas.</p>
+  <ol>
+    <li>Berapa persen pasien yang perempuan?</li>
+    <li>Tingkat pendidikan apa yang paling banyak? Di mana letak mediannya?</li>
+    <li>Berapa rata-rata dan median lama tunggu?</li>
+    <li>Berapa persen pasien yang puas (skor 4 atau 5)?</li>
+  </ol>
+  <details>
+    <summary>Lihat jawaban</summary>
+    <ol>
+      <li>Perempuan 5 dari 8 pasien: <strong>62,5%</strong>.</li>
+      <li>Terbanyak SMA (3 orang). Urutan pendidikan: SD, SD, SMP, SMP, SMA, SMA, SMA, PT. Mediannya jatuh di antara SMP dan SMA, sehingga separuh pasien berpendidikan SMP ke bawah.</li>
+      <li>Jumlah lama tunggu 280 menit, rata-rata 280 ÷ 8 = <strong>35 menit</strong>. Setelah diurutkan (15, 20, 25, 30, 35, 40, 55, 60), median = (30 + 35) ÷ 2 = <strong>32,5 menit</strong>.</li>
+      <li>Skor 4 atau 5 diberikan oleh 4 dari 8 pasien: <strong>50%</strong>.</li>
+    </ol>
+    <p>Kalimat laporan yang benar: "Dari delapan pasien, 62,5% perempuan. Separuhnya berpendidikan SMP ke bawah. Rata-rata lama tunggu 35 menit, dan separuh pasien menyatakan puas."</p>
+    <p>Hanya satu dari tiga angka di draf awal yang layak dipertahankan, yaitu rata-rata lama tunggu.</p>
+  </details>
+</section>
+
+<section aria-labelledby="m-l5">
+  <span class="langkah">Langkah 5</span>
+  <h2 id="m-l5">Pilih grafik yang cocok</h2>
+  <ul>
+    <li>Nominal: diagram batang. Urutkan batang dari yang terbanyak.</li>
+    <li>Ordinal: diagram batang dengan urutan sesuai tingkatnya (SD, SMP, SMA, PT), bukan menurut banyaknya.</li>
+    <li>Numerik: histogram atau diagram kotak garis, supaya sebaran dan nilai ekstrem terlihat.</li>
+  </ul>
+  <p>Diagram lingkaran hanya enak dibaca bila kategorinya sedikit. Untuk lebih dari empat kategori, diagram batang hampir selalu lebih jelas.</p>
+</section>
+
+<section aria-labelledby="m-kuis">
+  <h2 id="m-kuis">Uji diri</h2>
+
+  <fieldset class="soal" data-benar="a">
+    <legend>1. Jenis pembiayaan pasien (JKN, umum, asuransi lain) termasuk skala apa?</legend>
+    <button type="button" class="pilihan" data-nilai="a">Nominal</button>
+    <button type="button" class="pilihan" data-nilai="b">Ordinal</button>
+    <button type="button" class="pilihan" data-nilai="c">Interval</button>
+    <button type="button" class="pilihan" data-nilai="d">Rasio</button>
+    <p class="penjelasan" hidden>Ketiganya kelompok tanpa urutan, sehingga nominal.</p>
+  </fieldset>
+
+  <fieldset class="soal" data-benar="c">
+    <legend>2. Mana yang berskala ordinal?</legend>
+    <button type="button" class="pilihan" data-nilai="a">Tinggi badan</button>
+    <button type="button" class="pilihan" data-nilai="b">Suku</button>
+    <button type="button" class="pilihan" data-nilai="c">Tingkat keparahan: ringan, sedang, berat</button>
+    <button type="button" class="pilihan" data-nilai="d">Jumlah tempat tidur</button>
+    <p class="penjelasan" hidden>Tingkat keparahan punya urutan, tetapi jarak "ringan ke sedang" belum tentu sama dengan "sedang ke berat".</p>
+  </fieldset>
+
+  <fieldset class="soal" data-benar="b">
+    <legend>3. Mengapa suhu dalam °C tidak berskala rasio?</legend>
+    <button type="button" class="pilihan" data-nilai="a">Karena suhu tidak bisa diukur dengan tepat.</button>
+    <button type="button" class="pilihan" data-nilai="b">Karena 0°C bukan berarti tidak ada suhu.</button>
+    <button type="button" class="pilihan" data-nilai="c">Karena suhu adalah data kategorik.</button>
+    <button type="button" class="pilihan" data-nilai="d">Karena suhu selalu bilangan bulat.</button>
+    <p class="penjelasan" hidden>Skala rasio menuntut nol sejati. Tanpa itu, pernyataan "dua kali lipat" tidak bermakna.</p>
+  </fieldset>
+
+  <fieldset class="soal" data-benar="d">
+    <legend>4. Status merokok dikode 0 = tidak, 1 = ya. Rata-ratanya 0,30. Apa artinya?</legend>
+    <button type="button" class="pilihan" data-nilai="a">Rata-rata orang merokok 0,3 batang.</button>
+    <button type="button" class="pilihan" data-nilai="b">Tidak ada artinya sama sekali.</button>
+    <button type="button" class="pilihan" data-nilai="c">70% responden merokok.</button>
+    <button type="button" class="pilihan" data-nilai="d">30% responden merokok.</button>
+    <p class="penjelasan" hidden>Rata-rata kode 0 dan 1 sama dengan proporsi kelompok berkode 1, yaitu 30%.</p>
+  </fieldset>
+
+  <fieldset class="soal" data-benar="a">
+    <legend>5. Ringkasan mana yang paling tepat untuk variabel pendidikan?</legend>
+    <button type="button" class="pilihan" data-nilai="a">Persentase tiap tingkat, dilengkapi median</button>
+    <button type="button" class="pilihan" data-nilai="b">Rata-rata dan simpangan baku</button>
+    <button type="button" class="pilihan" data-nilai="c">Nilai terkecil dan terbesar saja</button>
+    <button type="button" class="pilihan" data-nilai="d">Jumlah seluruh kode</button>
+    <p class="penjelasan" hidden>Pendidikan berskala ordinal: persentase dan median bermakna, sedangkan rata-rata kode tidak.</p>
+  </fieldset>
+
+  <p class="skor" id="skor" role="status" hidden></p>
+</section>
+
+<section aria-labelledby="m-naik">
+  <h2 id="m-naik">Naik jenjang</h2>
+  <p>Jenis data adalah keputusan pertama dalam setiap analisis. Di jenjang berikutnya, keputusan itu menentukan semua langkah sesudahnya.</p>
+
+  <div class="naik">
+    <h3>Jenjang 2: jenis data menentukan uji statistik</h3>
+    <p>Apakah kepuasan berbeda antara laki-laki dan perempuan? Dua variabel kategorik diuji dengan kai kuadrat. Apakah lama tunggu berbeda antara dua poliklinik? Variabel numerik pada dua kelompok diuji dengan uji t, atau uji Mann-Whitney bila sebarannya sangat miring. Salah mengenali jenis data berarti salah memilih uji.</p>
+  </div>
+
+  <div class="naik j3">
+    <h3>Jenjang 3: wilayah abu-abu</h3>
+    <p>Skor kepuasan 1 sampai 5 secara ketat berskala ordinal, tetapi sering dirata-ratakan. Kapan itu dapat diterima, dan kapan harus memakai regresi logistik ordinal? Anda juga akan melihat mengapa mengelompokkan variabel numerik, misalnya umur menjadi "muda" dan "tua", membuang informasi dan melemahkan analisis.</p>
+  </div>
+
+  <div class="naik j4">
+    <h3>Jenjang 4: mutu pengukuran itu sendiri</h3>
+    <p>Seorang ahli bertanya lebih dulu: apakah kuesioner ini benar-benar mengukur kepuasan? Ia menilai validitas dan reliabilitas instrumen, merancang kamus data sebelum pengumpulan dimulai, dan memastikan definisi variabel sama di semua fasilitas agar hasilnya bisa dibandingkan.</p>
+  </div>
+</section>
+
+<section aria-labelledby="m-terap">
+  <h2 id="m-terap">Terapkan</h2>
+  <ol>
+    <li>Ambil satu formulir atau kuesioner di kampus atau tempat kerja Anda. Tuliskan skala ukur setiap pertanyaannya.</li>
+    <li>Cari satu laporan yang menghitung rata-rata dari kode kategori. Tulis ulang kalimatnya dengan ringkasan yang benar.</li>
+    <li>Buat kamus data sederhana untuk lima variabel: nama variabel, arti tiap kode, dan skala ukurnya.</li>
+  </ol>
+  <div class="deret-tombol">
+    <button type="button" class="tombol" id="tandai-selesai" data-modul="biostatistik-01">Tandai modul ini selesai</button>
+    <a class="tombol garis" href="kurikulum.html">Kembali ke peta kurikulum</a>
+  </div>
+</section>
+
+<section aria-labelledby="m-rujuk">
+  <h2 id="m-rujuk">Rujukan dan bacaan lanjut</h2>
+  <ul class="rujukan">
+    <li>OpenStax. <a href="https://openstax.org/books/introductory-statistics-2e/pages/preface"><em>Introductory Statistics 2e</em></a>. Bab 1 membahas data, pengambilan sampel, dan tingkat pengukuran. Lisensi CC BY 4.0.</li>
+    <li>Daniel dan Cross. <em>Biostatistics: A Foundation for Analysis in the Health Sciences</em>. Bab pengantar tentang variabel dan skala pengukuran.</li>
+    <li>Stevens SS (1946). "On the Theory of Scales of Measurement". <em>Science</em>. Tulisan yang memperkenalkan empat skala ukur.</li>
+  </ul>
+  <p class="keterangan">Modul ini ditulis orisinal untuk Learn Public Health.</p>
+</section>
+
+</div>
+</main>
+
+<footer class="kaki">
+  <div class="wadah">
+    <p><strong>Learn Public Health</strong>. Materi ini untuk pendidikan. Data kasus dalam modul adalah rekaan, kecuali disebutkan lain.</p>
+    <p><a href="index.html">Beranda</a> | <a href="kurikulum.html">Peta kurikulum</a> | <a href="sumber.html">Sumber belajar</a></p>
+  </div>
+</footer>
+
+<script src="app.js"></script>
+</body>
+</html>

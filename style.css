@@ -179,7 +179,8 @@ table { border-collapse: collapse; width: 100%; font-size: 0.95rem; font-variant
 caption { text-align: left; font-weight: 700; padding: 0.8rem 0.9rem 0.4rem; }
 th, td { padding: 0.55rem 0.9rem; text-align: right; border-top: 1px solid var(--garis); white-space: nowrap; }
 th:first-child, td:first-child { text-align: left; white-space: normal; }
-@media (max-width: 30rem) { th, td { padding: 0.5rem 0.45rem; } table { font-size: 0.9rem; } }
+@media (max-width: 30rem) { th, td { padding: 0.5rem 0.35rem; } table { font-size: 0.9rem; } thead th { font-size: 0.8rem; } }
+table.teks th, table.teks td { text-align: left; white-space: normal; vertical-align: top; }
 thead th { border-top: 0; font-size: 0.88rem; color: var(--tinta-lunak); vertical-align: bottom; white-space: normal; }
 .tak-terlihat { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
 
