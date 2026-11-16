@@ -1,5 +1,5 @@
 /* Learn Public Health — skrip bersama.
-   Isi: kurva epidemi, kuis, kalkulator risiko, dan penanda "modul selesai". */
+   Isi: kurva epidemi, kuis, kalkulator risiko, kalkulator ringkasan data, dan penanda "modul selesai". */
 (function () {
   'use strict';
 
@@ -109,6 +109,54 @@
     });
   }
 
+  /* ---------- Kalkulator ringkasan data ----------
+     Angka dipisahkan spasi, baris baru, atau titik koma. Koma dibaca sebagai tanda desimal. */
+  function hitungRingkasan(teks) {
+    var potong = String(teks).split(/[\s;]+/).map(function (t) { return t.replace(/,+$/, ''); })
+      .filter(function (t) { return t !== ''; });
+    if (potong.length < 2) return { galat: 'Ketik sedikitnya dua angka, dipisahkan dengan spasi.' };
+    var data = [];
+    for (var i = 0; i < potong.length; i++) {
+      var n = Number(potong[i].replace(',', '.'));
+      if (!isFinite(n)) return { galat: 'Bagian "' + potong[i] + '" bukan angka. Pisahkan tiap angka dengan spasi.' };
+      data.push(n);
+    }
+    data.sort(function (a, b) { return a - b; });
+    var banyak = data.length;
+    var jumlah = data.reduce(function (a, b) { return a + b; }, 0);
+    var mean = jumlah / banyak;
+    var tengah = Math.floor(banyak / 2);
+    var median = banyak % 2 ? data[tengah] : (data[tengah - 1] + data[tengah]) / 2;
+    var jk = data.reduce(function (a, b) { return a + (b - mean) * (b - mean); }, 0);
+    return { n: banyak, mean: mean, median: median, min: data[0], max: data[banyak - 1],
+      rentang: data[banyak - 1] - data[0], sd: Math.sqrt(jk / (banyak - 1)) };
+  }
+
+  function rapi(n) {
+    return String(Math.round(n * 100) / 100).replace('.', ',');
+  }
+
+  function pasangRingkasan(form) {
+    var kotak = form.elements.angka;
+    var keluaran = document.getElementById('hasil-ringkasan');
+    var pesan = document.getElementById('pesan-ringkasan');
+    function tampil() {
+      var h = hitungRingkasan(kotak.value);
+      if (h.galat) { pesan.textContent = h.galat; pesan.hidden = false; keluaran.hidden = true; return; }
+      pesan.hidden = true; keluaran.hidden = false;
+      document.getElementById('r-n').textContent = h.n;
+      document.getElementById('r-mean').textContent = rapi(h.mean);
+      document.getElementById('r-median').textContent = rapi(h.median);
+      document.getElementById('r-minmax').textContent = rapi(h.min) + ' dan ' + rapi(h.max);
+      document.getElementById('r-rentang').textContent = rapi(h.rentang);
+      document.getElementById('r-sd').textContent = rapi(h.sd);
+    }
+    form.addEventListener('submit', function (e) { e.preventDefault(); tampil(); });
+    Array.prototype.forEach.call(form.querySelectorAll('[data-angka]'), function (tombol) {
+      tombol.addEventListener('click', function () { kotak.value = tombol.getAttribute('data-angka'); tampil(); });
+    });
+  }
+
   /* ---------- Kuis ----------
      <fieldset class="soal" data-benar="b"> berisi tombol .pilihan[data-nilai]
      dan <p class="penjelasan" hidden>. */
@@ -175,6 +223,8 @@
       Array.prototype.forEach.call(document.querySelectorAll('[data-kurva]'), gambarKurva);
       var form = document.getElementById('kalkulator');
       if (form) pasangKalkulator(form);
+      var ringkas = document.getElementById('ringkasan');
+      if (ringkas) pasangRingkasan(ringkas);
       pasangKuis();
       pasangPenanda();
     });
@@ -182,6 +232,6 @@
 
   /* Agar rumus bisa diuji di luar peramban. */
   if (typeof module !== 'undefined' && module.exports) {
-    module.exports = { hitungRisiko: hitungRisiko };
+    module.exports = { hitungRisiko: hitungRisiko, hitungRingkasan: hitungRingkasan };
   }
 })();

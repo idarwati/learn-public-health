@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Menulis program Python pertama di Google Colab | Learn Public Health</title>
+<meta name="description" content="Modul data kesehatan jenjang dasar: menjalankan Python di Google Colab, variabel, daftar, perulangan, dan syarat, dengan data kunjungan puskesmas.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header class="kepala">
+  <div class="wadah">
+    <a class="merek" href="index.html">
+      <svg viewBox="0 0 32 32" aria-hidden="true"><path d="M2 30V22h7v-7h7V8h7V2h7v28z" fill="#075443"/></svg>
+      Learn Public Health
+    </a>
+    <nav aria-label="Menu utama">
+      <ul class="menu">
+        <li><a href="index.html">Beranda</a></li>
+        <li><a href="kurikulum.html">Peta kurikulum</a></li>
+        <li><a href="sumber.html">Sumber belajar</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<main>
+
+<div class="modul-kepala">
+  <div class="wadah">
+    <p class="remah"><a href="kurikulum.html">Peta kurikulum</a> / AI dan data di kesehatan / Jenjang 1: Dasar</p>
+    <h1>Menulis program Python pertama di Google Colab</h1>
+    <p class="ringkas">Setiap bulan Anda menghitung ulang rekap kunjungan dengan kalkulator. Hari ini Anda menulis program kecil yang mengerjakannya dalam satu detik.</p>
+    <ul class="modul-info">
+      <li>Waktu belajar: sekitar 45 menit</li>
+      <li>Prasyarat: tidak ada</li>
+      <li>Alat: akun Google dan peramban</li>
+    </ul>
+  </div>
+</div>
+
+<div class="modul-isi wadah">
+
+<section aria-labelledby="m-tujuan">
+  <h2 id="m-tujuan">Setelah modul ini, Anda bisa</h2>
+  <ul>
+    <li>membuka Google Colab dan menjalankan kode Python dari komputer atau HP;</li>
+    <li>menyimpan data dalam variabel dan daftar, lalu menghitung jumlah, rata-rata, dan nilai tertinggi;</li>
+    <li>membaca pesan galat yang paling umum dan memperbaikinya sendiri.</li>
+  </ul>
+</section>
+
+<section aria-labelledby="m-kasus">
+  <h2 id="m-kasus">Kasus</h2>
+  <div class="kasus-cerita">
+    <p>Setiap awal bulan, kepala Puskesmas Lontara meminta hal yang sama: jumlah kunjungan sejak Januari, rata-rata per bulan, bulan tersibuk, dan bulan mana saja yang kunjungannya di atas 900.</p>
+    <p>Selama ini Anda menghitungnya dengan kalkulator, dan setiap bulan mengulang dari awal. Hari ini Anda akan menulis program kecil yang mengerjakannya dalam satu detik, dan bulan depan cukup menambah satu angka.</p>
+    <p>Data kunjungan Januari sampai Juni: 820, 760, 905, 870, 1.010, 935.</p>
+  </div>
+  <p class="keterangan">Nama tempat dan seluruh angka rekaan, disusun untuk latihan.</p>
+</section>
+
+<section aria-labelledby="m-l1">
+  <span class="langkah">Langkah 1</span>
+  <h2 id="m-l1">Buka Google Colab</h2>
+  <p><strong>Python</strong> adalah bahasa pemrograman yang paling banyak dipakai untuk analisis data. <strong>Google Colab</strong> adalah layanan gratis untuk menulis dan menjalankan Python lewat peramban, tanpa memasang apa pun.</p>
+  <ol>
+    <li>Buka <a href="https://colab.research.google.com/">colab.research.google.com</a> dan masuk dengan akun Google.</li>
+    <li>Buat buku catatan baru (<em>New notebook</em>).</li>
+    <li>Anda akan melihat sebuah kotak kosong yang disebut <strong>sel</strong>. Di situlah kode ditulis.</li>
+    <li>Ketik kode di bawah, lalu tekan tombol jalankan di kiri sel, atau tekan Shift dan Enter bersamaan.</li>
+  </ol>
+<pre><code>print("Halo, Puskesmas Lontara")</code></pre>
+  <p>Di bawah sel akan muncul keluarannya:</p>
+<pre class="keluaran"><code>Halo, Puskesmas Lontara</code></pre>
+  <p>Perintah <code>print</code> menampilkan sesuatu ke layar. Teks harus diapit tanda petik. Tampilan Colab bisa sedikit berubah dari waktu ke waktu, tetapi sel dan tombol jalankan selalu ada.</p>
+</section>
+
+<section aria-labelledby="m-l2">
+  <span class="langkah">Langkah 2</span>
+  <h2 id="m-l2">Simpan data dalam daftar</h2>
+  <p><strong>Variabel</strong> adalah nama untuk sebuah nilai, supaya nilai itu bisa dipakai lagi. <strong>Daftar</strong> (<em>list</em>) menyimpan banyak nilai sekaligus di dalam kurung siku, dipisahkan koma.</p>
+<pre><code>kunjungan = [820, 760, 905, 870, 1010, 935]
+print(kunjungan)</code></pre>
+<pre class="keluaran"><code>[820, 760, 905, 870, 1010, 935]</code></pre>
+  <p>Dua hal yang sering membuat pemula tersandung: angka ribuan ditulis tanpa titik (1010, bukan 1.010), dan huruf besar berbeda dari huruf kecil (<code>Kunjungan</code> bukan <code>kunjungan</code>).</p>
+</section>
+
+<section aria-labelledby="m-l3">
+  <span class="langkah">Langkah 3</span>
+  <h2 id="m-l3">Hitung jumlah, rata-rata, dan nilai tertinggi</h2>
+  <p>Python punya perintah siap pakai: <code>sum</code> menjumlahkan, <code>len</code> menghitung banyaknya isi daftar, dan <code>max</code> mencari nilai terbesar. Sebelum menjalankan kode ini, hitung dulu dengan tangan berapa hasilnya.</p>
+<pre><code>total = sum(kunjungan)
+rata_rata = total / len(kunjungan)
+
+print("Total kunjungan:", total)
+print("Rata-rata per bulan:", round(rata_rata, 1))
+print("Kunjungan tertinggi:", max(kunjungan))</code></pre>
+  <details>
+    <summary>Lihat keluarannya</summary>
+<pre class="keluaran"><code>Total kunjungan: 5300
+Rata-rata per bulan: 883.3
+Kunjungan tertinggi: 1010</code></pre>
+    <p>Perintah <code>round(rata_rata, 1)</code> membulatkan ke satu angka di belakang koma. Python menulis desimal dengan titik, sehingga 883.3 berarti 883,3.</p>
+  </details>
+</section>
+
+<section aria-labelledby="m-l4">
+  <span class="langkah">Langkah 4</span>
+  <h2 id="m-l4">Periksa tiap bulan dengan perulangan</h2>
+  <p>Untuk mengetahui bulan mana yang kunjungannya di atas 900, program harus memeriksa bulan satu per satu. Itu dikerjakan dengan <strong>perulangan</strong> <code>for</code> dan <strong>syarat</strong> <code>if</code>.</p>
+<pre><code>bulan = ["Januari", "Februari", "Maret", "April", "Mei", "Juni"]
+
+for nama, jumlah in zip(bulan, kunjungan):
+    if jumlah > 900:
+        print(nama, jumlah)</code></pre>
+  <p>Bacanya: "untuk tiap pasangan nama bulan dan jumlah kunjungan, jika jumlahnya lebih dari 900, tampilkan." Perintah <code>zip</code> memasangkan isi dua daftar menurut urutannya.</p>
+  <p>Baris di bawah <code>for</code> dan <code>if</code> harus <strong>menjorok ke dalam</strong> empat spasi. Bagi Python, jorokan itu menandai baris mana yang termasuk dalam perulangan atau syarat.</p>
+  <details>
+    <summary>Lihat keluarannya</summary>
+<pre class="keluaran"><code>Maret 905
+Mei 1010
+Juni 935</code></pre>
+  </details>
+</section>
+
+<section aria-labelledby="m-l5">
+  <span class="langkah">Langkah 5</span>
+  <h2 id="m-l5">Tambah data bulan berikutnya</h2>
+  <p>Bulan Juli tercatat 980 kunjungan. Anda tidak perlu menghitung ulang; cukup tambahkan angkanya dengan <code>append</code>, lalu jalankan lagi sel pada Langkah 3.</p>
+<pre><code>kunjungan.append(980)
+bulan.append("Juli")</code></pre>
+  <details>
+    <summary>Berapa total dan rata-rata yang baru?</summary>
+    <p>Total menjadi 6.280 dan rata-rata 897,1 kunjungan per bulan. Inilah manfaat menulis program: pekerjaan yang berulang cukup ditulis sekali.</p>
+  </details>
+  <h3>Bila muncul pesan galat</h3>
+  <p>Pesan galat bukan tanda Anda gagal. Bacalah baris terakhirnya; di situ Python menyebut jenis kesalahannya.</p>
+  <ul>
+    <li><code>NameError</code>: nama variabel belum dibuat atau salah ketik, termasuk beda huruf besar dan kecil.</li>
+    <li><code>SyntaxError</code>: ada tanda yang kurang, biasanya tanda petik, kurung, atau titik dua.</li>
+    <li><code>IndentationError</code>: jorokan baris tidak tepat.</li>
+  </ul>
+  <h3>Satu aturan sebelum memakai data nyata</h3>
+  <p>Colab berjalan di server Google, bukan di komputer Anda. Jangan mengunggah data yang memuat nama, alamat, atau nomor identitas pasien. Gunakan data yang sudah dijumlahkan, seperti jumlah kunjungan per bulan pada kasus ini.</p>
+</section>
+
+<section aria-labelledby="m-kuis">
+  <h2 id="m-kuis">Uji diri</h2>
+
+  <fieldset class="soal" data-benar="c">
+    <legend>1. Apa hasil dari len([12, 15, 9, 20])?</legend>
+    <button type="button" class="pilihan" data-nilai="a">56</button>
+    <button type="button" class="pilihan" data-nilai="b">20</button>
+    <button type="button" class="pilihan" data-nilai="c">4</button>
+    <button type="button" class="pilihan" data-nilai="d">14</button>
+    <p class="penjelasan" hidden>Perintah len menghitung banyaknya isi daftar, yaitu empat. Jumlahnya (56) diperoleh dengan sum.</p>
+  </fieldset>
+
+  <fieldset class="soal" data-benar="a">
+    <legend>2. Kode print(Halo) menghasilkan NameError. Apa penyebabnya?</legend>
+    <button type="button" class="pilihan" data-nilai="a">Teks Halo tidak diapit tanda petik, sehingga dianggap nama variabel.</button>
+    <button type="button" class="pilihan" data-nilai="b">Perintah print tidak ada di Python.</button>
+    <button type="button" class="pilihan" data-nilai="c">Colab sedang rusak.</button>
+    <button type="button" class="pilihan" data-nilai="d">Huruf H harus huruf kecil.</button>
+    <p class="penjelasan" hidden>Tanpa tanda petik, Python mencari variabel bernama Halo dan tidak menemukannya.</p>
+  </fieldset>
+
+  <fieldset class="soal" data-benar="b">
+    <legend>3. Bagaimana menulis seribu dua ratus lima puluh dalam Python?</legend>
+    <button type="button" class="pilihan" data-nilai="a">1.250</button>
+    <button type="button" class="pilihan" data-nilai="b">1250</button>
+    <button type="button" class="pilihan" data-nilai="c">"1.250"</button>
+    <button type="button" class="pilihan" data-nilai="d">1,250</button>
+    <p class="penjelasan" hidden>Angka ditulis tanpa pemisah ribuan. Bagi Python, 1.250 berarti satu koma dua lima.</p>
+  </fieldset>
+
+  <fieldset class="soal" data-benar="d">
+    <legend>4. Apa guna jorokan empat spasi di bawah baris for?</legend>
+    <button type="button" class="pilihan" data-nilai="a">Hanya agar rapi.</button>
+    <button type="button" class="pilihan" data-nilai="b">Mempercepat program.</button>
+    <button type="button" class="pilihan" data-nilai="c">Menandai komentar.</button>
+    <button type="button" class="pilihan" data-nilai="d">Menandai baris yang diulang oleh for.</button>
+    <p class="penjelasan" hidden>Python memakai jorokan untuk mengetahui baris mana yang berada di dalam perulangan atau syarat.</p>
+  </fieldset>
+
+  <fieldset class="soal" data-benar="b">
+    <legend>5. Data mana yang aman diolah di Colab?</legend>
+    <button type="button" class="pilihan" data-nilai="a">Daftar nama dan alamat pasien TB.</button>
+    <button type="button" class="pilihan" data-nilai="b">Jumlah kunjungan per bulan.</button>
+    <button type="button" class="pilihan" data-nilai="c">Hasil laboratorium beserta nomor rekam medis.</button>
+    <button type="button" class="pilihan" data-nilai="d">Foto kartu identitas pasien.</button>
+    <p class="penjelasan" hidden>Data yang sudah dijumlahkan tidak memuat identitas siapa pun. Tiga pilihan lain memuat data pribadi pasien.</p>
+  </fieldset>
+
+  <p class="skor" id="skor" role="status" hidden></p>
+</section>
+
+<section aria-labelledby="m-naik">
+  <h2 id="m-naik">Naik jenjang</h2>
+  <p>Enam angka masih bisa dihitung dengan tangan. Kekuatan Python terasa saat datanya ribuan baris.</p>
+
+  <div class="naik">
+    <h3>Jenjang 2: membaca berkas data</h3>
+    <p>Anda akan membuka berkas lembar kerja dengan pustaka pandas, menyaring baris, mengelompokkan menurut poliklinik atau bulan, dan membuat grafik, semuanya dalam beberapa baris kode.</p>
+  </div>
+
+  <div class="naik j3">
+    <h3>Jenjang 3: dari meringkas ke memperkirakan</h3>
+    <p>Dengan data kunjungan beberapa tahun, Anda membangun model untuk memperkirakan kunjungan bulan depan, lalu menguji seberapa jauh perkiraannya meleset pada data yang belum pernah dilihat model.</p>
+  </div>
+
+  <div class="naik j4">
+    <h3>Jenjang 4: analisis yang bisa diulang orang lain</h3>
+    <p>Seorang ahli menyusun analisisnya sehingga orang lain dapat menjalankannya dari data mentah sampai hasil akhir dan memperoleh angka yang sama. Ia menyimpan kodenya dengan pengelola versi dan mendokumentasikan tiap keputusan analisis.</p>
+  </div>
+</section>
+
+<section aria-labelledby="m-terap">
+  <h2 id="m-terap">Terapkan</h2>
+  <ol>
+    <li>Ganti isi daftar dengan data Anda sendiri, misalnya jumlah mahasiswa hadir tiap pertemuan atau kunjungan tiap bulan. Jalankan ulang semua sel.</li>
+    <li>Ubah angka 900 pada syarat menjadi rata-rata data Anda, supaya program menampilkan bulan yang di atas rata-rata.</li>
+    <li>Tambahkan satu baris yang menampilkan nilai terendah. Petunjuk: lawan dari <code>max</code>.</li>
+  </ol>
+  <div class="deret-tombol">
+    <button type="button" class="tombol" id="tandai-selesai" data-modul="ai-02">Tandai modul ini selesai</button>
+    <a class="tombol garis" href="kurikulum.html">Kembali ke peta kurikulum</a>
+  </div>
+</section>
+
+<section aria-labelledby="m-rujuk">
+  <h2 id="m-rujuk">Rujukan dan bacaan lanjut</h2>
+  <ul class="rujukan">
+    <li>Python Software Foundation. <a href="https://docs.python.org/3/tutorial/"><em>The Python Tutorial</em></a>. Panduan resmi untuk pemula.</li>
+    <li><a href="https://colab.research.google.com/">Google Colab</a>. Tempat menjalankan semua kode dalam modul ini.</li>
+  </ul>
+  <p class="keterangan">Modul ini ditulis orisinal untuk Learn Public Health. Semua kode sudah dijalankan dan keluarannya dicocokkan.</p>
+</section>
+
+</div>
+</main>
+
+<footer class="kaki">
+  <div class="wadah">
+    <p><strong>Learn Public Health</strong>. Materi ini untuk pendidikan. Data kasus dalam modul adalah rekaan, kecuali disebutkan lain.</p>
+    <p><a href="index.html">Beranda</a> | <a href="kurikulum.html">Peta kurikulum</a> | <a href="sumber.html">Sumber belajar</a></p>
+  </div>
+</footer>
+
+<script src="app.js"></script>
+</body>
+</html>

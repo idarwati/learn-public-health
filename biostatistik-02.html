@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Meringkas data dengan rata-rata, median, dan sebaran | Learn Public Health</title>
+<meta name="description" content="Modul biostatistik jenjang dasar: rata-rata, median, rentang, dan simpangan baku, diterapkan pada data lama tunggu pasien.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header class="kepala">
+  <div class="wadah">
+    <a class="merek" href="index.html">
+      <svg viewBox="0 0 32 32" aria-hidden="true"><path d="M2 30V22h7v-7h7V8h7V2h7v28z" fill="#075443"/></svg>
+      Learn Public Health
+    </a>
+    <nav aria-label="Menu utama">
+      <ul class="menu">
+        <li><a href="index.html">Beranda</a></li>
+        <li><a href="kurikulum.html">Peta kurikulum</a></li>
+        <li><a href="sumber.html">Sumber belajar</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<main>
+
+<div class="modul-kepala">
+  <div class="wadah">
+    <p class="remah"><a href="kurikulum.html">Peta kurikulum</a> / Biostatistik / Jenjang 1: Dasar</p>
+    <h1>Meringkas data dengan rata-rata, median, dan sebaran</h1>
+    <p class="ringkas">Dua poliklinik memiliki rata-rata lama tunggu yang sama, tetapi hanya satu yang dibanjiri keluhan. Anda diminta menjelaskan sebabnya kepada direktur.</p>
+    <ul class="modul-info">
+      <li>Waktu belajar: sekitar 45 menit</li>
+      <li>Prasyarat: tidak ada</li>
+      <li>Alat: kalkulator biasa</li>
+    </ul>
+  </div>
+</div>
+
+<div class="modul-isi wadah">
+
+<section aria-labelledby="m-tujuan">
+  <h2 id="m-tujuan">Setelah modul ini, Anda bisa</h2>
+  <ul>
+    <li>menghitung rata-rata dan median, serta memilih mana yang lebih mewakili data;</li>
+    <li>mengukur sebaran dengan rentang dan simpangan baku;</li>
+    <li>menulis ringkasan data yang tidak menyembunyikan masalah.</li>
+  </ul>
+</section>
+
+<section class="lebar" aria-labelledby="m-kasus">
+  <h2 id="m-kasus">Kasus</h2>
+  <div class="kasus-cerita baca">
+    <p>RSUD Lontara menetapkan target lama tunggu rawat jalan paling lama 60 menit. Laporan bulan ini menyebut: <strong>"Rata-rata lama tunggu Poliklinik A 50 menit dan Poliklinik B 50 menit. Keduanya memenuhi target."</strong></p>
+    <p>Namun kotak saran penuh keluhan tentang Poliklinik B, dan hampir tidak ada tentang Poliklinik A. Direktur bertanya kepada Anda: "Kalau rata-ratanya sama, mengapa keluhannya berbeda?"</p>
+    <p>Anda mengambil catatan sepuluh pasien dari tiap poliklinik pada satu pagi.</p>
+  </div>
+  <div class="tabel-gulir" style="margin-top:1.25rem">
+    <table class="teks">
+      <caption>Lama tunggu sepuluh pasien (menit), sudah diurutkan</caption>
+      <thead>
+        <tr><th scope="col">Poliklinik</th><th scope="col">Lama tunggu</th></tr>
+      </thead>
+      <tbody>
+        <tr><th scope="row">A</th><td>40, 45, 45, 50, 50, 50, 50, 55, 55, 60</td></tr>
+        <tr><th scope="row">B</th><td>10, 15, 20, 25, 30, 35, 45, 70, 100, 150</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p class="keterangan baca" style="margin-top:0.8rem">Nama rumah sakit dan seluruh data rekaan, disusun untuk latihan.</p>
+</section>
+
+<section aria-labelledby="m-l1">
+  <span class="langkah">Langkah 1</span>
+  <h2 id="m-l1">Hitung rata-ratanya</h2>
+  <p><strong>Rata-rata</strong> (<em>mean</em>) adalah jumlah semua nilai dibagi banyaknya data.</p>
+  <div class="rumus">Rata-rata = jumlah semua nilai ÷ banyaknya data</div>
+  <p>Hitung rata-rata kedua poliklinik.</p>
+  <details>
+    <summary>Lihat jawaban</summary>
+    <p>Poliklinik A: 500 ÷ 10 = <strong>50 menit</strong>. Poliklinik B: 500 ÷ 10 = <strong>50 menit</strong>.</p>
+    <p>Laporan itu tidak salah hitung. Masalahnya, rata-rata saja tidak cukup untuk menggambarkan apa yang dialami pasien.</p>
+  </details>
+</section>
+
+<section aria-labelledby="m-l2">
+  <span class="langkah">Langkah 2</span>
+  <h2 id="m-l2">Cari nilai tengahnya</h2>
+  <p><strong>Median</strong> adalah nilai yang berada tepat di tengah setelah data diurutkan. Separuh data berada di bawahnya dan separuh di atasnya. Bila banyaknya data genap, median adalah rata-rata dari dua nilai tengah.</p>
+  <details>
+    <summary>Lihat jawaban</summary>
+    <p>Poliklinik A: nilai ke-5 dan ke-6 adalah 50 dan 50, sehingga median <strong>50 menit</strong>.</p>
+    <p>Poliklinik B: nilai ke-5 dan ke-6 adalah 30 dan 35, sehingga median <strong>32,5 menit</strong>.</p>
+    <p>Di Poliklinik B, rata-rata (50) jauh di atas median (32,5). Tiga pasien yang menunggu 70, 100, dan 150 menit menarik rata-rata ke atas. Data seperti ini disebut <strong>menceng ke kanan</strong>. Pada data menceng, median lebih mewakili pengalaman pasien pada umumnya.</p>
+  </details>
+</section>
+
+<section class="lebar" aria-labelledby="m-l3">
+  <span class="langkah">Langkah 3</span>
+  <h2 id="m-l3">Ukur sebarannya</h2>
+  <p class="baca">Dua kelompok data bisa memiliki pusat yang sama tetapi sebaran yang sangat berbeda. Ada dua ukuran sebaran yang paling sering dipakai.</p>
+  <p class="baca"><strong>Rentang</strong> adalah selisih nilai terbesar dan terkecil. Mudah dihitung, tetapi hanya bergantung pada dua nilai.</p>
+  <p class="baca"><strong>Simpangan baku</strong> (<em>standard deviation</em>) menggambarkan seberapa jauh, pada umumnya, tiap nilai dari rata-ratanya. Makin besar simpangan baku, makin tidak seragam datanya. Cara menghitungnya:</p>
+  <ol class="baca">
+    <li>Kurangi tiap nilai dengan rata-rata.</li>
+    <li>Kuadratkan tiap selisih, lalu jumlahkan.</li>
+    <li>Bagi dengan banyaknya data dikurangi satu.</li>
+    <li>Ambil akar kuadratnya.</li>
+  </ol>
+  <p class="baca">Untuk Poliklinik A: selisih dari 50 adalah −10, −5, −5, 0, 0, 0, 0, 5, 5, 10. Jumlah kuadratnya 300. Dibagi 9 menjadi 33,3, dan akarnya 5,77 menit.</p>
+  <p class="baca">Gunakan kalkulator di bawah untuk Poliklinik B, lalu bandingkan.</p>
+
+  <form class="kalkulator" id="ringkasan" novalidate>
+    <h3>Kalkulator ringkasan data</h3>
+    <label for="r-angka">Ketik angka, pisahkan dengan spasi</label>
+    <textarea id="r-angka" name="angka" rows="3" inputmode="decimal"></textarea>
+    <div class="deret-tombol">
+      <button type="submit" class="tombol">Hitung</button>
+      <button type="button" class="tombol garis" data-angka="40 45 45 50 50 50 50 55 55 60">Isi data Poliklinik A</button>
+      <button type="button" class="tombol garis" data-angka="10 15 20 25 30 35 45 70 100 150">Isi data Poliklinik B</button>
+    </div>
+    <p class="pesan" id="pesan-ringkasan" role="alert" hidden></p>
+    <dl class="hasil" id="hasil-ringkasan" aria-live="polite" hidden>
+      <div><dt>Banyaknya data</dt><dd id="r-n"></dd></div>
+      <div><dt>Rata-rata</dt><dd id="r-mean"></dd></div>
+      <div><dt>Median</dt><dd id="r-median"></dd></div>
+      <div><dt>Terkecil dan terbesar</dt><dd id="r-minmax"></dd></div>
+      <div><dt>Rentang</dt><dd id="r-rentang"></dd></div>
+      <div><dt>Simpangan baku</dt><dd id="r-sd"></dd></div>
+    </dl>
+  </form>
+
+  <details>
+    <summary>Lihat perbandingan kedua poliklinik</summary>
+    <div class="tabel-gulir">
+      <table>
+        <thead>
+          <tr><th scope="col">Ukuran</th><th scope="col">Poliklinik A</th><th scope="col">Poliklinik B</th></tr>
+        </thead>
+        <tbody>
+          <tr><th scope="row">Rata-rata</th><td>50</td><td>50</td></tr>
+          <tr><th scope="row">Median</th><td>50</td><td>32,5</td></tr>
+          <tr><th scope="row">Rentang</th><td>20</td><td>140</td></tr>
+          <tr><th scope="row">Simpangan baku</th><td>5,77</td><td>44,6</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p style="margin-top:1rem">Di Poliklinik A semua pasien menunggu antara 40 dan 60 menit. Di Poliklinik B ada yang dilayani dalam 10 menit dan ada yang menunggu dua setengah jam. Simpangan bakunya hampir delapan kali lebih besar.</p>
+  </details>
+</section>
+
+<section aria-labelledby="m-l4">
+  <span class="langkah">Langkah 4</span>
+  <h2 id="m-l4">Hitung yang melewati target</h2>
+  <p>Target rumah sakit berbunyi "paling lama 60 menit". Ukuran yang paling langsung menjawabnya adalah persentase pasien yang menunggu lebih dari 60 menit.</p>
+  <details>
+    <summary>Lihat jawaban</summary>
+    <p>Poliklinik A: tidak ada, <strong>0%</strong>. Poliklinik B: tiga dari sepuluh pasien, <strong>30%</strong>.</p>
+    <p>Inilah jawaban untuk direktur. Keluhan datang dari tiga di antara sepuluh pasien Poliklinik B yang menunggu jauh melampaui target, dan rata-rata menyembunyikan mereka.</p>
+  </details>
+</section>
+
+<section aria-labelledby="m-l5">
+  <span class="langkah">Langkah 5</span>
+  <h2 id="m-l5">Tulis ulang laporannya</h2>
+  <p>Ringkasan yang baik menyebut pusat, sebaran, dan ukuran yang langsung terkait dengan target.</p>
+  <details>
+    <summary>Lihat contoh</summary>
+    <p>"Poliklinik A: median lama tunggu 50 menit, seluruh pasien dilayani dalam 60 menit. Poliklinik B: median 32,5 menit, tetapi lama tunggu sangat bervariasi (10 sampai 150 menit) dan 30% pasien menunggu lebih dari 60 menit. Poliklinik B belum memenuhi target dan perlu ditelusuri penyebab antrean panjang pada sebagian pasiennya."</p>
+  </details>
+</section>
+
+<section aria-labelledby="m-kuis">
+  <h2 id="m-kuis">Uji diri</h2>
+
+  <fieldset class="soal" data-benar="b">
+    <legend>1. Berapa median dari 3, 8, 5, 20, 4?</legend>
+    <button type="button" class="pilihan" data-nilai="a">4</button>
+    <button type="button" class="pilihan" data-nilai="b">5</button>
+    <button type="button" class="pilihan" data-nilai="c">8</button>
+    <button type="button" class="pilihan" data-nilai="d">20</button>
+    <p class="penjelasan" hidden>Urutkan dulu: 3, 4, 5, 8, 20. Nilai tengahnya 5.</p>
+  </fieldset>
+
+  <fieldset class="soal" data-benar="d">
+    <legend>2. Biaya rawat sepuluh pasien hampir sama, kecuali satu pasien yang biayanya sangat besar. Ukuran mana yang paling mewakili biaya pasien pada umumnya?</legend>
+    <button type="button" class="pilihan" data-nilai="a">Rata-rata</button>
+    <button type="button" class="pilihan" data-nilai="b">Nilai terbesar</button>
+    <button type="button" class="pilihan" data-nilai="c">Rentang</button>
+    <button type="button" class="pilihan" data-nilai="d">Median</button>
+    <p class="penjelasan" hidden>Median tidak terpengaruh oleh satu nilai ekstrem, sedangkan rata-rata tertarik ke arahnya.</p>
+  </fieldset>
+
+  <fieldset class="soal" data-benar="a">
+    <legend>3. Rata-rata jauh lebih besar daripada median. Apa yang paling mungkin terjadi?</legend>
+    <button type="button" class="pilihan" data-nilai="a">Ada beberapa nilai yang sangat besar.</button>
+    <button type="button" class="pilihan" data-nilai="b">Ada beberapa nilai yang sangat kecil.</button>
+    <button type="button" class="pilihan" data-nilai="c">Semua nilai sama.</button>
+    <button type="button" class="pilihan" data-nilai="d">Terjadi salah hitung.</button>
+    <p class="penjelasan" hidden>Nilai yang sangat besar menarik rata-rata ke atas. Data seperti itu menceng ke kanan.</p>
+  </fieldset>
+
+  <fieldset class="soal" data-benar="c">
+    <legend>4. Simpangan baku yang kecil menunjukkan apa?</legend>
+    <button type="button" class="pilihan" data-nilai="a">Rata-ratanya kecil.</button>
+    <button type="button" class="pilihan" data-nilai="b">Datanya sedikit.</button>
+    <button type="button" class="pilihan" data-nilai="c">Nilai-nilainya berdekatan dengan rata-rata.</button>
+    <button type="button" class="pilihan" data-nilai="d">Datanya menceng.</button>
+    <p class="penjelasan" hidden>Simpangan baku mengukur seberapa jauh nilai-nilai dari rata-ratanya, bukan besarnya rata-rata.</p>
+  </fieldset>
+
+  <fieldset class="soal" data-benar="b">
+    <legend>5. Target layanan berbunyi "pasien dilayani paling lama 30 menit". Ukuran mana yang paling tepat dilaporkan?</legend>
+    <button type="button" class="pilihan" data-nilai="a">Rata-rata lama tunggu saja</button>
+    <button type="button" class="pilihan" data-nilai="b">Persentase pasien yang dilayani dalam 30 menit</button>
+    <button type="button" class="pilihan" data-nilai="c">Nilai terkecil</button>
+    <button type="button" class="pilihan" data-nilai="d">Jumlah seluruh lama tunggu</button>
+    <p class="penjelasan" hidden>Target dinyatakan untuk tiap pasien, sehingga yang perlu dihitung adalah berapa pasien yang memenuhinya.</p>
+  </fieldset>
+
+  <p class="skor" id="skor" role="status" hidden></p>
+</section>
+
+<section aria-labelledby="m-naik">
+  <h2 id="m-naik">Naik jenjang</h2>
+  <p>Rata-rata dan simpangan baku adalah bahan dasar hampir semua metode statistik yang akan Anda pelajari.</p>
+
+  <div class="naik">
+    <h3>Jenjang 2: dari sepuluh pasien ke seluruh pasien</h3>
+    <p>Sepuluh pasien hanyalah sampel. Seberapa dekat rata-rata sampel dengan rata-rata seluruh pasien? Anda akan menghitung galat baku dan selang kepercayaan, lalu memakai uji t untuk menilai apakah selisih dua poliklinik lebih besar daripada yang bisa terjadi karena kebetulan. Anda juga akan mengenal kuartil dan diagram kotak garis.</p>
+  </div>
+
+  <div class="naik j3">
+    <h3>Jenjang 3: menangani data menceng</h3>
+    <p>Lama tunggu, lama rawat, dan biaya hampir selalu menceng ke kanan. Anda akan memilih antara transformasi logaritma, uji nonparametrik, dan model yang memang dirancang untuk data seperti itu, serta menimbang apa yang hilang dan didapat dari tiap pilihan.</p>
+  </div>
+
+  <div class="naik j4">
+    <h3>Jenjang 4: memantau proses dari waktu ke waktu</h3>
+    <p>Seorang ahli tidak hanya meringkas satu pagi. Ia memantau lama tunggu tiap minggu dengan grafik kendali untuk membedakan naik turun yang wajar dari perubahan yang sungguh terjadi, dan mengusulkan indikator yang lebih tajam, misalnya persentil ke-90 lama tunggu.</p>
+  </div>
+</section>
+
+<section aria-labelledby="m-terap">
+  <h2 id="m-terap">Terapkan</h2>
+  <ol>
+    <li>Catat lama tunggu atau lama layanan sepuluh orang di suatu loket. Hitung rata-rata, median, dan rentangnya.</li>
+    <li>Cari satu laporan yang hanya menyebut rata-rata. Ukuran apa lagi yang seharusnya dicantumkan?</li>
+    <li>Pilih satu target layanan di tempat Anda. Ukuran mana yang paling langsung menunjukkan tercapai atau tidaknya?</li>
+  </ol>
+  <div class="deret-tombol">
+    <button type="button" class="tombol" id="tandai-selesai" data-modul="biostatistik-02">Tandai modul ini selesai</button>
+    <a class="tombol garis" href="kurikulum.html">Kembali ke peta kurikulum</a>
+  </div>
+</section>
+
+<section aria-labelledby="m-rujuk">
+  <h2 id="m-rujuk">Rujukan dan bacaan lanjut</h2>
+  <ul class="rujukan">
+    <li>OpenStax. <a href="https://openstax.org/books/introductory-statistics-2e/pages/preface"><em>Introductory Statistics 2e</em></a>. Bab 2 membahas statistik deskriptif: ukuran pusat, ukuran sebaran, dan kemencengan. Lisensi CC BY 4.0.</li>
+    <li>Pagano dan Gauvreau. <em>Principles of Biostatistics</em>. Bab tentang ukuran ringkasan numerik.</li>
+    <li>Kirkwood dan Sterne. <em>Essential Medical Statistics</em>. Bab tentang rata-rata, simpangan baku, dan galat baku.</li>
+  </ul>
+  <p class="keterangan">Modul ini ditulis orisinal untuk Learn Public Health.</p>
+</section>
+
+</div>
+</main>
+
+<footer class="kaki">
+  <div class="wadah">
+    <p><strong>Learn Public Health</strong>. Materi ini untuk pendidikan. Data kasus dalam modul adalah rekaan, kecuali disebutkan lain.</p>
+    <p><a href="index.html">Beranda</a> | <a href="kurikulum.html">Peta kurikulum</a> | <a href="sumber.html">Sumber belajar</a></p>
+  </div>
+</footer>
+
+<script src="app.js"></script>
+</body>
+</html>

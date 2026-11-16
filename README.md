@@ -13,9 +13,7 @@ Empat bidang: **epidemiologi**, **biostatistik**, **administrasi, manajemen, dan
 | `kurikulum.html` | Peta kurikulum: daftar topik per bidang dan jenjang |
 | `sumber.html` | Buku dan sumber terbuka yang dirujuk |
 | `epidemiologi-01.html` | Modul pertama, sekaligus contoh untuk modul berikutnya |
-| `biostatistik-01.html` | Modul: mengenali jenis data sebelum menghitung |
-| `akk-01.html` | Modul: mendiagnosis sistem kesehatan dengan enam komponen WHO |
-| `ai-01.html` | Modul: menilai kapan AI boleh dipakai di layanan kesehatan |
+| `bidang-nomor.html` | Halaman modul lain, misalnya `biostatistik-02.html` atau `akk-04.html` |
 | `style.css` | Tampilan semua halaman (warna diatur di bagian `:root`) |
 | `app.js` | Kurva epidemi, kuis, kalkulator, penanda "selesai" |
 | `CLAUDE.md` | Aturan menulis modul, dibaca Claude sebelum membantu |
