@@ -184,6 +184,16 @@ table.teks th, table.teks td { text-align: left; white-space: normal; vertical-a
 thead th { border-top: 0; font-size: 0.88rem; color: var(--tinta-lunak); vertical-align: bottom; white-space: normal; }
 .tak-terlihat { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
 
+/* Grafik SVG berdampingan */
+.grafik { display: grid; gap: 1rem; margin-top: 1.25rem; }
+@media (min-width: 40rem) { .grafik { grid-template-columns: 1fr 1fr; } }
+.grafik figure { margin: 0; background: var(--putih); border: 1px solid var(--garis); padding: 0.8rem 0.9rem; }
+.grafik svg { display: block; width: 100%; height: auto; }
+.grafik .batang { fill: var(--hijau); }
+.grafik .sumbu { stroke: var(--tinta); stroke-width: 1.5; }
+.grafik text { fill: var(--tinta); font-family: var(--huruf); font-size: 11px; font-weight: 600; }
+.grafik figcaption { font-size: 0.9rem; color: var(--tinta-lunak); margin-top: 0.4rem; }
+
 /* Kode */
 code { font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; font-size: 0.92em; }
 pre { background: var(--tinta); color: #e6f2ee; padding: 0.9rem 1.1rem; margin: 0 0 1em; overflow-x: auto; line-height: 1.55; font-size: 0.92rem; }

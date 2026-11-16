@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Membaca grafik dan memperbaiki grafik yang menyesatkan | Learn Public Health</title>
+<meta name="description" content="Modul biostatistik jenjang dasar: cara membaca grafik, sumbu yang terpotong, dan memilih jenis grafik yang sesuai.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header class="kepala">
+  <div class="wadah">
+    <a class="merek" href="index.html">
+      <svg viewBox="0 0 32 32" aria-hidden="true"><path d="M2 30V22h7v-7h7V8h7V2h7v28z" fill="#075443"/></svg>
+      Learn Public Health
+    </a>
+    <nav aria-label="Menu utama">
+      <ul class="menu">
+        <li><a href="index.html">Beranda</a></li>
+        <li><a href="kurikulum.html">Peta kurikulum</a></li>
+        <li><a href="sumber.html">Sumber belajar</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<main>
+
+<div class="modul-kepala">
+  <div class="wadah">
+    <p class="remah"><a href="kurikulum.html">Peta kurikulum</a> / Biostatistik / Jenjang 1: Dasar</p>
+    <h1>Membaca grafik dan memperbaiki grafik yang menyesatkan</h1>
+    <p class="ringkas">Sebuah salindia untuk bupati berjudul "Cakupan melonjak!" dengan grafik yang meyakinkan. Datanya benar, tetapi grafiknya menyesatkan. Anda diminta memperbaikinya.</p>
+    <ul class="modul-info">
+      <li>Waktu belajar: sekitar 40 menit</li>
+      <li>Prasyarat: tidak ada</li>
+      <li>Alat: kalkulator biasa</li>
+    </ul>
+  </div>
+</div>
+
+<div class="modul-isi wadah">
+
+<section aria-labelledby="m-tujuan">
+  <h2 id="m-tujuan">Setelah modul ini, Anda bisa</h2>
+  <ul>
+    <li>membaca grafik dengan urutan yang benar: judul, sumbu, satuan, baru bentuknya;</li>
+    <li>mengenali grafik yang membesar-besarkan atau menyembunyikan perubahan;</li>
+    <li>memilih jenis grafik yang sesuai dengan jenis data dan pesan yang ingin disampaikan.</li>
+  </ul>
+</section>
+
+<section class="lebar" aria-labelledby="m-kasus">
+  <h2 id="m-kasus">Kasus</h2>
+  <div class="kasus-cerita baca">
+    <p>Dinas Kesehatan Kabupaten Saloka akan memaparkan capaian kepada bupati. Salindia pertama berjudul <strong>"Cakupan ASI eksklusif melonjak!"</strong> dan menampilkan grafik di sebelah kiri.</p>
+    <p>Anda diminta memeriksa salindia itu sebelum dicetak. Datanya benar: cakupan tiga tahun terakhir adalah 62%, 63%, dan 65%. Tetapi ada yang mengganjal saat Anda melihat grafiknya.</p>
+  </div>
+  <div class="grafik">
+    <figure>
+      <svg viewBox="0 0 300 220" role="img" aria-label="Grafik batang dengan sumbu tegak mulai dari 60 persen. Batang tahun ketiga tampak dua setengah kali lebih tinggi daripada tahun pertama.">
+        <line class="sumbu" x1="45" y1="20" x2="45" y2="180"/><line class="sumbu" x1="45" y1="180" x2="290" y2="180"/>
+        <text x="38" y="184" text-anchor="end">60%</text><text x="38" y="131" text-anchor="end">62%</text><text x="38" y="77" text-anchor="end">64%</text><text x="38" y="24" text-anchor="end">66%</text>
+        <rect class="batang" x="70" y="126.7" width="50" height="53.3"/><rect class="batang" x="145" y="100" width="50" height="80"/><rect class="batang" x="220" y="46.7" width="50" height="133.3"/>
+        <text x="95" y="120" text-anchor="middle">62%</text><text x="170" y="94" text-anchor="middle">63%</text><text x="245" y="40" text-anchor="middle">65%</text>
+        <text x="95" y="198" text-anchor="middle">Tahun 1</text><text x="170" y="198" text-anchor="middle">Tahun 2</text><text x="245" y="198" text-anchor="middle">Tahun 3</text>
+      </svg>
+      <figcaption>Grafik pada salindia: sumbu tegak mulai dari 60%.</figcaption>
+    </figure>
+    <figure>
+      <svg viewBox="0 0 300 220" role="img" aria-label="Grafik batang dengan sumbu tegak mulai dari nol. Ketiga batang tampak hampir sama tinggi.">
+        <line class="sumbu" x1="45" y1="20" x2="45" y2="180"/><line class="sumbu" x1="45" y1="180" x2="290" y2="180"/>
+        <text x="38" y="184" text-anchor="end">0%</text><text x="38" y="104" text-anchor="end">50%</text><text x="38" y="24" text-anchor="end">100%</text>
+        <rect class="batang" x="70" y="80.8" width="50" height="99.2"/><rect class="batang" x="145" y="79.2" width="50" height="100.8"/><rect class="batang" x="220" y="76" width="50" height="104"/>
+        <text x="95" y="74" text-anchor="middle">62%</text><text x="170" y="73" text-anchor="middle">63%</text><text x="245" y="70" text-anchor="middle">65%</text>
+        <text x="95" y="198" text-anchor="middle">Tahun 1</text><text x="170" y="198" text-anchor="middle">Tahun 2</text><text x="245" y="198" text-anchor="middle">Tahun 3</text>
+      </svg>
+      <figcaption>Data yang sama: sumbu tegak mulai dari nol.</figcaption>
+    </figure>
+  </div>
+  <p class="keterangan baca" style="margin-top:0.8rem">Nama kabupaten dan seluruh angka rekaan, disusun untuk latihan.</p>
+</section>
+
+<section aria-labelledby="m-l1">
+  <span class="langkah">Langkah 1</span>
+  <h2 id="m-l1">Baca sumbunya sebelum bentuknya</h2>
+  <p>Mata menangkap bentuk lebih dulu daripada angka. Karena itu biasakan urutan ini setiap kali melihat grafik:</p>
+  <ol>
+    <li>Judul: apa yang diukur, di mana, dan kapan?</li>
+    <li>Sumbu datar dan tegak: mewakili apa, dengan satuan apa, dan mulai dari angka berapa?</li>
+    <li>Keterangan warna atau simbol, bila ada.</li>
+    <li>Baru kemudian bentuknya: mana yang tinggi, mana yang rendah, dan ke mana arahnya.</li>
+  </ol>
+  <details>
+    <summary>Apa yang berbeda pada kedua grafik di atas?</summary>
+    <p>Datanya sama persis. Yang berbeda hanya titik awal sumbu tegak. Grafik kiri mulai dari 60%, sehingga hanya bagian puncak tiap batang yang terlihat. Grafik kanan mulai dari nol, sehingga batang terlihat utuh.</p>
+  </details>
+</section>
+
+<section aria-labelledby="m-l2">
+  <span class="langkah">Langkah 2</span>
+  <h2 id="m-l2">Ukur seberapa besar grafik itu melebih-lebihkan</h2>
+  <p>Pada grafik batang, mata membandingkan tinggi batang. Hitung dua hal:</p>
+  <ol>
+    <li>Berapa kali lipat cakupan tahun ketiga dibanding tahun pertama menurut datanya?</li>
+    <li>Berapa kali lipat tinggi batang tahun ketiga dibanding tahun pertama pada grafik kiri?</li>
+  </ol>
+  <details>
+    <summary>Lihat jawaban</summary>
+    <ol>
+      <li>Menurut data: 65 ÷ 62 = 1,05. Cakupan naik 3 poin persen, atau sekitar 5% dari nilai semula.</li>
+      <li>Pada grafik kiri, tinggi batang dihitung dari 60: (65 − 60) ÷ (62 − 60) = 5 ÷ 2 = <strong>2,5 kali</strong>.</li>
+    </ol>
+    <p>Kenaikan 5% ditampilkan seolah-olah 150%. Judul "melonjak" memperkuat kesan itu. Bupati yang hanya melihat sekilas akan pulang dengan kesimpulan yang keliru.</p>
+    <p>Aturannya sederhana: <strong>sumbu grafik batang harus mulai dari nol</strong>, karena panjang batanglah yang membawa pesan.</p>
+  </details>
+</section>
+
+<section class="lebar" aria-labelledby="m-l3">
+  <span class="langkah">Langkah 3</span>
+  <h2 id="m-l3">Pilih jenis grafik menurut pertanyaannya</h2>
+  <div class="tabel-gulir">
+    <table class="teks">
+      <thead>
+        <tr><th scope="col">Pertanyaan</th><th scope="col">Jenis grafik</th><th scope="col">Contoh</th></tr>
+      </thead>
+      <tbody>
+        <tr><th scope="row">Mana yang lebih besar?</th><td>Batang</td><td>Cakupan imunisasi menurut puskesmas</td></tr>
+        <tr><th scope="row">Bagaimana perubahannya dari waktu ke waktu?</th><td>Garis</td><td>Kasus DBD per bulan selama tiga tahun</td></tr>
+        <tr><th scope="row">Bagaimana sebaran nilainya?</th><td>Histogram atau kotak garis</td><td>Lama tunggu 200 pasien</td></tr>
+        <tr><th scope="row">Apakah dua ukuran saling berhubungan?</th><td>Pencar</td><td>Umur dan tekanan darah</td></tr>
+        <tr><th scope="row">Berapa bagian dari keseluruhan?</th><td>Batang, atau lingkaran bila kategorinya sedikit</td><td>Pasien menurut cara bayar</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p class="baca" style="margin-top:1rem">Grafik garis boleh tidak mulai dari nol, karena yang dibaca adalah arah dan kemiringannya. Syaratnya, angka pada sumbu tertulis jelas.</p>
+  <details>
+    <summary>Untuk cakupan ASI eksklusif tiga tahun, grafik apa yang paling jujur?</summary>
+    <p>Grafik batang yang mulai dari nol, atau cukup satu kalimat: "Cakupan naik dari 62% menjadi 65% dalam tiga tahun." Tiga angka sering kali tidak memerlukan grafik.</p>
+    <p>Bila ada target, misalnya 80%, gambarkan sebagai garis mendatar pada grafik. Pembaca langsung melihat bahwa capaian naik perlahan dan masih jauh dari target.</p>
+  </details>
+</section>
+
+<section aria-labelledby="m-l4">
+  <span class="langkah">Langkah 4</span>
+  <h2 id="m-l4">Buang yang tidak membawa data</h2>
+  <ul>
+    <li>Hindari efek tiga dimensi. Kedalaman dan kemiringan mengubah ukuran yang tertangkap mata.</li>
+    <li>Pakai warna untuk membedakan, bukan menghias. Satu warna cukup bila hanya ada satu kelompok.</li>
+    <li>Tulis label langsung di dekat batang atau garis, supaya pembaca tidak bolak-balik ke keterangan.</li>
+    <li>Urutkan batang dari yang terbesar, kecuali kategorinya memang berurutan seperti tahun atau tingkat pendidikan.</li>
+  </ul>
+</section>
+
+<section aria-labelledby="m-l5">
+  <span class="langkah">Langkah 5</span>
+  <h2 id="m-l5">Tulis judul yang jujur</h2>
+  <p>Judul yang baik menyatakan temuan dengan ukuran yang bisa diperiksa, dan grafik dilengkapi sumber data serta jumlah yang diukur.</p>
+  <details>
+    <summary>Lihat perbaikan salindia</summary>
+    <p><strong>Judul:</strong> "Cakupan ASI eksklusif naik 3 poin persen dalam tiga tahun, masih di bawah target 80%."</p>
+    <p><strong>Grafik:</strong> batang mulai dari nol, dengan garis target.</p>
+    <p><strong>Catatan kaki:</strong> "Sumber: laporan bulanan puskesmas, Dinas Kesehatan Kabupaten Saloka. Pembagi: bayi berumur 0 sampai 5 bulan yang tercatat."</p>
+  </details>
+</section>
+
+<section aria-labelledby="m-kuis">
+  <h2 id="m-kuis">Uji diri</h2>
+
+  <fieldset class="soal" data-benar="c">
+    <legend>1. Apa yang sebaiknya dibaca pertama kali pada sebuah grafik?</legend>
+    <button type="button" class="pilihan" data-nilai="a">Batang yang paling tinggi</button>
+    <button type="button" class="pilihan" data-nilai="b">Warnanya</button>
+    <button type="button" class="pilihan" data-nilai="c">Judul dan sumbu, termasuk satuan dan titik awalnya</button>
+    <button type="button" class="pilihan" data-nilai="d">Arah garisnya</button>
+    <p class="penjelasan" hidden>Tanpa mengetahui apa yang diukur dan dari angka berapa sumbu dimulai, bentuk grafik bisa menyesatkan.</p>
+  </fieldset>
+
+  <fieldset class="soal" data-benar="a">
+    <legend>2. Sumbu grafik batang mulai dari 90. Nilainya 92 dan 96. Berapa kali lipat batang kedua tampak dibanding batang pertama?</legend>
+    <button type="button" class="pilihan" data-nilai="a">3 kali</button>
+    <button type="button" class="pilihan" data-nilai="b">1,04 kali</button>
+    <button type="button" class="pilihan" data-nilai="c">2 kali</button>
+    <button type="button" class="pilihan" data-nilai="d">4 kali</button>
+    <p class="penjelasan" hidden>(96 − 90) ÷ (92 − 90) = 6 ÷ 2 = 3. Padahal menurut data, 96 hanya 1,04 kali 92.</p>
+  </fieldset>
+
+  <fieldset class="soal" data-benar="b">
+    <legend>3. Grafik apa yang paling cocok untuk jumlah kasus per bulan selama tiga tahun?</legend>
+    <button type="button" class="pilihan" data-nilai="a">Lingkaran</button>
+    <button type="button" class="pilihan" data-nilai="b">Garis</button>
+    <button type="button" class="pilihan" data-nilai="c">Pencar</button>
+    <button type="button" class="pilihan" data-nilai="d">Histogram</button>
+    <p class="penjelasan" hidden>Grafik garis menunjukkan perubahan dari waktu ke waktu, termasuk pola musiman.</p>
+  </fieldset>
+
+  <fieldset class="soal" data-benar="d">
+    <legend>4. Anda ingin melihat apakah umur berhubungan dengan tekanan darah pada 300 orang. Grafik apa yang dipakai?</legend>
+    <button type="button" class="pilihan" data-nilai="a">Batang</button>
+    <button type="button" class="pilihan" data-nilai="b">Lingkaran</button>
+    <button type="button" class="pilihan" data-nilai="c">Garis</button>
+    <button type="button" class="pilihan" data-nilai="d">Pencar</button>
+    <p class="penjelasan" hidden>Grafik pencar menempatkan tiap orang sebagai satu titik menurut dua ukuran numerik.</p>
+  </fieldset>
+
+  <fieldset class="soal" data-benar="c">
+    <legend>5. Mengapa efek tiga dimensi sebaiknya dihindari?</legend>
+    <button type="button" class="pilihan" data-nilai="a">Karena sulit dicetak.</button>
+    <button type="button" class="pilihan" data-nilai="b">Karena memerlukan komputer mahal.</button>
+    <button type="button" class="pilihan" data-nilai="c">Karena mengubah ukuran yang tertangkap mata tanpa menambah data.</button>
+    <button type="button" class="pilihan" data-nilai="d">Karena dilarang peraturan.</button>
+    <p class="penjelasan" hidden>Kedalaman dan kemiringan membuat tinggi atau luas sulit dibandingkan dengan tepat.</p>
+  </fieldset>
+
+  <p class="skor" id="skor" role="status" hidden></p>
+</section>
+
+<section aria-labelledby="m-naik">
+  <h2 id="m-naik">Naik jenjang</h2>
+  <p>Grafik yang jujur adalah keterampilan dasar. Jenjang berikutnya menambahkan ketidakpastian, model, dan rancangan untuk pengambil keputusan.</p>
+
+  <div class="naik">
+    <h3>Jenjang 2: tampilkan ketidakpastiannya</h3>
+    <p>Cakupan 65% dari survei 200 bayi tidak sama pastinya dengan 65% dari pencatatan 4.000 bayi. Anda akan menambahkan selang kepercayaan pada grafik dan memakai diagram kotak garis untuk membandingkan sebaran beberapa kelompok.</p>
+  </div>
+
+  <div class="naik j3">
+    <h3>Jenjang 3: banyak kelompok, banyak waktu, banyak tempat</h3>
+    <p>Bagaimana menampilkan tren dua belas puskesmas sekaligus tanpa membuat grafik seperti benang kusut? Anda akan memakai panel kecil berjajar, peta tematik, dan grafik hasil model, serta mengenali jebakan pada peta, misalnya wilayah luas berpenduduk sedikit yang tampak dominan.</p>
+  </div>
+
+  <div class="naik j4">
+    <h3>Jenjang 4: merancang dasbor untuk keputusan</h3>
+    <p>Seorang ahli merancang tampilan berangkat dari keputusan yang harus diambil pembacanya: indikator mana yang perlu, pembanding apa yang adil, dan kapan sebuah perubahan layak disebut bermakna. Ia juga menguji apakah pembaca sungguh menangkap pesan yang dimaksud.</p>
+  </div>
+</section>
+
+<section aria-labelledby="m-terap">
+  <h2 id="m-terap">Terapkan</h2>
+  <ol>
+    <li>Cari satu grafik batang di berita atau laporan. Dari angka berapa sumbunya dimulai? Hitung seberapa besar kesan yang ditimbulkannya dibanding datanya.</li>
+    <li>Gambar ulang grafik itu dengan sumbu mulai dari nol, di kertas atau lembar kerja.</li>
+    <li>Tulis ulang judulnya agar menyatakan temuan dengan angka.</li>
+  </ol>
+  <div class="deret-tombol">
+    <button type="button" class="tombol" id="tandai-selesai" data-modul="biostatistik-03">Tandai modul ini selesai</button>
+    <a class="tombol garis" href="kurikulum.html">Kembali ke peta kurikulum</a>
+  </div>
+</section>
+
+<section aria-labelledby="m-rujuk">
+  <h2 id="m-rujuk">Rujukan dan bacaan lanjut</h2>
+  <ul class="rujukan">
+    <li>CDC. <a href="https://stacks.cdc.gov/view/cdc/13178"><em>Principles of Epidemiology in Public Health Practice</em>, edisi ketiga</a>. Pelajaran 4 membahas penyajian data kesehatan masyarakat dengan tabel dan grafik. Domain publik.</li>
+    <li>OpenStax. <a href="https://openstax.org/books/introductory-statistics-2e/pages/preface"><em>Introductory Statistics 2e</em></a>. Bab 2 membahas grafik untuk statistik deskriptif. Lisensi CC BY 4.0.</li>
+    <li>Edward Tufte. <em>The Visual Display of Quantitative Information</em>. Prinsip grafik yang jujur dan hemat tinta.</li>
+    <li>Cleveland dan McGill (1984). "Graphical Perception". <em>Journal of the American Statistical Association</em>. Penelitian tentang ketepatan mata membaca panjang, sudut, dan luas.</li>
+  </ul>
+  <p class="keterangan">Modul ini ditulis orisinal untuk Learn Public Health.</p>
+</section>
+
+</div>
+</main>
+
+<footer class="kaki">
+  <div class="wadah">
+    <p><strong>Learn Public Health</strong>. Materi ini untuk pendidikan. Data kasus dalam modul adalah rekaan, kecuali disebutkan lain.</p>
+    <p><a href="index.html">Beranda</a> | <a href="kurikulum.html">Peta kurikulum</a> | <a href="sumber.html">Sumber belajar</a></p>
+  </div>
+</footer>
+
+<script src="app.js"></script>
+</body>
+</html>

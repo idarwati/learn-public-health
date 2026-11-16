@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Mengukur beban penyakit dengan insidens dan prevalens | Learn Public Health</title>
+<meta name="description" content="Modul epidemiologi jenjang dasar: insidens dan prevalens, hubungan keduanya, dan pemakaiannya, dengan kasus diabetes di sebuah kecamatan.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header class="kepala">
+  <div class="wadah">
+    <a class="merek" href="index.html">
+      <svg viewBox="0 0 32 32" aria-hidden="true"><path d="M2 30V22h7v-7h7V8h7V2h7v28z" fill="#075443"/></svg>
+      Learn Public Health
+    </a>
+    <nav aria-label="Menu utama">
+      <ul class="menu">
+        <li><a href="index.html">Beranda</a></li>
+        <li><a href="kurikulum.html">Peta kurikulum</a></li>
+        <li><a href="sumber.html">Sumber belajar</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<main>
+
+<div class="modul-kepala">
+  <div class="wadah">
+    <p class="remah"><a href="kurikulum.html">Peta kurikulum</a> / Epidemiologi / Jenjang 1: Dasar</p>
+    <h1>Mengukur beban penyakit dengan insidens dan prevalens</h1>
+    <p class="ringkas">Jumlah penyandang diabetes di kecamatan Anda bertambah setelah setahun program berjalan. Kepala puskesmas mengira programnya gagal. Benarkah?</p>
+    <ul class="modul-info">
+      <li>Waktu belajar: sekitar 40 menit</li>
+      <li>Prasyarat: tidak ada</li>
+      <li>Alat: kalkulator biasa</li>
+    </ul>
+  </div>
+</div>
+
+<div class="modul-isi wadah">
+
+<section aria-labelledby="m-tujuan">
+  <h2 id="m-tujuan">Setelah modul ini, Anda bisa</h2>
+  <ul>
+    <li>membedakan insidens dari prevalens dan menghitung keduanya;</li>
+    <li>menjelaskan mengapa prevalens bisa naik walaupun program berjalan baik;</li>
+    <li>memilih ukuran yang tepat untuk merencanakan layanan dan untuk menilai pencegahan.</li>
+  </ul>
+</section>
+
+<section aria-labelledby="m-kasus">
+  <h2 id="m-kasus">Kasus</h2>
+  <div class="kasus-cerita">
+    <p>Kecamatan Lontara memiliki 20.000 penduduk dewasa. Pada 1 Januari, <strong>1.600 orang</strong> di antaranya tercatat hidup dengan diabetes. Sepanjang tahun, puskesmas menjalankan program pengendalian diabetes: skrining, penyuluhan, dan pengobatan teratur.</p>
+    <p>Pada 31 Desember, catatan menunjukkan:</p>
+    <ul>
+      <li>276 orang baru terdiagnosis diabetes selama tahun itu;</li>
+      <li>76 penyandang diabetes meninggal;</li>
+      <li>jumlah penduduk dewasa dianggap tetap 20.000.</li>
+    </ul>
+    <p>Kepala puskesmas kecewa: "Penyandang diabetes bertambah. Berarti program kita gagal?" Anda diminta menjelaskan apa yang sebenarnya dikatakan angka-angka itu.</p>
+  </div>
+  <p class="keterangan">Nama tempat dan seluruh angka dalam kasus ini rekaan, disusun untuk latihan.</p>
+</section>
+
+<section aria-labelledby="m-l1">
+  <span class="langkah">Langkah 1</span>
+  <h2 id="m-l1">Hitung prevalens: berapa banyak yang sedang sakit</h2>
+  <p><strong>Prevalens</strong> adalah bagian penduduk yang sedang memiliki suatu penyakit pada waktu tertentu, baik kasus lama maupun baru.</p>
+  <div class="rumus">Prevalens = jumlah semua orang yang sedang sakit ÷ jumlah penduduk × 100%</div>
+  <p>Hitung prevalens diabetes pada 1 Januari dan pada 31 Desember.</p>
+  <details>
+    <summary>Lihat jawaban</summary>
+    <p>1 Januari: 1.600 ÷ 20.000 = <strong>8%</strong>.</p>
+    <p>31 Desember: jumlah penyandang = 1.600 + 276 − 76 = 1.800 orang. Prevalens = 1.800 ÷ 20.000 = <strong>9%</strong>.</p>
+  </details>
+</section>
+
+<section aria-labelledby="m-l2">
+  <span class="langkah">Langkah 2</span>
+  <h2 id="m-l2">Hitung insidens: berapa cepat kasus baru muncul</h2>
+  <p><strong>Insidens</strong> adalah bagian dari orang yang semula sehat yang kemudian menjadi sakit dalam kurun waktu tertentu. Yang dihitung hanya kasus baru.</p>
+  <div class="rumus">Insidens = jumlah kasus baru ÷ jumlah orang yang berisiko pada awal periode</div>
+  <p>Orang yang berisiko adalah mereka yang belum sakit pada awal periode. Orang yang sudah menyandang diabetes tidak bisa menjadi kasus baru, sehingga tidak dihitung dalam pembagi.</p>
+  <details>
+    <summary>Lihat jawaban</summary>
+    <p>Orang yang berisiko pada 1 Januari: 20.000 − 1.600 = 18.400 orang.</p>
+    <p>Insidens = 276 ÷ 18.400 = 0,015, atau <strong>15 kasus baru per 1.000 orang per tahun</strong>.</p>
+    <p>Kesalahan yang paling sering terjadi adalah membagi dengan seluruh penduduk (20.000). Hasilnya 13,8 per 1.000, lebih rendah daripada yang sebenarnya.</p>
+  </details>
+</section>
+
+<section aria-labelledby="m-l3">
+  <span class="langkah">Langkah 3</span>
+  <h2 id="m-l3">Hubungkan keduanya</h2>
+  <p>Bayangkan sebuah bak mandi. Air yang mengalir dari keran adalah insidens. Air di dalam bak adalah prevalens. Lubang pembuangan adalah orang yang sembuh atau meninggal.</p>
+  <p>Tinggi air di bak naik bila keran mengalir lebih deras, atau bila lubang pembuangan menyempit. Untuk penyakit menahun seperti diabetes, yang tidak sembuh, lubang pembuangannya hanya kematian.</p>
+  <details>
+    <summary>Jadi, apakah kenaikan prevalens dari 8% ke 9% berarti program gagal?</summary>
+    <p>Belum tentu, dan mungkin justru sebaliknya. Ada tiga hal yang dapat menaikkan prevalens:</p>
+    <ol>
+      <li>Lebih banyak orang yang benar-benar menjadi sakit. Ini kabar buruk.</li>
+      <li>Skrining menemukan penyandang yang selama ini tidak terdiagnosis. Kasusnya tercatat "baru", padahal penyakitnya sudah lama. Ini kabar baik, karena mereka kini bisa diobati.</li>
+      <li>Pengobatan yang lebih baik membuat penyandang hidup lebih lama. Ini juga kabar baik.</li>
+    </ol>
+    <p>Untuk menilai program pencegahan, yang harus dilihat adalah insidens dari tahun ke tahun, dengan cara penemuan kasus yang sama. Untuk menilai pengobatan, lihat angka kematian dan komplikasi di antara penyandang.</p>
+  </details>
+</section>
+
+<section aria-labelledby="m-l4">
+  <span class="langkah">Langkah 4</span>
+  <h2 id="m-l4">Pakai ukuran yang tepat untuk keputusan yang tepat</h2>
+  <ul>
+    <li><strong>Prevalens</strong> menjawab "seberapa besar beban layanan?". Pakailah untuk merencanakan obat, tenaga, dan anggaran.</li>
+    <li><strong>Insidens</strong> menjawab "seberapa besar risiko orang menjadi sakit?". Pakailah untuk mencari penyebab dan menilai pencegahan.</li>
+  </ul>
+  <p>Tiap penyandang diabetes dijadwalkan kontrol sebulan sekali. Berapa kunjungan kontrol yang harus disiapkan puskesmas tahun depan untuk 1.800 penyandang?</p>
+  <details>
+    <summary>Lihat jawaban</summary>
+    <p>1.800 × 12 = <strong>21.600 kunjungan setahun</strong>, atau 1.800 kunjungan per bulan. Angka ini diturunkan dari prevalens. Insidens tidak dapat menjawab pertanyaan ini.</p>
+  </details>
+</section>
+
+<section aria-labelledby="m-kuis">
+  <h2 id="m-kuis">Uji diri</h2>
+
+  <fieldset class="soal" data-benar="b">
+    <legend>1. Survei pada satu hari menemukan 150 dari 3.000 orang menderita hipertensi. Ukuran apa yang diperoleh?</legend>
+    <button type="button" class="pilihan" data-nilai="a">Insidens 5%</button>
+    <button type="button" class="pilihan" data-nilai="b">Prevalens 5%</button>
+    <button type="button" class="pilihan" data-nilai="c">Attack rate 5%</button>
+    <button type="button" class="pilihan" data-nilai="d">Angka kematian 5%</button>
+    <p class="penjelasan" hidden>Survei sesaat menghitung semua yang sedang sakit, kasus lama maupun baru: 150 ÷ 3.000 = 5%.</p>
+  </fieldset>
+
+  <fieldset class="soal" data-benar="c">
+    <legend>2. Dari 5.000 orang, 500 sudah menderita penyakit X di awal tahun. Selama setahun muncul 90 kasus baru. Berapa insidensnya?</legend>
+    <button type="button" class="pilihan" data-nilai="a">18 per 1.000</button>
+    <button type="button" class="pilihan" data-nilai="b">118 per 1.000</button>
+    <button type="button" class="pilihan" data-nilai="c">20 per 1.000</button>
+    <button type="button" class="pilihan" data-nilai="d">100 per 1.000</button>
+    <p class="penjelasan" hidden>Yang berisiko 5.000 − 500 = 4.500 orang. Insidens = 90 ÷ 4.500 = 0,02, atau 20 per 1.000.</p>
+  </fieldset>
+
+  <fieldset class="soal" data-benar="a">
+    <legend>3. Obat baru membuat penderita suatu penyakit menahun hidup lebih lama tanpa menyembuhkan. Apa akibatnya?</legend>
+    <button type="button" class="pilihan" data-nilai="a">Prevalens naik, insidens tidak berubah.</button>
+    <button type="button" class="pilihan" data-nilai="b">Prevalens turun, insidens naik.</button>
+    <button type="button" class="pilihan" data-nilai="c">Keduanya turun.</button>
+    <button type="button" class="pilihan" data-nilai="d">Insidens naik, prevalens tidak berubah.</button>
+    <p class="penjelasan" hidden>Lubang pembuangan bak menyempit sementara keran mengalir seperti biasa, sehingga air di bak bertambah.</p>
+  </fieldset>
+
+  <fieldset class="soal" data-benar="d">
+    <legend>4. Ukuran mana yang paling tepat untuk menilai keberhasilan program pencegahan?</legend>
+    <button type="button" class="pilihan" data-nilai="a">Prevalens</button>
+    <button type="button" class="pilihan" data-nilai="b">Jumlah kunjungan</button>
+    <button type="button" class="pilihan" data-nilai="c">Jumlah penyandang</button>
+    <button type="button" class="pilihan" data-nilai="d">Insidens</button>
+    <p class="penjelasan" hidden>Pencegahan bertujuan mengurangi kasus baru, dan itulah yang diukur insidens.</p>
+  </fieldset>
+
+  <fieldset class="soal" data-benar="b">
+    <legend>5. Mengapa orang yang sudah sakit tidak dimasukkan ke pembagi insidens?</legend>
+    <button type="button" class="pilihan" data-nilai="a">Karena datanya sulit diperoleh.</button>
+    <button type="button" class="pilihan" data-nilai="b">Karena mereka tidak bisa lagi menjadi kasus baru.</button>
+    <button type="button" class="pilihan" data-nilai="c">Karena jumlahnya terlalu sedikit.</button>
+    <button type="button" class="pilihan" data-nilai="d">Karena mereka sudah diobati.</button>
+    <p class="penjelasan" hidden>Pembagi insidens hanya berisi orang yang berisiko, yaitu yang belum sakit pada awal periode.</p>
+  </fieldset>
+
+  <p class="skor" id="skor" role="status" hidden></p>
+</section>
+
+<section aria-labelledby="m-naik">
+  <h2 id="m-naik">Naik jenjang</h2>
+  <p>Insidens dan prevalens adalah dua ukuran yang paling sering dipakai dalam epidemiologi. Jenjang berikutnya memperhalus keduanya.</p>
+
+  <div class="naik">
+    <h3>Jenjang 2: orang-waktu dan hubungan tiga besaran</h3>
+    <p>Tidak semua orang diamati selama setahun penuh; ada yang pindah atau meninggal di tengah jalan. Anda akan menghitung laju insidens dengan pembagi orang-tahun. Anda juga akan memakai hubungan bahwa, dalam keadaan stabil dan untuk penyakit yang jarang, prevalens kira-kira sama dengan insidens dikali lama sakit rata-rata.</p>
+  </div>
+
+  <div class="naik j3">
+    <h3>Jenjang 3: membandingkan secara adil</h3>
+    <p>Kecamatan yang penduduknya lebih tua wajar memiliki prevalens diabetes lebih tinggi. Anda akan menstandarkan angka menurut umur, memperhitungkan bahwa skrining yang lebih giat menaikkan angka temuan, dan memodelkan tren insidens dari tahun ke tahun.</p>
+  </div>
+
+  <div class="naik j4">
+    <h3>Jenjang 4: memperkirakan beban masa depan</h3>
+    <p>Seorang ahli menggabungkan insidens, kematian, dan perubahan susunan umur penduduk untuk memproyeksikan jumlah penyandang sepuluh tahun ke depan, lalu menghitung berapa kasus dan biaya yang dapat dicegah oleh berbagai pilihan program.</p>
+  </div>
+</section>
+
+<section aria-labelledby="m-terap">
+  <h2 id="m-terap">Terapkan</h2>
+  <ol>
+    <li>Cari angka prevalens satu penyakit tidak menular dari survei kesehatan nasional. Berapa perkiraan jumlah penyandangnya di kecamatan Anda?</li>
+    <li>Dari angka itu, perkirakan jumlah kunjungan kontrol setahun yang perlu disiapkan.</li>
+    <li>Pilih satu program pencegahan. Data apa yang Anda perlukan untuk menghitung insidens sebelum dan sesudah program?</li>
+  </ol>
+  <div class="deret-tombol">
+    <button type="button" class="tombol" id="tandai-selesai" data-modul="epidemiologi-03">Tandai modul ini selesai</button>
+    <a class="tombol garis" href="kurikulum.html">Kembali ke peta kurikulum</a>
+  </div>
+</section>
+
+<section aria-labelledby="m-rujuk">
+  <h2 id="m-rujuk">Rujukan dan bacaan lanjut</h2>
+  <ul class="rujukan">
+    <li>CDC. <a href="https://stacks.cdc.gov/view/cdc/13178"><em>Principles of Epidemiology in Public Health Practice</em>, edisi ketiga</a>. Pelajaran 3 membahas ukuran risiko, termasuk insidens dan prevalens. Domain publik.</li>
+    <li>Celentano dan Szklo. <em>Gordis Epidemiology</em>. Bab tentang mengukur kejadian penyakit.</li>
+    <li>Bonita, Beaglehole, dan Kjellström. <em>Basic Epidemiology</em>. WHO.</li>
+  </ul>
+  <p class="keterangan">Modul ini ditulis orisinal untuk Learn Public Health.</p>
+</section>
+
+</div>
+</main>
+
+<footer class="kaki">
+  <div class="wadah">
+    <p><strong>Learn Public Health</strong>. Materi ini untuk pendidikan. Data kasus dalam modul adalah rekaan, kecuali disebutkan lain.</p>
+    <p><a href="index.html">Beranda</a> | <a href="kurikulum.html">Peta kurikulum</a> | <a href="sumber.html">Sumber belajar</a></p>
+  </div>
+</footer>
+
+<script src="app.js"></script>
+</body>
+</html>
