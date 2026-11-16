@@ -251,6 +251,39 @@
     });
   }
 
+  /* ---------- Kalkulator kai kuadrat tabel 2 x 2 ---------- */
+  function kaiKuadrat(a, b, c, d) {
+    var sel = [a, b, c, d];
+    for (var i = 0; i < 4; i++) {
+      if (!isFinite(sel[i]) || sel[i] < 0 || Math.floor(sel[i]) !== sel[i]) {
+        return { galat: 'Isi keempat kotak dengan bilangan bulat, 0 atau lebih.' };
+      }
+    }
+    var n = a + b + c + d;
+    var baris1 = a + b, baris2 = c + d, kolom1 = a + c, kolom2 = b + d;
+    if (baris1 === 0 || baris2 === 0 || kolom1 === 0 || kolom2 === 0) {
+      return { galat: 'Tiap kelompok dan tiap kategori harus berisi sedikitnya satu orang.' };
+    }
+    var chi = n * Math.pow(a * d - b * c, 2) / (baris1 * baris2 * kolom1 * kolom2);
+    var harapanMin = Math.min(baris1, baris2) * Math.min(kolom1, kolom2) / n;
+    return { chi: chi, p: nilaiP(Math.sqrt(chi)), harapanMin: harapanMin };
+  }
+
+  function pasangKai(form) {
+    var keluaran = document.getElementById('hasil-kai');
+    var pesan = document.getElementById('pesan-kai');
+    form.addEventListener('submit', function (e) {
+      e.preventDefault();
+      var v = ['a', 'b', 'c', 'd'].map(function (k) { var t = form.elements[k].value; return t === '' ? NaN : Number(t); });
+      var h = kaiKuadrat(v[0], v[1], v[2], v[3]);
+      if (h.galat) { pesan.textContent = h.galat; pesan.hidden = false; keluaran.hidden = true; return; }
+      pesan.hidden = true; keluaran.hidden = false;
+      document.getElementById('x-chi').textContent = angka(h.chi, 2);
+      document.getElementById('x-p').textContent = h.p < 0.001 ? 'kurang dari 0,001' : angka(h.p, 3);
+      document.getElementById('x-min').textContent = angka(h.harapanMin, 1) + (h.harapanMin < 5 ? ' (di bawah 5: gunakan uji eksak Fisher)' : '');
+    });
+  }
+
   /* ---------- Kuis ----------
      <fieldset class="soal" data-benar="b"> berisi tombol .pilihan[data-nilai]
      dan <p class="penjelasan" hidden>. */
@@ -325,6 +358,8 @@
       if (selang) pasangSelang(selang);
       var formP = document.getElementById('nilaip');
       if (formP) pasangNilaiP(formP);
+      var formKai = document.getElementById('kai');
+      if (formKai) pasangKai(formKai);
       pasangKuis();
       pasangPenanda();
     });
@@ -332,6 +367,6 @@
 
   /* Agar rumus bisa diuji di luar peramban. */
   if (typeof module !== 'undefined' && module.exports) {
-    module.exports = { hitungRisiko: hitungRisiko, hitungRingkasan: hitungRingkasan, peluangNormal: peluangNormal, selangProporsi: selangProporsi, nilaiP: nilaiP, rasioOdds: rasioOdds };
+    module.exports = { hitungRisiko: hitungRisiko, hitungRingkasan: hitungRingkasan, peluangNormal: peluangNormal, selangProporsi: selangProporsi, nilaiP: nilaiP, rasioOdds: rasioOdds, kaiKuadrat: kaiKuadrat };
   }
 })();

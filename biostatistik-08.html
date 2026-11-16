@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Memilih uji: kai kuadrat, uji t, dan ANOVA | Learn Public Health</title>
+<meta name="description" content="Modul biostatistik jenjang menengah: memilih uji statistik, menghitung kai kuadrat dan uji t, serta memahami ANOVA dan perbandingan berganda.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header class="kepala">
+  <div class="wadah">
+    <a class="merek" href="index.html">
+      <svg viewBox="0 0 32 32" aria-hidden="true"><path d="M2 30V22h7v-7h7V8h7V2h7v28z" fill="#075443"/></svg>
+      Learn Public Health
+    </a>
+    <nav aria-label="Menu utama">
+      <ul class="menu">
+        <li><a href="index.html">Beranda</a></li>
+        <li><a href="kurikulum.html">Peta kurikulum</a></li>
+        <li><a href="sumber.html">Sumber belajar</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<main>
+
+<div class="modul-kepala">
+  <div class="wadah">
+    <p class="remah"><a href="kurikulum.html">Peta kurikulum</a> / Biostatistik / Jenjang 2: Menengah</p>
+    <h1>Memilih uji: kai kuadrat, uji t, dan ANOVA</h1>
+    <p class="ringkas">Tiga orang datang dengan pertanyaan yang sama, "apakah kelompok ini berbeda", untuk tiga macam data. Anda harus memilih uji yang tepat untuk masing-masing.</p>
+    <ul class="modul-info">
+      <li>Waktu belajar: sekitar 70 menit</li>
+      <li>Prasyarat: <a href="biostatistik-07.html">Uji hipotesis dan nilai p</a></li>
+      <li>Alat: kalkulator dengan tombol akar</li>
+    </ul>
+  </div>
+</div>
+
+<div class="modul-isi wadah">
+
+<section aria-labelledby="m-tujuan">
+  <h2 id="m-tujuan">Setelah modul ini, Anda bisa</h2>
+  <ul>
+    <li>memilih uji statistik berdasarkan jenis data dan jumlah kelompok;</li>
+    <li>menghitung dan menafsirkan uji kai kuadrat untuk tabel dua kali dua dan uji t dua sampel;</li>
+    <li>menjelaskan mengapa lebih dari dua kelompok dibandingkan dengan ANOVA, bukan dengan uji t berulang.</li>
+  </ul>
+</section>
+
+<section aria-labelledby="m-kasus">
+  <h2 id="m-kasus">Kasus</h2>
+  <div class="kasus-cerita">
+    <p>Tiga orang dari Dinas Kesehatan Kabupaten Saloka datang ke meja Anda pada hari yang sama.</p>
+    <ol>
+      <li>Pengelola program remaja: "Dari survei, 54 dari 270 siswa laki-laki dan 18 dari 330 siswa perempuan merokok. Uji apa untuk membuktikan bedanya?"</li>
+      <li>Kepala poliklinik: "Saya mencatat lama tunggu 16 pasien di poliklinik A dan 16 di poliklinik B. Rata-ratanya 50 dan 42 menit, simpangan bakunya sama-sama 10. Bedakah?"</li>
+      <li>Pengelola program gizi: "Saya punya rata-rata kadar hemoglobin ibu hamil dari tiga puskesmas. Saya akan membandingkannya dua-dua dengan uji t. Boleh?"</li>
+    </ol>
+    <p>Ketiganya menanyakan hal yang sama, yaitu "apakah kelompok-kelompok ini berbeda", tetapi jawabannya memerlukan tiga uji yang berbeda.</p>
+  </div>
+  <p class="keterangan">Nama tempat dan seluruh angka rekaan, disusun untuk latihan.</p>
+</section>
+
+<section class="lebar" aria-labelledby="m-l1">
+  <span class="langkah">Langkah 1</span>
+  <h2 id="m-l1">Pilih uji dari dua pertanyaan</h2>
+  <p class="baca">Tanyakan: apa jenis variabel yang dibandingkan, dan berapa kelompoknya?</p>
+  <div class="tabel-gulir">
+    <table class="teks">
+      <thead>
+        <tr><th scope="col">Variabel yang dibandingkan</th><th scope="col">Kelompok</th><th scope="col">Uji</th><th scope="col">Bila syarat tidak terpenuhi</th></tr>
+      </thead>
+      <tbody>
+        <tr><th scope="row">Kategorik (proporsi)</th><td>Dua atau lebih</td><td>Kai kuadrat</td><td>Uji eksak Fisher untuk sampel kecil</td></tr>
+        <tr><th scope="row">Numerik (rata-rata)</th><td>Dua kelompok terpisah</td><td>Uji t dua sampel</td><td>Mann-Whitney</td></tr>
+        <tr><th scope="row">Numerik (rata-rata)</th><td>Orang yang sama diukur dua kali</td><td>Uji t berpasangan</td><td>Wilcoxon</td></tr>
+        <tr><th scope="row">Numerik (rata-rata)</th><td>Tiga atau lebih</td><td>ANOVA</td><td>Kruskal-Wallis</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <details>
+    <summary>Uji apa untuk tiap tamu Anda?</summary>
+    <p>Pertama: merokok adalah variabel kategorik pada dua kelompok, jadi <strong>kai kuadrat</strong>. Kedua: lama tunggu numerik pada dua kelompok pasien yang berbeda, jadi <strong>uji t dua sampel</strong>. Ketiga: hemoglobin numerik pada tiga kelompok, jadi <strong>ANOVA</strong>.</p>
+  </details>
+</section>
+
+<section class="lebar" aria-labelledby="m-l2">
+  <span class="langkah">Langkah 2</span>
+  <h2 id="m-l2">Kai kuadrat: bandingkan yang teramati dengan yang diharapkan</h2>
+  <p class="baca">Uji kai kuadrat bertanya: seandainya jenis kelamin tidak berhubungan dengan merokok, berapa perokok yang <em>diharapkan</em> di tiap kelompok? Lalu seberapa jauh angka yang teramati dari harapan itu?</p>
+  <p class="baca">Secara keseluruhan, 72 dari 600 siswa merokok, atau 12%. Bila tidak ada hubungan, 12% dari tiap kelompok diharapkan merokok.</p>
+  <div class="rumus baca">Kai kuadrat = jumlah dari (teramati − diharapkan)² ÷ diharapkan, untuk semua sel</div>
+  <p class="baca">Hitung nilai harapan keempat sel, lalu nilai kai kuadratnya.</p>
+  <details>
+    <summary>Lihat jawaban</summary>
+    <div class="tabel-gulir">
+      <table>
+        <thead>
+          <tr><th scope="col">Sel</th><th scope="col">Teramati</th><th scope="col">Diharapkan</th><th scope="col">Sumbangan</th></tr>
+        </thead>
+        <tbody>
+          <tr><th scope="row">Laki-laki, merokok</th><td>54</td><td>32,4</td><td>14,40</td></tr>
+          <tr><th scope="row">Laki-laki, tidak merokok</th><td>216</td><td>237,6</td><td>1,96</td></tr>
+          <tr><th scope="row">Perempuan, merokok</th><td>18</td><td>39,6</td><td>11,78</td></tr>
+          <tr><th scope="row">Perempuan, tidak merokok</th><td>312</td><td>290,4</td><td>1,61</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p style="margin-top:1rem">Kai kuadrat = 14,40 + 1,96 + 11,78 + 1,61 = <strong>29,75</strong>.</p>
+    <p>Untuk tabel dua kali dua, nilai di atas 3,84 berarti p di bawah 0,05. Nilai 29,75 jauh melampauinya; p kurang dari 0,001. Perbedaan proporsi merokok antara siswa laki-laki dan perempuan sangat sulit dijelaskan sebagai kebetulan.</p>
+    <p>Syarat pemakaian: pengamatan saling bebas dan nilai harapan tiap sel sedikitnya 5.</p>
+  </details>
+
+  <form class="kalkulator" id="kai" novalidate>
+    <h3>Kalkulator kai kuadrat tabel dua kali dua</h3>
+    <div class="isian">
+      <fieldset>
+        <legend>Kelompok pertama</legend>
+        <label>Memiliki ciri <input type="number" name="a" min="0" step="1" inputmode="numeric" value="54"></label>
+        <label>Tidak memiliki ciri <input type="number" name="b" min="0" step="1" inputmode="numeric" value="216"></label>
+      </fieldset>
+      <fieldset>
+        <legend>Kelompok kedua</legend>
+        <label>Memiliki ciri <input type="number" name="c" min="0" step="1" inputmode="numeric" value="18"></label>
+        <label>Tidak memiliki ciri <input type="number" name="d" min="0" step="1" inputmode="numeric" value="312"></label>
+      </fieldset>
+    </div>
+    <button type="submit" class="tombol">Hitung</button>
+    <p class="pesan" id="pesan-kai" role="alert" hidden></p>
+    <dl class="hasil" id="hasil-kai" aria-live="polite" hidden>
+      <div><dt>Kai kuadrat</dt><dd id="x-chi"></dd></div>
+      <div><dt>Nilai p</dt><dd id="x-p"></dd></div>
+      <div><dt>Nilai harapan terkecil</dt><dd id="x-min"></dd></div>
+    </dl>
+  </form>
+</section>
+
+<section aria-labelledby="m-l3">
+  <span class="langkah">Langkah 3</span>
+  <h2 id="m-l3">Uji t: bandingkan dua rata-rata dari sampel kecil</h2>
+  <p>Pada modul uji hipotesis Anda memakai z untuk sampel besar. Untuk sampel kecil, simpangan baku sampel sendiri kurang pasti, sehingga dipakai <strong>distribusi t</strong> yang ekornya lebih tebal. Bentuknya ditentukan oleh <strong>derajat bebas</strong>; untuk dua sampel, n₁ + n₂ − 2.</p>
+  <div class="rumus">t = selisih rata-rata ÷ √( SB₁² ÷ n₁ + SB₂² ÷ n₂ )</div>
+  <p>Hitung t dan derajat bebas untuk data kepala poliklinik.</p>
+  <details>
+    <summary>Lihat jawaban</summary>
+    <p>Galat baku selisih = √(100 ÷ 16 + 100 ÷ 16) = √12,5 = 3,54 menit. t = (50 − 42) ÷ 3,54 = <strong>2,26</strong>, dengan derajat bebas 16 + 16 − 2 = <strong>30</strong>.</p>
+    <p>Untuk derajat bebas 30, batasnya 2,04 (bukan 1,96). Karena 2,26 melampaui 2,04, hasilnya bermakna; nilai p-nya 0,031.</p>
+    <p>Syarat pemakaian: pengamatan saling bebas, data tiap kelompok kira-kira normal atau sampelnya cukup besar, dan sebaran kedua kelompok tidak jauh berbeda. Lama tunggu sering menceng; dengan 16 pasien per kelompok, periksa datanya dan pertimbangkan uji Mann-Whitney.</p>
+  </details>
+</section>
+
+<section aria-labelledby="m-l4">
+  <span class="langkah">Langkah 4</span>
+  <h2 id="m-l4">ANOVA: bandingkan tiga kelompok atau lebih sekaligus</h2>
+  <p>Pengelola program gizi ingin melakukan tiga uji t: A dengan B, A dengan C, dan B dengan C. Tiap uji memiliki peluang 5% menghasilkan "bermakna" palsu. Berapa peluang sedikitnya satu hasil palsu dari tiga uji?</p>
+  <details>
+    <summary>Lihat jawaban</summary>
+    <p>Peluang ketiganya bebas dari hasil palsu: 0,95 × 0,95 × 0,95 = 0,857. Peluang sedikitnya satu hasil palsu: 1 − 0,857 = <strong>14,3%</strong>, hampir tiga kali batas yang dimaksud. Dengan enam kelompok ada 15 pasangan, dan peluangnya melampaui 50%.</p>
+  </details>
+  <p><strong>ANOVA</strong> (analisis ragam) menjawab satu pertanyaan dengan satu uji: adakah rata-rata yang berbeda di antara semua kelompok? Caranya membandingkan dua sumber keragaman.</p>
+  <div class="rumus">F = keragaman antarkelompok ÷ keragaman di dalam kelompok</div>
+  <p>Bila semua kelompok sebenarnya sama, F mendekati 1. Makin besar F, makin kuat petunjuk bahwa ada kelompok yang berbeda.</p>
+  <p>Tiga puskesmas masing-masing memeriksa 5 ibu hamil. Rata-rata hemoglobinnya 10,0; 10,5; dan 11,6 g/dL, dengan rata-rata keseluruhan 10,7. Keragaman di dalam kelompok (rata-rata kuadrat) adalah 0,50. Hitung F.</p>
+  <details>
+    <summary>Lihat jawaban</summary>
+    <p>Jumlah kuadrat antarkelompok = 5 × [(10,0 − 10,7)² + (10,5 − 10,7)² + (11,6 − 10,7)²] = 5 × (0,49 + 0,04 + 0,81) = 6,7. Dibagi derajat bebas (3 − 1 = 2) menjadi 3,35.</p>
+    <p>F = 3,35 ÷ 0,50 = <strong>6,7</strong>. Untuk derajat bebas 2 dan 12, batasnya 3,89, sehingga hasilnya bermakna (p = 0,011).</p>
+    <p>ANOVA hanya mengatakan "ada yang berbeda", belum mengatakan yang mana. Untuk itu dilakukan uji lanjutan yang sudah memperhitungkan banyaknya perbandingan, misalnya uji Tukey.</p>
+  </details>
+</section>
+
+<section aria-labelledby="m-l5">
+  <span class="langkah">Langkah 5</span>
+  <h2 id="m-l5">Laporkan dengan lengkap</h2>
+  <p>Hasil uji yang baik menyebut empat hal: besarnya perbedaan, selang kepercayaannya, nama uji, dan nilai p.</p>
+  <details>
+    <summary>Lihat contoh untuk pengelola program remaja</summary>
+    <p>"Sebanyak 20,0% siswa laki-laki dan 5,5% siswa perempuan merokok, selisih 14,5 poin persen (uji kai kuadrat, χ² = 29,75; p &lt; 0,001)."</p>
+    <p>Kalimat "ada perbedaan bermakna (p &lt; 0,05)" saja tidak cukup. Pembaca perlu tahu seberapa besar perbedaannya untuk menilai apakah itu penting.</p>
+  </details>
+</section>
+
+<section aria-labelledby="m-kuis">
+  <h2 id="m-kuis">Uji diri</h2>
+
+  <fieldset class="soal" data-benar="b">
+    <legend>1. Anda ingin membandingkan rata-rata tekanan darah pada empat kelompok pekerjaan. Uji apa yang dipakai?</legend>
+    <button type="button" class="pilihan" data-nilai="a">Kai kuadrat</button>
+    <button type="button" class="pilihan" data-nilai="b">ANOVA</button>
+    <button type="button" class="pilihan" data-nilai="c">Enam uji t</button>
+    <button type="button" class="pilihan" data-nilai="d">Uji t berpasangan</button>
+    <p class="penjelasan" hidden>Variabel numerik pada tiga kelompok atau lebih dibandingkan dengan ANOVA.</p>
+  </fieldset>
+
+  <fieldset class="soal" data-benar="d">
+    <legend>2. Berat badan 20 pasien diukur sebelum dan sesudah program diet. Uji apa yang dipakai?</legend>
+    <button type="button" class="pilihan" data-nilai="a">Uji t dua sampel</button>
+    <button type="button" class="pilihan" data-nilai="b">Kai kuadrat</button>
+    <button type="button" class="pilihan" data-nilai="c">ANOVA</button>
+    <button type="button" class="pilihan" data-nilai="d">Uji t berpasangan</button>
+    <p class="penjelasan" hidden>Orang yang sama diukur dua kali, sehingga kedua pengukuran tidak saling bebas.</p>
+  </fieldset>
+
+  <fieldset class="soal" data-benar="a">
+    <legend>3. Dari 200 orang, 40 sakit. Kelompok A beranggota 50 orang. Bila tidak ada hubungan, berapa orang sakit yang diharapkan di kelompok A?</legend>
+    <button type="button" class="pilihan" data-nilai="a">10</button>
+    <button type="button" class="pilihan" data-nilai="b">20</button>
+    <button type="button" class="pilihan" data-nilai="c">40</button>
+    <button type="button" class="pilihan" data-nilai="d">12,5</button>
+    <p class="penjelasan" hidden>Proporsi sakit keseluruhan 40 ÷ 200 = 20%. Nilai harapan: 20% × 50 = 10.</p>
+  </fieldset>
+
+  <fieldset class="soal" data-benar="c">
+    <legend>4. Mengapa tiga kelompok tidak dibandingkan dengan tiga uji t?</legend>
+    <button type="button" class="pilihan" data-nilai="a">Karena uji t hanya untuk data kategorik.</button>
+    <button type="button" class="pilihan" data-nilai="b">Karena hitungannya terlalu lama.</button>
+    <button type="button" class="pilihan" data-nilai="c">Karena peluang memperoleh hasil bermakna palsu membesar.</button>
+    <button type="button" class="pilihan" data-nilai="d">Karena hasilnya selalu sama.</button>
+    <p class="penjelasan" hidden>Makin banyak uji, makin besar peluang sedikitnya satu "bermakna" hanya karena kebetulan.</p>
+  </fieldset>
+
+  <fieldset class="soal" data-benar="b">
+    <legend>5. Hasil ANOVA bermakna (p = 0,01). Apa yang dapat disimpulkan?</legend>
+    <button type="button" class="pilihan" data-nilai="a">Semua kelompok berbeda satu sama lain.</button>
+    <button type="button" class="pilihan" data-nilai="b">Sedikitnya satu rata-rata kelompok berbeda; perlu uji lanjutan untuk mengetahui yang mana.</button>
+    <button type="button" class="pilihan" data-nilai="c">Tidak ada kelompok yang berbeda.</button>
+    <button type="button" class="pilihan" data-nilai="d">Kelompok pertama yang tertinggi.</button>
+    <p class="penjelasan" hidden>ANOVA menguji semua rata-rata sekaligus dan tidak menunjuk kelompok mana yang berbeda.</p>
+  </fieldset>
+
+  <p class="skor" id="skor" role="status" hidden></p>
+</section>
+
+<section aria-labelledby="m-naik">
+  <h2 id="m-naik">Naik jenjang</h2>
+  <p>Ketiga uji ini sebenarnya kasus khusus dari satu kerangka yang lebih umum: model regresi.</p>
+
+  <div class="naik j3">
+    <h3>Jenjang 3: dari uji ke model</h3>
+    <p>Uji t setara dengan regresi linear yang memiliki satu variabel dua kategori, dan kai kuadrat berkerabat dengan regresi logistik. Dengan model, Anda dapat membandingkan kelompok sambil mengendalikan umur, jenis kelamin, dan faktor lain sekaligus, yang tidak dapat dilakukan uji sederhana.</p>
+  </div>
+
+  <div class="naik j4">
+    <h3>Jenjang 4: memilih cara analisis sebelum melihat data</h3>
+    <p>Seorang ahli menuliskan rencana analisis sebelum data terkumpul: uji apa, pada hasil utama yang mana, dan bagaimana menangani perbandingan berganda. Rencana itu mencegah godaan mencoba banyak uji lalu melaporkan yang paling menguntungkan.</p>
+  </div>
+</section>
+
+<section aria-labelledby="m-terap">
+  <h2 id="m-terap">Terapkan</h2>
+  <ol>
+    <li>Tulis tiga pertanyaan perbandingan dari tempat kerja atau penelitian Anda. Tentukan uji untuk masing-masing dengan tabel pada Langkah 1.</li>
+    <li>Ambil satu tabel dua kali dua dari sebuah laporan. Hitung nilai harapan dan kai kuadratnya, lalu periksa dengan kalkulator.</li>
+    <li>Cari satu artikel yang hanya menulis "p &lt; 0,05" tanpa besar perbedaan. Informasi apa yang hilang?</li>
+  </ol>
+  <div class="deret-tombol">
+    <button type="button" class="tombol" id="tandai-selesai" data-modul="biostatistik-08">Tandai modul ini selesai</button>
+    <a class="tombol garis" href="kurikulum.html">Kembali ke peta kurikulum</a>
+  </div>
+</section>
+
+<section aria-labelledby="m-rujuk">
+  <h2 id="m-rujuk">Rujukan dan bacaan lanjut</h2>
+  <ul class="rujukan">
+    <li>OpenStax. <a href="https://openstax.org/books/introductory-statistics-2e/pages/preface"><em>Introductory Statistics 2e</em></a>. Bab tentang uji hipotesis dua sampel, distribusi kai kuadrat, dan ANOVA. Lisensi CC BY 4.0.</li>
+    <li>Pagano dan Gauvreau. <em>Principles of Biostatistics</em>. Bab tentang perbandingan dua rata-rata, analisis ragam, dan tabel kontingensi.</li>
+    <li>Daniel dan Cross. <em>Biostatistics: A Foundation for Analysis in the Health Sciences</em>.</li>
+  </ul>
+  <p class="keterangan">Modul ini ditulis orisinal untuk Learn Public Health.</p>
+</section>
+
+</div>
+</main>
+
+<footer class="kaki">
+  <div class="wadah">
+    <p><strong>Learn Public Health</strong>. Materi ini untuk pendidikan. Data kasus dalam modul adalah rekaan, kecuali disebutkan lain.</p>
+    <p><a href="index.html">Beranda</a> | <a href="kurikulum.html">Peta kurikulum</a> | <a href="sumber.html">Sumber belajar</a></p>
+  </div>
+</footer>
+
+<script src="app.js"></script>
+</body>
+</html>

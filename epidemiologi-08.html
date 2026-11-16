@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Mengenali bias seleksi, bias informasi, dan perancu | Learn Public Health</title>
+<meta name="description" content="Modul epidemiologi jenjang menengah: bias seleksi, bias informasi, dan perancu, dengan contoh hitungan dan analisis berstrata.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header class="kepala">
+  <div class="wadah">
+    <a class="merek" href="index.html">
+      <svg viewBox="0 0 32 32" aria-hidden="true"><path d="M2 30V22h7v-7h7V8h7V2h7v28z" fill="#075443"/></svg>
+      Learn Public Health
+    </a>
+    <nav aria-label="Menu utama">
+      <ul class="menu">
+        <li><a href="index.html">Beranda</a></li>
+        <li><a href="kurikulum.html">Peta kurikulum</a></li>
+        <li><a href="sumber.html">Sumber belajar</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<main>
+
+<div class="modul-kepala">
+  <div class="wadah">
+    <p class="remah"><a href="kurikulum.html">Peta kurikulum</a> / Epidemiologi / Jenjang 2: Menengah</p>
+    <h1>Mengenali bias seleksi, bias informasi, dan perancu</h1>
+    <p class="ringkas">Studi Anda menemukan rasio odds 2,25 untuk asap rokok dan pneumonia balita. Tiga penelaah mengajukan tiga keberatan. Anda harus menjawabnya dengan angka.</p>
+    <ul class="modul-info">
+      <li>Waktu belajar: sekitar 60 menit</li>
+      <li>Prasyarat: <a href="epidemiologi-06.html">Desain studi</a> dan <a href="epidemiologi-07.html">Rasio risiko dan rasio odds</a></li>
+      <li>Alat: kalkulator biasa</li>
+    </ul>
+  </div>
+</div>
+
+<div class="modul-isi wadah">
+
+<section aria-labelledby="m-tujuan">
+  <h2 id="m-tujuan">Setelah modul ini, Anda bisa</h2>
+  <ul>
+    <li>membedakan tiga sumber kekeliruan dalam studi: bias seleksi, bias informasi, dan perancu;</li>
+    <li>memperkirakan ke arah mana tiap kekeliruan menggeser hasil;</li>
+    <li>memeriksa perancu dengan analisis berstrata dan menyebut cara mencegahnya.</li>
+  </ul>
+</section>
+
+<section aria-labelledby="m-kasus">
+  <h2 id="m-kasus">Kasus</h2>
+  <div class="kasus-cerita">
+    <p>Studi kasus-kontrol Anda tentang asap rokok dan pneumonia balita menghasilkan rasio odds 2,25: 60 dari 100 kasus terpapar, dibanding 80 dari 200 kontrol. Sebelum dipakai untuk mengusulkan program, kepala dinas meminta tiga penelaah membaca laporannya. Masing-masing mengajukan satu keberatan.</p>
+    <ol>
+      <li>"Dari mana kontrolnya? Seandainya diambil dari pengunjung klinik imunisasi di kota, hasilnya akan berbeda."</li>
+      <li>"Pewawancara tahu mana ibu dari anak yang sakit. Apakah mereka bertanya dengan cara yang sama kepada semua ibu?"</li>
+      <li>"Keluarga perokok di sini umumnya tinggal di rumah yang lebih padat. Mungkin kepadatan itulah penyebabnya, bukan asap."</li>
+    </ol>
+    <p>Anda harus menjawab ketiganya dengan angka.</p>
+  </div>
+  <p class="keterangan">Nama tempat dan seluruh angka rekaan, disusun untuk latihan. Kasus ini melanjutkan modul <a href="epidemiologi-06.html">Memilih desain studi yang tepat</a>.</p>
+</section>
+
+<section aria-labelledby="m-l1">
+  <span class="langkah">Langkah 1</span>
+  <h2 id="m-l1">Kenali tiga sumber kekeliruan</h2>
+  <p>Hubungan yang teramati dalam studi bisa berbeda dari hubungan yang sebenarnya karena kebetulan atau karena kekeliruan sistematis. Kebetulan ditangani dengan selang kepercayaan dan uji hipotesis. Kekeliruan sistematis tidak mengecil walaupun sampel diperbesar, dan ada tiga macam.</p>
+  <ul>
+    <li><strong>Bias seleksi:</strong> cara peserta masuk ke dalam studi membuat hubungan paparan dan penyakit pada peserta berbeda dari pada populasi asalnya.</li>
+    <li><strong>Bias informasi:</strong> paparan atau penyakit diukur dengan keliru, terutama bila kekeliruannya berbeda antara kelompok yang dibandingkan.</li>
+    <li><strong>Perancu</strong> (<em>confounding</em>): ada faktor ketiga yang berkaitan dengan paparan sekaligus menyebabkan penyakit, sehingga pengaruhnya tercampur dengan pengaruh paparan.</li>
+  </ul>
+  <p>Dua yang pertama adalah cacat pada cara studi dijalankan dan sulit diperbaiki setelah data terkumpul. Perancu adalah sifat dunia nyata dan sering masih dapat ditangani saat analisis, asalkan faktornya diukur.</p>
+</section>
+
+<section aria-labelledby="m-l2">
+  <span class="langkah">Langkah 2</span>
+  <h2 id="m-l2">Jawab penelaah pertama: bias seleksi</h2>
+  <p>Kontrol berfungsi menunjukkan seberapa sering paparan terjadi pada populasi asal kasus. Di Saloka, 40% balita tinggal serumah dengan perokok, dan kontrol Anda mencerminkannya: 80 dari 200.</p>
+  <p>Seandainya kontrol diambil dari pengunjung klinik imunisasi di pusat kota, yang keluarganya lebih jarang merokok, misalkan hanya 50 dari 200 kontrol yang terpapar. Hitung rasio odds-nya.</p>
+  <details>
+    <summary>Lihat jawaban</summary>
+    <p>Rasio odds = (60 × 150) ÷ (40 × 50) = 9.000 ÷ 2.000 = <strong>4,5</strong>, dua kali hasil semula.</p>
+    <p>Kasusnya sama dan paparannya sama. Yang berubah hanya sumber kontrol. Kontrol yang paparannya lebih jarang daripada populasi asal kasus membuat hubungan tampak lebih kuat.</p>
+    <p>Jawaban untuk penelaah: kontrol diambil dari desa yang sama dengan kasus melalui daftar posyandu, sehingga mewakili populasi yang melahirkan kasus. Tunjukkan bahwa persentase paparan pada kontrol sesuai dengan angka survei kabupaten.</p>
+  </details>
+</section>
+
+<section aria-labelledby="m-l3">
+  <span class="langkah">Langkah 3</span>
+  <h2 id="m-l3">Jawab penelaah kedua: bias informasi</h2>
+  <p>Ibu dari anak yang sakit cenderung mengingat-ingat penyebabnya, dan pewawancara yang mengetahui dugaan penelitian cenderung menggali lebih dalam pada kasus. Akibatnya paparan lebih sering tercatat pada kasus daripada pada kontrol, walaupun kenyataannya sama.</p>
+  <p>Misalkan karena digali lebih dalam, 10 ibu kasus yang semula tercatat tidak terpapar berubah menjadi terpapar. Catatan kasus menjadi 70 terpapar dan 30 tidak; kontrol tetap 80 dan 120. Hitung rasio odds-nya.</p>
+  <details>
+    <summary>Lihat jawaban</summary>
+    <p>Rasio odds = (70 × 120) ÷ (30 × 80) = 8.400 ÷ 2.400 = <strong>3,5</strong>.</p>
+    <p>Kekeliruan pengukuran yang <em>berbeda</em> antara kasus dan kontrol dapat menggeser hasil ke arah mana pun; di sini menjauh dari 1. Sebaliknya, bila kekeliruan sama besar pada kedua kelompok, misalnya semua ibu sama-sama kurang melaporkan, hasil biasanya bergeser mendekati 1, sehingga hubungan yang nyata tampak lebih lemah.</p>
+    <p>Pencegahannya ada pada rancangan: pertanyaan baku yang dibacakan sama persis, pewawancara yang tidak mengetahui dugaan penelitian, dan bila mungkin ukuran yang tidak bergantung pada ingatan.</p>
+  </details>
+</section>
+
+<section class="lebar" aria-labelledby="m-l4">
+  <span class="langkah">Langkah 4</span>
+  <h2 id="m-l4">Jawab penelaah ketiga: perancu</h2>
+  <p class="baca">Suatu faktor menjadi perancu bila memenuhi tiga syarat: berkaitan dengan paparan, merupakan penyebab penyakit pada orang yang tidak terpapar sekalipun, dan bukan mata rantai antara paparan dan penyakit.</p>
+  <p class="baca">Untuk memeriksanya, Anda memakai data sebuah kohort 2.000 balita dan memisahkannya menurut kepadatan hunian. Cara ini disebut <strong>analisis berstrata</strong>. Hitung rasio risiko untuk seluruh balita, lalu untuk tiap strata.</p>
+  <div class="tabel-gulir">
+    <table>
+      <thead>
+        <tr><th scope="col">Kelompok</th><th scope="col">Terpapar:<br>sakit / jumlah</th><th scope="col">Tidak terpapar:<br>sakit / jumlah</th><th scope="col"><span class="tak-terlihat">Kalkulator</span></th></tr>
+      </thead>
+      <tbody>
+        <tr><th scope="row">Seluruh balita</th><td>102 / 800</td><td>72 / 1.200</td>
+          <td><button type="button" class="tombol garis kecil" data-isi="102,800,72,1200" data-nama="Seluruh balita">Hitung</button></td></tr>
+        <tr><th scope="row">Rumah padat</th><td>90 / 600</td><td>40 / 400</td>
+          <td><button type="button" class="tombol garis kecil" data-isi="90,600,40,400" data-nama="Rumah padat">Hitung</button></td></tr>
+        <tr><th scope="row">Rumah tidak padat</th><td>12 / 200</td><td>32 / 800</td>
+          <td><button type="button" class="tombol garis kecil" data-isi="12,200,32,800" data-nama="Rumah tidak padat">Hitung</button></td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <form class="kalkulator" id="kalkulator" novalidate>
+    <h3>Kalkulator risiko <span class="keterangan" id="nama-makanan"></span></h3>
+    <div class="isian">
+      <fieldset>
+        <legend>Kelompok terpapar</legend>
+        <label>Jumlah yang sakit <input type="number" name="ts" min="0" step="1" inputmode="numeric"></label>
+        <label>Jumlah orang <input type="number" name="tt" min="0" step="1" inputmode="numeric"></label>
+      </fieldset>
+      <fieldset>
+        <legend>Kelompok tidak terpapar</legend>
+        <label>Jumlah yang sakit <input type="number" name="ns" min="0" step="1" inputmode="numeric"></label>
+        <label>Jumlah orang <input type="number" name="nt" min="0" step="1" inputmode="numeric"></label>
+      </fieldset>
+    </div>
+    <button type="submit" class="tombol">Hitung</button>
+    <p class="pesan" id="pesan-kalkulator" role="alert" hidden></p>
+    <dl class="hasil" id="hasil-kalkulator" aria-live="polite" hidden>
+      <div><dt>Risiko pada yang terpapar</dt><dd id="k-ar1"></dd></div>
+      <div><dt>Risiko pada yang tidak terpapar</dt><dd id="k-ar0"></dd></div>
+      <div><dt>Selisih risiko</dt><dd id="k-selisih"></dd></div>
+      <div><dt>Rasio risiko (RR)</dt><dd id="k-rr"></dd></div>
+      <div><dt>Selang kepercayaan 95% untuk RR</dt><dd id="k-ci"></dd></div>
+    </dl>
+  </form>
+
+  <details>
+    <summary>Lihat jawaban dan tafsirannya</summary>
+    <ul>
+      <li>Seluruh balita: 12,75% dibanding 6%. RR kasar = <strong>2,13</strong>.</li>
+      <li>Rumah padat: 15% dibanding 10%. RR = <strong>1,5</strong>.</li>
+      <li>Rumah tidak padat: 6% dibanding 4%. RR = <strong>1,5</strong>.</li>
+    </ul>
+    <p>Di dalam tiap strata, RR-nya 1,5. RR kasar 2,13 lebih besar karena dua hal terjadi bersamaan: balita terpapar lebih banyak tinggal di rumah padat (600 dari 800, dibanding 400 dari 1.200 pada yang tidak terpapar), dan rumah padat sendiri meningkatkan risiko pneumonia (10% dibanding 4% pada yang tidak terpapar).</p>
+    <p>Penelaah ketiga benar sebagian. Kepadatan hunian memang merancukan, tetapi tidak menghapus hubungan. Setelah kepadatan diperhitungkan, asap rokok masih meningkatkan risiko satu setengah kali. Angka 1,5 inilah yang lebih layak dilaporkan.</p>
+  </details>
+</section>
+
+<section aria-labelledby="m-l5">
+  <span class="langkah">Langkah 5</span>
+  <h2 id="m-l5">Cegah sejak rancangan, tangani saat analisis</h2>
+  <ul>
+    <li><strong>Saat merancang:</strong> pembatasan (hanya meneliti satu kelompok), pencocokan (kontrol dipilih serupa dengan kasus pada faktor tertentu), dan pengacakan pada uji acak.</li>
+    <li><strong>Saat menganalisis:</strong> analisis berstrata seperti di atas, atau regresi bila perancunya banyak.</li>
+  </ul>
+  <p>Semua cara analisis hanya berlaku untuk perancu yang <em>diukur</em>. Itulah sebabnya daftar faktor yang harus dicatat disusun sebelum pengumpulan data dimulai.</p>
+  <details>
+    <summary>Asap rokok membuat balita lebih sering batuk, dan batuk lama mendahului pneumonia. Apakah "sering batuk" harus dikendalikan sebagai perancu?</summary>
+    <p>Tidak. Batuk berada pada jalur antara asap rokok dan pneumonia; ia adalah mata rantai, bukan perancu. Mengendalikannya justru akan menyembunyikan sebagian pengaruh asap rokok. Memilih faktor yang dikendalikan memerlukan pemahaman tentang jalur sebab akibatnya, bukan sekadar daftar variabel yang tersedia.</p>
+  </details>
+</section>
+
+<section aria-labelledby="m-kuis">
+  <h2 id="m-kuis">Uji diri</h2>
+
+  <fieldset class="soal" data-benar="a">
+    <legend>1. Studi tentang kopi dan kanker pankreas mengambil kontrol dari pasien penyakit lambung, yang banyak berhenti minum kopi. Kekeliruan apa ini?</legend>
+    <button type="button" class="pilihan" data-nilai="a">Bias seleksi</button>
+    <button type="button" class="pilihan" data-nilai="b">Bias informasi</button>
+    <button type="button" class="pilihan" data-nilai="c">Perancu</button>
+    <button type="button" class="pilihan" data-nilai="d">Kebetulan</button>
+    <p class="penjelasan" hidden>Kontrol tidak mewakili paparan pada populasi asal kasus, sehingga hubungan tampak lebih kuat daripada sebenarnya.</p>
+  </fieldset>
+
+  <fieldset class="soal" data-benar="c">
+    <legend>2. Ibu dari bayi dengan kelainan bawaan mengingat obat yang diminum saat hamil lebih rinci daripada ibu dari bayi sehat. Kekeliruan apa ini?</legend>
+    <button type="button" class="pilihan" data-nilai="a">Bias seleksi</button>
+    <button type="button" class="pilihan" data-nilai="b">Perancu</button>
+    <button type="button" class="pilihan" data-nilai="c">Bias informasi (bias ingatan)</button>
+    <button type="button" class="pilihan" data-nilai="d">Modifikasi efek</button>
+    <p class="penjelasan" hidden>Paparan diukur dengan ketelitian yang berbeda pada kasus dan kontrol.</p>
+  </fieldset>
+
+  <fieldset class="soal" data-benar="d">
+    <legend>3. RR kasar 3,0. Setelah distratifikasi menurut umur, RR pada tiap kelompok umur 1,0. Apa kesimpulannya?</legend>
+    <button type="button" class="pilihan" data-nilai="a">Paparan meningkatkan risiko tiga kali.</button>
+    <button type="button" class="pilihan" data-nilai="b">Umur adalah mata rantai.</button>
+    <button type="button" class="pilihan" data-nilai="c">Terjadi bias ingatan.</button>
+    <button type="button" class="pilihan" data-nilai="d">Hubungan kasar sepenuhnya disebabkan perancuan oleh umur.</button>
+    <p class="penjelasan" hidden>Bila hubungan hilang di dalam tiap strata, hubungan kasar berasal dari perbedaan umur antara kelompok terpapar dan tidak terpapar.</p>
+  </fieldset>
+
+  <fieldset class="soal" data-benar="b">
+    <legend>4. Mana yang bukan syarat sebuah faktor menjadi perancu?</legend>
+    <button type="button" class="pilihan" data-nilai="a">Berkaitan dengan paparan.</button>
+    <button type="button" class="pilihan" data-nilai="b">Merupakan akibat dari penyakit.</button>
+    <button type="button" class="pilihan" data-nilai="c">Merupakan penyebab penyakit.</button>
+    <button type="button" class="pilihan" data-nilai="d">Tidak berada pada jalur antara paparan dan penyakit.</button>
+    <p class="penjelasan" hidden>Perancu harus menjadi penyebab penyakit, bukan akibatnya.</p>
+  </fieldset>
+
+  <fieldset class="soal" data-benar="c">
+    <legend>5. Sampel studi diperbesar sepuluh kali. Apa yang terjadi pada bias seleksi?</legend>
+    <button type="button" class="pilihan" data-nilai="a">Hilang.</button>
+    <button type="button" class="pilihan" data-nilai="b">Berkurang sepuluh kali.</button>
+    <button type="button" class="pilihan" data-nilai="c">Tetap; hanya selang kepercayaannya yang menyempit.</button>
+    <button type="button" class="pilihan" data-nilai="d">Berubah menjadi perancu.</button>
+    <p class="penjelasan" hidden>Kekeliruan sistematis tidak mengecil dengan sampel besar. Hasil yang bias malah tampak lebih meyakinkan.</p>
+  </fieldset>
+
+  <p class="skor" id="skor" role="status" hidden></p>
+</section>
+
+<section aria-labelledby="m-naik">
+  <h2 id="m-naik">Naik jenjang</h2>
+  <p>Menemukan kelemahan sebuah studi itu mudah. Yang membedakan seorang ahli adalah kemampuan memperkirakan arah dan besar akibatnya.</p>
+
+  <div class="naik j3">
+    <h3>Jenjang 3: menggambar jalur sebab akibat</h3>
+    <p>Anda akan memakai diagram kausal untuk memutuskan faktor mana yang harus dikendalikan, mana yang tidak boleh, dan kapan mengendalikan suatu faktor justru menimbulkan bias baru. Anda juga akan membedakan perancu dari modifikasi efek, yaitu keadaan ketika hubungan memang berbeda di tiap strata.</p>
+  </div>
+
+  <div class="naik j4">
+    <h3>Jenjang 4: mengukur besarnya bias</h3>
+    <p>Seorang ahli tidak berhenti pada "mungkin ada bias". Dengan analisis bias kuantitatif ia menghitung: seberapa kuat perancu yang tidak terukur harus ada agar hubungan ini hilang, dan seberapa besar salah klasifikasi yang diperlukan untuk mengubah kesimpulan.</p>
+  </div>
+</section>
+
+<section aria-labelledby="m-terap">
+  <h2 id="m-terap">Terapkan</h2>
+  <ol>
+    <li>Ambil satu artikel studi observasional. Tuliskan satu kemungkinan bias seleksi, satu bias informasi, dan satu perancu, beserta arah pergeserannya.</li>
+    <li>Untuk pertanyaan penelitian Anda sendiri, daftarlah faktor yang harus dicatat agar dapat dikendalikan saat analisis.</li>
+    <li>Dari daftar itu, adakah faktor yang sebenarnya mata rantai antara paparan dan penyakit?</li>
+  </ol>
+  <div class="deret-tombol">
+    <button type="button" class="tombol" id="tandai-selesai" data-modul="epidemiologi-08">Tandai modul ini selesai</button>
+    <a class="tombol garis" href="kurikulum.html">Kembali ke peta kurikulum</a>
+  </div>
+</section>
+
+<section aria-labelledby="m-rujuk">
+  <h2 id="m-rujuk">Rujukan dan bacaan lanjut</h2>
+  <ul class="rujukan">
+    <li>Celentano dan Szklo. <em>Gordis Epidemiology</em>. Bab tentang bias, perancu, dan interaksi.</li>
+    <li>Szklo dan Nieto. <em>Epidemiology: Beyond the Basics</em>. Bab tentang memahami kurangnya validitas dan tentang mengenali perancu.</li>
+    <li>Kenneth Rothman. <em>Epidemiology: An Introduction</em>. Bab tentang bias dan tentang pengendalian perancu dengan stratifikasi.</li>
+  </ul>
+  <p class="keterangan">Modul ini ditulis orisinal untuk Learn Public Health.</p>
+</section>
+
+</div>
+</main>
+
+<footer class="kaki">
+  <div class="wadah">
+    <p><strong>Learn Public Health</strong>. Materi ini untuk pendidikan. Data kasus dalam modul adalah rekaan, kecuali disebutkan lain.</p>
+    <p><a href="index.html">Beranda</a> | <a href="kurikulum.html">Peta kurikulum</a> | <a href="sumber.html">Sumber belajar</a></p>
+  </div>
+</footer>
+
+<script src="app.js"></script>
+</body>
+</html>
