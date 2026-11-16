@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Menyelidiki KLB keracunan makanan | Learn Public Health</title>
+<meta name="description" content="Modul epidemiologi jenjang dasar: menyelidiki kejadian luar biasa keracunan makanan dengan attack rate dan rasio risiko.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header class="kepala">
+  <div class="wadah">
+    <a class="merek" href="index.html">
+      <svg viewBox="0 0 32 32" aria-hidden="true"><path d="M2 30V22h7v-7h7V8h7V2h7v28z" fill="#075443"/></svg>
+      Learn Public Health
+    </a>
+    <nav aria-label="Menu utama">
+      <ul class="menu">
+        <li><a href="index.html">Beranda</a></li>
+        <li><a href="kurikulum.html">Peta kurikulum</a></li>
+        <li><a href="sumber.html">Sumber belajar</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<main>
+
+<div class="modul-kepala">
+  <div class="wadah">
+    <p class="remah"><a href="kurikulum.html">Peta kurikulum</a> / Epidemiologi / Jenjang 1: Dasar</p>
+    <h1>Menyelidiki KLB keracunan makanan</h1>
+    <p class="ringkas">Puluhan tamu sebuah syukuran jatuh sakit pada malam yang sama. Anda petugas surveilans yang harus menemukan makanan penyebabnya sebelum kejadian serupa terulang.</p>
+    <ul class="modul-info">
+      <li>Waktu belajar: sekitar 45 menit</li>
+      <li>Prasyarat: tidak ada</li>
+      <li>Alat: kalkulator biasa</li>
+    </ul>
+  </div>
+</div>
+
+<div class="modul-isi wadah">
+
+<section aria-labelledby="m-tujuan">
+  <h2 id="m-tujuan">Setelah modul ini, Anda bisa</h2>
+  <ul>
+    <li>menjelaskan apa yang dikerjakan seorang epidemiolog saat terjadi kejadian luar biasa (KLB);</li>
+    <li>menghitung <em>attack rate</em> dan rasio risiko dari tabel sederhana;</li>
+    <li>menunjuk makanan yang paling mungkin menjadi penyebab, dan menjelaskan alasannya.</li>
+  </ul>
+</section>
+
+<section aria-labelledby="m-kasus">
+  <h2 id="m-kasus">Kasus</h2>
+  <div class="kasus-cerita">
+    <p>Senin pukul 07.30, telepon Puskesmas Lontara berdering. Bidan desa melaporkan bahwa sejak Minggu sore puluhan warga datang dengan mual, muntah, dan diare. Hampir semuanya menghadiri syukuran di rumah seorang warga pada Minggu siang.</p>
+    <p>Kepala puskesmas menugaskan Anda. Tuan rumah menyerahkan daftar tamu: <strong>120 orang</strong>. Hidangannya empat macam: nasi kuning, ayam goreng, kue sus isi vla, dan es buah. Kue sus dipesan dari luar dan tiba pukul 06.00, lalu disimpan di meja sampai acara dimulai pukul 12.00.</p>
+    <p>Sampai Senin sore, tim Anda berhasil mewawancarai seluruh tamu. <strong>Sebanyak 48 orang</strong> sakit. Tidak ada yang meninggal; tiga orang dirawat karena kekurangan cairan.</p>
+  </div>
+  <p class="keterangan">Nama tempat dan seluruh angka dalam kasus ini rekaan, disusun untuk latihan.</p>
+</section>
+
+<section aria-labelledby="m-l1">
+  <span class="langkah">Langkah 1</span>
+  <h2 id="m-l1">Pastikan ini memang KLB</h2>
+  <p><strong>Epidemiologi</strong> adalah ilmu yang mempelajari sebaran dan penyebab masalah kesehatan pada sekelompok orang, lalu memakai pengetahuan itu untuk mengendalikannya. Dokter bertanya "apa penyakit orang ini?". Epidemiolog bertanya "mengapa kelompok ini sakit, sedangkan kelompok itu tidak?".</p>
+  <p>Suatu kejadian disebut luar biasa bila jumlah kasusnya jelas melebihi yang biasa terjadi di tempat dan waktu itu. Puluhan orang dengan gejala serupa dalam satu malam, setelah makan di acara yang sama, jelas memenuhi syarat.</p>
+  <h3>Buat definisi kasus</h3>
+  <p>Sebelum menghitung, sepakati dulu siapa yang dihitung sebagai "sakit". Definisi yang jelas mencegah tiap pewawancara memakai ukurannya sendiri.</p>
+  <div class="rumus">Kasus: tamu syukuran hari Minggu yang mengalami muntah atau diare dalam 24 jam setelah acara.</div>
+  <details>
+    <summary>Coba pikirkan: mengapa definisi ini menyebut orang, tempat, dan waktu?</summary>
+    <p>Karena tiga hal itu membatasi siapa yang masuk hitungan. "Tamu syukuran" membatasi orangnya, "hari Minggu" dan "24 jam" membatasi waktunya, dan acaranya membatasi tempatnya. Tanpa batas ini, warga yang diare karena sebab lain minggu lalu bisa ikut terhitung dan mengaburkan hasil.</p>
+  </details>
+</section>
+
+<section aria-labelledby="m-l2">
+  <span class="langkah">Langkah 2</span>
+  <h2 id="m-l2">Gambarkan menurut waktu</h2>
+  <p>Tanyakan kepada tiap kasus kapan gejalanya mulai, lalu susun menjadi <strong>kurva epidemi</strong>: grafik batang jumlah kasus menurut waktu mulai sakit.</p>
+  <figure class="kurva-bingkai">
+    <div class="kurva" data-kurva="2,7,13,12,8,4,2" role="img" aria-label="Kurva epidemi 48 kasus menurut jam sejak makan: jam ke-1 dua kasus, jam ke-2 tujuh, jam ke-3 tiga belas, jam ke-4 dua belas, jam ke-5 delapan, jam ke-6 empat, jam ke-7 dua."></div>
+    <figcaption>Jumlah orang yang mulai sakit, per jam sejak makan. Satu kotak mewakili satu orang.</figcaption>
+  </figure>
+  <details>
+    <summary>Apa yang bisa dibaca dari bentuk kurva ini?</summary>
+    <p>Kasus naik cepat, memuncak pada jam ke-3 dan ke-4, lalu turun, semuanya dalam tujuh jam. Bentuk satu puncak yang sempit seperti ini khas untuk <strong>sumber bersama</strong>: banyak orang terpapar hal yang sama pada waktu yang hampir bersamaan.</p>
+    <p>Jarak dari makan sampai sakit juga memberi petunjuk. Jarak beberapa jam saja mengarah pada racun yang sudah terbentuk di makanan sebelum dimakan, misalnya racun dari bakteri <em>Staphylococcus aureus</em> atau <em>Bacillus cereus</em>. Kepastiannya hanya bisa diperoleh dari pemeriksaan laboratorium.</p>
+  </details>
+</section>
+
+<section aria-labelledby="m-l3">
+  <span class="langkah">Langkah 3</span>
+  <h2 id="m-l3">Hitung seberapa besar masalahnya</h2>
+  <p><strong>Attack rate</strong> (angka serangan) adalah bagian dari orang yang terpapar yang kemudian jatuh sakit selama KLB.</p>
+  <div class="rumus">Attack rate = jumlah yang sakit ÷ jumlah yang berisiko × 100%</div>
+  <p>Hitunglah attack rate untuk seluruh tamu sebelum membuka jawaban.</p>
+  <details>
+    <summary>Lihat jawaban</summary>
+    <p>48 ÷ 120 × 100% = <strong>40%</strong>. Empat dari setiap sepuluh tamu jatuh sakit.</p>
+    <p>Angka ini menggambarkan besarnya masalah, tetapi belum menunjuk penyebabnya. Untuk itu Anda perlu membandingkan.</p>
+  </details>
+</section>
+
+<section class="lebar" aria-labelledby="m-l4">
+  <span class="langkah">Langkah 4</span>
+  <h2 id="m-l4">Bandingkan yang makan dengan yang tidak makan</h2>
+  <p class="baca">Inilah inti cara berpikir epidemiologi. Untuk setiap makanan, bagi tamu menjadi dua kelompok, yang memakannya dan yang tidak, lalu bandingkan attack rate keduanya.</p>
+  <div class="rumus baca">Rasio risiko (RR) = attack rate yang makan ÷ attack rate yang tidak makan</div>
+  <ul class="baca">
+    <li>RR sekitar 1: risiko kedua kelompok sama. Makanan itu tidak berhubungan dengan sakit.</li>
+    <li>RR jauh di atas 1: yang makan lebih sering sakit. Makanan itu patut dicurigai.</li>
+    <li>RR di bawah 1: yang makan justru lebih jarang sakit.</li>
+  </ul>
+
+  <div class="tabel-gulir">
+    <table>
+      <caption>Hasil wawancara 120 tamu</caption>
+      <thead>
+        <tr>
+          <th scope="col">Makanan</th>
+          <th scope="col">Makan:<br>sakit / jumlah</th>
+          <th scope="col">Tidak makan:<br>sakit / jumlah</th>
+          <th scope="col"><span class="tak-terlihat">Kalkulator</span></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <th scope="row">Nasi kuning</th><td>44 / 110</td><td>4 / 10</td>
+          <td><button type="button" class="tombol garis kecil" data-isi="44,110,4,10" data-nama="Nasi kuning">Hitung</button></td>
+        </tr>
+        <tr>
+          <th scope="row">Ayam goreng</th><td>40 / 96</td><td>8 / 24</td>
+          <td><button type="button" class="tombol garis kecil" data-isi="40,96,8,24" data-nama="Ayam goreng">Hitung</button></td>
+        </tr>
+        <tr>
+          <th scope="row">Kue sus isi vla</th><td>42 / 60</td><td>6 / 60</td>
+          <td><button type="button" class="tombol garis kecil" data-isi="42,60,6,60" data-nama="Kue sus isi vla">Hitung</button></td>
+        </tr>
+        <tr>
+          <th scope="row">Es buah</th><td>30 / 80</td><td>18 / 40</td>
+          <td><button type="button" class="tombol garis kecil" data-isi="30,80,18,40" data-nama="Es buah">Hitung</button></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <p class="baca" style="margin-top:1rem">Hitung dulu dengan tangan untuk satu makanan, baru gunakan kalkulator untuk memeriksa. Anda juga bisa memasukkan angka sendiri.</p>
+
+  <form class="kalkulator" id="kalkulator" novalidate>
+    <h3>Kalkulator attack rate dan rasio risiko <span class="keterangan" id="nama-makanan"></span></h3>
+    <div class="isian">
+      <fieldset>
+        <legend>Kelompok yang makan</legend>
+        <label>Jumlah yang sakit <input type="number" name="ts" min="0" step="1" inputmode="numeric"></label>
+        <label>Jumlah orang <input type="number" name="tt" min="0" step="1" inputmode="numeric"></label>
+      </fieldset>
+      <fieldset>
+        <legend>Kelompok yang tidak makan</legend>
+        <label>Jumlah yang sakit <input type="number" name="ns" min="0" step="1" inputmode="numeric"></label>
+        <label>Jumlah orang <input type="number" name="nt" min="0" step="1" inputmode="numeric"></label>
+      </fieldset>
+    </div>
+    <button type="submit" class="tombol">Hitung</button>
+    <p class="pesan" id="pesan-kalkulator" role="alert" hidden></p>
+    <dl class="hasil" id="hasil-kalkulator" aria-live="polite" hidden>
+      <div><dt>Attack rate yang makan</dt><dd id="k-ar1"></dd></div>
+      <div><dt>Attack rate yang tidak makan</dt><dd id="k-ar0"></dd></div>
+      <div><dt>Selisih risiko</dt><dd id="k-selisih"></dd></div>
+      <div><dt>Rasio risiko (RR)</dt><dd id="k-rr"></dd></div>
+      <div><dt>Selang kepercayaan 95% untuk RR</dt><dd id="k-ci"></dd></div>
+    </dl>
+  </form>
+
+  <details>
+    <summary>Lihat jawaban lengkap dan cara membacanya</summary>
+    <div class="tabel-gulir">
+      <table>
+        <thead>
+          <tr><th scope="col">Makanan</th><th scope="col">Attack rate<br>yang makan</th><th scope="col">Attack rate<br>yang tidak makan</th><th scope="col">RR</th></tr>
+        </thead>
+        <tbody>
+          <tr><th scope="row">Nasi kuning</th><td>40,0%</td><td>40,0%</td><td>1,00</td></tr>
+          <tr><th scope="row">Ayam goreng</th><td>41,7%</td><td>33,3%</td><td>1,25</td></tr>
+          <tr><th scope="row">Kue sus isi vla</th><td>70,0%</td><td>10,0%</td><td>7,00</td></tr>
+          <tr><th scope="row">Es buah</th><td>37,5%</td><td>45,0%</td><td>0,83</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p style="margin-top:1rem">Kue sus menonjol sendirian: tamu yang memakannya tujuh kali lebih mungkin sakit dibanding yang tidak. Tiga makanan lain memiliki RR di sekitar 1.</p>
+    <p>Perhatikan pula bahwa attack rate tertinggi pada kelompok yang makan saja tidak cukup. Nasi kuning dimakan hampir semua tamu, sehingga 40% dari pemakannya sakit, tetapi yang tidak makan pun 40% sakit. Pembandingan itulah yang membebaskan nasi kuning dari kecurigaan.</p>
+  </details>
+</section>
+
+<section aria-labelledby="m-l5">
+  <span class="langkah">Langkah 5</span>
+  <h2 id="m-l5">Simpulkan, lalu bertindak</h2>
+  <p>Bukti Anda saling menguatkan: kurva satu puncak, jarak makan ke sakit yang pendek, RR 7 untuk kue sus, dan riwayat kue berisi vla yang dibiarkan enam jam di suhu ruang. Kesimpulan kerja: kue sus adalah sumber yang paling mungkin.</p>
+  <p>Epidemiologi tidak berhenti di kesimpulan. Tindakan yang bisa segera dilakukan:</p>
+  <ul>
+    <li>Amankan sisa kue sus dan kirim sampelnya, bersama sampel muntahan atau tinja pasien, ke laboratorium.</li>
+    <li>Pastikan semua yang sakit mendapat cairan dan yang berat dirujuk.</li>
+    <li>Kunjungi pembuat kue: periksa cara pengolahan, penyimpanan, dan kesehatan penjamah makanan.</li>
+    <li>Sampaikan hasil kepada dinas kesehatan dan kepada warga, dengan bahasa yang tidak menyalahkan.</li>
+    <li>Tulis laporan KLB agar pelajaran ini tersimpan.</li>
+  </ul>
+  <details>
+    <summary>Enam orang sakit padahal tidak makan kue sus. Apakah kesimpulan Anda gugur?</summary>
+    <p>Tidak. Dalam penyelidikan nyata hampir selalu ada kasus seperti ini. Penjelasan yang umum: mereka lupa atau enggan mengaku makan, makanan lain tercemar lewat sendok atau piring yang sama, atau mereka kebetulan sakit karena sebab lain. Yang dinilai adalah pola keseluruhan, bukan setiap orang satu per satu.</p>
+  </details>
+</section>
+
+<section aria-labelledby="m-kuis">
+  <h2 id="m-kuis">Uji diri</h2>
+
+  <fieldset class="soal" data-benar="b">
+    <legend>1. Di acara lain, 30 dari 150 tamu jatuh sakit. Berapa attack rate-nya?</legend>
+    <button type="button" class="pilihan" data-nilai="a">5%</button>
+    <button type="button" class="pilihan" data-nilai="b">20%</button>
+    <button type="button" class="pilihan" data-nilai="c">25%</button>
+    <button type="button" class="pilihan" data-nilai="d">30%</button>
+    <p class="penjelasan" hidden>30 ÷ 150 × 100% = 20%. Pembaginya adalah semua tamu yang berisiko, bukan hanya yang sehat.</p>
+  </fieldset>
+
+  <fieldset class="soal" data-benar="c">
+    <legend>2. RR nasi kuning adalah 1,00. Apa artinya?</legend>
+    <button type="button" class="pilihan" data-nilai="a">Semua yang makan nasi kuning jatuh sakit.</button>
+    <button type="button" class="pilihan" data-nilai="b">Nasi kuning adalah penyebab KLB.</button>
+    <button type="button" class="pilihan" data-nilai="c">Risiko sakit sama saja, makan nasi kuning atau tidak.</button>
+    <button type="button" class="pilihan" data-nilai="d">Tidak ada pemakan nasi kuning yang sakit.</button>
+    <p class="penjelasan" hidden>RR 1 berarti attack rate kedua kelompok sama (40% dan 40%), sehingga nasi kuning tidak berhubungan dengan kejadian sakit.</p>
+  </fieldset>
+
+  <fieldset class="soal" data-benar="a">
+    <legend>3. Mengapa attack rate pada yang makan harus dibandingkan dengan yang tidak makan?</legend>
+    <button type="button" class="pilihan" data-nilai="a">Karena makanan yang dimakan hampir semua orang akan tampak "bersalah" walau bukan penyebab.</button>
+    <button type="button" class="pilihan" data-nilai="b">Karena kelompok yang tidak makan selalu lebih sehat.</button>
+    <button type="button" class="pilihan" data-nilai="c">Karena peraturan mewajibkan dua kelompok.</button>
+    <button type="button" class="pilihan" data-nilai="d">Karena attack rate tidak bisa dihitung untuk satu kelompok.</button>
+    <p class="penjelasan" hidden>Tanpa pembanding, Anda tidak tahu apakah angka sakit pada pemakan itu tinggi karena makanannya atau karena memang banyak tamu yang sakit.</p>
+  </fieldset>
+
+  <fieldset class="soal" data-benar="d">
+    <legend>4. RR es buah adalah 0,83. Kesimpulan mana yang paling hati-hati?</legend>
+    <button type="button" class="pilihan" data-nilai="a">Es buah terbukti mencegah keracunan.</button>
+    <button type="button" class="pilihan" data-nilai="b">Es buah adalah penyebab kedua.</button>
+    <button type="button" class="pilihan" data-nilai="c">Datanya pasti salah.</button>
+    <button type="button" class="pilihan" data-nilai="d">Es buah tidak menunjukkan peningkatan risiko; selisih sekecil ini bisa terjadi karena kebetulan.</button>
+    <p class="penjelasan" hidden>RR sedikit di bawah 1 pada kelompok kecil belum menjadi bukti perlindungan. Di jenjang menengah Anda akan memakai selang kepercayaan untuk menilainya.</p>
+  </fieldset>
+
+  <fieldset class="soal" data-benar="b">
+    <legend>5. Kurva epidemi dengan satu puncak sempit paling sesuai dengan keadaan apa?</legend>
+    <button type="button" class="pilihan" data-nilai="a">Penyakit menular dari orang ke orang selama berminggu-minggu.</button>
+    <button type="button" class="pilihan" data-nilai="b">Banyak orang terpapar satu sumber pada waktu yang hampir bersamaan.</button>
+    <button type="button" class="pilihan" data-nilai="c">Sumber air yang tercemar terus-menerus selama berbulan-bulan.</button>
+    <button type="button" class="pilihan" data-nilai="d">Penyakit yang muncul sepanjang tahun dengan jumlah tetap.</button>
+    <p class="penjelasan" hidden>Satu puncak sempit menandakan sumber bersama sesaat. Penularan antarorang biasanya menghasilkan beberapa gelombang; sumber yang terus-menerus menghasilkan kurva melebar.</p>
+  </fieldset>
+
+  <p class="skor" id="skor" role="status" hidden></p>
+</section>
+
+<section aria-labelledby="m-naik">
+  <h2 id="m-naik">Naik jenjang</h2>
+  <p>Kasus yang sama tampak berbeda bila dilihat dari jenjang berikutnya. Bagian ini adalah pratinjau; tiap butir akan menjadi modul tersendiri.</p>
+
+  <div class="naik">
+    <h3>Jenjang 2: seberapa yakin kita pada RR itu?</h3>
+    <p>RR dari 120 orang hanyalah perkiraan. Selang kepercayaan 95% untuk RR kue sus adalah 3,22 sampai 15,22: seluruhnya jauh di atas 1, dan uji kai kuadrat memberi nilai 45,0 (p &lt; 0,001). Bandingkan dengan ayam goreng: RR 1,25 dengan selang 0,68 sampai 2,31, yang mencakup angka 1, sehingga datanya tidak cukup untuk mencurigainya. Kalkulator di atas sudah menampilkan selang ini.</p>
+    <p>Seandainya daftar tamu tidak ada, Anda tidak bisa menghitung attack rate. Anda akan memakai studi kasus-kontrol dan rasio odds (OR). Dari data ini OR kue sus adalah 21, jauh lebih besar daripada RR 7, karena OR melebih-lebihkan RR bila penyakitnya sering terjadi.</p>
+  </div>
+
+  <div class="naik j3">
+    <h3>Jenjang 3: bagaimana jika dua makanan selalu dimakan bersama?</h3>
+    <p>Jika hampir semua pemakan kue sus juga minum es buah, hubungan salah satunya dengan sakit bisa jadi hanya "menumpang" pada yang lain. Itulah perancu. Anda akan memisahkannya dengan analisis berstrata atau regresi logistik, dan mencari hubungan dosis-respons: apakah yang makan tiga kue lebih sering sakit daripada yang makan satu?</p>
+  </div>
+
+  <div class="naik j4">
+    <h3>Jenjang 4: dari satu KLB ke perbaikan sistem</h3>
+    <p>Seorang ahli menilai mutu penyelidikan itu sendiri: seberapa besar bias ingatan, apakah definisi kasus terlalu longgar, berapa lama dari kasus pertama sampai laporan masuk. Ia lalu bertanya mengapa pengawasan jasa boga gagal mencegahnya, berapa biaya KLB ini bagi keluarga dan puskesmas, dan kebijakan apa yang layak diusulkan kepada pemerintah daerah.</p>
+  </div>
+</section>
+
+<section aria-labelledby="m-terap">
+  <h2 id="m-terap">Terapkan</h2>
+  <ol>
+    <li>Cari satu berita KLB keracunan makanan di Indonesia. Tuliskan definisi kasus yang akan Anda pakai.</li>
+    <li>Dari berita itu, data apa yang sudah ada dan data apa yang masih harus Anda kumpulkan untuk menghitung RR?</li>
+    <li>Jika Anda bekerja di fasilitas kesehatan: siapa yang menerima laporan KLB di tempat Anda, dan dalam berapa jam laporan harus dikirim?</li>
+  </ol>
+  <div class="deret-tombol">
+    <button type="button" class="tombol" id="tandai-selesai" data-modul="epidemiologi-01">Tandai modul ini selesai</button>
+    <a class="tombol garis" href="kurikulum.html">Kembali ke peta kurikulum</a>
+  </div>
+</section>
+
+<section aria-labelledby="m-rujuk">
+  <h2 id="m-rujuk">Rujukan dan bacaan lanjut</h2>
+  <ul class="rujukan">
+    <li>CDC. <a href="https://stacks.cdc.gov/view/cdc/13178"><em>Principles of Epidemiology in Public Health Practice</em>, edisi ketiga</a>. Lihat Pelajaran 3 (ukuran risiko) dan Pelajaran 6 (investigasi KLB). Domain publik.</li>
+    <li>Celentano dan Szklo. <em>Gordis Epidemiology</em>. Bab tentang ukuran kejadian penyakit dan investigasi wabah.</li>
+    <li>Peraturan Menteri Kesehatan tentang KLB keracunan pangan. Periksa peraturan yang berlaku saat ini untuk tata cara pelaporan dan penanggulangan di Indonesia.</li>
+  </ul>
+  <p class="keterangan">Modul ini ditulis orisinal untuk Learn Public Health. Alur penyelidikannya disederhanakan menjadi lima langkah belajar; pedoman CDC merinci langkah investigasi KLB lebih lengkap.</p>
+</section>
+
+</div>
+</main>
+
+<footer class="kaki">
+  <div class="wadah">
+    <p><strong>Learn Public Health</strong>. Materi ini untuk pendidikan. Data kasus dalam modul adalah rekaan, kecuali disebutkan lain.</p>
+    <p><a href="index.html">Beranda</a> | <a href="kurikulum.html">Peta kurikulum</a> | <a href="sumber.html">Sumber belajar</a></p>
+  </div>
+</footer>
+
+<script src="app.js"></script>
+</body>
+</html>
