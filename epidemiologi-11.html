@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Menggambar diagram kausal untuk memilih variabel yang disesuaikan | Learn Public Health</title>
+<meta name="description" content="Modul epidemiologi jenjang lanjut: diagram kausal, rantai, garpu, tumbukan, kriteria pintu belakang, dan bias tumbukan dengan kasus asap rokok dan pneumonia balita.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header class="kepala">
+  <div class="wadah">
+    <a class="merek" href="index.html">
+      <svg viewBox="0 0 32 32" aria-hidden="true"><path d="M2 30V22h7v-7h7V8h7V2h7v28z" fill="#075443"/></svg>
+      Learn Public Health
+    </a>
+    <nav aria-label="Menu utama">
+      <ul class="menu">
+        <li><a href="index.html">Beranda</a></li>
+        <li><a href="kurikulum.html">Peta kurikulum</a></li>
+        <li><a href="sumber.html">Sumber belajar</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<main>
+<div class="modul-kepala"><div class="wadah">
+  <p class="remah"><a href="kurikulum.html">Peta kurikulum</a> / Epidemiologi / Jenjang 3: Lanjut</p>
+  <h1>Menggambar diagram kausal untuk memilih variabel yang disesuaikan</h1><p class="ringkas">Gambar asumsi sebab akibat Anda, telusuri jalur pintu belakang, dan hindari menyesuaikan perantara atau tumbukan.</p>
+  <ul class="modul-info"><li>Waktu belajar: sekitar 90 menit</li><li>Prasyarat: Menilai hubungan sebab akibat; bias dan perancu</li><li>Alat: Kertas dan pensil, atau DAGitty di peramban</li></ul>
+</div></div>
+<div class="modul-isi wadah">
+<section aria-labelledby="m-tujuan">
+  <h2 id="m-tujuan">Setelah modul ini, Anda bisa</h2>
+  <ul>
+    <li>menggambar diagram kausal untuk sebuah pertanyaan penelitian dan menyebutkan asumsi di baliknya;</li>
+    <li>mengenali rantai, garpu, dan tumbukan, lalu menentukan jalur mana yang terbuka;</li>
+    <li>memilih variabel yang perlu disesuaikan dan menjelaskan mengapa sebagian variabel justru tidak boleh disesuaikan.</li>
+  </ul>
+</section>
+
+<section class="lebar" aria-labelledby="m-kasus">
+  <h2 id="m-kasus">Kasus</h2>
+  <div class="kasus-cerita baca">
+    <p>Tim Dinas Kesehatan Kabupaten Saloka sedang menyiapkan analisis akhir tentang asap rokok di rumah dan pneumonia balita. Data kohortnya memuat banyak variabel: keadaan ekonomi keluarga, kepadatan hunian, status gizi, batuk berulang, dan riwayat rawat inap.</p>
+    <p>Seorang rekan mengusulkan, "Masukkan saja semuanya ke dalam model. Makin banyak yang disesuaikan, makin bersih hasilnya." Rekan lain ingin menganalisis hanya balita yang pernah dirawat di RSUD Lontara karena datanya paling lengkap.</p>
+    <p>Anda ragu terhadap kedua usul itu. Sebelum menjalankan model apa pun, Anda memutuskan untuk menggambar dulu bagaimana variabel-variabel itu saling memengaruhi.</p>
+  </div>
+  <p class="keterangan baca">Nama tempat dan seluruh angka rekaan, disusun untuk latihan. Kasus ini melanjutkan modul <a href="epidemiologi-08.html">Mengenali bias seleksi, bias informasi, dan perancu</a> dan <a href="biostatistik-11.html">regresi logistik</a>.</p>
+</section>
+
+<section class="lebar" aria-labelledby="m-l1">
+  <span class="langkah">Langkah 1</span>
+  <h2 id="m-l1">Kenali tiga bentuk dasar</h2>
+  <div class="baca">
+    <p><strong>Diagram kausal</strong> adalah gambar berisi variabel dan panah. Panah dari A ke B berarti "A memengaruhi B". Nama teknisnya <em>directed acyclic graph</em> (DAG), grafik berarah tanpa putaran: tidak ada variabel yang, bila panahnya diikuti, kembali ke dirinya sendiri.</p>
+    <p>Dua variabel dapat tampak berhubungan dalam data karena ada <strong>jalur</strong> yang menghubungkan keduanya. Setiap jalur tersusun dari tiga bentuk dasar. Yang menentukan adalah variabel di tengah.</p>
+  </div>
+  <div class="tabel-gulir">
+    <table class="teks">
+      <caption>Tiga bentuk dasar dalam diagram kausal</caption>
+      <thead>
+        <tr><th scope="col">Bentuk</th><th scope="col">Gambar</th><th scope="col">Tanpa penyesuaian</th><th scope="col">Bila variabel tengah disesuaikan</th></tr>
+      </thead>
+      <tbody>
+        <tr><th scope="row">Rantai (perantara)</th><td>A → B → C</td><td>Terbuka: A dan C berhubungan</td><td>Tertutup: pengaruh A lewat B hilang dari hitungan</td></tr>
+        <tr><th scope="row">Garpu (penyebab bersama)</th><td>A ← B → C</td><td>Terbuka: A dan C berhubungan walau tidak saling memengaruhi</td><td>Tertutup: hubungan palsu hilang</td></tr>
+        <tr><th scope="row">Tumbukan (akibat bersama)</th><td>A → B ← C</td><td>Tertutup: A dan C tidak berhubungan</td><td>Terbuka: muncul hubungan palsu</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="baca">
+    <p style="margin-top:1rem">"Menyesuaikan" mencakup semua cara memegang tetap sebuah variabel: memasukkannya ke dalam model, memecah tabel menurut variabel itu, atau membatasi analisis pada satu kelompok saja.</p>
+    <p>Garpu adalah perancu yang sudah Anda kenal. Yang baru adalah <strong>tumbukan</strong> (<em>collider</em>): variabel yang dituju dua panah. Ia berperilaku terbalik. Jalurnya tertutup dengan sendirinya dan justru terbuka bila disesuaikan.</p>
+    <details>
+      <summary>Tentukan bentuknya: (a) asap rokok, batuk berulang, pneumonia; (b) asap rokok, ekonomi keluarga, kepadatan hunian; (c) asap rokok, rawat inap, diare berat</summary>
+      <p><strong>(a) Rantai.</strong> Asap rokok → batuk berulang → pneumonia. Batuk berulang adalah perantara: salah satu jalan asap rokok menimbulkan pneumonia.</p>
+      <p><strong>(b) Garpu.</strong> Asap rokok ← ekonomi → kepadatan hunian. Keadaan ekonomi memengaruhi keduanya.</p>
+      <p><strong>(c) Tumbukan.</strong> Asap rokok → rawat inap ← diare berat. Keduanya dapat membuat seorang balita dirawat.</p>
+    </details>
+  </div>
+</section>
+
+<section class="lebar" aria-labelledby="m-l2">
+  <span class="langkah">Langkah 2</span>
+  <h2 id="m-l2">Gambar diagram untuk kasus Anda</h2>
+  <div class="baca">
+    <p>Mulailah dari paparan dan hasil, lalu tambahkan setiap variabel yang memengaruhi salah satunya. Panah digambar dari pengetahuan tentang penyakit dan masyarakat, bukan dari data. Setelah berdiskusi dengan dokter anak dan petugas lapangan, tim Anda menyepakati hal berikut.</p>
+    <ul>
+      <li>Keadaan ekonomi keluarga memengaruhi kebiasaan merokok di rumah, kepadatan hunian, dan gizi anak.</li>
+      <li>Kepadatan hunian dan gizi memengaruhi risiko pneumonia.</li>
+      <li>Asap rokok memengaruhi pneumonia secara langsung dan lewat batuk berulang.</li>
+      <li>Balita yang terpapar asap dan balita yang terkena pneumonia sama-sama lebih mungkin dirawat inap.</li>
+    </ul>
+  </div>
+  <div class="grafik tunggal">
+    <figure>
+      <svg viewBox="0 0 320 250" role="img" aria-label="Diagram kausal. Ekonomi menuju asap rokok, kepadatan, dan gizi. Kepadatan dan gizi menuju pneumonia. Asap rokok menuju pneumonia secara langsung dan lewat batuk berulang. Asap rokok dan pneumonia menuju rawat inap.">
+        <defs><marker id="mata1" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path class="mata" d="M0 0L10 5L0 10z"/></marker></defs>
+        <line class="panah" x1="50" y1="42" x2="50" y2="117" marker-end="url(#mata1)"/>
+        <line class="panah" x1="82" y1="30" x2="163" y2="30" marker-end="url(#mata1)"/>
+        <line class="panah" x1="78" y1="42" x2="138" y2="70" marker-end="url(#mata1)"/>
+        <line class="panah" x1="215" y1="42" x2="262" y2="117" marker-end="url(#mata1)"/>
+        <line class="panah" x1="182" y1="90" x2="245" y2="118" marker-end="url(#mata1)"/>
+        <line class="panah" x1="88" y1="130" x2="233" y2="130" marker-end="url(#mata1)"/>
+        <line class="panah" x1="72" y1="142" x2="130" y2="170" marker-end="url(#mata1)"/>
+        <line class="panah" x1="190" y1="170" x2="248" y2="143" marker-end="url(#mata1)"/>
+        <line class="panah" x1="50" y1="142" x2="122" y2="222" marker-end="url(#mata1)"/>
+        <line class="panah" x1="270" y1="142" x2="198" y2="222" marker-end="url(#mata1)"/>
+        <rect class="simpul" x="20" y="18" width="60" height="24" rx="4"/><text x="50" y="34" text-anchor="middle">Ekonomi</text>
+        <rect class="simpul" x="165" y="18" width="72" height="24" rx="4"/><text x="201" y="34" text-anchor="middle">Kepadatan</text>
+        <rect class="simpul" x="140" y="68" width="42" height="24" rx="4"/><text x="161" y="84" text-anchor="middle">Gizi</text>
+        <rect class="simpul sorot" x="12" y="118" width="76" height="24" rx="4"/><text x="50" y="134" text-anchor="middle">Asap rokok</text>
+        <rect class="simpul sorot" x="235" y="118" width="72" height="24" rx="4"/><text x="271" y="134" text-anchor="middle">Pneumonia</text>
+        <rect class="simpul" x="132" y="166" width="56" height="24" rx="4"/><text x="160" y="182" text-anchor="middle">Batuk</text>
+        <rect class="simpul" x="122" y="216" width="76" height="24" rx="4"/><text x="160" y="232" text-anchor="middle">Rawat inap</text>
+      </svg>
+      <figcaption>Diagram kausal yang disepakati tim. Paparan dan hasil diberi warna.</figcaption>
+    </figure>
+  </div>
+  <div class="baca">
+    <p style="margin-top:1rem">Dalam diagram kausal, <strong>panah yang tidak digambar</strong> sama pentingnya dengan panah yang digambar. Tidak ada panah berarti Anda menyatakan tidak ada pengaruh langsung.</p>
+    <details>
+      <summary>Sebutkan satu asumsi kuat yang tersembunyi dalam diagram ini</summary>
+      <p>Tidak ada panah langsung dari ekonomi ke pneumonia. Artinya tim menyatakan bahwa keadaan ekonomi memengaruhi pneumonia <em>hanya</em> lewat asap rokok, kepadatan, dan gizi. Bila ada jalan lain yang tidak diukur, misalnya akses ke imunisasi atau bahan bakar memasak, asumsi ini keliru dan diagramnya perlu ditambah.</p>
+      <p>Diagram tidak membuktikan asumsi. Kegunaannya adalah membuat asumsi terlihat, sehingga dapat diperdebatkan sebelum analisis, bukan sesudahnya.</p>
+    </details>
+  </div>
+</section>
+
+<section aria-labelledby="m-l3">
+  <span class="langkah">Langkah 3</span>
+  <h2 id="m-l3">Telusuri semua jalur antara paparan dan hasil</h2>
+  <p>Tuliskan setiap jalur dari asap rokok ke pneumonia, ke mana pun arah panahnya. Jalur yang seluruh panahnya mengarah dari paparan ke hasil adalah <strong>jalur kausal</strong>: itulah yang ingin Anda ukur. Jalur yang berawal dengan panah <em>menuju</em> paparan disebut <strong>jalur pintu belakang</strong> (<em>backdoor path</em>): itulah sumber perancuan.</p>
+  <p>Aturannya: sebuah jalur terbuka bila tidak ada tumbukan di dalamnya dan tidak ada variabelnya yang disesuaikan.</p>
+  <details>
+    <summary>Lihat kelima jalur dan statusnya</summary>
+    <ol>
+      <li>Asap → pneumonia. <strong>Kausal.</strong></li>
+      <li>Asap → batuk → pneumonia. <strong>Kausal</strong>, lewat perantara.</li>
+      <li>Asap ← ekonomi → kepadatan → pneumonia. <strong>Pintu belakang, terbuka.</strong></li>
+      <li>Asap ← ekonomi → gizi → pneumonia. <strong>Pintu belakang, terbuka.</strong></li>
+      <li>Asap → rawat inap ← pneumonia. <strong>Tertutup</strong> karena rawat inap adalah tumbukan.</li>
+    </ol>
+    <p>Tugas analisis menjadi jelas: tutup jalur 3 dan 4, biarkan jalur 1 dan 2 terbuka, dan jangan membuka jalur 5.</p>
+  </details>
+</section>
+
+<section aria-labelledby="m-l4">
+  <span class="langkah">Langkah 4</span>
+  <h2 id="m-l4">Pilih variabel yang disesuaikan</h2>
+  <p>Sebuah himpunan variabel memadai bila menutup semua jalur pintu belakang tanpa menyentuh perantara atau tumbukan. Ini disebut <strong>kriteria pintu belakang</strong>. Sering ada lebih dari satu himpunan yang memadai.</p>
+  <p>Nilai tiap usulan berikut: (a) hanya kepadatan; (b) hanya ekonomi; (c) kepadatan dan gizi; (d) semua variabel yang tersedia.</p>
+  <details>
+    <summary>Lihat jawaban</summary>
+    <ul>
+      <li><strong>(a) Hanya kepadatan: belum cukup.</strong> Jalur 3 tertutup, tetapi jalur 4 lewat gizi masih terbuka.</li>
+      <li><strong>(b) Hanya ekonomi: cukup.</strong> Ekonomi berada di kedua jalur pintu belakang, sehingga keduanya tertutup sekaligus.</li>
+      <li><strong>(c) Kepadatan dan gizi: cukup.</strong> Masing-masing menutup satu jalur. Pilihan ini berguna bila keadaan ekonomi sulit diukur dengan baik.</li>
+      <li><strong>(d) Semua variabel: keliru.</strong> Menyesuaikan batuk berulang menutup jalur 2, sehingga sebagian pengaruh asap rokok terbuang dan hasilnya terlalu kecil. Menyesuaikan rawat inap membuka jalur 5 dan menimbulkan hubungan palsu.</li>
+    </ul>
+    <p>Jadi "makin banyak yang disesuaikan makin bersih" tidak benar. Yang menentukan adalah <em>peran</em> tiap variabel dalam diagram, bukan jumlahnya dan bukan nilai p-nya.</p>
+  </details>
+  <p>Bila ada perancu penting yang tidak diukur, diagram akan menunjukkan jalur pintu belakang yang tidak dapat ditutup. Itu bukan kegagalan diagram. Itu peringatan jujur bahwa hasil Anda masih dapat terancukan dan perlu disampaikan dalam laporan.</p>
+</section>
+
+<section class="lebar" aria-labelledby="m-l5">
+  <span class="langkah">Langkah 5</span>
+  <h2 id="m-l5">Lihat sendiri apa yang terjadi bila tumbukan disesuaikan</h2>
+  <div class="baca">
+    <p>Rekan Anda ingin menganalisis hanya balita yang dirawat inap. Untuk menguji usul itu, perhatikan dua hal yang di masyarakat <em>tidak berhubungan</em>: asap rokok di rumah dan diare berat. Di antara 10.000 balita, diare berat menimpa 10% anak, baik yang terpapar asap maupun yang tidak.</p>
+    <p>Peluang dirawat inap berbeda menurut keadaan anak: 2% bila tidak terpapar asap dan tidak diare berat, 10% bila hanya terpapar asap (misalnya karena gangguan napas), 30% bila hanya diare berat, dan 35% bila keduanya.</p>
+  </div>
+  <div class="tabel-gulir">
+    <table>
+      <caption>Dari masyarakat ke bangsal rawat inap</caption>
+      <thead>
+        <tr><th scope="col">Kelompok</th><th scope="col">Balita di masyarakat</th><th scope="col">Peluang dirawat</th><th scope="col">Balita yang dirawat</th></tr>
+      </thead>
+      <tbody>
+        <tr><th scope="row">Terpapar asap, diare berat</th><td>400</td><td>35%</td><td>140</td></tr>
+        <tr><th scope="row">Terpapar asap, tanpa diare berat</th><td>3.600</td><td>10%</td><td>360</td></tr>
+        <tr><th scope="row">Tidak terpapar, diare berat</th><td>600</td><td>30%</td><td>180</td></tr>
+        <tr><th scope="row">Tidak terpapar, tanpa diare berat</th><td>5.400</td><td>2%</td><td>108</td></tr>
+        <tr><th scope="row">Jumlah</th><td>10.000</td><td></td><td>788</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="baca">
+    <p style="margin-top:1rem">Hitung rasio odds antara asap rokok dan diare berat, pertama di masyarakat, lalu hanya di antara balita yang dirawat.</p>
+    <details>
+      <summary>Lihat jawaban dan tafsirannya</summary>
+      <p><strong>Di masyarakat:</strong> (400 × 5.400) ÷ (3.600 × 600) = <strong>1,00</strong>. Tidak ada hubungan, sesuai rancangan contoh.</p>
+      <p><strong>Di antara yang dirawat:</strong> (140 × 108) ÷ (360 × 180) = <strong>0,23</strong>. Di bangsal, 28% balita yang terpapar asap menderita diare berat, dibanding 62,5% balita yang tidak terpapar.</p>
+      <p>Peneliti yang hanya melihat data rumah sakit akan menyimpulkan bahwa asap rokok "melindungi" dari diare berat. Kesimpulan itu sepenuhnya buatan cara memilih subjek. Seorang balita tanpa paparan asap perlu alasan lain untuk dirawat, dan alasan itu sering kali diare berat.</p>
+      <p>Inilah <strong>bias tumbukan</strong>. Bentuk yang timbul dari data rumah sakit dikenal sebagai bias Berkson. Bias seleksi yang Anda pelajari di jenjang menengah, bila digambar, hampir selalu berupa penyesuaian terhadap sebuah tumbukan.</p>
+    </details>
+  </div>
+  <div class="grafik tunggal">
+    <figure>
+      <svg viewBox="0 0 320 110" role="img" aria-label="Diagram tumbukan. Asap rokok dan diare berat sama-sama menuju rawat inap. Tidak ada panah antara asap rokok dan diare berat.">
+        <defs><marker id="mata2" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path class="mata" d="M0 0L10 5L0 10z"/></marker></defs>
+        <line class="panah" x1="72" y1="40" x2="128" y2="68" marker-end="url(#mata2)"/>
+        <line class="panah" x1="248" y1="40" x2="192" y2="68" marker-end="url(#mata2)"/>
+        <rect class="simpul" x="12" y="16" width="76" height="24" rx="4"/><text x="50" y="32" text-anchor="middle">Asap rokok</text>
+        <rect class="simpul" x="230" y="16" width="78" height="24" rx="4"/><text x="269" y="32" text-anchor="middle">Diare berat</text>
+        <rect class="simpul sorot" x="122" y="68" width="76" height="24" rx="4"/><text x="160" y="84" text-anchor="middle">Rawat inap</text>
+      </svg>
+      <figcaption>Membatasi analisis pada balita yang dirawat berarti menyesuaikan tumbukan.</figcaption>
+    </figure>
+  </div>
+</section>
+
+<section aria-labelledby="m-kuis">
+  <h2 id="m-kuis">Uji diri</h2>
+
+  <fieldset class="soal" data-benar="c">
+    <legend>1. Dalam jalur olahraga ← umur → penyakit jantung, apa peran umur?</legend>
+    <button type="button" class="pilihan" data-nilai="a">Perantara</button>
+    <button type="button" class="pilihan" data-nilai="b">Tumbukan</button>
+    <button type="button" class="pilihan" data-nilai="c">Penyebab bersama (perancu)</button>
+    <button type="button" class="pilihan" data-nilai="d">Hasil</button>
+    <p class="penjelasan" hidden>Umur memengaruhi keduanya. Bentuknya garpu, dan jalurnya terbuka sampai umur disesuaikan.</p>
+  </fieldset>
+
+  <fieldset class="soal" data-benar="b">
+    <legend>2. Anda ingin mengukur pengaruh total penyuluhan terhadap kepatuhan minum obat. Penyuluhan bekerja lewat pengetahuan pasien. Apa akibatnya bila pengetahuan dimasukkan ke dalam model?</legend>
+    <button type="button" class="pilihan" data-nilai="a">Perancuan berkurang.</button>
+    <button type="button" class="pilihan" data-nilai="b">Sebagian pengaruh penyuluhan terbuang dari taksiran.</button>
+    <button type="button" class="pilihan" data-nilai="c">Tidak ada akibat apa pun.</button>
+    <button type="button" class="pilihan" data-nilai="d">Taksiran menjadi lebih tepat.</button>
+    <p class="penjelasan" hidden>Pengetahuan adalah perantara. Menyesuaikannya menutup jalur kausal yang justru ingin diukur.</p>
+  </fieldset>
+
+  <fieldset class="soal" data-benar="a">
+    <legend>3. Jalur X → C ← Y, tanpa penyesuaian apa pun, berstatus apa?</legend>
+    <button type="button" class="pilihan" data-nilai="a">Tertutup</button>
+    <button type="button" class="pilihan" data-nilai="b">Terbuka</button>
+    <button type="button" class="pilihan" data-nilai="c">Kausal</button>
+    <button type="button" class="pilihan" data-nilai="d">Tergantung besar sampel</button>
+    <p class="penjelasan" hidden>C adalah tumbukan. Jalurnya tertutup dan baru terbuka bila C atau turunannya disesuaikan.</p>
+  </fieldset>
+
+  <fieldset class="soal" data-benar="d">
+    <legend>4. Sebuah studi tentang obesitas dan kematian hanya mengikutkan pasien yang sudah menderita gagal jantung. Bahaya apa yang paling perlu diperiksa?</legend>
+    <button type="button" class="pilihan" data-nilai="a">Sampel terlalu besar</button>
+    <button type="button" class="pilihan" data-nilai="b">Salah memilih uji statistik</button>
+    <button type="button" class="pilihan" data-nilai="c">Obesitas adalah perantara</button>
+    <button type="button" class="pilihan" data-nilai="d">Bias tumbukan, karena gagal jantung dipengaruhi obesitas dan penyebab lain yang juga menaikkan risiko kematian</button>
+    <p class="penjelasan" hidden>Membatasi studi pada penderita gagal jantung berarti menyesuaikan sebuah tumbukan, sehingga hubungan palsu dapat muncul.</p>
+  </fieldset>
+
+  <fieldset class="soal" data-benar="b">
+    <legend>5. Diagram Anda memuat jalur pintu belakang lewat variabel yang tidak diukur. Tindakan mana yang paling tepat?</legend>
+    <button type="button" class="pilihan" data-nilai="a">Menghapus variabel itu dari diagram.</button>
+    <button type="button" class="pilihan" data-nilai="b">Melaporkan bahwa perancuan tersisa mungkin ada dan mempertimbangkan desain atau data lain.</button>
+    <button type="button" class="pilihan" data-nilai="c">Menyesuaikan semua variabel yang tersedia sebagai gantinya.</button>
+    <button type="button" class="pilihan" data-nilai="d">Menambah besar sampel.</button>
+    <p class="penjelasan" hidden>Jalur yang tidak dapat ditutup harus dinyatakan. Menghapusnya dari gambar tidak menghapusnya dari kenyataan, dan sampel besar tidak menghilangkan perancuan.</p>
+  </fieldset>
+
+  <p class="skor" id="skor" role="status" hidden></p>
+</section>
+
+<section aria-labelledby="m-naik">
+  <h2 id="m-naik">Naik jenjang</h2>
+  <p>Diagram kausal adalah bahasa bersama untuk semua metode di jenjang ahli.</p>
+
+  <div class="naik j4">
+    <h3>Jenjang 4: ketika pintu belakang tidak dapat ditutup</h3>
+    <p>Seorang ahli memakai diagram untuk memilih strategi, bukan hanya variabel. Bila perancu tidak terukur, ia menimbang variabel instrumen, kriteria pintu depan, atau desain alamiah. Bila paparan berubah dari waktu ke waktu dan perancunya sekaligus menjadi perantara, penyesuaian biasa gagal dan diperlukan metode-g. Ia juga memeriksa apakah diagramnya sesuai dengan data lewat hubungan bebas bersyarat yang tersirat di dalamnya.</p>
+  </div>
+</section>
+
+<section aria-labelledby="m-terap">
+  <h2 id="m-terap">Terapkan</h2>
+  <ol>
+    <li>Ambil pertanyaan penelitian Anda sendiri atau milik mahasiswa bimbingan. Gambar diagramnya dengan lima sampai delapan variabel, lalu tuliskan semua jalur antara paparan dan hasil.</li>
+    <li>Ambil satu artikel yang menyebut "disesuaikan terhadap" sederet variabel. Adakah di antaranya yang menurut Anda perantara atau tumbukan?</li>
+    <li>Coba gambar diagram yang sama di DAGitty, alat gratis di peramban, lalu bandingkan himpunan penyesuaian yang disarankannya dengan jawaban Anda.</li>
+  </ol>
+  <div class="deret-tombol">
+    <button type="button" class="tombol" id="tandai-selesai" data-modul="epidemiologi-11">Tandai modul ini selesai</button>
+    <a class="tombol garis" href="kurikulum.html">Kembali ke peta kurikulum</a>
+  </div>
+</section>
+
+<section aria-labelledby="m-rujuk">
+  <h2 id="m-rujuk">Rujukan dan bacaan lanjut</h2>
+  <ul class="rujukan">
+    <li>Hernán dan Robins. <em>Causal Inference: What If</em>. Bab 6 sampai 8 tentang diagram kausal, perancuan, dan bias seleksi. <a href="https://miguelhernan.org/whatifbook">Tersedia gratis dari penulisnya</a>.</li>
+    <li>Greenland, Pearl, dan Robins (1999). "Causal diagrams for epidemiologic research". <em>Epidemiology</em>. Artikel yang memperkenalkan diagram kausal ke epidemiologi.</li>
+    <li>Textor dan rekan (2016). "Robust causal inference using directed acyclic graphs: the R package dagitty". <em>International Journal of Epidemiology</em>. Alatnya dapat dipakai di <a href="https://www.dagitty.net/">dagitty.net</a>.</li>
+    <li>Pearl dan Mackenzie. <em>The Book of Why</em>. Pengantar yang mudah dibaca.</li>
+  </ul>
+  <p class="keterangan">Modul ini ditulis orisinal untuk Learn Public Health. Seluruh angka pada contoh rawat inap dihitung dari tabel yang ditampilkan.</p>
+</section>
+</div>
+</main>
+
+<footer class="kaki">
+  <div class="wadah">
+    <p><strong>Learn Public Health</strong>. Materi ini untuk pendidikan. Data kasus dalam modul adalah rekaan, kecuali disebutkan lain.</p>
+    <p><a href="index.html">Beranda</a> | <a href="kurikulum.html">Peta kurikulum</a> | <a href="sumber.html">Sumber belajar</a></p>
+  </div>
+</footer>
+
+<script src="app.js"></script>
+</body>
+</html>

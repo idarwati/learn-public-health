@@ -411,6 +411,99 @@
     });
   }
 
+  /* ---------- Kalkulator Kaplan–Meier ----------
+     Masukan: waktu dipisah spasi; akhiran + berarti tersensor. */
+  function hitungKM(teks) {
+    var token = String(teks).split(/[\s;]+/).map(function (t) { return t.replace(/,+$/, ''); })
+      .filter(function (t) { return t !== ''; });
+    if (token.length < 2) return { galat: 'Ketik sedikitnya dua waktu.' };
+    var data = [];
+    for (var i = 0; i < token.length; i++) {
+      var sensor = /\+$/.test(token[i]);
+      var v = Number(token[i].replace(/\+$/, '').replace(',', '.'));
+      if (!isFinite(v) || v < 0) return { galat: '"' + token[i] + '" bukan waktu yang sah. Contoh: 3 atau 3+.' };
+      data.push({ t: v, kejadian: !sensor });
+    }
+    var waktu = data.filter(function (d) { return d.kejadian; }).map(function (d) { return d.t; })
+      .sort(function (a, b) { return a - b; })
+      .filter(function (t, j, arr) { return j === 0 || t !== arr[j - 1]; });
+    if (!waktu.length) return { galat: 'Semua waktu tersensor, jadi belum ada kejadian untuk dihitung.' };
+    var s = 1, baris = [], median = null, jumlah = 0;
+    waktu.forEach(function (t) {
+      var r = data.filter(function (d) { return d.t >= t; }).length;
+      var k = data.filter(function (d) { return d.t === t && d.kejadian; }).length;
+      s = s * (1 - k / r); jumlah += k;
+      baris.push({ t: t, r: r, k: k, s: s });
+      if (median === null && s <= 0.5 + 1e-12) median = t;
+    });
+    return { n: data.length, kejadian: jumlah, baris: baris, median: median };
+  }
+
+  function pasangKM(form) {
+    var keluaran = document.getElementById('hasil-km'), pesan = document.getElementById('pesan-km');
+    function tampil() {
+      var h = hitungKM(form.elements.waktu.value);
+      if (h.galat) { pesan.textContent = h.galat; pesan.hidden = false; keluaran.hidden = true; return; }
+      pesan.hidden = true; keluaran.hidden = false;
+      var badan = document.getElementById('km-baris');
+      badan.textContent = '';
+      h.baris.forEach(function (b) {
+        var tr = document.createElement('tr');
+        [rapi(b.t), b.r, b.k, angka(Math.round(b.s * 1000 + 1e-9) / 1000, 3)].forEach(function (isi, j) {
+          var sel = document.createElement(j === 0 ? 'th' : 'td');
+          if (j === 0) sel.scope = 'row';
+          sel.textContent = isi; tr.appendChild(sel);
+        });
+        badan.appendChild(tr);
+      });
+      document.getElementById('km-n').textContent = h.n;
+      document.getElementById('km-kejadian').textContent = h.kejadian;
+      document.getElementById('km-median').textContent = h.median === null ? 'Belum tercapai' : rapi(h.median);
+    }
+    form.addEventListener('submit', function (e) { e.preventDefault(); tampil(); });
+    Array.prototype.forEach.call(form.querySelectorAll('[data-km]'), function (tombol) {
+      tombol.addEventListener('click', function () { form.elements.waktu.value = tombol.getAttribute('data-km'); tampil(); });
+    });
+  }
+
+  /* ---------- Kalkulator kesulitan keuangan rumah tangga ----------
+     Ambang lama: 10% dari seluruh pengeluaran.
+     Ambang SDG 3.8.2 revisi 2025: 40% dari anggaran diskresioner. */
+  function hitungKesulitan(total, oop, garis) {
+    if ([total, oop, garis].some(function (v) { return !isFinite(v); })) return { galat: 'Isi ketiga kotak dengan angka.' };
+    if (total <= 0) return { galat: 'Seluruh pengeluaran harus lebih dari 0.' };
+    if (oop < 0 || garis < 0) return { galat: 'Angka tidak boleh negatif.' };
+    if (oop > total) return { galat: 'Pembayaran untuk kesehatan tidak boleh melebihi seluruh pengeluaran.' };
+    var diskresi = total - garis;
+    return {
+      porsi: oop / total, lama: oop / total > 0.10, diskresi: diskresi,
+      porsiD: diskresi > 0 ? oop / diskresi : null,
+      baru: oop > 0 && (diskresi <= 0 || oop / diskresi > 0.40)
+    };
+  }
+
+  function pasangKesulitan(form) {
+    var keluaran = document.getElementById('hasil-kt'), pesan = document.getElementById('pesan-kt');
+    function tampil() {
+      var h = hitungKesulitan(bacaAngka(form, 'total'), bacaAngka(form, 'oop'), bacaAngka(form, 'garis'));
+      if (h.galat) { pesan.textContent = h.galat; pesan.hidden = false; keluaran.hidden = true; return; }
+      pesan.hidden = true; keluaran.hidden = false;
+      document.getElementById('kt-porsi').textContent = rapi(h.porsi * 100) + '%';
+      document.getElementById('kt-lama').textContent = h.lama ? 'Ya' : 'Tidak';
+      document.getElementById('kt-diskresi').textContent = h.diskresi > 0 ? 'Rp' + rapi(h.diskresi) + ' juta' : 'Tidak ada (pengeluaran di bawah garis)';
+      document.getElementById('kt-porsi-d').textContent = h.porsiD === null ? 'Tidak dapat dihitung' : rapi(h.porsiD * 100) + '%';
+      document.getElementById('kt-baru').textContent = h.baru ? 'Ya' : 'Tidak';
+    }
+    form.addEventListener('submit', function (e) { e.preventDefault(); tampil(); });
+    Array.prototype.forEach.call(form.querySelectorAll('[data-rumah]'), function (tombol) {
+      tombol.addEventListener('click', function () {
+        var d = tombol.getAttribute('data-rumah').split(',');
+        form.elements.total.value = d[0]; form.elements.oop.value = d[1]; form.elements.garis.value = d[2];
+        tampil();
+      });
+    });
+  }
+
   /* ---------- Kuis ----------
      <fieldset class="soal" data-benar="b"> berisi tombol .pilihan[data-nilai]
      dan <p class="penjelasan" hidden>. */
@@ -494,6 +587,10 @@
       pasangSampel();
       var formLog = document.getElementById('logistik');
       if (formLog) pasangLogistik(formLog);
+      var formKM = document.getElementById('km');
+      if (formKM) pasangKM(formKM);
+      var formKt = document.getElementById('katastropik');
+      if (formKt) pasangKesulitan(formKt);
       pasangKuis();
       pasangPenanda();
     });
@@ -502,6 +599,7 @@
   /* Agar rumus bisa diuji di luar peramban. */
   if (typeof module !== 'undefined' && module.exports) {
     module.exports = { hitungRisiko: hitungRisiko, hitungRingkasan: hitungRingkasan, peluangNormal: peluangNormal, selangProporsi: selangProporsi, nilaiP: nilaiP, rasioOdds: rasioOdds, kaiKuadrat: kaiKuadrat, hitungSkrining: hitungSkrining, hitungRegresi: hitungRegresi,
-      sampelProporsi: sampelProporsi, sampelRata: sampelRata, peluangLogistik: peluangLogistik };
+      sampelProporsi: sampelProporsi, sampelRata: sampelRata, peluangLogistik: peluangLogistik,
+      hitungKM: hitungKM, hitungKesulitan: hitungKesulitan };
   }
 })();

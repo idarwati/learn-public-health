@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Mengenali modifikasi efek dan interaksi | Learn Public Health</title>
+<meta name="description" content="Modul epidemiologi jenjang lanjut: modifikasi efek, interaksi aditif dan multiplikatif, RERI, uji interaksi, dan penentuan sasaran program.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header class="kepala">
+  <div class="wadah">
+    <a class="merek" href="index.html">
+      <svg viewBox="0 0 32 32" aria-hidden="true"><path d="M2 30V22h7v-7h7V8h7V2h7v28z" fill="#075443"/></svg>
+      Learn Public Health
+    </a>
+    <nav aria-label="Menu utama">
+      <ul class="menu">
+        <li><a href="index.html">Beranda</a></li>
+        <li><a href="kurikulum.html">Peta kurikulum</a></li>
+        <li><a href="sumber.html">Sumber belajar</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<main>
+<div class="modul-kepala"><div class="wadah">
+  <p class="remah"><a href="kurikulum.html">Peta kurikulum</a> / Epidemiologi / Jenjang 3: Lanjut</p>
+  <h1>Mengenali modifikasi efek dan interaksi</h1><p class="ringkas">Temukan kelompok yang paling terdampak sebuah paparan, bedakan dari perancuan, dan pilih skala yang tepat untuk keputusan.</p>
+  <ul class="modul-info"><li>Waktu belajar: sekitar 90 menit</li><li>Prasyarat: Rasio dan selisih risiko; bias dan perancu</li><li>Alat: Kalkulator risiko di halaman ini</li></ul>
+</div></div>
+<div class="modul-isi wadah">
+<section aria-labelledby="m-tujuan">
+  <h2 id="m-tujuan">Setelah modul ini, Anda bisa</h2>
+  <ul>
+    <li>membedakan modifikasi efek dari perancuan dengan membandingkan ukuran hubungan antarstrata;</li>
+    <li>menilai interaksi pada skala aditif dan skala multiplikatif, dan menjelaskan mengapa keduanya dapat memberi jawaban berbeda;</li>
+    <li>memakai modifikasi efek untuk menentukan kelompok sasaran program dan melaporkannya dengan jujur.</li>
+  </ul>
+</section>
+
+<section class="lebar" aria-labelledby="m-kasus">
+  <h2 id="m-kasus">Kasus</h2>
+  <div class="kasus-cerita baca">
+    <p>Dinas Kesehatan Kabupaten Tirta akan menjalankan program kunjungan "rumah bebas asap rokok". Anggarannya hanya cukup untuk 1.000 rumah tangga. Kepala dinas meminta saran Anda: keluarga mana yang didahulukan, yang memiliki bayi di bawah satu tahun atau yang memiliki anak umur satu sampai empat tahun?</p>
+    <p>Anda memiliki data kohort 2.000 balita yang diikuti selama setahun. Laporan sebelumnya hanya menyebut satu angka: balita yang terpapar asap rokok berisiko pneumonia sekitar dua kali lipat. Anda menduga satu angka itu menyembunyikan sesuatu.</p>
+  </div>
+  <div class="tabel-gulir" style="margin-top:1.25rem">
+    <table>
+      <caption>Pneumonia selama setahun menurut umur dan paparan asap rokok</caption>
+      <thead>
+        <tr><th scope="col">Kelompok</th><th scope="col">Asap rokok</th><th scope="col">Balita</th><th scope="col">Pneumonia</th><th scope="col">Risiko</th><th scope="col"><span class="tak-terlihat">Hitung</span></th></tr>
+      </thead>
+      <tbody>
+        <tr><th scope="row" rowspan="2">Bayi di bawah 1 tahun</th><td>Ya</td><td>300</td><td>60</td><td>20%</td>
+          <td rowspan="2"><button type="button" class="tombol garis kecil" data-isi="60,300,32,400" data-nama="Bayi di bawah 1 tahun">Hitung</button></td></tr>
+        <tr><td>Tidak</td><td>400</td><td>32</td><td>8%</td></tr>
+        <tr><th scope="row" rowspan="2">Anak 1 sampai 4 tahun</th><td>Ya</td><td>500</td><td>30</td><td>6%</td>
+          <td rowspan="2"><button type="button" class="tombol garis kecil" data-isi="30,500,32,800" data-nama="Anak 1 sampai 4 tahun">Hitung</button></td></tr>
+        <tr><td>Tidak</td><td>800</td><td>32</td><td>4%</td></tr>
+        <tr><th scope="row" rowspan="2">Seluruh balita</th><td>Ya</td><td>800</td><td>90</td><td>11,25%</td>
+          <td rowspan="2"><button type="button" class="tombol garis kecil" data-isi="90,800,64,1200" data-nama="Seluruh balita">Hitung</button></td></tr>
+        <tr><td>Tidak</td><td>1.200</td><td>64</td><td>5,33%</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p class="keterangan baca" style="margin-top:0.8rem">Nama tempat dan seluruh angka rekaan, disusun untuk latihan.</p>
+</section>
+
+<section aria-labelledby="m-l1">
+  <span class="langkah">Langkah 1</span>
+  <h2 id="m-l1">Hitung ukuran hubungan di tiap strata</h2>
+  <p>Hitung rasio risiko dan selisih risiko untuk bayi, untuk anak 1 sampai 4 tahun, dan untuk seluruh balita. Tekan tombol "Hitung" pada tabel untuk mengisi kalkulator.</p>
+
+  <form class="kalkulator" id="kalkulator" novalidate>
+    <h3>Kalkulator risiko <span class="keterangan" id="nama-makanan"></span></h3>
+    <div class="isian">
+      <fieldset>
+        <legend>Kelompok terpapar</legend>
+        <label>Jumlah yang sakit <input type="number" name="ts" min="0" step="1" inputmode="numeric"></label>
+        <label>Jumlah orang <input type="number" name="tt" min="0" step="1" inputmode="numeric"></label>
+      </fieldset>
+      <fieldset>
+        <legend>Kelompok tidak terpapar</legend>
+        <label>Jumlah yang sakit <input type="number" name="ns" min="0" step="1" inputmode="numeric"></label>
+        <label>Jumlah orang <input type="number" name="nt" min="0" step="1" inputmode="numeric"></label>
+      </fieldset>
+    </div>
+    <button type="submit" class="tombol">Hitung</button>
+    <p class="pesan" id="pesan-kalkulator" role="alert" hidden></p>
+    <dl class="hasil" id="hasil-kalkulator" aria-live="polite" hidden>
+      <div><dt>Risiko pada yang terpapar</dt><dd id="k-ar1"></dd></div>
+      <div><dt>Risiko pada yang tidak terpapar</dt><dd id="k-ar0"></dd></div>
+      <div><dt>Selisih risiko</dt><dd id="k-selisih"></dd></div>
+      <div><dt>Rasio risiko (RR)</dt><dd id="k-rr"></dd></div>
+      <div><dt>Selang kepercayaan 95% untuk RR</dt><dd id="k-ci"></dd></div>
+    </dl>
+  </form>
+
+  <details>
+    <summary>Lihat jawaban</summary>
+    <ul>
+      <li><strong>Bayi:</strong> 20% dibanding 8%. RR = <strong>2,50</strong> (selang kepercayaan 1,67 sampai 3,74). Selisih risiko = <strong>12 per 100</strong>.</li>
+      <li><strong>Anak 1 sampai 4 tahun:</strong> 6% dibanding 4%. RR = <strong>1,50</strong> (0,92 sampai 2,44). Selisih risiko = <strong>2 per 100</strong>.</li>
+      <li><strong>Seluruh balita:</strong> 11,25% dibanding 5,33%. RR kasar = <strong>2,11</strong> (1,55 sampai 2,87). Selisih risiko = 5,9 per 100.</li>
+    </ul>
+    <p>Angka "dua kali lipat" dalam laporan lama adalah rata-rata dari dua keadaan yang sangat berbeda.</p>
+  </details>
+</section>
+
+<section class="lebar" aria-labelledby="m-l2">
+  <span class="langkah">Langkah 2</span>
+  <h2 id="m-l2">Bedakan dari perancuan</h2>
+  <div class="baca">
+    <p>Pada modul tentang perancu, Anda juga memecah tabel menurut variabel ketiga. Caranya sama, tetapi yang dicari berbeda. Bandingkan dua hal: angka antarstrata, dan angka strata dengan angka kasar.</p>
+  </div>
+  <div class="tabel-gulir">
+    <table class="teks">
+      <thead>
+        <tr><th scope="col"><span class="tak-terlihat">Hal</span></th><th scope="col">Perancuan</th><th scope="col">Modifikasi efek</th></tr>
+      </thead>
+      <tbody>
+        <tr><th scope="row">Tanda dalam data</th><td>Angka tiap strata mirip satu sama lain, tetapi berbeda dari angka kasar</td><td>Angka tiap strata berbeda satu sama lain</td></tr>
+        <tr><th scope="row">Hakikatnya</th><td>Gangguan yang timbul dari cara paparan tersebar dalam studi ini</td><td>Kenyataan tentang cara paparan bekerja pada kelompok yang berbeda</td></tr>
+        <tr><th scope="row">Yang dilakukan</th><td>Disingkirkan: laporkan satu angka yang sudah disesuaikan</td><td>Dilaporkan: tampilkan angka tiap strata secara terpisah</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="baca">
+    <p style="margin-top:1rem"><strong>Modifikasi efek</strong> (<em>effect modification</em>) terjadi bila besar pengaruh sebuah paparan berbeda menurut tingkat variabel lain. Variabel lain itu disebut pemodifikasi efek. Banyak buku memakai kata <strong>interaksi</strong> untuk hal yang sama; modul ini memakai keduanya bergantian.</p>
+    <details>
+      <summary>Dalam kasus ini, apakah umur perancu, pemodifikasi efek, atau keduanya?</summary>
+      <p>Umur jelas <strong>memodifikasi efek</strong>: RR 2,50 pada bayi dan 1,50 pada anak yang lebih besar; selisih risiko 12 dan 2 per 100.</p>
+      <p>Perancuan oleh umur kecil. Bayi mencakup 37,5% kelompok terpapar dan 33,3% kelompok tidak terpapar, hampir seimbang. Bila kedua strata digabung dengan cara Mantel-Haenszel, RR-nya 2,03, tidak jauh dari RR kasar 2,11.</p>
+      <p>Tetapi di sini angka gabungan, kasar maupun disesuaikan, bukan ringkasan yang baik. Satu angka menyembunyikan temuan terpenting: asap rokok jauh lebih berbahaya bagi bayi.</p>
+    </details>
+  </div>
+</section>
+
+<section class="lebar" aria-labelledby="m-l3">
+  <span class="langkah">Langkah 3</span>
+  <h2 id="m-l3">Tentukan skalanya: aditif atau multiplikatif</h2>
+  <div class="baca">
+    <p>"Pengaruhnya berbeda" selalu berarti berbeda <em>menurut ukuran tertentu</em>. Ada dua skala.</p>
+    <ul>
+      <li><strong>Skala aditif</strong> memakai selisih risiko. Tidak ada interaksi bila risiko gabungan sama dengan risiko dasar ditambah tambahan dari tiap faktor.</li>
+      <li><strong>Skala multiplikatif</strong> memakai rasio risiko. Tidak ada interaksi bila rasio gabungan sama dengan hasil kali rasio tiap faktor.</li>
+    </ul>
+    <p>Ambil anak 1 sampai 4 tahun tanpa paparan sebagai kelompok dasar (risiko 4%). Asap saja memberi 6%. Umur bayi saja memberi 8%. Berapa risiko yang <em>diharapkan</em> pada bayi yang terpapar asap bila tidak ada interaksi, menurut tiap skala? Bandingkan dengan yang teramati, 20%.</p>
+    <details>
+      <summary>Lihat jawaban</summary>
+      <p><strong>Aditif:</strong> 4% + (6% − 4%) + (8% − 4%) = <strong>10%</strong>.</p>
+      <p><strong>Multiplikatif:</strong> 4% × (6 ÷ 4) × (8 ÷ 4) = 4% × 1,5 × 2 = <strong>12%</strong>.</p>
+      <p>Yang teramati 20%, lebih tinggi daripada kedua harapan. Dalam kasus ini interaksi tampak pada kedua skala: gabungan "bayi" dan "asap" lebih berbahaya daripada jumlah maupun hasil kali keduanya.</p>
+    </details>
+    <p>Kedua skala tidak selalu sepakat. Perhatikan contoh lain: risiko dasar 1%, faktor A saja 3%, faktor B saja 5%, keduanya 10%.</p>
+    <details>
+      <summary>Adakah interaksi pada contoh kedua?</summary>
+      <p>Harapan aditif: 1% + 2% + 4% = <strong>7%</strong>. Yang teramati 10%, jadi <em>lebih</em> dari aditif.</p>
+      <p>Harapan multiplikatif: 1% × 3 × 5 = <strong>15%</strong>. Yang teramati 10%, jadi <em>kurang</em> dari multiplikatif.</p>
+      <p>Data yang sama menunjukkan interaksi positif pada satu skala dan negatif pada skala lain. Karena itu kalimat "ada interaksi" atau "tidak ada interaksi" tidak bermakna tanpa menyebut skalanya. Bila kedua faktor sama-sama berpengaruh, tidak adanya interaksi pada satu skala berarti ada interaksi pada skala yang lain.</p>
+    </details>
+    <p>Ukuran ringkas untuk interaksi aditif yang dihitung dari rasio risiko adalah <strong>RERI</strong> (<em>relative excess risk due to interaction</em>):</p>
+    <div class="rumus">RERI = RR keduanya − RR faktor pertama − RR faktor kedua + 1</div>
+    <details>
+      <summary>Hitung RERI untuk kasus Kabupaten Tirta</summary>
+      <p>Terhadap kelompok dasar: RR bayi terpapar = 20 ÷ 4 = 5; RR asap saja = 1,5; RR bayi saja = 2.</p>
+      <p>RERI = 5 − 1,5 − 2 + 1 = <strong>2,5</strong>. Nilai di atas nol berarti interaksi positif pada skala aditif.</p>
+    </details>
+  </div>
+</section>
+
+<section aria-labelledby="m-l4">
+  <span class="langkah">Langkah 4</span>
+  <h2 id="m-l4">Terjemahkan menjadi keputusan</h2>
+  <p>Untuk keputusan kesehatan masyarakat, skala aditif biasanya yang paling berguna, karena selisih risiko langsung menunjukkan <em>berapa kasus</em> yang dapat dicegah.</p>
+  <p>Andaikan hubungan ini bersifat sebab akibat dan kunjungan berhasil menghilangkan paparan asap di rumah. Berapa kasus pneumonia setahun yang dicegah bila 1.000 kunjungan diberikan kepada keluarga dengan bayi yang terpapar, dibanding keluarga dengan anak 1 sampai 4 tahun yang terpapar?</p>
+  <details>
+    <summary>Lihat jawaban dan saran untuk kepala dinas</summary>
+    <ul>
+      <li><strong>1.000 bayi:</strong> 12 per 100 × 1.000 = <strong>120 kasus</strong> dicegah. Sekitar 8 rumah dikunjungi untuk mencegah satu kasus (1 ÷ 0,12 = 8,3).</li>
+      <li><strong>1.000 anak 1 sampai 4 tahun:</strong> 2 per 100 × 1.000 = <strong>20 kasus</strong> dicegah. Diperlukan 50 rumah untuk mencegah satu kasus.</li>
+    </ul>
+    <p>Dengan anggaran yang sama, mendahulukan keluarga dengan bayi mencegah enam kali lebih banyak kasus.</p>
+    <p>Sampaikan juga batasnya. Tidak semua keluarga akan berhenti merokok di dalam rumah; bila hanya separuh yang berhasil, kasus yang dicegah juga separuhnya, tetapi urutan prioritasnya tidak berubah. Hitungan ini juga mengandaikan perancu lain sudah diperhitungkan.</p>
+  </details>
+</section>
+
+<section aria-labelledby="m-l5">
+  <span class="langkah">Langkah 5</span>
+  <h2 id="m-l5">Uji dan laporkan dengan jujur</h2>
+  <p>Perbedaan antarstrata dapat juga timbul karena kebetulan. Uji interaksi menanyakan: seberapa mungkin perbedaan sebesar ini muncul bila pengaruh sebenarnya sama di kedua strata?</p>
+  <ul>
+    <li>Pada skala multiplikatif: perbandingan dua RR adalah 2,50 ÷ 1,50 = 1,67, dengan nilai p = 0,11.</li>
+    <li>Pada skala aditif: beda dua selisih risiko adalah 10 per 100 (selang kepercayaan 4 sampai 16 per 100), dengan nilai p &lt; 0,001.</li>
+  </ul>
+  <details>
+    <summary>Bagaimana menafsirkan dua hasil uji yang tampak bertentangan ini?</summary>
+    <p>Keduanya tidak bertentangan, karena menjawab pertanyaan pada skala yang berbeda. Bukti interaksi aditif kuat. Bukti interaksi multiplikatif lebih lemah: taksirannya 1,67, tetapi data masih sesuai dengan RR yang sama di kedua strata.</p>
+    <p>Uji interaksi juga kurang peka. Studi yang cukup besar untuk mengukur pengaruh utama sering kali terlalu kecil untuk memastikan interaksi. Nilai p yang besar bukan bukti bahwa pengaruhnya sama.</p>
+  </details>
+  <p>Beberapa kebiasaan baik saat melaporkan modifikasi efek:</p>
+  <ul>
+    <li>Tetapkan subkelompok yang akan diperiksa <strong>sebelum</strong> melihat data, dan batasi jumlahnya. Memeriksa dua puluh subkelompok hampir pasti menghasilkan satu yang "bermakna" karena kebetulan.</li>
+    <li>Tampilkan risiko di keempat gabungan paparan dan pemodifikasi, dengan satu kelompok dasar yang sama, agar pembaca dapat menghitung kedua skala sendiri.</li>
+    <li>Sebutkan skala yang dipakai dan alasan Anda memilihnya.</li>
+    <li>Dalam model regresi, interaksi diperiksa dengan suku hasil kali. Ingat bahwa suku hasil kali dalam regresi logistik menguji interaksi pada skala multiplikatif untuk rasio odds.</li>
+  </ul>
+  <details>
+    <summary>Lihat contoh kalimat laporan</summary>
+    <p>"Pengaruh asap rokok terhadap pneumonia berbeda menurut umur. Pada bayi di bawah satu tahun, paparan menambah 12 kasus per 100 anak setahun (RR 2,50; selang kepercayaan 95%: 1,67 sampai 3,74). Pada anak 1 sampai 4 tahun, tambahannya 2 kasus per 100 (RR 1,50; 0,92 sampai 2,44). Perbedaan pada skala aditif bermakna (p &lt; 0,001); pada skala multiplikatif p = 0,11. Analisis menurut umur direncanakan sebelum data dibuka."</p>
+  </details>
+</section>
+
+<section aria-labelledby="m-kuis">
+  <h2 id="m-kuis">Uji diri</h2>
+
+  <fieldset class="soal" data-benar="a">
+    <legend>1. RR pada laki-laki 3,0 dan pada perempuan 3,1, sedangkan RR kasar 1,8. Apa yang terjadi?</legend>
+    <button type="button" class="pilihan" data-nilai="a">Perancuan oleh jenis kelamin, tanpa modifikasi efek</button>
+    <button type="button" class="pilihan" data-nilai="b">Modifikasi efek oleh jenis kelamin</button>
+    <button type="button" class="pilihan" data-nilai="c">Keduanya</button>
+    <button type="button" class="pilihan" data-nilai="d">Tidak keduanya</button>
+    <p class="penjelasan" hidden>Angka kedua strata hampir sama tetapi berbeda jauh dari angka kasar. Itu tanda perancuan.</p>
+  </fieldset>
+
+  <fieldset class="soal" data-benar="c">
+    <legend>2. RR sebuah obat terhadap efek samping adalah 4,0 pada lansia dan 1,2 pada dewasa muda. Bagaimana sebaiknya dilaporkan?</legend>
+    <button type="button" class="pilihan" data-nilai="a">Satu RR gabungan yang disesuaikan terhadap umur</button>
+    <button type="button" class="pilihan" data-nilai="b">RR kasar saja</button>
+    <button type="button" class="pilihan" data-nilai="c">RR tiap kelompok umur secara terpisah</button>
+    <button type="button" class="pilihan" data-nilai="d">Rata-rata kedua RR</button>
+    <p class="penjelasan" hidden>Umur memodifikasi efek. Angka gabungan akan menyembunyikan bahwa risikonya terpusat pada lansia.</p>
+  </fieldset>
+
+  <fieldset class="soal" data-benar="b">
+    <legend>3. Risiko dasar 2%, faktor A saja 4%, faktor B saja 6%, keduanya 8%. Pernyataan mana yang benar?</legend>
+    <button type="button" class="pilihan" data-nilai="a">Tidak ada interaksi pada skala mana pun.</button>
+    <button type="button" class="pilihan" data-nilai="b">Tidak ada interaksi aditif, tetapi ada interaksi negatif pada skala multiplikatif.</button>
+    <button type="button" class="pilihan" data-nilai="c">Ada interaksi positif pada kedua skala.</button>
+    <button type="button" class="pilihan" data-nilai="d">Tidak ada interaksi multiplikatif, tetapi ada interaksi aditif.</button>
+    <p class="penjelasan" hidden>Harapan aditif: 2 + 2 + 4 = 8%, sama dengan yang teramati. Harapan multiplikatif: 2% × 2 × 3 = 12%, lebih tinggi daripada yang teramati.</p>
+  </fieldset>
+
+  <fieldset class="soal" data-benar="d">
+    <legend>4. Skala mana yang paling langsung menjawab "kelompok mana yang memberi paling banyak kasus tercegah"?</legend>
+    <button type="button" class="pilihan" data-nilai="a">Rasio odds</button>
+    <button type="button" class="pilihan" data-nilai="b">Rasio risiko</button>
+    <button type="button" class="pilihan" data-nilai="c">Nilai p</button>
+    <button type="button" class="pilihan" data-nilai="d">Selisih risiko</button>
+    <p class="penjelasan" hidden>Selisih risiko dikalikan jumlah orang memberi jumlah kasus yang dicegah.</p>
+  </fieldset>
+
+  <fieldset class="soal" data-benar="b">
+    <legend>5. Peneliti memeriksa 20 subkelompok tanpa rencana dan menemukan satu yang bermakna (p = 0,04). Apa tafsiran yang paling hati-hati?</legend>
+    <button type="button" class="pilihan" data-nilai="a">Obat terbukti hanya bekerja pada subkelompok itu.</button>
+    <button type="button" class="pilihan" data-nilai="b">Temuan itu mungkin kebetulan dan perlu diuji ulang di studi lain.</button>
+    <button type="button" class="pilihan" data-nilai="c">Sembilan belas subkelompok lain pasti tidak mendapat manfaat.</button>
+    <button type="button" class="pilihan" data-nilai="d">Studi itu tidak sah.</button>
+    <p class="penjelasan" hidden>Dengan 20 uji pada batas 0,05, satu hasil bermakna karena kebetulan memang diharapkan.</p>
+  </fieldset>
+
+  <p class="skor" id="skor" role="status" hidden></p>
+</section>
+
+<section aria-labelledby="m-naik">
+  <h2 id="m-naik">Naik jenjang</h2>
+  <p>Pertanyaan "untuk siapa program ini paling berguna" makin sering diajukan kepada epidemiolog.</p>
+
+  <div class="naik j4">
+    <h3>Jenjang 4: dari subkelompok ke pengaruh yang berbeda-beda pada tiap orang</h3>
+    <p>Seorang ahli membedakan modifikasi efek, yang cukup dengan satu paparan, dari interaksi kausal, yang menuntut kedua faktor bebas dari perancuan. Ia menaksir RERI beserta selang kepercayaannya, memilah pengaruh menjadi bagian perantara dan bagian interaksi, dan menilai apakah hasil sebuah studi dapat dipindahkan ke populasi dengan susunan pemodifikasi yang berbeda. Untuk banyak pemodifikasi sekaligus, ia memakai metode pembelajaran mesin dengan kehati-hatian terhadap temuan kebetulan.</p>
+  </div>
+</section>
+
+<section aria-labelledby="m-terap">
+  <h2 id="m-terap">Terapkan</h2>
+  <ol>
+    <li>Ambil satu artikel yang melaporkan analisis subkelompok. Apakah subkelompoknya direncanakan sebelumnya? Skala apa yang dipakai?</li>
+    <li>Dari data program di tempat Anda, hitung risiko pada empat gabungan sebuah paparan dan satu pemodifikasi yang masuk akal, misalnya umur atau wilayah. Hitung harapan aditif dan multiplikatifnya.</li>
+    <li>Tuliskan satu paragraf saran penentuan sasaran berdasarkan selisih risiko, lengkap dengan andaian yang Anda pakai.</li>
+  </ol>
+  <div class="deret-tombol">
+    <button type="button" class="tombol" id="tandai-selesai" data-modul="epidemiologi-12">Tandai modul ini selesai</button>
+    <a class="tombol garis" href="kurikulum.html">Kembali ke peta kurikulum</a>
+  </div>
+</section>
+
+<section aria-labelledby="m-rujuk">
+  <h2 id="m-rujuk">Rujukan dan bacaan lanjut</h2>
+  <ul class="rujukan">
+    <li>Knol dan VanderWeele (2012). "Recommendations for presenting analyses of effect modification and interaction". <em>International Journal of Epidemiology</em>.</li>
+    <li>VanderWeele dan Knol (2014). "A tutorial on interaction". <em>Epidemiologic Methods</em>.</li>
+    <li>Hernán dan Robins. <em>Causal Inference: What If</em>. Bab 4 dan 5. <a href="https://miguelhernan.org/whatifbook">Tersedia gratis dari penulisnya</a>.</li>
+    <li>Rothman, Lash, VanderWeele, dan Haneuse. <em>Modern Epidemiology</em>. Bab tentang interaksi.</li>
+    <li>Szklo dan Nieto. <em>Epidemiology: Beyond the Basics</em>. Bab tentang interaksi.</li>
+  </ul>
+  <p class="keterangan">Modul ini ditulis orisinal untuk Learn Public Health. Semua angka dihitung dari tabel kasus.</p>
+</section>
+</div>
+</main>
+
+<footer class="kaki">
+  <div class="wadah">
+    <p><strong>Learn Public Health</strong>. Materi ini untuk pendidikan. Data kasus dalam modul adalah rekaan, kecuali disebutkan lain.</p>
+    <p><a href="index.html">Beranda</a> | <a href="kurikulum.html">Peta kurikulum</a> | <a href="sumber.html">Sumber belajar</a></p>
+  </div>
+</footer>
+
+<script src="app.js"></script>
+</body>
+</html>

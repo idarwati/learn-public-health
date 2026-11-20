@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Menganalisis waktu sampai kejadian dengan Kaplan–Meier dan Cox | Learn Public Health</title>
+<meta name="description" content="Modul biostatistik jenjang lanjut: data tersensor, tabel dan kurva Kaplan–Meier, median kesintasan, uji log-rank, dan model hazard proporsional Cox.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header class="kepala">
+  <div class="wadah">
+    <a class="merek" href="index.html">
+      <svg viewBox="0 0 32 32" aria-hidden="true"><path d="M2 30V22h7v-7h7V8h7V2h7v28z" fill="#075443"/></svg>
+      Learn Public Health
+    </a>
+    <nav aria-label="Menu utama">
+      <ul class="menu">
+        <li><a href="index.html">Beranda</a></li>
+        <li><a href="kurikulum.html">Peta kurikulum</a></li>
+        <li><a href="sumber.html">Sumber belajar</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<main>
+<div class="modul-kepala"><div class="wadah">
+  <p class="remah"><a href="kurikulum.html">Peta kurikulum</a> / Biostatistik / Jenjang 3: Lanjut</p>
+  <h1>Menganalisis waktu sampai kejadian dengan Kaplan–Meier dan Cox</h1><p class="ringkas">Pakai data tersensor dengan benar, gambar kurva kesintasan, dan bandingkan kelompok dengan uji log-rank dan rasio hazard.</p>
+  <ul class="modul-info"><li>Waktu belajar: sekitar 100 menit</li><li>Prasyarat: Uji hipotesis; regresi logistik</li><li>Alat: Kalkulator Kaplan–Meier di halaman ini</li></ul>
+</div></div>
+<div class="modul-isi wadah">
+<section aria-labelledby="m-tujuan">
+  <h2 id="m-tujuan">Setelah modul ini, Anda bisa</h2>
+  <ul>
+    <li>menjelaskan mengapa data waktu sampai kejadian memerlukan analisis kesintasan, dan apa arti data tersensor;</li>
+    <li>menghitung dan membaca kurva Kaplan–Meier, termasuk median waktu sampai kejadian;</li>
+    <li>membandingkan dua kelompok dengan uji log-rank dan menafsirkan rasio hazard dari model Cox.</li>
+  </ul>
+</section>
+
+<section class="lebar" aria-labelledby="m-kasus">
+  <h2 id="m-kasus">Kasus</h2>
+  <div class="kasus-cerita baca">
+    <p>Puskesmas Saloka Utara di Kabupaten Saloka menjalankan uji coba kecil. Sebagian pasien tuberkulosis yang memulai pengobatan enam bulan didampingi kader yang mengingatkan minum obat dan mengunjungi rumah. Sebagian lagi menjalani pengobatan seperti biasa.</p>
+    <p>Setelah enam bulan, pengelola program meminta Anda menilai apakah pendampingan mengurangi <strong>putus berobat</strong>. Ia menyerahkan catatan 20 pasien: bulan ke berapa pasien putus berobat, atau sampai kapan ia masih teramati.</p>
+  </div>
+  <div class="tabel-gulir" style="margin-top:1.25rem">
+    <table class="teks">
+      <caption>Waktu sampai putus berobat (bulan). Tanda + berarti pasien tidak putus selama teramati.</caption>
+      <thead>
+        <tr><th scope="col">Kelompok</th><th scope="col">Waktu tiap pasien</th></tr>
+      </thead>
+      <tbody>
+        <tr><th scope="row">Tanpa pendamping (10 pasien)</th><td>1; 2; 2; 3; 3+; 4; 5; 6+; 6+; 6+</td></tr>
+        <tr><th scope="row">Dengan pendamping (10 pasien)</th><td>2; 4+; 5; 6+; 6+; 6+; 6+; 6+; 6+; 6+</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p class="keterangan baca" style="margin-top:0.8rem">Nama tempat dan seluruh angka rekaan, disusun untuk latihan. Pasien 3+ pindah ke kabupaten lain pada bulan ke-3; pasien 4+ pindah pada bulan ke-4; pasien 6+ menyelesaikan pengobatan tanpa putus. Jumlah pasien sengaja dibuat kecil agar dapat dihitung dengan tangan.</p>
+</section>
+
+<section aria-labelledby="m-l1">
+  <span class="langkah">Langkah 1</span>
+  <h2 id="m-l1">Pahami mengapa proporsi saja tidak cukup</h2>
+  <p>Cara paling cepat adalah menghitung proporsi yang putus: 6 dari 10 tanpa pendamping, 2 dari 10 dengan pendamping. Tetapi cara itu membuang dua informasi.</p>
+  <ul>
+    <li><strong>Kapan</strong> kejadian terjadi. Putus pada bulan pertama dan putus pada bulan kelima dihitung sama.</li>
+    <li>Pasien yang <strong>tidak teramati sampai akhir</strong>. Pasien 3+ pindah sebelum pengobatannya selesai. Kita tahu ia tidak putus selama tiga bulan, tetapi tidak tahu nasibnya sesudah itu.</li>
+  </ul>
+  <p>Data seperti pasien 3+ disebut <strong>tersensor</strong> (<em>censored</em>). Waktu kejadiannya yang sebenarnya hanya diketahui lebih dari angka yang tercatat. Membuangnya membuang informasi; menghitungnya sebagai "tidak putus" sampai akhir mengandaikan sesuatu yang tidak kita ketahui.</p>
+  <p><strong>Analisis kesintasan</strong> (<em>survival analysis</em>) adalah sekumpulan metode untuk data waktu sampai kejadian yang memakai informasi dari pasien tersensor sampai saat ia keluar dari pengamatan. "Kesintasan" berarti bertahan tanpa kejadian; kejadiannya tidak harus kematian.</p>
+  <details>
+    <summary>Ada satu andaian penting tentang pasien tersensor. Apa itu?</summary>
+    <p>Pasien yang tersensor diandaikan memiliki peluang kejadian yang sama dengan pasien yang tetap diikuti. Ini disebut <strong>sensor yang tidak informatif</strong>.</p>
+    <p>Andaian ini dilanggar bila, misalnya, pasien yang "pindah" sebenarnya pindah karena enggan berobat. Petugas lapangan sering tahu hal semacam ini, jadi tanyakan kepada mereka sebelum menganalisis.</p>
+  </details>
+</section>
+
+<section class="lebar" aria-labelledby="m-l2">
+  <span class="langkah">Langkah 2</span>
+  <h2 id="m-l2">Hitung tabel Kaplan–Meier</h2>
+  <div class="baca">
+    <p>Metode <strong>Kaplan–Meier</strong> memecah waktu pengamatan pada setiap saat terjadi kejadian. Pada tiap saat itu, hitung peluang bertahan di antara pasien yang masih diikuti, lalu kalikan peluang-peluang itu secara berurutan.</p>
+    <div class="rumus">kesintasan baru = kesintasan sebelumnya × (1 − putus ÷ masih diikuti)</div>
+    <p>Pasien tersensor tetap dihitung sebagai "masih diikuti" sampai saat ia tersensor, lalu tidak dihitung lagi.</p>
+  </div>
+  <div class="tabel-gulir">
+    <table>
+      <caption>Kelompok tanpa pendamping</caption>
+      <thead>
+        <tr><th scope="col">Bulan</th><th scope="col">Masih diikuti</th><th scope="col">Putus</th><th scope="col">Peluang bertahan bulan itu</th><th scope="col">Kesintasan kumulatif</th></tr>
+      </thead>
+      <tbody>
+        <tr><th scope="row">1</th><td>10</td><td>1</td><td>9/10 = 0,900</td><td>0,900</td></tr>
+        <tr><th scope="row">2</th><td>9</td><td>2</td><td>7/9 = 0,778</td><td>0,700</td></tr>
+        <tr><th scope="row">3</th><td>7</td><td>1</td><td>6/7 = 0,857</td><td>0,600</td></tr>
+        <tr><th scope="row">4</th><td>5</td><td>1</td><td>4/5 = 0,800</td><td>0,480</td></tr>
+        <tr><th scope="row">5</th><td>4</td><td>1</td><td>3/4 = 0,750</td><td>0,360</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="baca">
+    <p style="margin-top:1rem">Perhatikan bulan ke-4. Pada akhir bulan ke-3 tersisa 6 pasien, tetapi pasien 3+ keluar dari pengamatan, sehingga yang masih diikuti pada bulan ke-4 tinggal 5.</p>
+    <p>Sekarang hitung sendiri untuk kelompok dengan pendamping, lalu periksa dengan kalkulator.</p>
+  </div>
+
+  <form class="kalkulator baca" id="km" novalidate>
+    <h3>Kalkulator Kaplan–Meier</h3>
+    <label for="km-waktu">Waktu tiap pasien, pisahkan dengan spasi. Tambahkan + untuk yang tersensor.</label>
+    <textarea id="km-waktu" name="waktu" rows="2">2 4+ 5 6+ 6+ 6+ 6+ 6+ 6+ 6+</textarea>
+    <div class="deret-tombol">
+      <button type="submit" class="tombol">Hitung</button>
+      <button type="button" class="tombol garis kecil" data-km="1 2 2 3 3+ 4 5 6+ 6+ 6+">Isi kelompok tanpa pendamping</button>
+      <button type="button" class="tombol garis kecil" data-km="2 4+ 5 6+ 6+ 6+ 6+ 6+ 6+ 6+">Isi kelompok dengan pendamping</button>
+    </div>
+    <p class="pesan" id="pesan-km" role="alert" hidden></p>
+    <div id="hasil-km" aria-live="polite" hidden>
+      <div class="tabel-gulir">
+        <table>
+          <thead><tr><th scope="col">Waktu</th><th scope="col">Masih diikuti</th><th scope="col">Kejadian</th><th scope="col">Kesintasan</th></tr></thead>
+          <tbody id="km-baris"></tbody>
+        </table>
+      </div>
+      <dl class="hasil">
+        <div><dt>Jumlah pasien</dt><dd id="km-n"></dd></div>
+        <div><dt>Jumlah kejadian</dt><dd id="km-kejadian"></dd></div>
+        <div><dt>Median waktu sampai kejadian</dt><dd id="km-median"></dd></div>
+      </dl>
+    </div>
+  </form>
+
+  <details class="baca">
+    <summary>Lihat jawaban untuk kelompok dengan pendamping</summary>
+    <p><strong>Bulan 2:</strong> 10 masih diikuti, 1 putus. Kesintasan = 9/10 = <strong>0,900</strong>.</p>
+    <p><strong>Bulan 5:</strong> pasien 4+ sudah keluar, jadi yang masih diikuti 8 orang, 1 putus. Kesintasan = 0,900 × 7/8 = <strong>0,788</strong>.</p>
+  </details>
+</section>
+
+<section class="lebar" aria-labelledby="m-l3">
+  <span class="langkah">Langkah 3</span>
+  <h2 id="m-l3">Baca kurvanya</h2>
+  <div class="baca">
+    <p>Kesintasan kumulatif digambar sebagai <strong>kurva Kaplan–Meier</strong>: garis bertangga yang turun setiap ada kejadian. Garis tegak kecil menandai pasien tersensor.</p>
+  </div>
+  <div class="grafik tunggal">
+    <figure>
+      <svg viewBox="0 0 320 230" role="img" aria-label="Kurva Kaplan–Meier. Kurva tanpa pendamping turun bertahap dari 1 ke 0,36 pada bulan ke-6 dan memotong 0,5 pada bulan ke-4. Kurva dengan pendamping turun dari 1 ke 0,9 pada bulan ke-2 dan ke 0,79 pada bulan ke-5.">
+        <line class="bantu" x1="45" y1="100" x2="295" y2="100"/>
+        <line class="sumbu" x1="45" y1="15" x2="45" y2="180"/><line class="sumbu" x1="45" y1="180" x2="295" y2="180"/>
+        <text x="38" y="184" text-anchor="end">0</text><text x="38" y="104" text-anchor="end">0,5</text><text x="38" y="24" text-anchor="end">1</text>
+        <text x="45" y="196" text-anchor="middle">0</text><text x="86.7" y="196" text-anchor="middle">1</text><text x="128.3" y="196" text-anchor="middle">2</text><text x="170" y="196" text-anchor="middle">3</text><text x="211.7" y="196" text-anchor="middle">4</text><text x="253.3" y="196" text-anchor="middle">5</text><text x="295" y="196" text-anchor="middle">6</text>
+        <text x="170" y="216" text-anchor="middle">Bulan pengobatan</text>
+        <path class="tangga-b" d="M45 20H128.3V36H253.3V54H295"/>
+        <path class="tangga-a" d="M45 20H86.7V36H128.3V68H170V84H211.7V103.2H253.3V122.4H295"/>
+        <line class="sensor-b" x1="211.7" y1="31" x2="211.7" y2="41"/><line class="sensor-b" x1="291" y1="49" x2="291" y2="59"/>
+        <line class="sensor-a" x1="170" y1="79" x2="170" y2="89"/><line class="sensor-a" x1="291" y1="117" x2="291" y2="127"/>
+        <text class="label-b" x="292" y="73" text-anchor="end">Dengan pendamping</text>
+        <text class="label-a" x="292" y="141" text-anchor="end">Tanpa pendamping</text>
+      </svg>
+      <figcaption>Garis tipis mendatar menandai kesintasan 0,5. Data rekaan dari tabel kasus.</figcaption>
+    </figure>
+  </div>
+  <div class="baca">
+    <p style="margin-top:1rem">Dua angka yang paling sering dilaporkan dari kurva ini adalah kesintasan pada waktu tertentu dan <strong>median waktu sampai kejadian</strong>: saat pertama kesintasan turun sampai 0,5 atau lebih rendah.</p>
+    <details>
+      <summary>Berapa median waktu sampai putus berobat di tiap kelompok? Berapa yang bertahan sampai bulan ke-6?</summary>
+      <p><strong>Tanpa pendamping:</strong> kesintasan turun ke 0,48 pada bulan ke-4, jadi median = <strong>4 bulan</strong>. Pada bulan ke-6, yang bertahan tanpa putus 36%.</p>
+      <p><strong>Dengan pendamping:</strong> kesintasan tidak pernah turun sampai 0,5, jadi median <strong>belum tercapai</strong>. Pada bulan ke-6, yang bertahan 79%.</p>
+      <p>Median dipakai, bukan rata-rata, karena rata-rata waktu tidak dapat dihitung dengan benar bila sebagian waktu tersensor.</p>
+    </details>
+    <p>Bagian kanan kurva perlu dibaca hati-hati. Makin ke kanan, makin sedikit pasien yang masih diikuti, sehingga satu kejadian membuat kurva turun tajam. Laporan yang baik mencantumkan jumlah yang masih diikuti di bawah sumbu waktu.</p>
+  </div>
+</section>
+
+<section class="lebar" aria-labelledby="m-l4">
+  <span class="langkah">Langkah 4</span>
+  <h2 id="m-l4">Bandingkan dua kurva dengan uji log-rank</h2>
+  <div class="baca">
+    <p><strong>Uji log-rank</strong> menanyakan: bila pendampingan tidak berpengaruh, berapa kejadian yang <em>diharapkan</em> pada tiap kelompok? Pada setiap saat ada kejadian, jumlah kejadian dibagi kepada kedua kelompok sebanding dengan jumlah pasien yang masih diikuti.</p>
+    <div class="rumus">harapan pada kelompok pendamping = kejadian saat itu × (diikuti di kelompok pendamping ÷ diikuti seluruhnya)</div>
+  </div>
+  <div class="tabel-gulir">
+    <table>
+      <thead>
+        <tr><th scope="col">Bulan</th><th scope="col">Diikuti, tanpa</th><th scope="col">Diikuti, dengan</th><th scope="col">Putus, tanpa</th><th scope="col">Putus, dengan</th><th scope="col">Harapan putus, dengan</th></tr>
+      </thead>
+      <tbody>
+        <tr><th scope="row">1</th><td>10</td><td>10</td><td>1</td><td>0</td><td>0,500</td></tr>
+        <tr><th scope="row">2</th><td>9</td><td>10</td><td>2</td><td>1</td><td>?</td></tr>
+        <tr><th scope="row">3</th><td>7</td><td>9</td><td>1</td><td>0</td><td>0,563</td></tr>
+        <tr><th scope="row">4</th><td>5</td><td>9</td><td>1</td><td>0</td><td>0,643</td></tr>
+        <tr><th scope="row">5</th><td>4</td><td>8</td><td>1</td><td>1</td><td>1,333</td></tr>
+        <tr><th scope="row">Jumlah</th><td></td><td></td><td>6</td><td>2</td><td>4,618</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="baca">
+    <details>
+      <summary>Isi tanda tanya pada bulan ke-2, lalu tafsirkan jumlahnya</summary>
+      <p>Bulan 2: 3 kejadian × (10 ÷ 19) = <strong>1,579</strong>.</p>
+      <p>Bila pendampingan tidak berpengaruh, kelompok pendamping diharapkan mengalami 4,62 kejadian. Yang teramati hanya 2. Kelompok tanpa pendamping diharapkan 8 − 4,62 = 3,38 kejadian, teramati 6.</p>
+      <p>Perangkat statistik mengubah selisih ini menjadi statistik kai kuadrat dengan satu derajat bebas. Hasilnya χ² = <strong>3,82</strong> dan nilai p = <strong>0,051</strong>.</p>
+      <p>Tafsirannya: ada petunjuk bahwa putus berobat lebih jarang pada kelompok pendamping, tetapi pada batas 0,05 bukti ini belum cukup kuat. Dengan hanya 8 kejadian, uji ini memang lemah. Hasil seperti ini adalah alasan untuk memperluas uji coba, bukan untuk menghentikan pendampingan.</p>
+    </details>
+  </div>
+</section>
+
+<section aria-labelledby="m-l5">
+  <span class="langkah">Langkah 5</span>
+  <h2 id="m-l5">Ukur besarnya dengan model Cox</h2>
+  <p>Uji log-rank menjawab "apakah berbeda", tetapi tidak "seberapa besar". Untuk itu dipakai <strong>model hazard proporsional Cox</strong>. <strong>Hazard</strong> adalah laju kejadian sesaat di antara mereka yang masih bertahan. Model Cox menaksir <strong>rasio hazard</strong> (<em>hazard ratio</em>, HR): perbandingan laju kejadian dua kelompok.</p>
+  <p>Inilah keluarannya untuk data kasus.</p>
+  <div class="tabel-gulir">
+    <table>
+      <thead>
+        <tr><th scope="col">Variabel</th><th scope="col">Koefisien</th><th scope="col">Rasio hazard</th><th scope="col">Selang kepercayaan 95%</th><th scope="col">Nilai p</th></tr>
+      </thead>
+      <tbody>
+        <tr><th scope="row">Pendampingan (ya = 1)</th><td>−1,460</td><td>0,23</td><td>0,05 sampai 1,16</td><td>0,076</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <details>
+    <summary>Tafsirkan rasio hazard 0,23</summary>
+    <p>Pada setiap saat selama pengobatan, laju putus berobat pada pasien yang didampingi sekitar <strong>seperempat</strong> laju pada pasien tanpa pendamping. Taksiran titiknya menunjukkan pengaruh yang besar.</p>
+    <p>Tetapi selang kepercayaannya sangat lebar, dari 0,05 (pengaruh sangat besar) sampai 1,16 (sedikit merugikan), dan mencakup 1. Data ini sesuai dengan pengaruh yang besar maupun tidak ada pengaruh sama sekali.</p>
+    <p>Sebagai pembanding kasar: kelompok tanpa pendamping mengalami 6 kejadian dalam 38 orang-bulan dan kelompok pendamping 2 kejadian dalam 53 orang-bulan. Rasio kedua laju itu 0,24, dekat dengan rasio hazard dari model.</p>
+  </details>
+  <p>Seperti regresi logistik, model Cox dapat memuat beberapa variabel sekaligus, misalnya umur dan jarak rumah ke puskesmas, sehingga menghasilkan rasio hazard yang disesuaikan. Beberapa hal perlu diperiksa:</p>
+  <ul>
+    <li><strong>Hazard proporsional.</strong> Model mengandaikan rasio hazard tetap sepanjang waktu. Kurva Kaplan–Meier yang saling bersilangan adalah tanda andaian ini dilanggar.</li>
+    <li><strong>Jumlah kejadian, bukan jumlah pasien,</strong> yang membatasi berapa variabel dapat dimasukkan. Pedoman kasar sepuluh kejadian per variabel juga berlaku di sini.</li>
+    <li><strong>Waktu kembar.</strong> Bila beberapa kejadian tercatat pada waktu yang sama, perangkat lunak memakai cara pendekatan tertentu. Angka di atas memakai cara Efron, bawaan paket <code>survival</code> di R; cara Breslow memberi rasio hazard 0,24.</li>
+  </ul>
+  <details>
+    <summary>Lihat contoh kalimat laporan</summary>
+    <p>"Di antara 20 pasien tuberkulosis, 6 dari 10 pasien tanpa pendamping dan 2 dari 10 pasien dengan pendamping putus berobat dalam enam bulan. Kesintasan tanpa putus berobat pada bulan ke-6 adalah 36% dan 79%. Rasio hazard putus berobat untuk pendampingan adalah 0,23 (selang kepercayaan 95%: 0,05 sampai 1,16; uji log-rank p = 0,051). Jumlah kejadian sedikit, sehingga diperlukan uji coba yang lebih besar."</p>
+  </details>
+</section>
+
+<section aria-labelledby="m-kuis">
+  <h2 id="m-kuis">Uji diri</h2>
+
+  <fieldset class="soal" data-benar="c">
+    <legend>1. Seorang peserta studi kohort pindah ke luar negeri pada bulan ke-8 tanpa mengalami kejadian. Bagaimana ia diperlakukan dalam analisis kesintasan?</legend>
+    <button type="button" class="pilihan" data-nilai="a">Dibuang dari analisis</button>
+    <button type="button" class="pilihan" data-nilai="b">Dihitung tidak mengalami kejadian sampai akhir studi</button>
+    <button type="button" class="pilihan" data-nilai="c">Tersensor pada bulan ke-8</button>
+    <button type="button" class="pilihan" data-nilai="d">Dihitung mengalami kejadian</button>
+    <p class="penjelasan" hidden>Ia memberi informasi sampai bulan ke-8, lalu keluar dari kelompok yang masih diikuti.</p>
+  </fieldset>
+
+  <fieldset class="soal" data-benar="b">
+    <legend>2. Kesintasan sebelumnya 0,80. Pada saat berikutnya 15 orang masih diikuti dan 3 mengalami kejadian. Berapa kesintasan barunya?</legend>
+    <button type="button" class="pilihan" data-nilai="a">0,60</button>
+    <button type="button" class="pilihan" data-nilai="b">0,64</button>
+    <button type="button" class="pilihan" data-nilai="c">0,77</button>
+    <button type="button" class="pilihan" data-nilai="d">0,80</button>
+    <p class="penjelasan" hidden>0,80 × (1 − 3/15) = 0,80 × 0,80 = 0,64.</p>
+  </fieldset>
+
+  <fieldset class="soal" data-benar="d">
+    <legend>3. Mengapa median, bukan rata-rata, yang dilaporkan untuk waktu sampai kejadian?</legend>
+    <button type="button" class="pilihan" data-nilai="a">Median selalu lebih kecil.</button>
+    <button type="button" class="pilihan" data-nilai="b">Rata-rata tidak bisa dihitung untuk bilangan bulat.</button>
+    <button type="button" class="pilihan" data-nilai="c">Kebiasaan saja, tanpa alasan.</button>
+    <button type="button" class="pilihan" data-nilai="d">Waktu yang tersensor membuat rata-rata tidak dapat dihitung dengan benar.</button>
+    <p class="penjelasan" hidden>Untuk pasien tersensor, waktu kejadiannya yang sebenarnya tidak diketahui, sehingga rata-rata akan bias.</p>
+  </fieldset>
+
+  <fieldset class="soal" data-benar="a">
+    <legend>4. Rasio hazard sebuah obat terhadap kematian adalah 0,70 (selang kepercayaan 0,58 sampai 0,85). Apa tafsirannya?</legend>
+    <button type="button" class="pilihan" data-nilai="a">Laju kematian pada kelompok obat sekitar 30% lebih rendah, dan hasilnya bermakna.</button>
+    <button type="button" class="pilihan" data-nilai="b">70% pasien yang minum obat bertahan hidup.</button>
+    <button type="button" class="pilihan" data-nilai="c">Obat menaikkan kematian 70%.</button>
+    <button type="button" class="pilihan" data-nilai="d">Tidak ada perbedaan.</button>
+    <p class="penjelasan" hidden>Rasio hazard 0,70 berarti laju 30% lebih rendah. Selang kepercayaannya tidak mencakup 1.</p>
+  </fieldset>
+
+  <fieldset class="soal" data-benar="c">
+    <legend>5. Kurva Kaplan–Meier dua kelompok saling bersilangan pada bulan ke-12. Apa yang perlu dipertanyakan?</legend>
+    <button type="button" class="pilihan" data-nilai="a">Apakah datanya tersensor</button>
+    <button type="button" class="pilihan" data-nilai="b">Apakah mediannya tercapai</button>
+    <button type="button" class="pilihan" data-nilai="c">Apakah andaian hazard proporsional dalam model Cox terpenuhi</button>
+    <button type="button" class="pilihan" data-nilai="d">Apakah uji kai kuadrat lebih cocok</button>
+    <p class="penjelasan" hidden>Kurva yang bersilangan menunjukkan rasio hazard berubah sepanjang waktu, sehingga satu angka HR menyesatkan.</p>
+  </fieldset>
+
+  <p class="skor" id="skor" role="status" hidden></p>
+</section>
+
+<section aria-labelledby="m-naik">
+  <h2 id="m-naik">Naik jenjang</h2>
+  <p>Analisis kesintasan dipakai luas, dari uji klinis sampai evaluasi program dan perencanaan rumah sakit.</p>
+
+  <div class="naik j4">
+    <h3>Jenjang 4: bila kenyataan lebih rumit daripada satu kejadian</h3>
+    <p>Seorang ahli menangani risiko bersaing, misalnya pasien yang meninggal sebelum sempat putus berobat, dengan fungsi insidens kumulatif. Ia memakai kovariat yang berubah menurut waktu, menguji andaian hazard proporsional dengan residu Schoenfeld, dan memilih ukuran lain seperti rerata waktu bertahan terbatas (<em>restricted mean survival time</em>) bila rasio hazard tidak tetap. Untuk ramalan, ia memakai model parametrik atau model fleksibel yang dapat diekstrapolasi.</p>
+  </div>
+</section>
+
+<section aria-labelledby="m-terap">
+  <h2 id="m-terap">Terapkan</h2>
+  <ol>
+    <li>Pilih satu data di tempat Anda yang berupa waktu sampai kejadian: lama sampai pasien TB putus berobat, lama rawat sampai pulang, atau lama sampai kader berhenti aktif. Tentukan apa kejadiannya dan siapa yang tersensor.</li>
+    <li>Ambil 15 sampai 20 catatan, hitung tabel Kaplan–Meier dengan kalkulator di atas, dan gambar kurvanya dengan tangan atau lembar kerja.</li>
+    <li>Ambil satu artikel yang melaporkan rasio hazard. Tuliskan tafsirannya dalam satu kalimat dan periksa apakah penulis menyebut pengujian andaian hazard proporsional.</li>
+  </ol>
+  <div class="deret-tombol">
+    <button type="button" class="tombol" id="tandai-selesai" data-modul="biostatistik-12">Tandai modul ini selesai</button>
+    <a class="tombol garis" href="kurikulum.html">Kembali ke peta kurikulum</a>
+  </div>
+</section>
+
+<section aria-labelledby="m-rujuk">
+  <h2 id="m-rujuk">Rujukan dan bacaan lanjut</h2>
+  <ul class="rujukan">
+    <li>Kleinbaum dan Klein. <em>Survival Analysis: A Self-Learning Text</em>. Pengantar langkah demi langkah.</li>
+    <li>Collett. <em>Modelling Survival Data in Medical Research</em>. Rujukan lanjutan.</li>
+    <li>Bland dan Altman (1998). "Survival probabilities (the Kaplan-Meier method)". <em>BMJ</em>; dan Bland dan Altman (2004). "The logrank test". <em>BMJ</em>. Dua catatan singkat yang jelas.</li>
+    <li>Kirkwood dan Sterne. <em>Essential Medical Statistics</em>. Bab tentang analisis kesintasan.</li>
+    <li>Kaplan dan Meier (1958). "Nonparametric estimation from incomplete observations". <em>Journal of the American Statistical Association</em>. Artikel asli.</li>
+  </ul>
+  <p class="keterangan">Modul ini ditulis orisinal untuk Learn Public Health. Tabel Kaplan–Meier, uji log-rank, dan model Cox dihitung dari data kasus dengan kode.</p>
+</section>
+</div>
+</main>
+
+<footer class="kaki">
+  <div class="wadah">
+    <p><strong>Learn Public Health</strong>. Materi ini untuk pendidikan. Data kasus dalam modul adalah rekaan, kecuali disebutkan lain.</p>
+    <p><a href="index.html">Beranda</a> | <a href="kurikulum.html">Peta kurikulum</a> | <a href="sumber.html">Sumber belajar</a></p>
+  </div>
+</footer>
+
+<script src="app.js"></script>
+</body>
+</html>
