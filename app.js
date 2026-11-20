@@ -550,6 +550,52 @@
     });
   }
 
+  /* ---------- Uji Mann-Whitney (Wilcoxon jumlah peringkat) ----------
+     Pendekatan normal dengan koreksi angka kembar, tanpa koreksi kontinuitas. */
+  function urai(teks) {
+    return String(teks).split(/[\s;]+/).map(function (t) { return t.replace(/,+$/, '').replace(',', '.'); })
+      .filter(function (t) { return t !== ''; }).map(Number);
+  }
+  function median(xs) {
+    var a = xs.slice().sort(function (p, q) { return p - q; }), m = Math.floor(a.length / 2);
+    return a.length % 2 ? a[m] : (a[m - 1] + a[m]) / 2;
+  }
+  function hitungMannWhitney(xs, ys) {
+    if (xs.some(isNaN) || ys.some(isNaN)) return { galat: 'Ada isian yang bukan angka. Pisahkan angka dengan spasi.' };
+    if (xs.length < 3 || ys.length < 3) return { galat: 'Isi sedikitnya tiga angka untuk tiap kelompok.' };
+    var semua = xs.map(function (v) { return { v: v, g: 1 }; }).concat(ys.map(function (v) { return { v: v, g: 2 }; }))
+      .sort(function (p, q) { return p.v - q.v; });
+    var N = semua.length, koreksi = 0, i = 0;
+    while (i < N) {
+      var j = i;
+      while (j + 1 < N && semua[j + 1].v === semua[i].v) j++;
+      var rerata = (i + j + 2) / 2, t = j - i + 1;
+      for (var k = i; k <= j; k++) semua[k].r = rerata;
+      koreksi += t * t * t - t; i = j + 1;
+    }
+    var n1 = xs.length, n2 = ys.length, R1 = 0, R2 = 0;
+    semua.forEach(function (d) { if (d.g === 1) R1 += d.r; else R2 += d.r; });
+    var U = R1 - n1 * (n1 + 1) / 2;
+    var sd = Math.sqrt(n1 * n2 / 12 * ((N + 1) - koreksi / (N * (N - 1))));
+    var z = sd > 0 ? (U - n1 * n2 / 2) / sd : 0;
+    return { n1: n1, n2: n2, med1: median(xs), med2: median(ys), R1: R1, R2: R2, U: U, z: z, p: nilaiP(z), unggul: U / (n1 * n2) };
+  }
+  function pasangMannWhitney(form) {
+    var keluaran = document.getElementById('hasil-mw'), pesan = document.getElementById('pesan-mw');
+    form.addEventListener('submit', function (e) {
+      e.preventDefault();
+      var h = hitungMannWhitney(urai(form.elements.satu.value), urai(form.elements.dua.value));
+      if (h.galat) { pesan.textContent = h.galat; pesan.hidden = false; keluaran.hidden = true; return; }
+      pesan.hidden = true; keluaran.hidden = false;
+      document.getElementById('mw-median').textContent = rapi(h.med1) + ' dan ' + rapi(h.med2);
+      document.getElementById('mw-r').textContent = rapi(h.R1) + ' dan ' + rapi(h.R2);
+      document.getElementById('mw-u').textContent = rapi(h.U);
+      document.getElementById('mw-z').textContent = angka(h.z, 2);
+      document.getElementById('mw-p').textContent = h.p < 0.001 ? '< 0,001' : angka(h.p, 3);
+      document.getElementById('mw-unggul').textContent = angka(h.unggul, 2);
+    });
+  }
+
   /* ---------- Kuis ----------
      <fieldset class="soal" data-benar="b"> berisi tombol .pilihan[data-nilai]
      dan <p class="penjelasan" hidden>. */
@@ -639,6 +685,8 @@
       if (formKt) pasangKesulitan(formKt);
       var formSIR = document.getElementById('sir');
       if (formSIR) pasangSIR(formSIR);
+      var formMW = document.getElementById('mw');
+      if (formMW) pasangMannWhitney(formMW);
       pasangKuis();
       pasangPenanda();
     });
@@ -648,6 +696,6 @@
   if (typeof module !== 'undefined' && module.exports) {
     module.exports = { hitungRisiko: hitungRisiko, hitungRingkasan: hitungRingkasan, peluangNormal: peluangNormal, selangProporsi: selangProporsi, nilaiP: nilaiP, rasioOdds: rasioOdds, kaiKuadrat: kaiKuadrat, hitungSkrining: hitungSkrining, hitungRegresi: hitungRegresi,
       sampelProporsi: sampelProporsi, sampelRata: sampelRata, peluangLogistik: peluangLogistik,
-      hitungKM: hitungKM, hitungKesulitan: hitungKesulitan, hitungSIR: hitungSIR };
+      hitungKM: hitungKM, hitungKesulitan: hitungKesulitan, hitungSIR: hitungSIR, hitungMannWhitney: hitungMannWhitney };
   }
 })();

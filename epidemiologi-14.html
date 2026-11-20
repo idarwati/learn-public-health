@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Membaca peta penyakit: epidemiologi spasial dan spasio-temporal | Learn Public Health</title>
+<meta name="description" content="Modul epidemiologi jenjang lanjut: angka kejadian per wilayah, rasio O/E, angka tidak stabil di wilayah kecil, penghalusan Bayes empiris, indeks Moran, dan analisis ruang-waktu DBD.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header class="kepala">
+  <div class="wadah">
+    <a class="merek" href="index.html">
+      <svg viewBox="0 0 32 32" aria-hidden="true"><path d="M2 30V22h7v-7h7V8h7V2h7v28z" fill="#075443"/></svg>
+      Learn Public Health
+    </a>
+    <nav aria-label="Menu utama">
+      <ul class="menu">
+        <li><a href="index.html">Beranda</a></li>
+        <li><a href="kurikulum.html">Peta kurikulum</a></li>
+        <li><a href="sumber.html">Sumber belajar</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<main>
+<div class="modul-kepala"><div class="wadah">
+  <p class="remah"><a href="kurikulum.html">Peta kurikulum</a> / Epidemiologi / Jenjang 3: Lanjut</p>
+  <h1>Membaca peta penyakit: epidemiologi spasial dan spasio-temporal</h1><p class="ringkas">Ubah jumlah kasus per wilayah menjadi angka yang adil, haluskan angka dari wilayah kecil, dan uji apakah kasus benar-benar mengelompok.</p>
+  <ul class="modul-info"><li>Waktu belajar: sekitar 90 menit</li><li>Prasyarat: Mengukur insidens; standardisasi</li><li>Alat: Kalkulator atau lembar kerja; QGIS atau GeoDa untuk yang ingin mencoba</li></ul>
+</div></div>
+<div class="modul-isi wadah">
+<section aria-labelledby="m-tujuan">
+  <h2 id="m-tujuan">Setelah modul ini, Anda bisa</h2>
+  <ul>
+    <li>mengubah jumlah kasus per wilayah menjadi angka kejadian yang dapat dibandingkan, dan mengenali angka yang tidak stabil karena penduduknya sedikit;</li>
+    <li>menjelaskan penghalusan angka dengan rasio teramati terhadap harapan dan Bayes empiris;</li>
+    <li>menilai apakah kasus mengelompok menurut tempat dan waktu, serta menyebutkan jebakan dalam membaca peta penyakit.</li>
+  </ul>
+</section>
+
+<section class="lebar" aria-labelledby="m-kasus">
+  <h2 id="m-kasus">Kasus</h2>
+  <div class="kasus-cerita baca">
+    <p>Kabupaten Saloka memiliki 12 kecamatan dan 280.000 penduduk. Tahun lalu tercatat 254 kasus demam berdarah dengue (DBD). Dana fogging fokus dan gerakan pemberantasan sarang nyamuk tahun depan hanya cukup untuk empat kecamatan.</p>
+    <p>Rapat sebelumnya hampir memutuskan berdasarkan jumlah kasus: Kecamatan F terbanyak, lalu G, C, dan H. Seorang camat memprotes, "Di kecamatan D angkanya 200 per 100.000, paling tinggi di kabupaten. Mengapa kami tidak masuk?" Kepala dinas meminta Anda menyusun peta dan saran yang dapat dipertanggungjawabkan.</p>
+  </div>
+  <div class="tabel-gulir" style="margin-top:1.25rem">
+    <table>
+      <caption>Kasus DBD setahun per kecamatan</caption>
+      <thead><tr><th scope="col">Kecamatan</th><th scope="col">Penduduk</th><th scope="col">Kasus</th><th scope="col">Per 100.000</th></tr></thead>
+      <tbody>
+        <tr><th scope="row">A</th><td>18.000</td><td>9</td><td>50,0</td></tr>
+        <tr><th scope="row">B</th><td>22.000</td><td>8</td><td>36,4</td></tr>
+        <tr><th scope="row">C</th><td>35.000</td><td>42</td><td>120,0</td></tr>
+        <tr><th scope="row">D</th><td>3.000</td><td>6</td><td>200,0</td></tr>
+        <tr><th scope="row">E</th><td>15.000</td><td>6</td><td>40,0</td></tr>
+        <tr><th scope="row">F</th><td>60.000</td><td>78</td><td>130,0</td></tr>
+        <tr><th scope="row">G</th><td>40.000</td><td>55</td><td>137,5</td></tr>
+        <tr><th scope="row">H</th><td>25.000</td><td>30</td><td>120,0</td></tr>
+        <tr><th scope="row">I</th><td>12.000</td><td>3</td><td>25,0</td></tr>
+        <tr><th scope="row">J</th><td>20.000</td><td>8</td><td>40,0</td></tr>
+        <tr><th scope="row">K</th><td>16.000</td><td>5</td><td>31,3</td></tr>
+        <tr><th scope="row">L</th><td>14.000</td><td>4</td><td>28,6</td></tr>
+        <tr><th scope="row">Kabupaten</th><td>280.000</td><td>254</td><td>90,7</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p class="keterangan baca" style="margin-top:0.8rem">Seluruh angka rekaan, disusun untuk latihan. Kecamatan diberi huruf agar tidak tertukar dengan wilayah nyata. Pada peta skematis di bawah, kecamatan disusun dalam tiga baris: A sampai D di utara, E sampai H di tengah, I sampai L di selatan. Dua kecamatan dianggap bertetangga bila sisinya bersentuhan.</p>
+</section>
+
+<section aria-labelledby="m-l1">
+  <span class="langkah">Langkah 1</span>
+  <h2 id="m-l1">Ubah jumlah menjadi angka kejadian</h2>
+  <p>Jumlah kasus terutama mencerminkan jumlah penduduk. Kecamatan F punya kasus terbanyak sebagian karena penduduknya terbanyak. Untuk membandingkan risiko, bagi jumlah kasus dengan jumlah penduduk: <strong>angka kejadian</strong> (<em>incidence rate</em>), biasanya dinyatakan per 100.000 penduduk.</p>
+  <p>Cara lain yang banyak dipakai dalam epidemiologi spasial adalah <strong>rasio teramati terhadap harapan</strong> (O/E). Kasus yang diharapkan adalah jumlah kasus bila kecamatan itu punya angka yang sama dengan seluruh kabupaten.</p>
+  <div class="rumus">harapan = penduduk kecamatan × (254 ÷ 280.000)</div>
+  <details>
+    <summary>Hitung harapan dan rasio O/E untuk kecamatan D dan F</summary>
+    <p><strong>D:</strong> harapan = 3.000 × 254 ÷ 280.000 = 2,7 kasus. Teramati 6. O/E = <strong>2,20</strong>.</p>
+    <p><strong>F:</strong> harapan = 60.000 × 254 ÷ 280.000 = 54,4 kasus. Teramati 78. O/E = <strong>1,43</strong>.</p>
+    <p>O/E di atas 1 berarti lebih banyak kasus daripada yang diharapkan. Bila umur penduduk tiap kecamatan sangat berbeda, harapannya dihitung per kelompok umur. Hasilnya disebut rasio insidens terstandar, yang caranya sudah Anda kenal dari modul standardisasi.</p>
+  </details>
+</section>
+
+<section aria-labelledby="m-l2">
+  <span class="langkah">Langkah 2</span>
+  <h2 id="m-l2">Waspadai angka dari wilayah kecil</h2>
+  <p>Kecamatan D hanya berpenduduk 3.000. Di sana, satu kasus tambahan menaikkan angka sebesar 33 per 100.000. Di kecamatan F, satu kasus hanya menambah 1,7 per 100.000.</p>
+  <p>Karena itu angka dari wilayah kecil sangat tidak stabil. Wilayah kecil cenderung muncul di <em>kedua</em> ujung peta: angka tertinggi dan terendah, sering kali hanya karena kebetulan.</p>
+  <details>
+    <summary>Selang kepercayaan 95% untuk angka D adalah 73 sampai 435 per 100.000, sedangkan F 103 sampai 162. Apa artinya bagi protes camat D?</summary>
+    <p>Angka 200 di D bisa jadi benar tinggi, tetapi bisa juga sama dengan rata-rata kabupaten (90,7), yang masih berada di dalam selangnya. Angka F jauh lebih pasti dan jelas di atas rata-rata.</p>
+    <p>Jawaban yang adil untuk camat: angka D belum dapat dibedakan dari kebetulan, tetapi D tetap perlu dipantau. Apalagi D bertetangga dengan C dan H yang angkanya juga tinggi.</p>
+  </details>
+</section>
+
+<section class="lebar" aria-labelledby="m-l3">
+  <span class="langkah">Langkah 3</span>
+  <h2 id="m-l3">Haluskan angkanya</h2>
+  <div class="baca">
+    <p><strong>Bayes empiris</strong> (<em>empirical Bayes</em>) adalah cara menghaluskan angka dengan "menarik" angka setiap wilayah ke arah rata-rata kabupaten. Besar tarikannya bergantung pada jumlah penduduk: wilayah besar hampir tidak ditarik, wilayah kecil ditarik kuat.</p>
+    <div class="rumus">angka halus = bobot × angka kecamatan + (1 − bobot) × angka kabupaten</div>
+    <p>Bobot mendekati 1 untuk wilayah berpenduduk banyak dan mendekati 0 untuk wilayah kecil. Bobot dihitung dari keragaman angka antarkecamatan dan jumlah penduduk masing-masing.</p>
+    <details>
+      <summary>Bobot D adalah 0,374 dan bobot F 0,924. Hitung angka halus keduanya.</summary>
+      <p><strong>D:</strong> 0,374 × 200 + 0,626 × 90,7 ≈ <strong>131,6</strong> per 100.000.</p>
+      <p><strong>F:</strong> 0,924 × 130 + 0,076 × 90,7 ≈ <strong>127,0</strong> per 100.000.</p>
+      <p>Angka D turun banyak, sedangkan F hampir tidak berubah. Setelah dihaluskan, D tidak lagi tampak sebagai wilayah paling berbahaya. Ia sama tingginya dengan tetangganya.</p>
+    </details>
+  </div>
+<div class="grafik">
+    <figure>
+      <svg viewBox="0 0 300 186" role="img" aria-label="Peta skematis 12 kecamatan, angka kasar: A 50; B 36,4; C 120; D 200; E 40; F 130; G 137,5; H 120; I 25; J 40; K 31,3; L 28,6.">
+        <rect class="petak petak-1" x="6" y="6" width="72" height="58"/><text x="42" y="31" text-anchor="middle" font-weight="700">A</text><text x="42" y="49" text-anchor="middle">50</text><rect class="petak petak-1" x="78" y="6" width="72" height="58"/><text x="114" y="31" text-anchor="middle" font-weight="700">B</text><text x="114" y="49" text-anchor="middle">36,4</text><rect class="petak petak-2" x="150" y="6" width="72" height="58"/><text x="186" y="31" text-anchor="middle" font-weight="700">C</text><text x="186" y="49" text-anchor="middle">120</text><rect class="petak petak-3" x="222" y="6" width="72" height="58"/><text class="terang" x="258" y="31" text-anchor="middle" font-weight="700">D</text><text class="terang" x="258" y="49" text-anchor="middle">200</text><rect class="petak petak-1" x="6" y="64" width="72" height="58"/><text x="42" y="89" text-anchor="middle" font-weight="700">E</text><text x="42" y="107" text-anchor="middle">40</text><rect class="petak petak-2" x="78" y="64" width="72" height="58"/><text x="114" y="89" text-anchor="middle" font-weight="700">F</text><text x="114" y="107" text-anchor="middle">130</text><rect class="petak petak-2" x="150" y="64" width="72" height="58"/><text x="186" y="89" text-anchor="middle" font-weight="700">G</text><text x="186" y="107" text-anchor="middle">137,5</text><rect class="petak petak-2" x="222" y="64" width="72" height="58"/><text x="258" y="89" text-anchor="middle" font-weight="700">H</text><text x="258" y="107" text-anchor="middle">120</text><rect class="petak petak-1" x="6" y="122" width="72" height="58"/><text x="42" y="147" text-anchor="middle" font-weight="700">I</text><text x="42" y="165" text-anchor="middle">25</text><rect class="petak petak-1" x="78" y="122" width="72" height="58"/><text x="114" y="147" text-anchor="middle" font-weight="700">J</text><text x="114" y="165" text-anchor="middle">40</text><rect class="petak petak-1" x="150" y="122" width="72" height="58"/><text x="186" y="147" text-anchor="middle" font-weight="700">K</text><text x="186" y="165" text-anchor="middle">31,3</text><rect class="petak petak-1" x="222" y="122" width="72" height="58"/><text x="258" y="147" text-anchor="middle" font-weight="700">L</text><text x="258" y="165" text-anchor="middle">28,6</text>
+      </svg>
+      <figcaption>Angka kasar, per 100.000 penduduk.</figcaption>
+    </figure>
+    <figure>
+      <svg viewBox="0 0 300 186" role="img" aria-label="Peta skematis 12 kecamatan, angka yang dihaluskan dengan Bayes empiris: A 58,9; B 46,5; C 116,3; D 131,6; E 52,7; F 127; G 132,3; H 115,1; I 44,4; J 50,2; K 45,5; L 45.">
+        <rect class="petak petak-1" x="6" y="6" width="72" height="58"/><text x="42" y="31" text-anchor="middle" font-weight="700">A</text><text x="42" y="49" text-anchor="middle">58,9</text><rect class="petak petak-1" x="78" y="6" width="72" height="58"/><text x="114" y="31" text-anchor="middle" font-weight="700">B</text><text x="114" y="49" text-anchor="middle">46,5</text><rect class="petak petak-2" x="150" y="6" width="72" height="58"/><text x="186" y="31" text-anchor="middle" font-weight="700">C</text><text x="186" y="49" text-anchor="middle">116,3</text><rect class="petak petak-2" x="222" y="6" width="72" height="58"/><text x="258" y="31" text-anchor="middle" font-weight="700">D</text><text x="258" y="49" text-anchor="middle">131,6</text><rect class="petak petak-1" x="6" y="64" width="72" height="58"/><text x="42" y="89" text-anchor="middle" font-weight="700">E</text><text x="42" y="107" text-anchor="middle">52,7</text><rect class="petak petak-2" x="78" y="64" width="72" height="58"/><text x="114" y="89" text-anchor="middle" font-weight="700">F</text><text x="114" y="107" text-anchor="middle">127</text><rect class="petak petak-2" x="150" y="64" width="72" height="58"/><text x="186" y="89" text-anchor="middle" font-weight="700">G</text><text x="186" y="107" text-anchor="middle">132,3</text><rect class="petak petak-2" x="222" y="64" width="72" height="58"/><text x="258" y="89" text-anchor="middle" font-weight="700">H</text><text x="258" y="107" text-anchor="middle">115,1</text><rect class="petak petak-1" x="6" y="122" width="72" height="58"/><text x="42" y="147" text-anchor="middle" font-weight="700">I</text><text x="42" y="165" text-anchor="middle">44,4</text><rect class="petak petak-1" x="78" y="122" width="72" height="58"/><text x="114" y="147" text-anchor="middle" font-weight="700">J</text><text x="114" y="165" text-anchor="middle">50,2</text><rect class="petak petak-1" x="150" y="122" width="72" height="58"/><text x="186" y="147" text-anchor="middle" font-weight="700">K</text><text x="186" y="165" text-anchor="middle">45,5</text><rect class="petak petak-1" x="222" y="122" width="72" height="58"/><text x="258" y="147" text-anchor="middle" font-weight="700">L</text><text x="258" y="165" text-anchor="middle">45</text>
+      </svg>
+      <figcaption>Angka yang dihaluskan dengan Bayes empiris, per 100.000 penduduk.</figcaption>
+    </figure>
+  </div>  <p class="keterangan baca" style="margin-top:0.8rem">Warna paling muda: di bawah 75; warna tengah: 75 sampai 150; warna paling tua: di atas 150 per 100.000.</p>
+</section>
+
+<section aria-labelledby="m-l4">
+  <span class="langkah">Langkah 4</span>
+  <h2 id="m-l4">Uji apakah kasus mengelompok</h2>
+  <p>Di peta, kecamatan dengan angka tinggi tampak berdekatan: C, F, G, dan H, ditambah D. Apakah pola ini nyata atau kebetulan? Mata manusia sangat mudah melihat pola, bahkan pada data acak.</p>
+  <p><strong>Indeks Moran</strong> (<em>Moran's I</em>) mengukur <strong>autokorelasi spasial</strong>: seberapa mirip angka sebuah wilayah dengan angka tetangganya.</p>
+  <ul>
+    <li>Nilai positif: wilayah tinggi bertetangga dengan wilayah tinggi, rendah dengan rendah. Kasus mengelompok.</li>
+    <li>Nilai sekitar −1/(n − 1): tidak ada pola. Untuk 12 kecamatan, nilai harapannya −0,09.</li>
+    <li>Nilai negatif: tinggi dan rendah berselang-seling seperti papan catur.</li>
+  </ul>
+  <details>
+    <summary>Untuk data kasus, indeks Moran = 0,30. Untuk mengujinya, angka-angka diacak ke kecamatan lain sebanyak 9.999 kali, dan hanya sekitar 3% acakan yang menghasilkan indeks setinggi itu. Apa kesimpulan Anda?</summary>
+    <p>Nilai p sekitar 0,03. Pengelompokan angka DBD di sekitar F, G, C, dan H kecil kemungkinannya terjadi hanya karena kebetulan.</p>
+    <p>Saran untuk kepala dinas: dahulukan F, G, C, dan H. Keempatnya bertetangga dan membentuk satu kawasan, sehingga pemberantasan sarang nyamuk di satu kecamatan tidak segera "diisi ulang" oleh nyamuk dari kecamatan sebelahnya. Pantau D dengan ketat karena berbatasan langsung dengan C dan H.</p>
+  </details>
+  <p>Indeks Moran adalah ukuran <em>global</em> untuk seluruh peta. Untuk menemukan <em>di mana</em> kelompoknya, dipakai ukuran lokal seperti LISA, atau statistik pemindaian (<em>scan statistic</em>) yang mencari lingkaran wilayah dengan kasus berlebih.</p>
+</section>
+
+<section aria-labelledby="m-l5">
+  <span class="langkah">Langkah 5</span>
+  <h2 id="m-l5">Tambahkan waktu dan hindari jebakan</h2>
+  <p>DBD naik turun menurut musim. Peta setahun dapat menyembunyikan wabah yang berpindah dari satu kecamatan ke kecamatan lain. <strong>Epidemiologi spasio-temporal</strong> melihat tempat dan waktu sekaligus: peta per bulan atau per minggu, kelompok kasus ruang-waktu, dan ramalan wilayah mana yang akan naik berikutnya. Analisis seperti ini berguna untuk sistem kewaspadaan dini.</p>
+  <p>Beberapa jebakan yang perlu disebut dalam laporan:</p>
+  <ul>
+    <li><strong>Kekeliruan ekologis.</strong> Peta menunjukkan angka wilayah, bukan risiko perorangan. Kecamatan berangka tinggi tidak berarti setiap warganya berisiko tinggi.</li>
+    <li><strong>Batas wilayah yang dipilih.</strong> Hasil dapat berubah bila data diolah per desa, per kecamatan, atau per wilayah kerja puskesmas. Gejala ini disebut <em>modifiable areal unit problem</em>.</li>
+    <li><strong>Tempat tercatat bukan tempat tertular.</strong> Kasus dicatat menurut alamat rumah, padahal penularan DBD bisa terjadi di sekolah atau tempat kerja.</li>
+    <li><strong>Akses dan pelaporan.</strong> Wilayah dekat rumah sakit mungkin tampak tinggi karena kasusnya lebih sering terdiagnosis.</li>
+    <li><strong>Penduduk sebagai penyebut.</strong> Proyeksi penduduk per kecamatan bisa meleset, terutama di wilayah kecil atau yang cepat berkembang.</li>
+  </ul>
+  <details>
+    <summary>Sebutkan dua data tambahan yang akan memperkuat saran Anda</summary>
+    <p>Contoh: angka bebas jentik per kecamatan, data curah hujan bulanan, kepadatan penduduk, dan tanggal mulai sakit setiap kasus untuk melihat urutan penyebaran antarkecamatan.</p>
+  </details>
+</section>
+
+<section aria-labelledby="m-kuis">
+  <h2 id="m-kuis">Uji diri</h2>
+
+  <fieldset class="soal" data-benar="b">
+    <legend>1. Mengapa jumlah kasus saja tidak cukup untuk membandingkan wilayah?</legend>
+    <button type="button" class="pilihan" data-nilai="a">Karena jumlah kasus selalu salah.</button>
+    <button type="button" class="pilihan" data-nilai="b">Karena jumlah kasus sangat bergantung pada jumlah penduduk.</button>
+    <button type="button" class="pilihan" data-nilai="c">Karena peta tidak bisa menampilkan jumlah.</button>
+    <button type="button" class="pilihan" data-nilai="d">Karena jumlah kasus tidak bisa dihitung per wilayah.</button>
+    <p class="penjelasan" hidden>Wilayah berpenduduk banyak akan punya kasus lebih banyak walaupun risikonya sama.</p>
+  </fieldset>
+
+  <fieldset class="soal" data-benar="c">
+    <legend>2. Desa berpenduduk 500 orang mencatat 2 kasus, yaitu 400 per 100.000, angka tertinggi di kabupaten. Apa sikap paling tepat?</legend>
+    <button type="button" class="pilihan" data-nilai="a">Segera menyatakan desa itu paling berbahaya.</button>
+    <button type="button" class="pilihan" data-nilai="b">Mengabaikannya karena kasusnya hanya dua.</button>
+    <button type="button" class="pilihan" data-nilai="c">Menyadari angkanya sangat tidak stabil, menghaluskan atau menggabungkannya, dan tetap memantau.</button>
+    <button type="button" class="pilihan" data-nilai="d">Menghapus desa itu dari peta.</button>
+    <p class="penjelasan" hidden>Satu kasus di desa sekecil itu mengubah angka 200 per 100.000.</p>
+  </fieldset>
+
+  <fieldset class="soal" data-benar="a">
+    <legend>3. Dalam penghalusan Bayes empiris, wilayah mana yang angkanya paling banyak ditarik ke rata-rata?</legend>
+    <button type="button" class="pilihan" data-nilai="a">Wilayah dengan penduduk paling sedikit</button>
+    <button type="button" class="pilihan" data-nilai="b">Wilayah dengan penduduk paling banyak</button>
+    <button type="button" class="pilihan" data-nilai="c">Wilayah di tengah peta</button>
+    <button type="button" class="pilihan" data-nilai="d">Semua wilayah ditarik sama besar</button>
+    <p class="penjelasan" hidden>Angka wilayah kecil paling tidak pasti, sehingga paling banyak dipinjamkan informasi dari rata-rata.</p>
+  </fieldset>
+
+  <fieldset class="soal" data-benar="d">
+    <legend>4. Indeks Moran sebuah peta adalah 0,45 dengan p = 0,002. Apa artinya?</legend>
+    <button type="button" class="pilihan" data-nilai="a">Tidak ada pola.</button>
+    <button type="button" class="pilihan" data-nilai="b">Wilayah tinggi dan rendah berselang-seling.</button>
+    <button type="button" class="pilihan" data-nilai="c">Setiap warga berisiko 45%.</button>
+    <button type="button" class="pilihan" data-nilai="d">Wilayah dengan angka mirip cenderung bertetangga, dan pola ini kecil kemungkinannya karena kebetulan.</button>
+    <p class="penjelasan" hidden>Indeks Moran positif yang bermakna menunjukkan pengelompokan.</p>
+  </fieldset>
+
+  <fieldset class="soal" data-benar="b">
+    <legend>5. Kecamatan berangka diabetes tinggi juga punya banyak restoran cepat saji. Kesimpulan apa yang <em>tidak</em> boleh langsung ditarik?</legend>
+    <button type="button" class="pilihan" data-nilai="a">Kedua hal itu perlu diteliti lebih lanjut.</button>
+    <button type="button" class="pilihan" data-nilai="b">Orang yang makan di restoran cepat saji pasti terkena diabetes.</button>
+    <button type="button" class="pilihan" data-nilai="c">Ada hubungan di tingkat wilayah.</button>
+    <button type="button" class="pilihan" data-nilai="d">Data perorangan diperlukan untuk menguji hubungan di tingkat orang.</button>
+    <p class="penjelasan" hidden>Menarik kesimpulan tentang orang dari data wilayah adalah kekeliruan ekologis.</p>
+  </fieldset>
+
+  <p class="skor" id="skor" role="status" hidden></p>
+</section>
+
+<section aria-labelledby="m-naik">
+  <h2 id="m-naik">Naik jenjang</h2>
+  <p>Peta penyakit sekarang dibuat hampir di setiap dinas kesehatan. Membacanya dengan benar adalah keahlian tersendiri.</p>
+
+  <div class="naik j4">
+    <h3>Jenjang 4: model peta penyakit</h3>
+    <p>Seorang ahli memakai model Bayes berjenjang, misalnya model Besag-York-Mollié, yang menghaluskan angka dengan meminjam informasi dari tetangga dan sekaligus memasukkan faktor risiko seperti curah hujan. Ia membangun model spasio-temporal untuk ramalan kewaspadaan dini, memakai geostatistika bila datanya berupa titik koordinat, dan menilai ketidakpastian setiap wilayah, bukan hanya angkanya.</p>
+  </div>
+</section>
+
+<section aria-labelledby="m-terap">
+  <h2 id="m-terap">Terapkan</h2>
+  <ol>
+    <li>Ambil data kasus satu penyakit per desa atau kecamatan di wilayah Anda. Hitung angka per 100.000 dan rasio O/E. Wilayah mana yang penduduknya terlalu sedikit untuk dipercaya angkanya?</li>
+    <li>Buat peta sederhana dengan QGIS atau GeoDa, keduanya gratis. Bandingkan peta angka kasar dan peta yang dihaluskan.</li>
+    <li>Tuliskan satu paragraf peringatan yang Anda sertakan setiap kali membagikan peta penyakit kepada pimpinan.</li>
+  </ol>
+  <div class="deret-tombol">
+    <button type="button" class="tombol" id="tandai-selesai" data-modul="epidemiologi-14">Tandai modul ini selesai</button>
+    <a class="tombol garis" href="kurikulum.html">Kembali ke peta kurikulum</a>
+  </div>
+</section>
+
+<section aria-labelledby="m-rujuk">
+  <h2 id="m-rujuk">Rujukan dan bacaan lanjut</h2>
+  <ul class="rujukan">
+    <li>Moraga, P. <a href="https://www.paulamoraga.com/book-geospatial/"><em>Geospatial Health Data: Modeling and Visualization with R-INLA and Shiny</em></a>. Buku terbuka, gratis dibaca daring.</li>
+    <li>Waller dan Gotway. <em>Applied Spatial Statistics for Public Health Data</em>. Rujukan utama.</li>
+    <li>Elliott dan Wartenberg (2004). "Spatial epidemiology: current approaches and future challenges". <em>Environmental Health Perspectives</em>.</li>
+    <li>Anselin (1995). "Local indicators of spatial association: LISA". <em>Geographical Analysis</em>.</li>
+    <li>Kulldorff (1997). "A spatial scan statistic". <em>Communications in Statistics: Theory and Methods</em>.</li>
+  </ul>
+  <p class="keterangan">Modul ini ditulis orisinal untuk Learn Public Health. Angka, penghalusan, dan indeks Moran dihitung dari tabel kasus dengan kode.</p>
+</section>
+</div>
+</main>
+
+<footer class="kaki">
+  <div class="wadah">
+    <p><strong>Learn Public Health</strong>. Materi ini untuk pendidikan. Data kasus dalam modul adalah rekaan, kecuali disebutkan lain.</p>
+    <p><a href="index.html">Beranda</a> | <a href="kurikulum.html">Peta kurikulum</a> | <a href="sumber.html">Sumber belajar</a></p>
+  </div>
+</footer>
+
+<script src="app.js"></script>
+</body>
+</html>

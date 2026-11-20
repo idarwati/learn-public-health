@@ -15,6 +15,9 @@
   --j2: #8fd0b8;
   --j3: #2f9c7c;
   --j4: #075443;
+  --peta-1: #e6f2ec;
+  --peta-2: #8fd0b8;
+  --peta-3: #1f6f5a;
   --lebar: 70rem;
   --baca: 42rem;
   --huruf: "Plus Jakarta Sans", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
@@ -209,6 +212,11 @@ thead th { border-top: 0; font-size: 0.88rem; color: var(--tinta-lunak); vertica
 .grafik .sensor-a, .grafik .sensor-b { stroke-width: 2; }
 .grafik text.label-a { fill: var(--merah); }
 .grafik text.label-b { fill: var(--hijau-tua); }
+.grafik .petak { stroke: var(--putih); stroke-width: 3; }
+.grafik .petak-1 { fill: var(--peta-1); }
+.grafik .petak-2 { fill: var(--peta-2); }
+.grafik .petak-3 { fill: var(--peta-3); }
+.grafik text.terang { fill: var(--putih); }
 
 /* Kode */
 code { font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; font-size: 0.92em; }

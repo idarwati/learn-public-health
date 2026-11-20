@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Memakai uji nonparametrik saat data tidak bersahabat | Learn Public Health</title>
+<meta name="description" content="Modul biostatistik jenjang lanjut: data miring dan pencilan, uji Mann-Whitney, peluang keunggulan, Hodges-Lehmann, Wilcoxon bertanda, Kruskal-Wallis, dan Spearman.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header class="kepala">
+  <div class="wadah">
+    <a class="merek" href="index.html">
+      <svg viewBox="0 0 32 32" aria-hidden="true"><path d="M2 30V22h7v-7h7V8h7V2h7v28z" fill="#075443"/></svg>
+      Learn Public Health
+    </a>
+    <nav aria-label="Menu utama">
+      <ul class="menu">
+        <li><a href="index.html">Beranda</a></li>
+        <li><a href="kurikulum.html">Peta kurikulum</a></li>
+        <li><a href="sumber.html">Sumber belajar</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<main>
+<div class="modul-kepala"><div class="wadah">
+  <p class="remah"><a href="kurikulum.html">Peta kurikulum</a> / Biostatistik / Jenjang 3: Lanjut</p>
+  <h1>Memakai uji nonparametrik saat data tidak bersahabat</h1><p class="ringkas">Kenali kapan uji t menyesatkan, pakai peringkat dengan uji Mann-Whitney, dan pilih padanan nonparametrik yang sesuai desain.</p>
+  <ul class="modul-info"><li>Waktu belajar: sekitar 80 menit</li><li>Prasyarat: Uji hipotesis; uji t</li><li>Alat: Kalkulator Mann-Whitney di halaman ini</li></ul>
+</div></div>
+<div class="modul-isi wadah">
+<section aria-labelledby="m-tujuan">
+  <h2 id="m-tujuan">Setelah modul ini, Anda bisa</h2>
+  <ul>
+    <li>mengenali data yang membuat uji t tidak tepat, seperti sebaran yang miring, pencilan, dan skala ordinal;</li>
+    <li>menjalankan dan menafsirkan uji Mann-Whitney dengan peringkat;</li>
+    <li>memilih uji nonparametrik yang sesuai untuk dua kelompok berpasangan, lebih dari dua kelompok, dan korelasi.</li>
+  </ul>
+</section>
+
+<section class="lebar" aria-labelledby="m-kasus">
+  <h2 id="m-kasus">Kasus</h2>
+  <div class="kasus-cerita baca">
+    <p>RSUD Lontara mencoba antrean daring di satu poliklinik rawat jalan, sementara poliklinik lain masih memakai antrean manual. Tim mutu mencatat waktu tunggu sepuluh pasien yang dipilih acak di masing-masing poliklinik, dari datang sampai dipanggil dokter.</p>
+    <p>Staf yang menganalisis memakai uji t dan mendapat p = 0,076. Kesimpulannya, "antrean daring tidak terbukti mempercepat". Direktur akan memutuskan apakah antrean daring diperluas ke semua poliklinik. Ia meminta Anda memeriksa analisisnya.</p>
+  </div>
+  <div class="tabel-gulir" style="margin-top:1.25rem">
+    <table class="teks">
+      <caption>Waktu tunggu (menit)</caption>
+      <thead><tr><th scope="col">Antrean</th><th scope="col">Waktu tunggu sepuluh pasien</th><th scope="col">Rata-rata</th><th scope="col">Median</th></tr></thead>
+      <tbody>
+        <tr><th scope="row">Manual</th><td>35; 42; 38; 55; 47; 40; 160; 44; 51; 39</td><td>55,1</td><td>43,0</td></tr>
+        <tr><th scope="row">Daring</th><td>28; 33; 25; 41; 30; 36; 27; 45; 31; 29</td><td>32,5</td><td>30,5</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p class="keterangan baca" style="margin-top:0.8rem">Seluruh angka rekaan, disusun untuk latihan. Pasien yang menunggu 160 menit datang saat dokter tertahan di ruang operasi.</p>
+</section>
+
+<section aria-labelledby="m-l1">
+  <span class="langkah">Langkah 1</span>
+  <h2 id="m-l1">Kenali saat uji t bermasalah</h2>
+  <p>Uji t membandingkan rata-rata dan memakai simpangan baku untuk mengukur ketidakpastian. Ia bekerja baik bila datanya kira-kira menyebar normal atau sampelnya cukup besar. Ia bermasalah bila:</p>
+  <ul>
+    <li>sebarannya sangat miring, seperti waktu tunggu, lama rawat, dan biaya, yang banyak kecil tetapi sesekali sangat besar;</li>
+    <li>ada <strong>pencilan</strong> (<em>outlier</em>), yaitu nilai yang jauh dari yang lain;</li>
+    <li>sampelnya kecil, sehingga bentuk sebaran tidak dapat diandalkan;</li>
+    <li>datanya ordinal, seperti skor kepuasan 1 sampai 5 atau derajat nyeri, yang urutannya bermakna tetapi jaraknya belum tentu sama.</li>
+  </ul>
+  <details>
+    <summary>Lihat data antrean manual. Apa yang terjadi pada rata-rata dan simpangan baku karena satu pasien yang menunggu 160 menit?</summary>
+    <p>Tanpa pasien itu, waktu tunggu manual berkisar 35 sampai 55 menit. Satu nilai 160 menaikkan rata-rata menjadi 55,1 dan simpangan baku menjadi 37,4 menit, hampir enam kali simpangan baku antrean daring (6,4).</p>
+    <p>Simpangan baku yang membengkak membuat uji t menganggap data sangat tidak pasti, sehingga perbedaan yang jelas tampak "tidak bermakna". Bila nilai 160 diganti 60, uji t memberi p = 0,001. Satu pasien mengubah kesimpulan.</p>
+  </details>
+</section>
+
+<section class="lebar" aria-labelledby="m-l2">
+  <span class="langkah">Langkah 2</span>
+  <h2 id="m-l2">Pakai peringkat, bukan nilai</h2>
+  <div class="baca">
+    <p><strong>Uji nonparametrik</strong> tidak mengandaikan bentuk sebaran tertentu. Kebanyakan bekerja dengan <strong>peringkat</strong>: semua nilai dari kedua kelompok diurutkan, yang terkecil diberi peringkat 1, berikutnya 2, dan seterusnya. Nilai 160 hanya mendapat peringkat 20, sama dengan bila nilainya 56. Pencilan tidak lagi mendominasi.</p>
+    <p><strong>Uji Mann-Whitney</strong>, disebut juga uji jumlah peringkat Wilcoxon, membandingkan dua kelompok yang saling bebas:</p>
+    <ol>
+      <li>Urutkan ke-20 nilai dan beri peringkat. Bila ada nilai kembar, beri rata-rata peringkatnya.</li>
+      <li>Jumlahkan peringkat tiap kelompok.</li>
+      <li>Hitung U = jumlah peringkat kelompok pertama − n₁(n₁ + 1)/2.</li>
+      <li>Bandingkan U dengan nilai yang diharapkan bila tidak ada perbedaan, yaitu n₁ × n₂ ÷ 2.</li>
+    </ol>
+  </div>
+  <div class="tabel-gulir">
+    <table>
+      <caption>Peringkat waktu tunggu</caption>
+      <thead><tr><th scope="col">Peringkat</th><th scope="col">1</th><th scope="col">2</th><th scope="col">3</th><th scope="col">4</th><th scope="col">5</th><th scope="col">6</th><th scope="col">7</th><th scope="col">8</th><th scope="col">9</th><th scope="col">10</th></tr></thead>
+      <tbody>
+        <tr><th scope="row">Menit</th><td>25</td><td>27</td><td>28</td><td>29</td><td>30</td><td>31</td><td>33</td><td>35</td><td>36</td><td>38</td></tr>
+        <tr><th scope="row">Antrean</th><td>D</td><td>D</td><td>D</td><td>D</td><td>D</td><td>D</td><td>D</td><td>M</td><td>D</td><td>M</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="tabel-gulir">
+    <table>
+      <caption class="tak-terlihat">Peringkat waktu tunggu, lanjutan</caption>
+      <thead><tr><th scope="col">Peringkat</th><th scope="col">11</th><th scope="col">12</th><th scope="col">13</th><th scope="col">14</th><th scope="col">15</th><th scope="col">16</th><th scope="col">17</th><th scope="col">18</th><th scope="col">19</th><th scope="col">20</th></tr></thead>
+      <tbody>
+        <tr><th scope="row">Menit</th><td>39</td><td>40</td><td>41</td><td>42</td><td>44</td><td>45</td><td>47</td><td>51</td><td>55</td><td>160</td></tr>
+        <tr><th scope="row">Antrean</th><td>M</td><td>M</td><td>D</td><td>M</td><td>M</td><td>D</td><td>M</td><td>M</td><td>M</td><td>M</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p class="keterangan baca" style="margin-top:0.8rem">M = manual, D = daring. Tidak ada nilai kembar dalam data ini.</p>
+  <div class="baca">
+    <details>
+      <summary>Hitung jumlah peringkat antrean manual dan U-nya</summary>
+      <p>Peringkat antrean manual: 8, 10, 11, 12, 14, 15, 17, 18, 19, 20. Jumlahnya <strong>144</strong>. Antrean daring mendapat sisanya, 210 − 144 = 66.</p>
+      <p>U = 144 − 10 × 11 ÷ 2 = 144 − 55 = <strong>89</strong>. Bila tidak ada perbedaan, U diharapkan 10 × 10 ÷ 2 = 50. Nilai tertinggi yang mungkin 100, bila semua pasien manual menunggu lebih lama daripada semua pasien daring.</p>
+    </details>
+  </div>
+
+  <form class="kalkulator baca" id="mw" novalidate>
+    <h3>Kalkulator uji Mann-Whitney</h3>
+    <label for="mw-satu">Kelompok pertama, pisahkan angka dengan spasi</label>
+    <textarea id="mw-satu" name="satu" rows="2">35 42 38 55 47 40 160 44 51 39</textarea>
+    <label for="mw-dua">Kelompok kedua</label>
+    <textarea id="mw-dua" name="dua" rows="2">28 33 25 41 30 36 27 45 31 29</textarea>
+    <button type="submit" class="tombol">Hitung</button>
+    <p class="pesan" id="pesan-mw" role="alert" hidden></p>
+    <dl class="hasil" id="hasil-mw" aria-live="polite" hidden>
+      <div><dt>Median kelompok pertama dan kedua</dt><dd id="mw-median"></dd></div>
+      <div><dt>Jumlah peringkat</dt><dd id="mw-r"></dd></div>
+      <div><dt>U</dt><dd id="mw-u"></dd></div>
+      <div><dt>z</dt><dd id="mw-z"></dd></div>
+      <div><dt>Nilai p (pendekatan normal)</dt><dd id="mw-p"></dd></div>
+      <div><dt>Peluang nilai kelompok pertama lebih besar</dt><dd id="mw-unggul"></dd></div>
+    </dl>
+  </form>
+  <p class="keterangan baca">Kalkulator memakai pendekatan normal dan sudah memperhitungkan nilai kembar. Untuk sampel sangat kecil, perangkat statistik dapat menghitung nilai p eksak.</p>
+</section>
+
+<section aria-labelledby="m-l3">
+  <span class="langkah">Langkah 3</span>
+  <h2 id="m-l3">Tafsirkan hasilnya</h2>
+  <p>Hasil uji Mann-Whitney untuk data kasus: U = 89, z = 2,95, nilai p = 0,003 dengan pendekatan normal (nilai p eksak 0,002).</p>
+  <details>
+    <summary>Bagaimana Anda menjelaskan hasil ini kepada direktur, dan mengapa berbeda dari uji t?</summary>
+    <p>Waktu tunggu dengan antrean daring lebih pendek, dan perbedaan ini kecil kemungkinannya karena kebetulan. Median turun dari 43 menjadi 30,5 menit.</p>
+    <p>Uji t dikalahkan oleh satu pencilan yang membengkakkan simpangan baku. Uji peringkat tidak terpengaruh: nilai 160 diperlakukan sebagai "yang paling lama", tidak lebih.</p>
+    <p>Satu catatan: kedua poliklinik berbeda, bukan hanya cara antreannya. Untuk keputusan perluasan, akan lebih kuat bila poliklinik yang sama diukur sebelum dan sesudah memakai antrean daring.</p>
+  </details>
+  <p>Melaporkan nilai p saja tidak cukup. Dua ukuran besar perbedaan yang cocok untuk uji ini:</p>
+  <ul>
+    <li><strong>Peluang keunggulan</strong>: U ÷ (n₁ × n₂) = 89 ÷ 100 = <strong>0,89</strong>. Bila diambil satu pasien acak dari tiap antrean, peluang pasien manual menunggu lebih lama adalah 89%.</li>
+    <li><strong>Penaksir Hodges-Lehmann</strong>: median dari semua selisih antarpasangan nilai kedua kelompok. Untuk data ini <strong>12 menit</strong>.</li>
+  </ul>
+  <p>Hati-hati: uji Mann-Whitney sering disebut "uji beda median". Itu hanya tepat bila bentuk sebaran kedua kelompok sama. Lebih tepat menyebutnya uji apakah nilai satu kelompok cenderung lebih besar daripada kelompok lain.</p>
+</section>
+
+<section aria-labelledby="m-l4">
+  <span class="langkah">Langkah 4</span>
+  <h2 id="m-l4">Pilih uji yang sesuai dengan desainnya</h2>
+  <p>Setiap uji parametrik yang sudah Anda pelajari punya padanan nonparametrik.</p>
+  <div class="tabel-gulir">
+    <table class="teks">
+      <thead><tr><th scope="col">Pertanyaan</th><th scope="col">Uji parametrik</th><th scope="col">Uji nonparametrik</th></tr></thead>
+      <tbody>
+        <tr><th scope="row">Dua kelompok bebas</th><td>Uji t dua sampel</td><td>Mann-Whitney</td></tr>
+        <tr><th scope="row">Dua pengukuran pada orang yang sama</th><td>Uji t berpasangan</td><td>Uji peringkat bertanda Wilcoxon</td></tr>
+        <tr><th scope="row">Tiga kelompok bebas atau lebih</th><td>Analisis ragam (ANOVA) satu arah</td><td>Kruskal-Wallis</td></tr>
+        <tr><th scope="row">Hubungan dua variabel</th><td>Korelasi Pearson</td><td>Korelasi peringkat Spearman</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <details>
+    <summary>Pilih uji untuk tiap situasi: (a) skor nyeri 0 sampai 10 sebelum dan sesudah terapi pada 15 pasien; (b) lama rawat di tiga rumah sakit; (c) hubungan peringkat kepuasan pasien dengan lama tunggu</summary>
+    <p><strong>(a) Uji peringkat bertanda Wilcoxon.</strong> Pengukurannya berpasangan dan skornya ordinal.</p>
+    <p><strong>(b) Kruskal-Wallis.</strong> Tiga kelompok bebas dengan data yang biasanya sangat miring. Bila hasilnya bermakna, lanjutkan dengan perbandingan berpasangan yang dikoreksi untuk banyaknya uji.</p>
+    <p><strong>(c) Korelasi Spearman.</strong> Kepuasan berupa peringkat, dan hubungannya mungkin tidak lurus.</p>
+  </details>
+</section>
+
+<section aria-labelledby="m-l5">
+  <span class="langkah">Langkah 5</span>
+  <h2 id="m-l5">Ketahui harga yang dibayar</h2>
+  <p>Uji nonparametrik bukan pilihan "lebih aman" untuk segala keadaan. Pertimbangkan hal berikut:</p>
+  <ul>
+    <li><strong>Kehilangan sedikit kekuatan.</strong> Bila data memang menyebar normal, uji peringkat sedikit kurang peka, tetapi selisihnya kecil.</li>
+    <li><strong>Pertanyaannya berbeda.</strong> Untuk perencanaan anggaran, yang dibutuhkan sering kali rata-rata biaya, bukan median, karena total biaya = rata-rata × jumlah pasien. Pencilan biaya justru penting dan tidak boleh diabaikan.</li>
+    <li><strong>Sulit untuk banyak variabel.</strong> Untuk menyesuaikan beberapa variabel sekaligus, transformasi logaritma, regresi dengan galat baku yang kokoh, atau model yang sesuai seperti regresi gamma sering lebih berguna.</li>
+    <li><strong>Pencilan perlu diperiksa, bukan disembunyikan.</strong> Pasien yang menunggu 160 menit adalah masalah mutu yang nyata. Laporkan dan cari penyebabnya.</li>
+  </ul>
+  <details>
+    <summary>Lihat contoh kalimat laporan</summary>
+    <p>"Waktu tunggu dengan antrean daring lebih pendek daripada antrean manual (median 30,5 dan 43 menit; uji Mann-Whitney U = 89, p = 0,002). Peluang seorang pasien antrean manual menunggu lebih lama daripada pasien antrean daring adalah 0,89. Satu pasien antrean manual menunggu 160 menit karena dokter tertahan di ruang operasi; kejadian ini dilaporkan terpisah kepada komite mutu."</p>
+  </details>
+</section>
+
+<section aria-labelledby="m-kuis">
+  <h2 id="m-kuis">Uji diri</h2>
+
+  <fieldset class="soal" data-benar="c">
+    <legend>1. Data mana yang paling cocok dianalisis dengan uji nonparametrik?</legend>
+    <button type="button" class="pilihan" data-nilai="a">Tinggi badan 400 mahasiswa</button>
+    <button type="button" class="pilihan" data-nilai="b">Kadar hemoglobin 200 ibu hamil yang menyebar normal</button>
+    <button type="button" class="pilihan" data-nilai="c">Skor kepuasan 1 sampai 5 dari 12 pasien</button>
+    <button type="button" class="pilihan" data-nilai="d">Berat badan 1.000 balita</button>
+    <p class="penjelasan" hidden>Data ordinal dengan sampel kecil adalah keadaan klasik untuk uji peringkat.</p>
+  </fieldset>
+
+  <fieldset class="soal" data-benar="a">
+    <legend>2. Nilai 12, 15, 15, dan 20 diurutkan. Peringkat apa yang diberikan kepada kedua nilai 15?</legend>
+    <button type="button" class="pilihan" data-nilai="a">2,5 dan 2,5</button>
+    <button type="button" class="pilihan" data-nilai="b">2 dan 3</button>
+    <button type="button" class="pilihan" data-nilai="c">2 dan 2</button>
+    <button type="button" class="pilihan" data-nilai="d">3 dan 3</button>
+    <p class="penjelasan" hidden>Nilai kembar menempati peringkat 2 dan 3, sehingga masing-masing mendapat rata-ratanya, 2,5.</p>
+  </fieldset>
+
+  <fieldset class="soal" data-benar="d">
+    <legend>3. Skor nyeri 20 pasien diukur sebelum dan sesudah sebuah tindakan. Uji nonparametrik mana yang tepat?</legend>
+    <button type="button" class="pilihan" data-nilai="a">Mann-Whitney</button>
+    <button type="button" class="pilihan" data-nilai="b">Kruskal-Wallis</button>
+    <button type="button" class="pilihan" data-nilai="c">Korelasi Spearman</button>
+    <button type="button" class="pilihan" data-nilai="d">Uji peringkat bertanda Wilcoxon</button>
+    <p class="penjelasan" hidden>Pengukurannya berpasangan pada orang yang sama.</p>
+  </fieldset>
+
+  <fieldset class="soal" data-benar="b">
+    <legend>4. Uji Mann-Whitney memberi U = 30 untuk n₁ = 10 dan n₂ = 10. Berapa peluang keunggulannya?</legend>
+    <button type="button" class="pilihan" data-nilai="a">0,03</button>
+    <button type="button" class="pilihan" data-nilai="b">0,30</button>
+    <button type="button" class="pilihan" data-nilai="c">0,50</button>
+    <button type="button" class="pilihan" data-nilai="d">3,0</button>
+    <p class="penjelasan" hidden>30 ÷ (10 × 10) = 0,30. Nilai kelompok pertama cenderung lebih kecil.</p>
+  </fieldset>
+
+  <fieldset class="soal" data-benar="c">
+    <legend>5. Bagian keuangan perlu memperkirakan total biaya obat untuk 1.000 pasien tahun depan. Ukuran apa yang paling berguna?</legend>
+    <button type="button" class="pilihan" data-nilai="a">Median biaya per pasien</button>
+    <button type="button" class="pilihan" data-nilai="b">Peluang keunggulan</button>
+    <button type="button" class="pilihan" data-nilai="c">Rata-rata biaya per pasien, termasuk pasien dengan biaya sangat tinggi</button>
+    <button type="button" class="pilihan" data-nilai="d">Nilai p</button>
+    <p class="penjelasan" hidden>Total biaya sama dengan rata-rata dikali jumlah pasien. Median akan meremehkan total.</p>
+  </fieldset>
+
+  <p class="skor" id="skor" role="status" hidden></p>
+</section>
+
+<section aria-labelledby="m-naik">
+  <h2 id="m-naik">Naik jenjang</h2>
+  <p>Gagasan memakai data tanpa mengandaikan bentuk sebarannya berkembang jauh melampaui uji peringkat.</p>
+
+  <div class="naik j4">
+    <h3>Jenjang 4: inferensi tanpa banyak andaian</h3>
+    <p>Seorang ahli memakai bootstrap untuk menghitung selang kepercayaan median atau ukuran apa pun, uji permutasi untuk desain yang rumit, regresi kuantil untuk melihat pengaruh pada pasien dengan waktu tunggu paling lama, dan model untuk data biaya yang miring. Ia memilih metode berdasarkan pertanyaan, bukan berdasarkan uji kenormalan.</p>
+  </div>
+</section>
+
+<section aria-labelledby="m-terap">
+  <h2 id="m-terap">Terapkan</h2>
+  <ol>
+    <li>Kumpulkan waktu tunggu atau lama rawat 10 sampai 15 pasien dari dua unit di tempat Anda. Bandingkan hasil uji t dan uji Mann-Whitney dengan kalkulator dan lembar kerja.</li>
+    <li>Ambil satu artikel yang memakai uji t untuk data biaya atau lama rawat. Apakah pilihan itu tepat? Apa yang akan Anda sarankan?</li>
+    <li>Buat diagram kotak (<em>boxplot</em>) untuk data Anda dan tandai pencilannya. Cari tahu cerita di balik setiap pencilan.</li>
+  </ol>
+  <div class="deret-tombol">
+    <button type="button" class="tombol" id="tandai-selesai" data-modul="biostatistik-14">Tandai modul ini selesai</button>
+    <a class="tombol garis" href="kurikulum.html">Kembali ke peta kurikulum</a>
+  </div>
+</section>
+
+<section aria-labelledby="m-rujuk">
+  <h2 id="m-rujuk">Rujukan dan bacaan lanjut</h2>
+  <ul class="rujukan">
+    <li>OpenStax. <a href="https://openstax.org/books/introductory-statistics-2e/pages/preface"><em>Introductory Statistics</em>, edisi kedua</a>. Lisensi CC BY 4.0.</li>
+    <li>Altman. <em>Practical Statistics for Medical Research</em>. Bab tentang metode nonparametrik.</li>
+    <li>Hart (2001). "Mann-Whitney test is not just a test of medians: differences in spread can be important". <em>BMJ</em>.</li>
+    <li>Divine dan rekan (2018). "The Wilcoxon-Mann-Whitney procedure fails as a test of medians". <em>The American Statistician</em>.</li>
+    <li>Thompson dan Barber (2000). "How should cost data in pragmatic randomised trials be analysed?". <em>BMJ</em>.</li>
+  </ul>
+  <p class="keterangan">Modul ini ditulis orisinal untuk Learn Public Health. Semua angka dihitung dari tabel kasus dengan kode.</p>
+</section>
+</div>
+</main>
+
+<footer class="kaki">
+  <div class="wadah">
+    <p><strong>Learn Public Health</strong>. Materi ini untuk pendidikan. Data kasus dalam modul adalah rekaan, kecuali disebutkan lain.</p>
+    <p><a href="index.html">Beranda</a> | <a href="kurikulum.html">Peta kurikulum</a> | <a href="sumber.html">Sumber belajar</a></p>
+  </div>
+</footer>
+
+<script src="app.js"></script>
+</body>
+</html>
