@@ -19,12 +19,13 @@ Salin `epidemiologi-01.html` dan pertahankan urutan ini:
 
 1. Kepala modul: remah roti, judul, ringkasan satu kalimat, waktu belajar, prasyarat.
 2. "Setelah modul ini, Anda bisa": tiga tujuan yang bisa diukur.
-3. Kasus: pembaca ditempatkan sebagai petugas yang harus memutuskan sesuatu. Konteks Indonesia.
-4. Langkah-langkah bernomor: konsep diperkenalkan saat dibutuhkan kasus, diikuti soal yang dikerjakan pembaca dan jawaban di dalam `<details>`.
-5. Uji diri: lima soal pilihan ganda dengan penjelasan (`fieldset.soal`, lihat `app.js`).
-6. Naik jenjang: masalah yang sama dari sudut jenjang 2, 3, dan 4.
-7. Terapkan: tiga tugas untuk kampus atau tempat kerja.
-8. Rujukan.
+3. Materi (`section.materi`, `id="m-materi"`): bacaan 10–15 menit sebelum kasus. Isinya definisi, konsep inti dengan subjudul `h3`, rumus dalam `.rumus`, satu atau dua contoh singkat dengan angka rekaan yang berbeda dari kasus, dan kotak `.catatan` berjudul "Poin penting". Tambahkan 15 menit pada waktu belajar.
+4. Kasus: pembaca ditempatkan sebagai petugas yang harus memutuskan sesuatu. Konteks Indonesia.
+5. Langkah-langkah bernomor: konsep dari Materi diterapkan pada kasus, diikuti soal yang dikerjakan pembaca dan jawaban di dalam `<details>`.
+6. Uji diri: lima soal pilihan ganda dengan penjelasan (`fieldset.soal`, lihat `app.js`).
+7. Naik jenjang: masalah yang sama dari sudut jenjang 2, 3, dan 4.
+8. Terapkan: tiga tugas untuk kampus atau tempat kerja.
+9. Rujukan.
 
 Nama file: `bidang-nomor.html` dengan bidang `epidemiologi`, `biostatistik`, `akk`, `ai`, atau `sejarah`.
 

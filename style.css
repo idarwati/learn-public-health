@@ -172,6 +172,8 @@ a:hover { color: var(--hijau); }
 .langkah { display: block; font-size: 0.95rem; font-weight: 800; color: var(--hijau); margin-bottom: 0.3rem; }
 .kasus-cerita { background: var(--putih); padding: 1.4rem 1.5rem; border-left: 0.4rem solid var(--merah); }
 .kasus-cerita p:last-child { margin-bottom: 0; }
+.materi h3 { margin-top: 2rem; }
+.materi > .keterangan { margin-top: -0.5rem; }
 .rumus { background: var(--putih); border: 1px solid var(--garis); padding: 0.9rem 1.1rem; font-weight: 600; overflow-x: auto; }
 
 details { background: var(--putih); border: 1px solid var(--garis); padding: 0.8rem 1.1rem; margin: 1rem 0; }

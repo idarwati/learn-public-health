@@ -36,7 +36,7 @@
     <h1>Membandingkan angka kematian secara adil</h1>
     <p class="ringkas">Sebuah surat kabar menulis bahwa angka kematian satu kabupaten hampir dua kali kabupaten tetangganya. Anda diminta memeriksa apakah perbandingan itu adil.</p>
     <ul class="modul-info">
-      <li>Waktu belajar: sekitar 45 menit</li>
+      <li>Waktu belajar: sekitar 60 menit</li>
       <li>Prasyarat: tidak ada</li>
       <li>Alat: kalkulator biasa</li>
     </ul>
@@ -52,6 +52,72 @@
     <li>menjelaskan mengapa angka kematian kasar bisa menyesatkan saat dua wilayah dibandingkan;</li>
     <li>membandingkan dua wilayah secara adil dengan standardisasi langsung.</li>
   </ul>
+</section>
+
+<section class="materi" aria-labelledby="m-materi">
+  <h2 id="m-materi">Materi</h2>
+  <p class="keterangan">Bacaan sekitar 15 menit. Pahami konsepnya dulu, lalu pakai di kasus.</p>
+
+  <h3>Ukuran-ukuran kematian</h3>
+  <p>Data kematian adalah salah satu data kesehatan tertua dan paling sering dipakai. Beberapa ukuran yang perlu Anda kenal:</p>
+  <div class="tabel-gulir">
+    <table class="teks">
+      <thead><tr><th scope="col">Ukuran</th><th scope="col">Cara menghitung</th></tr></thead>
+      <tbody>
+        <tr><th scope="row">Angka kematian kasar</th><td>Semua kematian dalam setahun ÷ jumlah penduduk pertengahan tahun × 1.000</td></tr>
+        <tr><th scope="row">Angka kematian menurut umur</th><td>Kematian pada satu kelompok umur ÷ penduduk kelompok umur itu × 1.000</td></tr>
+        <tr><th scope="row">Angka kematian bayi</th><td>Kematian bayi di bawah satu tahun ÷ kelahiran hidup pada tahun yang sama × 1.000</td></tr>
+        <tr><th scope="row">Angka kematian ibu</th><td>Kematian ibu karena kehamilan, persalinan, atau nifas ÷ kelahiran hidup × 100.000</td></tr>
+        <tr><th scope="row">Proporsi kematian kasus (<em>case fatality rate</em>)</th><td>Kematian karena suatu penyakit ÷ jumlah penderita penyakit itu × 100%</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p style="margin-top:1rem">Perhatikan dua hal. Pertama, angka kematian bayi dan ibu memakai kelahiran hidup sebagai penyebut, bukan jumlah penduduk. Kedua, proporsi kematian kasus mengukur <em>keparahan</em> penyakit di antara penderitanya, bukan risiko kematian bagi seluruh penduduk. Penyakit yang jarang tetapi ganas dapat punya proporsi kematian kasus tinggi tetapi angka kematian penduduk rendah.</p>
+
+  <h3>Mengapa angka kasar bisa menyesatkan</h3>
+  <p>Risiko meninggal sangat dipengaruhi umur. Wilayah yang penduduknya banyak lansia akan punya angka kematian kasar tinggi, walaupun layanan kesehatannya baik. Wilayah yang penduduknya muda bisa tampak "sehat" walaupun setiap kelompok umurnya punya risiko lebih tinggi.</p>
+  <p>Dalam bahasa epidemiologi, umur adalah <strong>perancu</strong> (<em>confounder</em>) dalam perbandingan ini: ia berkaitan dengan wilayah (susunan penduduk berbeda) dan sekaligus dengan kematian.</p>
+  <p><strong>Contoh.</strong> Dua kecamatan masing-masing berpenduduk 10.000 orang.</p>
+  <div class="tabel-gulir">
+    <table>
+      <thead><tr><th scope="col">Kelompok umur</th><th scope="col">P: penduduk</th><th scope="col">P: kematian</th><th scope="col">Q: penduduk</th><th scope="col">Q: kematian</th></tr></thead>
+      <tbody>
+        <tr><th scope="row">Di bawah 60 tahun</th><td>9.000</td><td>9</td><td>5.000</td><td>4</td></tr>
+        <tr><th scope="row">60 tahun ke atas</th><td>1.000</td><td>40</td><td>5.000</td><td>175</td></tr>
+        <tr><th scope="row">Jumlah</th><td>10.000</td><td>49</td><td>10.000</td><td>179</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p class="keterangan">Angka rekaan untuk contoh.</p>
+  <p>Angka kematian kasar P adalah 4,9 per 1.000 dan Q 17,9 per 1.000. Q tampak jauh lebih buruk. Tetapi lihat angka per kelompok umur: di bawah 60 tahun, P 1,0 dan Q 0,8 per 1.000; di atas 60 tahun, P 40 dan Q 35 per 1.000. Pada <em>setiap</em> kelompok umur, Q justru lebih baik. Q tampak buruk hanya karena separuh penduduknya lansia.</p>
+
+  <h3>Standardisasi langsung</h3>
+  <p><strong>Standardisasi</strong> adalah cara menyingkirkan pengaruh perbedaan susunan umur. Pada <strong>standardisasi langsung</strong>, angka kematian per kelompok umur dari setiap wilayah diterapkan pada satu <strong>penduduk standar</strong> yang sama, lalu dihitung angka kematian yang dihasilkan.</p>
+  <p>Dengan penduduk standar 10.000 orang di bawah 60 tahun dan 10.000 orang berumur 60 tahun ke atas:</p>
+  <ul>
+    <li>P: 10.000 × 1,0/1.000 + 10.000 × 40/1.000 = 10 + 400 = 410 kematian dari 20.000, atau <strong>20,5 per 1.000</strong>.</li>
+    <li>Q: 10.000 × 0,8/1.000 + 10.000 × 35/1.000 = 8 + 350 = 358 kematian dari 20.000, atau <strong>17,9 per 1.000</strong>.</li>
+  </ul>
+  <p>Setelah distandardisasi, urutannya berbalik: P lebih buruk daripada Q. Angka terstandar tidak menggambarkan keadaan nyata mana pun; nilainya bergantung pada penduduk standar yang dipilih. Gunanya hanya untuk <em>membandingkan</em>. Karena itu, sebutkan selalu penduduk standar yang dipakai, misalnya penduduk standar WHO atau penduduk provinsi.</p>
+
+  <h3>Standardisasi tidak langsung</h3>
+  <p>Bila sebuah wilayah terlalu kecil sehingga angka kematian per kelompok umurnya tidak stabil, dipakai <strong>standardisasi tidak langsung</strong>. Angka kematian per kelompok umur dari penduduk pembanding diterapkan pada penduduk wilayah itu untuk menghitung jumlah kematian yang <em>diharapkan</em>. Hasilnya dinyatakan sebagai <strong>rasio kematian terstandar</strong> (<em>standardized mortality ratio</em>, SMR):</p>
+  <div class="rumus">SMR = kematian teramati ÷ kematian yang diharapkan</div>
+  <p>Dalam contoh di atas, bila angka P dipakai sebagai pembanding, Q diharapkan mengalami 5.000 × 1,0/1.000 + 5.000 × 40/1.000 = 205 kematian. Yang teramati 179, sehingga SMR Q = 0,87: sekitar 13% lebih rendah daripada yang diharapkan.</p>
+
+  <h3>Sumber data kematian</h3>
+  <p>Di Indonesia, data kematian berasal dari pencatatan sipil, laporan fasilitas kesehatan, survei penduduk, dan sensus. Masing-masing punya kekurangan: kematian di rumah sering tidak tercatat, dan penyebab kematian sering tidak jelas. Sebelum membandingkan dua wilayah, periksa juga apakah kelengkapan pencatatannya setara.</p>
+
+  <div class="catatan">
+    <p><strong>Poin penting</strong></p>
+    <ul>
+      <li>Kenali penyebut setiap ukuran: penduduk, kelahiran hidup, atau jumlah penderita.</li>
+      <li>Angka kematian kasar dipengaruhi susunan umur dan dapat menyesatkan saat membandingkan wilayah.</li>
+      <li>Standardisasi langsung menerapkan angka per umur pada satu penduduk standar.</li>
+      <li>Standardisasi tidak langsung menghasilkan SMR, berguna untuk wilayah kecil.</li>
+    </ul>
+  </div>
+  <p>Sekarang Anda siap memakai konsep-konsep ini pada kasus berikut.</p>
 </section>
 
 <section class="lebar" aria-labelledby="m-kasus">
