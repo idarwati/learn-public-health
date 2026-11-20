@@ -2,7 +2,7 @@
 
 Tempat belajar kesehatan masyarakat dari jenjang dasar sampai ahli, berbasis kasus nyata, gratis, dan berbahasa Indonesia.
 
-Empat bidang: **epidemiologi**, **biostatistik**, **administrasi, manajemen, dan kebijakan kesehatan**, serta **AI dan data di kesehatan**. Masing-masing empat jenjang: dasar, menengah, lanjut, ahli.
+Empat bidang: **epidemiologi**, **biostatistik**, **administrasi, manajemen, dan kebijakan kesehatan**, serta **AI dan data di kesehatan**. Masing-masing empat jenjang: dasar, menengah, lanjut, ahli. Ada juga bacaan pendamping **sejarah kesehatan masyarakat** di dunia dan di Indonesia (`sejarah-01.html` dan seterusnya).
 
 
 ## Isi repo

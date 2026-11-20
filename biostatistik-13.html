@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Menganalisis data berulang dengan model campuran | Learn Public Health</title>
+<meta name="description" content="Modul biostatistik jenjang lanjut: data berulang, korelasi intrakelas, ringkasan per orang, model campuran dengan intersep dan kemiringan acak.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header class="kepala">
+  <div class="wadah">
+    <a class="merek" href="index.html">
+      <svg viewBox="0 0 32 32" aria-hidden="true"><path d="M2 30V22h7v-7h7V8h7V2h7v28z" fill="#075443"/></svg>
+      Learn Public Health
+    </a>
+    <nav aria-label="Menu utama">
+      <ul class="menu">
+        <li><a href="index.html">Beranda</a></li>
+        <li><a href="kurikulum.html">Peta kurikulum</a></li>
+        <li><a href="sumber.html">Sumber belajar</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<main>
+<div class="modul-kepala"><div class="wadah">
+  <p class="remah"><a href="kurikulum.html">Peta kurikulum</a> / Biostatistik / Jenjang 3: Lanjut</p>
+  <h1>Menganalisis data berulang dengan model campuran</h1><p class="ringkas">Kenali pengukuran yang tidak saling bebas, hitung korelasi intrakelas, dan pilih antara ringkasan per orang dan model campuran.</p>
+  <ul class="modul-info"><li>Waktu belajar: sekitar 90 menit</li><li>Prasyarat: Regresi linear; uji t</li><li>Alat: Lembar kerja, atau R dan Python untuk yang ingin mencoba</li></ul>
+</div></div>
+<div class="modul-isi wadah">
+<section aria-labelledby="m-tujuan">
+  <h2 id="m-tujuan">Setelah modul ini, Anda bisa</h2>
+  <ul>
+    <li>mengenali data berulang dan menjelaskan mengapa pengukuran dari orang yang sama tidak saling bebas;</li>
+    <li>menghitung dan menafsirkan koefisien korelasi intrakelas (ICC);</li>
+    <li>memilih antara ringkasan per orang dan model campuran, serta membaca intersep acak dan kemiringan acak.</li>
+  </ul>
+</section>
+
+<section class="lebar" aria-labelledby="m-kasus">
+  <h2 id="m-kasus">Kasus</h2>
+  <div class="kasus-cerita baca">
+    <p>Puskesmas Saloka Utara menjalankan kelas edukasi bulanan untuk peserta Prolanis yang menderita hipertensi. Tekanan darah sistolik delapan peserta diukur pada awal program lalu setiap bulan selama tiga bulan.</p>
+    <p>Seorang staf sudah menganalisis data ini dengan regresi linear biasa: 32 pengukuran, tekanan darah terhadap bulan. Hasilnya kemiringan −2,5 mmHg per bulan dengan nilai p = 0,11. Kesimpulannya, "edukasi tidak berpengaruh". Kepala puskesmas meminta Anda memeriksa analisis itu sebelum laporan dikirim ke dinas.</p>
+  </div>
+  <div class="tabel-gulir" style="margin-top:1.25rem">
+    <table>
+      <caption>Tekanan darah sistolik (mmHg) per kunjungan</caption>
+      <thead>
+        <tr><th scope="col">Peserta</th><th scope="col">Bulan 0</th><th scope="col">Bulan 1</th><th scope="col">Bulan 2</th><th scope="col">Bulan 3</th><th scope="col">Rata-rata</th></tr>
+      </thead>
+      <tbody>
+        <tr><th scope="row">A</th><td>169</td><td>170</td><td>166</td><td>168</td><td>168,25</td></tr>
+        <tr><th scope="row">B</th><td>156</td><td>159</td><td>148</td><td>155</td><td>154,50</td></tr>
+        <tr><th scope="row">C</th><td>147</td><td>148</td><td>138</td><td>131</td><td>141,00</td></tr>
+        <tr><th scope="row">D</th><td>151</td><td>153</td><td>159</td><td>153</td><td>154,00</td></tr>
+        <tr><th scope="row">E</th><td>160</td><td>150</td><td>149</td><td>148</td><td>151,75</td></tr>
+        <tr><th scope="row">F</th><td>160</td><td>151</td><td>149</td><td>153</td><td>153,25</td></tr>
+        <tr><th scope="row">G</th><td>161</td><td>163</td><td>157</td><td>160</td><td>160,25</td></tr>
+        <tr><th scope="row">H</th><td>148</td><td>147</td><td>136</td><td>130</td><td>140,25</td></tr>
+        <tr><th scope="row">Rata-rata</th><td>156,50</td><td>155,13</td><td>150,25</td><td>149,75</td><td>152,91</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p class="keterangan baca" style="margin-top:0.8rem">Nama tempat dan seluruh angka rekaan, disusun untuk latihan. Tidak ada kelompok pembanding, jadi modul ini hanya membahas perubahan dari waktu ke waktu, bukan pengaruh sebab akibat edukasi.</p>
+</section>
+
+<section aria-labelledby="m-l1">
+  <span class="langkah">Langkah 1</span>
+  <h2 id="m-l1">Kenali data berulang</h2>
+  <p><strong>Data berulang</strong> (<em>repeated measures</em>) adalah data dengan lebih dari satu pengukuran pada unit yang sama: orang yang diukur berkali-kali, gigi dalam mulut yang sama, atau pasien dalam rumah sakit yang sama. Pengukuran dalam satu unit cenderung mirip satu sama lain.</p>
+  <p>Lihat peserta A dan H. Tekanan darah A selalu sekitar 168; H mulai dari 148 dan turun. Bila Anda tahu satu angka milik A, Anda dapat menebak angka A yang lain dengan cukup tepat. Pengukurannya <strong>tidak saling bebas</strong>.</p>
+  <p>Hampir semua uji yang sudah Anda pelajari, termasuk regresi linear biasa, mengandaikan setiap pengamatan saling bebas. Analisis staf tadi memperlakukan 32 pengukuran seolah-olah berasal dari 32 orang yang berbeda.</p>
+  <details>
+    <summary>Sebutkan dua contoh data berulang atau berkelompok dari pekerjaan di puskesmas atau rumah sakit</summary>
+    <p>Contohnya: berat badan balita yang ditimbang setiap bulan di posyandu; kadar gula darah peserta Prolanis per kunjungan; kepuasan pasien yang dikumpulkan dari beberapa puskesmas, sehingga pasien di puskesmas yang sama cenderung serupa; lama rawat pasien yang ditangani dokter yang sama.</p>
+  </details>
+</section>
+
+<section aria-labelledby="m-l2">
+  <span class="langkah">Langkah 2</span>
+  <h2 id="m-l2">Ukur kemiripan dengan korelasi intrakelas</h2>
+  <p>Keragaman tekanan darah dapat dipecah menjadi dua bagian: keragaman <strong>antarpeserta</strong> (ada orang yang tekanan darahnya memang tinggi) dan keragaman <strong>dalam peserta</strong> (naik turun dari bulan ke bulan pada orang yang sama).</p>
+  <p><strong>Koefisien korelasi intrakelas</strong> (<em>intraclass correlation coefficient</em>, ICC) adalah porsi keragaman yang berasal dari perbedaan antarpeserta:</p>
+  <div class="rumus">ICC = ragam antarpeserta ÷ (ragam antarpeserta + ragam dalam peserta)</div>
+  <p>Untuk data kasus, simpangan baku antarpeserta sekitar 8,96 mmHg dan simpangan baku dalam peserta, setelah memperhitungkan tren waktu, sekitar 4,47 mmHg.</p>
+  <details>
+    <summary>Hitung ICC-nya dan tafsirkan</summary>
+    <p>Ragam adalah kuadrat simpangan baku: 8,96² = 80,2 dan 4,47² = 20,0.</p>
+    <p>ICC = 80,2 ÷ (80,2 + 20,0) = <strong>0,80</strong>.</p>
+    <p>Delapan puluh persen keragaman tekanan darah dalam data ini berasal dari perbedaan antarpeserta. Dua pengukuran dari orang yang sama sangat mirip. ICC 0 berarti pengukuran dari orang yang sama tidak lebih mirip daripada dua orang asing; ICC 1 berarti semua pengukuran seseorang identik.</p>
+  </details>
+</section>
+
+<section aria-labelledby="m-l3">
+  <span class="langkah">Langkah 3</span>
+  <h2 id="m-l3">Lihat mengapa analisis biasa menyesatkan</h2>
+  <p>Ketika kemiringan dihitung dengan regresi biasa, perbedaan besar antarpeserta ikut masuk ke dalam "galat". Galat baku menjadi besar, dan perubahan yang terjadi pada setiap orang tertutup oleh perbedaan antarorang.</p>
+  <p>Cara paling sederhana untuk menghormati struktur data adalah <strong>ringkasan per orang</strong>: hitung kemiringan untuk masing-masing peserta, lalu analisis delapan angka itu.</p>
+  <div class="tabel-gulir">
+    <table>
+      <caption>Kemiringan tekanan darah tiap peserta (mmHg per bulan)</caption>
+      <thead><tr><th scope="col">Peserta</th><th scope="col">A</th><th scope="col">B</th><th scope="col">C</th><th scope="col">D</th><th scope="col">E</th><th scope="col">F</th><th scope="col">G</th><th scope="col">H</th></tr></thead>
+      <tbody><tr><th scope="row">Kemiringan</th><td>−0,7</td><td>−1,4</td><td>−5,8</td><td>1,2</td><td>−3,7</td><td>−2,3</td><td>−0,9</td><td>−6,5</td></tr></tbody>
+    </table>
+  </div>
+  <details>
+    <summary>Rata-rata kemiringan −2,51 dan simpangan bakunya 2,65. Uji apakah rata-ratanya berbeda dari nol.</summary>
+    <p>Galat baku = 2,65 ÷ √8 = 0,94. Statistik t = −2,51 ÷ 0,94 = −2,68 dengan 7 derajat bebas. Nilai p = <strong>0,031</strong>. Selang kepercayaan 95%: <strong>−4,73 sampai −0,30</strong> mmHg per bulan.</p>
+    <p>Taksiran titiknya sama dengan analisis staf, −2,5 mmHg per bulan. Yang berbeda adalah ketidakpastiannya. Analisis staf memberi galat baku 1,54 dan p = 0,11, karena perbedaan antarpeserta tercampur dengan perubahan dalam peserta.</p>
+  </details>
+  <p>Kesalahan karena mengabaikan pengelompokan bisa ke dua arah:</p>
+  <ul>
+    <li>Untuk perubahan <strong>dalam</strong> orang yang sama, seperti tren waktu di kasus ini, analisis biasa sering terlalu ragu: galat bakunya terlalu besar.</li>
+    <li>Untuk perbandingan <strong>antar</strong>kelompok, misalnya pasien dari dua puskesmas, analisis biasa sering terlalu yakin: galat bakunya terlalu kecil karena menganggap ada lebih banyak informasi bebas daripada yang sebenarnya. Ini kesalahan yang lebih berbahaya.</li>
+  </ul>
+</section>
+
+<section class="lebar" aria-labelledby="m-l4">
+  <span class="langkah">Langkah 4</span>
+  <h2 id="m-l4">Kenali model campuran</h2>
+  <div class="baca">
+    <p>Ringkasan per orang mudah, tetapi kurang luwes bila jadwal kunjungan berbeda-beda, ada kunjungan yang terlewat, atau ada variabel lain yang ingin dimasukkan. Untuk itu dipakai <strong>model campuran</strong> (<em>mixed model</em>, juga disebut model efek campuran).</p>
+    <p>Disebut "campuran" karena memuat dua jenis efek:</p>
+    <ul>
+      <li><strong>Efek tetap</strong>: yang ingin Anda taksir untuk seluruh populasi, misalnya rata-rata perubahan per bulan.</li>
+      <li><strong>Efek acak</strong>: penyimpangan masing-masing peserta dari rata-rata itu.</li>
+    </ul>
+  </div>
+  <div class="tabel-gulir">
+    <table class="teks">
+      <thead><tr><th scope="col">Model</th><th scope="col">Andaian</th><th scope="col">Kemiringan rata-rata</th><th scope="col">Selang kepercayaan 95%</th></tr></thead>
+      <tbody>
+        <tr><th scope="row">Regresi biasa</th><td>32 pengukuran saling bebas</td><td>−2,51</td><td>−5,66 sampai 0,63</td></tr>
+        <tr><th scope="row">Intersep acak</th><td>Tiap peserta punya titik awal sendiri, tetapi semua turun dengan laju yang sama</td><td>−2,51</td><td>−3,98 sampai −1,05</td></tr>
+        <tr><th scope="row">Intersep dan kemiringan acak</th><td>Tiap peserta punya titik awal dan laju perubahan sendiri</td><td>−2,51</td><td>−4,73 sampai −0,30</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="baca">
+    <details>
+      <summary>Model mana yang paling tepat untuk data ini? Mengapa selang kepercayaannya berbeda?</summary>
+      <p>Lihat lagi tabel kemiringan per peserta: dari −6,5 sampai +1,2. Laju perubahan jelas berbeda antarpeserta. Model intersep acak mengabaikan perbedaan itu, sehingga terlalu yakin; selangnya terlalu sempit.</p>
+      <p>Model dengan <strong>kemiringan acak</strong> memperhitungkan bahwa sebagian peserta membaik cepat dan sebagian tidak. Untuk data lengkap dan seimbang seperti ini, hasilnya sama dengan ringkasan per orang di langkah 3. Inilah model yang sebaiknya dilaporkan.</p>
+      <p>Keragaman laju perubahan itu sendiri adalah temuan yang berguna: peserta C dan H membaik jauh lebih cepat daripada D. Apa bedanya? Pertanyaan ini bisa dibawa ke kelas edukasi berikutnya.</p>
+    </details>
+    <p>Hasil di atas dihitung dari data kasus. Di perangkat lunak, model ini dapat dijalankan dengan paket <code>lme4</code> di R atau <code>statsmodels</code> di Python. Datanya harus dalam <strong>format panjang</strong>: satu baris per pengukuran, dengan kolom peserta, bulan, dan tekanan darah. Tabel kasus di atas berformat lebar, satu baris per peserta.</p>
+  </div>
+</section>
+
+<section aria-labelledby="m-l5">
+  <span class="langkah">Langkah 5</span>
+  <h2 id="m-l5">Laporkan dengan benar</h2>
+  <p>Hal-hal yang perlu dicantumkan:</p>
+  <ul>
+    <li>Jumlah peserta <em>dan</em> jumlah pengukuran. "32 pengukuran dari 8 peserta", bukan "n = 32".</li>
+    <li>Model yang dipakai dan efek acak apa saja yang dimasukkan.</li>
+    <li>Bila ada data hilang, berapa banyak dan bagaimana ditangani. Model campuran tetap memakai peserta yang melewatkan sebagian kunjungan.</li>
+    <li>Keterbatasan desain. Tanpa kelompok pembanding, penurunan tekanan darah bisa juga karena regresi ke rata-rata, perubahan obat, atau musim.</li>
+  </ul>
+  <details>
+    <summary>Lihat contoh kalimat laporan</summary>
+    <p>"Tekanan darah sistolik 8 peserta Prolanis diukur empat kali (32 pengukuran). Dengan model campuran yang memuat intersep dan kemiringan acak per peserta, tekanan darah turun rata-rata 2,5 mmHg per bulan (selang kepercayaan 95%: 0,3 sampai 4,7). Laju penurunan sangat beragam antarpeserta. Tanpa kelompok pembanding, penurunan ini belum dapat dianggap sebagai pengaruh edukasi."</p>
+  </details>
+</section>
+
+<section aria-labelledby="m-kuis">
+  <h2 id="m-kuis">Uji diri</h2>
+
+  <fieldset class="soal" data-benar="b">
+    <legend>1. Data mana yang merupakan data berulang?</legend>
+    <button type="button" class="pilihan" data-nilai="a">Tinggi badan 500 siswa yang diukur sekali</button>
+    <button type="button" class="pilihan" data-nilai="b">Berat badan 50 balita yang ditimbang setiap bulan selama setahun</button>
+    <button type="button" class="pilihan" data-nilai="c">Jenis kelamin pasien rawat jalan</button>
+    <button type="button" class="pilihan" data-nilai="d">Jumlah kasus DBD per tahun di satu kabupaten</button>
+    <p class="penjelasan" hidden>Setiap balita diukur berkali-kali, sehingga pengukurannya tidak saling bebas.</p>
+  </fieldset>
+
+  <fieldset class="soal" data-benar="c">
+    <legend>2. Ragam antarpuskesmas 2 dan ragam dalam puskesmas 18. Berapa ICC-nya?</legend>
+    <button type="button" class="pilihan" data-nilai="a">0,11</button>
+    <button type="button" class="pilihan" data-nilai="b">0,90</button>
+    <button type="button" class="pilihan" data-nilai="c">0,10</button>
+    <button type="button" class="pilihan" data-nilai="d">2,0</button>
+    <p class="penjelasan" hidden>2 ÷ (2 + 18) = 0,10.</p>
+  </fieldset>
+
+  <fieldset class="soal" data-benar="a">
+    <legend>3. Sebuah studi membandingkan kepuasan 600 pasien dari 3 puskesmas intervensi dan 3 puskesmas kontrol, tetapi menganalisisnya seolah-olah 600 pasien saling bebas. Apa akibatnya?</legend>
+    <button type="button" class="pilihan" data-nilai="a">Galat baku terlalu kecil dan nilai p terlalu kecil, sehingga hasil tampak lebih meyakinkan daripada seharusnya.</button>
+    <button type="button" class="pilihan" data-nilai="b">Taksiran perbedaan pasti salah arah.</button>
+    <button type="button" class="pilihan" data-nilai="c">Tidak ada akibat apa pun.</button>
+    <button type="button" class="pilihan" data-nilai="d">Galat baku terlalu besar.</button>
+    <p class="penjelasan" hidden>Untuk perbandingan antarkelompok, mengabaikan pengelompokan membuat analisis terlalu yakin.</p>
+  </fieldset>
+
+  <fieldset class="soal" data-benar="d">
+    <legend>4. Apa yang dimungkinkan oleh kemiringan acak dalam model campuran?</legend>
+    <button type="button" class="pilihan" data-nilai="a">Setiap peserta punya titik awal yang sama.</button>
+    <button type="button" class="pilihan" data-nilai="b">Data hilang tidak perlu dilaporkan.</button>
+    <button type="button" class="pilihan" data-nilai="c">Tidak perlu efek tetap.</button>
+    <button type="button" class="pilihan" data-nilai="d">Setiap peserta punya laju perubahan sendiri.</button>
+    <p class="penjelasan" hidden>Kemiringan acak membiarkan laju perubahan berbeda antarpeserta di sekitar rata-ratanya.</p>
+  </fieldset>
+
+  <fieldset class="soal" data-benar="b">
+    <legend>5. Data Anda berformat satu baris per pasien dengan kolom "kunjungan 1" sampai "kunjungan 6". Apa yang perlu dilakukan sebelum menjalankan model campuran?</legend>
+    <button type="button" class="pilihan" data-nilai="a">Menghapus pasien yang punya kunjungan kosong</button>
+    <button type="button" class="pilihan" data-nilai="b">Mengubahnya ke format panjang, satu baris per pengukuran</button>
+    <button type="button" class="pilihan" data-nilai="c">Merata-ratakan semua kunjungan</button>
+    <button type="button" class="pilihan" data-nilai="d">Tidak ada</button>
+    <p class="penjelasan" hidden>Model campuran memerlukan format panjang dan tetap dapat memakai pasien yang datanya tidak lengkap.</p>
+  </fieldset>
+
+  <p class="skor" id="skor" role="status" hidden></p>
+</section>
+
+<section aria-labelledby="m-naik">
+  <h2 id="m-naik">Naik jenjang</h2>
+  <p>Data berulang dan berkelompok ada di mana-mana dalam kesehatan masyarakat.</p>
+
+  <div class="naik j4">
+    <h3>Jenjang 4: struktur yang lebih rumit</h3>
+    <p>Seorang ahli menangani pengukuran yang bersarang pada beberapa tingkat sekaligus, misalnya kunjungan dalam pasien dalam puskesmas dalam kabupaten. Ia memilih struktur korelasi, membandingkan model campuran dengan persamaan estimasi umum (GEE) yang menaksir rata-rata populasi, menangani hasil biner dan cacahan dengan model campuran tergeneralisasi, dan memperhitungkan ICC saat menentukan besar sampel uji acak klaster.</p>
+  </div>
+</section>
+
+<section aria-labelledby="m-terap">
+  <h2 id="m-terap">Terapkan</h2>
+  <ol>
+    <li>Pilih satu data di tempat Anda yang diukur berulang. Ubah dari format lebar ke format panjang di lembar kerja.</li>
+    <li>Untuk 6 sampai 10 orang, hitung kemiringan tiap orang dengan fungsi SLOPE di lembar kerja, lalu rata-rata dan galat bakunya.</li>
+    <li>Ambil satu artikel yang menganalisis data dari beberapa fasilitas atau wilayah. Apakah penulis memperhitungkan pengelompokan? Bagaimana?</li>
+  </ol>
+  <div class="deret-tombol">
+    <button type="button" class="tombol" id="tandai-selesai" data-modul="biostatistik-13">Tandai modul ini selesai</button>
+    <a class="tombol garis" href="kurikulum.html">Kembali ke peta kurikulum</a>
+  </div>
+</section>
+
+<section aria-labelledby="m-rujuk">
+  <h2 id="m-rujuk">Rujukan dan bacaan lanjut</h2>
+  <ul class="rujukan">
+    <li>Matthews, Altman, Campbell, dan Royston (1990). "Analysis of serial measurements in medical research". <em>BMJ</em>. Asal pendekatan ringkasan per orang.</li>
+    <li>Fitzmaurice, Laird, dan Ware. <em>Applied Longitudinal Analysis</em>. Rujukan utama.</li>
+    <li>Twisk. <em>Applied Longitudinal Data Analysis for Epidemiology</em>. Ditulis untuk epidemiolog.</li>
+    <li>Bates dan rekan (2015). "Fitting linear mixed-effects models using lme4". <em>Journal of Statistical Software</em>.</li>
+  </ul>
+  <p class="keterangan">Modul ini ditulis orisinal untuk Learn Public Health. Semua angka dihitung dari tabel kasus dengan kode.</p>
+</section>
+</div>
+</main>
+
+<footer class="kaki">
+  <div class="wadah">
+    <p><strong>Learn Public Health</strong>. Materi ini untuk pendidikan. Data kasus dalam modul adalah rekaan, kecuali disebutkan lain.</p>
+    <p><a href="index.html">Beranda</a> | <a href="kurikulum.html">Peta kurikulum</a> | <a href="sumber.html">Sumber belajar</a></p>
+  </div>
+</footer>
+
+<script src="app.js"></script>
+</body>
+</html>

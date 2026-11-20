@@ -26,7 +26,9 @@ Salin `epidemiologi-01.html` dan pertahankan urutan ini:
 7. Terapkan: tiga tugas untuk kampus atau tempat kerja.
 8. Rujukan.
 
-Nama file: `bidang-nomor.html` dengan bidang `epidemiologi`, `biostatistik`, `akk`, atau `ai`.
+Nama file: `bidang-nomor.html` dengan bidang `epidemiologi`, `biostatistik`, `akk`, `ai`, atau `sejarah`.
+
+Modul `sejarah` adalah bacaan pendamping untuk semua jenjang. Strukturnya sama, dengan dua penyesuaian: kasus menempatkan pembaca dalam keputusan pada masa itu, dan "Naik jenjang" menautkan peristiwa sejarah ke modul bidang lain. Pisahkan fakta sejarah yang bersumber dari peran rekaan pembaca, dan pakai angka bulat bila sumber berbeda-beda.
 
 ## Aturan isi
 

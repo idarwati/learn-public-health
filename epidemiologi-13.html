@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Memodelkan wabah dengan R0 dan model SIR | Learn Public Health</title>
+<meta name="description" content="Modul epidemiologi jenjang lanjut: model SIR, R0, angka reproduksi efektif, ambang kekebalan kelompok, dan simulasi wabah campak.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header class="kepala">
+  <div class="wadah">
+    <a class="merek" href="index.html">
+      <svg viewBox="0 0 32 32" aria-hidden="true"><path d="M2 30V22h7v-7h7V8h7V2h7v28z" fill="#075443"/></svg>
+      Learn Public Health
+    </a>
+    <nav aria-label="Menu utama">
+      <ul class="menu">
+        <li><a href="index.html">Beranda</a></li>
+        <li><a href="kurikulum.html">Peta kurikulum</a></li>
+        <li><a href="sumber.html">Sumber belajar</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<main>
+<div class="modul-kepala"><div class="wadah">
+  <p class="remah"><a href="kurikulum.html">Peta kurikulum</a> / Epidemiologi / Jenjang 3: Lanjut</p>
+  <h1>Memodelkan wabah dengan R0 dan model SIR</h1><p class="ringkas">Pakai model SIR untuk menjawab apakah satu kasus campak akan menjadi wabah, seberapa besar, dan berapa cakupan imunisasi yang diperlukan.</p>
+  <ul class="modul-info"><li>Waktu belajar: sekitar 90 menit</li><li>Prasyarat: Mengukur insidens; surveilans</li><li>Alat: Simulasi SIR di halaman ini</li></ul>
+</div></div>
+<div class="modul-isi wadah">
+<section aria-labelledby="m-tujuan">
+  <h2 id="m-tujuan">Setelah modul ini, Anda bisa</h2>
+  <ul>
+    <li>menjelaskan model SIR dan arti angka reproduksi dasar (R0) serta angka reproduksi efektif;</li>
+    <li>menghitung ambang kekebalan kelompok dan cakupan imunisasi yang diperlukan untuk mencegah wabah;</li>
+    <li>memakai simulasi sederhana untuk membandingkan skenario, sambil menyebutkan batas-batas modelnya.</li>
+  </ul>
+</section>
+
+<section class="lebar" aria-labelledby="m-kasus">
+  <h2 id="m-kasus">Kasus</h2>
+  <div class="kasus-cerita baca">
+    <p>Seorang anak di Kecamatan Batu Lappa, Kabupaten Saloka, dipastikan menderita campak. Di kecamatan itu ada sekitar 10.000 anak berumur 1 sampai 14 tahun. Survei cepat menunjukkan bahwa sekitar 85% di antaranya kebal, karena imunisasi atau pernah sakit campak.</p>
+    <p>Kepala puskesmas bertanya kepada Anda: "Apakah satu kasus ini akan menjadi wabah? Kalau ya, seberapa besar? Dan apakah imunisasi kejar masih ada gunanya sekarang?"</p>
+    <p>Anda tidak dapat menunggu wabah terjadi untuk menjawabnya. Anda memerlukan sebuah <strong>model</strong>: penyederhanaan cara penyakit berpindah dari orang ke orang, yang dapat dipakai untuk membandingkan skenario.</p>
+  </div>
+  <p class="keterangan baca">Nama tempat dan angka cakupan rekaan, disusun untuk latihan. Nilai R0 campak mengikuti kisaran yang lazim dikutip dalam buku teks.</p>
+</section>
+
+<section aria-labelledby="m-l1">
+  <span class="langkah">Langkah 1</span>
+  <h2 id="m-l1">Bagi penduduk ke dalam tiga kotak</h2>
+  <p>Model <strong>SIR</strong> membagi penduduk menjadi tiga kelompok, disebut kompartemen:</p>
+  <ul>
+    <li><strong>S</strong> (<em>susceptible</em>), <strong>rentan</strong>: dapat tertular.</li>
+    <li><strong>I</strong> (<em>infectious</em>), <strong>menular</strong>: sedang sakit dan dapat menularkan.</li>
+    <li><strong>R</strong> (<em>removed</em> atau <em>recovered</em>), <strong>pulih atau kebal</strong>: tidak dapat tertular lagi.</li>
+  </ul>
+  <div class="rumus">S → I → R</div>
+  <p>Dua laju menggerakkan orang di antara kotak. Laju penularan, β (beta), menentukan berapa orang rentan yang tertular per hari. Laju pemulihan, γ (gamma), adalah kebalikan dari lama menular: bila orang menular selama 8 hari, γ = 1/8 per hari.</p>
+  <p>Banyaknya penularan baru per hari sebanding dengan banyaknya pertemuan antara orang rentan dan orang menular. Karena itu wabah melambat dengan sendirinya ketika orang rentan makin sedikit.</p>
+  <details>
+    <summary>Penyakit mana yang kurang cocok dimodelkan dengan SIR murni? Mengapa?</summary>
+    <p>SIR mengandaikan orang yang pulih menjadi kebal seumur hidup dan langsung menular begitu tertular. Penyakit dengan masa inkubasi panjang memerlukan kotak tambahan E (<em>exposed</em>), menjadi SEIR. Penyakit yang tidak memberi kekebalan tetap, seperti banyak infeksi saluran napas, memerlukan panah kembali dari R ke S. Penyakit tular vektor seperti demam berdarah memerlukan kotak untuk nyamuk juga.</p>
+  </details>
+</section>
+
+<section aria-labelledby="m-l2">
+  <span class="langkah">Langkah 2</span>
+  <h2 id="m-l2">Pahami R0 dan R efektif</h2>
+  <p><strong>Angka reproduksi dasar</strong>, R0 (dibaca "R nol"), adalah rata-rata banyaknya orang yang ditulari oleh satu kasus selama masa menularnya, <em>bila semua orang di sekitarnya rentan</em>. Dalam model SIR, R0 = β × lama menular.</p>
+  <p>Campak adalah salah satu penyakit paling menular. Nilai R0-nya sering dikutip 12 sampai 18; modul ini memakai 15.</p>
+  <p>Di dunia nyata tidak semua orang rentan. Yang menentukan nasib sebuah wabah adalah <strong>angka reproduksi efektif</strong>, Re:</p>
+  <div class="rumus">Re = R0 × proporsi yang rentan</div>
+  <p>Bila Re lebih dari 1, setiap kasus menghasilkan lebih dari satu kasus baru dan wabah membesar. Bila Re kurang dari 1, rantai penularan memendek dan padam.</p>
+  <details>
+    <summary>Hitung Re di Kecamatan Batu Lappa. Apa jawaban Anda untuk pertanyaan pertama kepala puskesmas?</summary>
+    <p>Proporsi rentan = 100% − 85% = 15%. Re = 15 × 0,15 = <strong>2,25</strong>.</p>
+    <p>Re lebih dari 1, jadi satu kasus ini dapat berkembang menjadi wabah. Cakupan 85% terdengar tinggi, tetapi untuk campak belum cukup.</p>
+  </details>
+</section>
+
+<section aria-labelledby="m-l3">
+  <span class="langkah">Langkah 3</span>
+  <h2 id="m-l3">Hitung ambang kekebalan kelompok</h2>
+  <p>Wabah tidak dapat membesar bila Re ≤ 1. Dari rumus Re, proporsi kebal yang diperlukan adalah:</p>
+  <div class="rumus">ambang kekebalan kelompok = 1 − 1 ÷ R0</div>
+  <p>Kekebalan kelompok (<em>herd immunity</em>) berarti orang yang rentan ikut terlindungi karena rantai penularan di sekitarnya terputus.</p>
+  <details>
+    <summary>Hitung ambangnya untuk campak (R0 = 15). Bila efektivitas vaksin 95%, berapa cakupan imunisasi yang diperlukan?</summary>
+    <p>Ambang = 1 − 1/15 = <strong>93,3%</strong> penduduk harus kebal.</p>
+    <p>Tidak semua anak yang diimunisasi menjadi kebal. Cakupan yang diperlukan = ambang ÷ efektivitas vaksin = 0,933 ÷ 0,95 = <strong>98,2%</strong>.</p>
+    <p>Inilah sebabnya program campak menargetkan cakupan sangat tinggi dan memberi dosis kedua. Untuk penyakit dengan R0 sekitar 2, ambangnya hanya 50%.</p>
+  </details>
+</section>
+
+<section class="lebar" aria-labelledby="m-l4">
+  <span class="langkah">Langkah 4</span>
+  <h2 id="m-l4">Jalankan simulasi dan bandingkan skenario</h2>
+  <div class="baca">
+    <p>Rumus Re memberi tahu <em>apakah</em> wabah terjadi. Untuk mengetahui <em>seberapa besar</em> dan <em>kapan puncaknya</em>, model dijalankan hari demi hari. Kalkulator di bawah melakukannya dengan andaian lama menular 8 hari.</p>
+    <p>Jalankan tiga skenario: kekebalan 85% (keadaan sekarang), 90%, dan 95%.</p>
+  </div>
+
+  <form class="kalkulator baca" id="sir" novalidate>
+    <h3>Simulasi wabah dengan model SIR</h3>
+    <div class="isian">
+      <label>R0 <input type="number" name="r0" min="0" step="any" inputmode="decimal" value="15"></label>
+      <label>Lama menular (hari) <input type="number" name="durasi" min="0" step="any" inputmode="decimal" value="8"></label>
+      <label>Jumlah penduduk <input type="number" name="n" min="10" step="1" inputmode="numeric" value="10000"></label>
+      <label>Kasus awal <input type="number" name="awal" min="1" step="1" inputmode="numeric" value="1"></label>
+      <label>Persen yang sudah kebal <input type="number" name="kebal" min="0" max="99" step="any" inputmode="decimal" value="85"></label>
+    </div>
+    <div class="deret-tombol">
+      <button type="submit" class="tombol">Jalankan</button>
+      <button type="button" class="tombol garis kecil" data-kebal="85">Kebal 85%</button>
+      <button type="button" class="tombol garis kecil" data-kebal="90">Kebal 90%</button>
+      <button type="button" class="tombol garis kecil" data-kebal="95">Kebal 95%</button>
+    </div>
+    <p class="pesan" id="pesan-sir" role="alert" hidden></p>
+    <div id="hasil-sir" aria-live="polite" hidden>
+      <dl class="hasil">
+        <div><dt>Angka reproduksi efektif (Re)</dt><dd id="sir-re"></dd></div>
+        <div><dt>Ambang kekebalan kelompok</dt><dd id="sir-ambang"></dd></div>
+        <div><dt>Puncak orang sakit pada saat yang sama</dt><dd id="sir-puncak"></dd></div>
+        <div><dt>Seluruh yang tertular dalam setahun</dt><dd id="sir-total"></dd></div>
+      </dl>
+      <div class="grafik tunggal">
+        <figure>
+          <svg viewBox="0 0 320 185" role="img" aria-label="Kurva banyaknya orang yang sedang sakit menurut hari dari hasil simulasi.">
+            <line class="sumbu" x1="40" y1="15" x2="40" y2="150"/><line class="sumbu" x1="40" y1="150" x2="310" y2="150"/>
+            <text x="34" y="154" text-anchor="end">0</text><text id="sir-maks" x="34" y="24" text-anchor="end"></text>
+            <text x="40" y="166" text-anchor="middle">0</text><text x="114" y="166" text-anchor="middle">100</text><text x="188" y="166" text-anchor="middle">200</text><text x="262" y="166" text-anchor="middle">300</text>
+            <text x="175" y="181" text-anchor="middle">Hari sejak kasus pertama</text>
+            <polyline id="sir-garis" class="tangga-a" points=""/>
+          </svg>
+          <figcaption>Banyaknya anak yang sedang sakit pada tiap hari. Skala tegak menyesuaikan dengan puncaknya.</figcaption>
+        </figure>
+      </div>
+    </div>
+  </form>
+
+  <details class="baca">
+    <summary>Lihat hasil ketiga skenario dan tafsirannya</summary>
+    <div class="tabel-gulir">
+      <table class="teks">
+        <thead><tr><th scope="col">Kebal</th><th scope="col">Re</th><th scope="col">Puncak sakit bersamaan</th><th scope="col">Tertular dalam setahun</th></tr></thead>
+        <tbody>
+          <tr><th scope="row">85%</th><td>2,25</td><td>294 anak, sekitar hari ke-48</td><td>1.281 dari 1.500 yang rentan</td></tr>
+          <tr><th scope="row">90%</th><td>1,50</td><td>64 anak, sekitar hari ke-91</td><td>584 dari 1.000 yang rentan</td></tr>
+          <tr><th scope="row">95%</th><td>0,75</td><td>Tidak terjadi wabah</td><td>Kurang dari 5 anak</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p style="margin-top:1rem">Tiga pelajaran dari hasil ini:</p>
+    <ul>
+      <li><strong>Hubungannya tidak lurus.</strong> Menaikkan kekebalan dari 85% ke 90% memangkas kasus lebih dari separuh. Menaikkan ke 95% mencegah wabah sama sekali.</li>
+      <li><strong>Wabah berhenti sebelum semua orang rentan tertular.</strong> Pada skenario 85%, sekitar 219 anak rentan lolos. Wabah melambat ketika orang rentan tinggal sekitar 667 (10.000 ÷ 15), tetapi masih berlanjut sebentar karena masih banyak yang sedang menular.</li>
+      <li><strong>Imunisasi kejar masih berguna.</strong> Model menunjukkan puncak baru datang beberapa minggu kemudian. Setiap anak rentan yang segera diimunisasi menurunkan Re dan memperkecil wabah.</li>
+    </ul>
+  </details>
+</section>
+
+<section aria-labelledby="m-l5">
+  <span class="langkah">Langkah 5</span>
+  <h2 id="m-l5">Sampaikan dengan jujur batas-batas model</h2>
+  <p>Seorang ahli statistik terkenal pernah menulis bahwa semua model keliru, tetapi sebagian berguna. Model SIR berguna untuk berpikir, bukan untuk meramal dengan pasti. Sebutkan andaian-andaiannya saat melapor:</p>
+  <ul>
+    <li><strong>Semua orang bercampur merata.</strong> Kenyataannya, anak yang tidak diimunisasi sering berkumpul di dusun atau sekolah yang sama. Kantong rentan seperti ini dapat menimbulkan wabah walaupun cakupan rata-rata kecamatan tinggi.</li>
+    <li><strong>Angka-angkanya tetap.</strong> R0, lama menular, dan cakupan adalah taksiran yang tidak pasti. Jalankan model dengan beberapa nilai.</li>
+    <li><strong>Tidak ada peluang.</strong> Model ini deterministik. Dengan satu kasus awal, rantai penularan bisa saja padam karena kebetulan. Model stokastik dapat menghitung peluang itu.</li>
+    <li><strong>Tidak ada tindakan.</strong> Model tidak memasukkan isolasi kasus, penyelidikan kontak, atau perubahan perilaku yang terjadi begitu wabah diketahui.</li>
+  </ul>
+  <details>
+    <summary>Tulis tiga kalimat jawaban untuk kepala puskesmas</summary>
+    <p>"Dengan kekebalan sekitar 85%, satu kasus campak dapat berkembang menjadi wabah, karena setiap kasus rata-rata menulari lebih dari dua anak lain. Menurut model sederhana, tanpa tindakan lebih dari seribu anak dapat tertular, dengan puncak sekitar tujuh minggu dari sekarang. Imunisasi kejar yang menaikkan kekebalan ke atas 93%, terutama di dusun dan sekolah dengan cakupan rendah, ditambah isolasi kasus, dapat mencegah sebagian besar kasus itu."</p>
+  </details>
+</section>
+
+<section aria-labelledby="m-kuis">
+  <h2 id="m-kuis">Uji diri</h2>
+
+  <fieldset class="soal" data-benar="c">
+    <legend>1. R0 sebuah penyakit 4, dan 60% penduduk sudah kebal. Berapa Re?</legend>
+    <button type="button" class="pilihan" data-nilai="a">2,4</button>
+    <button type="button" class="pilihan" data-nilai="b">4,0</button>
+    <button type="button" class="pilihan" data-nilai="c">1,6</button>
+    <button type="button" class="pilihan" data-nilai="d">0,6</button>
+    <p class="penjelasan" hidden>Proporsi rentan 40%. Re = 4 × 0,4 = 1,6.</p>
+  </fieldset>
+
+  <fieldset class="soal" data-benar="b">
+    <legend>2. Berapa ambang kekebalan kelompok untuk penyakit dengan R0 = 5?</legend>
+    <button type="button" class="pilihan" data-nilai="a">20%</button>
+    <button type="button" class="pilihan" data-nilai="b">80%</button>
+    <button type="button" class="pilihan" data-nilai="c">50%</button>
+    <button type="button" class="pilihan" data-nilai="d">95%</button>
+    <p class="penjelasan" hidden>1 − 1/5 = 0,8.</p>
+  </fieldset>
+
+  <fieldset class="soal" data-benar="a">
+    <legend>3. Mengapa wabah dalam model SIR berhenti sebelum semua orang rentan tertular?</legend>
+    <button type="button" class="pilihan" data-nilai="a">Orang rentan makin sedikit sehingga setiap kasus rata-rata menulari kurang dari satu orang.</button>
+    <button type="button" class="pilihan" data-nilai="b">Kuman melemah dari waktu ke waktu.</button>
+    <button type="button" class="pilihan" data-nilai="c">Musim berganti.</button>
+    <button type="button" class="pilihan" data-nilai="d">Semua orang sakit pada hari yang sama.</button>
+    <p class="penjelasan" hidden>Ketika proporsi rentan turun di bawah 1/R0, Re menjadi kurang dari 1 dan rantai penularan memendek.</p>
+  </fieldset>
+
+  <fieldset class="soal" data-benar="d">
+    <legend>4. Cakupan imunisasi campak sebuah kabupaten 95%, tetapi wabah tetap terjadi di satu desa. Penjelasan mana yang paling mungkin?</legend>
+    <button type="button" class="pilihan" data-nilai="a">Model SIR salah total.</button>
+    <button type="button" class="pilihan" data-nilai="b">R0 campak sebenarnya 1.</button>
+    <button type="button" class="pilihan" data-nilai="c">Vaksin tidak berguna.</button>
+    <button type="button" class="pilihan" data-nilai="d">Ada kantong anak yang tidak diimunisasi di desa itu, sehingga cakupan setempat jauh di bawah rata-rata.</button>
+    <p class="penjelasan" hidden>Andaian bercampur merata tidak berlaku. Cakupan rata-rata dapat menyembunyikan kantong rentan.</p>
+  </fieldset>
+
+  <fieldset class="soal" data-benar="b">
+    <legend>5. Penyakit dengan masa inkubasi yang panjang sebaiknya dimodelkan dengan apa?</legend>
+    <button type="button" class="pilihan" data-nilai="a">SIR tanpa perubahan</button>
+    <button type="button" class="pilihan" data-nilai="b">SEIR, dengan kotak tambahan untuk orang yang sudah tertular tetapi belum menular</button>
+    <button type="button" class="pilihan" data-nilai="c">Regresi linear</button>
+    <button type="button" class="pilihan" data-nilai="d">Tabel 2 × 2</button>
+    <p class="penjelasan" hidden>Kotak E menampung masa laten sebelum orang menjadi menular.</p>
+  </fieldset>
+
+  <p class="skor" id="skor" role="status" hidden></p>
+</section>
+
+<section aria-labelledby="m-naik">
+  <h2 id="m-naik">Naik jenjang</h2>
+  <p>Model penyakit menular menjadi alat utama perencanaan sejak pandemi COVID-19.</p>
+
+  <div class="naik j4">
+    <h3>Jenjang 4: model yang dipakai untuk kebijakan</h3>
+    <p>Seorang ahli menaksir R dari data kasus harian, misalnya dengan metode yang memakai interval serial. Ia membangun model menurut kelompok umur dengan matriks kontak, model stokastik untuk peluang padamnya wabah, dan model berbasis individu untuk menilai strategi vaksinasi. Ia menyesuaikan model dengan data, menyampaikan ketidakpastiannya, dan menjelaskan kepada pengambil keputusan beda antara skenario dan ramalan.</p>
+  </div>
+</section>
+
+<section aria-labelledby="m-terap">
+  <h2 id="m-terap">Terapkan</h2>
+  <ol>
+    <li>Ambil data cakupan imunisasi campak-rubela per desa atau kelurahan di wilayah Anda. Hitung Re untuk tiap desa dengan R0 = 15. Desa mana yang paling berisiko?</li>
+    <li>Jalankan kalkulator dengan R0 12 dan 18 untuk keadaan kecamatan Anda. Seberapa besar perbedaan hasilnya? Apa artinya bagi laporan Anda?</li>
+    <li>Tuliskan satu paragraf untuk kepala puskesmas yang menjelaskan kekebalan kelompok tanpa memakai rumus.</li>
+  </ol>
+  <div class="deret-tombol">
+    <button type="button" class="tombol" id="tandai-selesai" data-modul="epidemiologi-13">Tandai modul ini selesai</button>
+    <a class="tombol garis" href="kurikulum.html">Kembali ke peta kurikulum</a>
+  </div>
+</section>
+
+<section aria-labelledby="m-rujuk">
+  <h2 id="m-rujuk">Rujukan dan bacaan lanjut</h2>
+  <ul class="rujukan">
+    <li>Vynnycky dan White. <em>An Introduction to Infectious Disease Modelling</em>. Pengantar yang ramah bagi pembaca tanpa latar matematika.</li>
+    <li>Anderson dan May. <em>Infectious Diseases of Humans: Dynamics and Control</em>. Rujukan klasik.</li>
+    <li>Fine, Eames, dan Heymann (2011). "Herd immunity: a rough guide". <em>Clinical Infectious Diseases</em>.</li>
+    <li>Kermack dan McKendrick (1927). "A contribution to the mathematical theory of epidemics". <em>Proceedings of the Royal Society A</em>. Asal model SIR.</li>
+  </ul>
+  <p class="keterangan">Modul ini ditulis orisinal untuk Learn Public Health. Hasil simulasi dihitung dengan kode yang sama dengan kalkulator di halaman ini.</p>
+</section>
+</div>
+</main>
+
+<footer class="kaki">
+  <div class="wadah">
+    <p><strong>Learn Public Health</strong>. Materi ini untuk pendidikan. Data kasus dalam modul adalah rekaan, kecuali disebutkan lain.</p>
+    <p><a href="index.html">Beranda</a> | <a href="kurikulum.html">Peta kurikulum</a> | <a href="sumber.html">Sumber belajar</a></p>
+  </div>
+</footer>
+
+<script src="app.js"></script>
+</body>
+</html>

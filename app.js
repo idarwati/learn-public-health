@@ -504,6 +504,52 @@
     });
   }
 
+  /* ---------- Simulasi model SIR ----------
+     Model deterministik sederhana, langkah waktu 0,05 hari. */
+  function hitungSIR(r0, durasi, n, awal, kebalPersen) {
+    if ([r0, durasi, n, awal, kebalPersen].some(function (v) { return !isFinite(v); })) return { galat: 'Isi semua kotak dengan angka.' };
+    if (r0 <= 0 || durasi <= 0) return { galat: 'R0 dan lama menular harus lebih dari 0.' };
+    if (n < 10 || awal < 1) return { galat: 'Populasi minimal 10 dan kasus awal minimal 1.' };
+    if (kebalPersen < 0 || kebalPersen >= 100) return { galat: 'Persen kebal harus antara 0 dan kurang dari 100.' };
+    var rentan0 = n * (1 - kebalPersen / 100);
+    if (awal > rentan0) return { galat: 'Kasus awal melebihi jumlah orang yang rentan.' };
+    var b = r0 / durasi, g = 1 / durasi, dt = 0.05;
+    var S = rentan0 - awal, I = awal, total = awal, puncak = I, hariPuncak = 0, kurva = [I];
+    for (var k = 1; k <= 365 / dt; k++) {
+      var inf = b * S * I / n * dt, sembuh = g * I * dt;
+      S -= inf; I += inf - sembuh; total += inf;
+      if (I > puncak) { puncak = I; hariPuncak = k * dt; }
+      if (k % 20 === 0) kurva.push(I);
+    }
+    return { re: r0 * rentan0 / n, ambang: r0 > 1 ? 1 - 1 / r0 : 0, puncak: puncak, hariPuncak: hariPuncak,
+      total: total, rentan: rentan0, sisa: S, kurva: kurva };
+  }
+
+  function pasangSIR(form) {
+    var keluaran = document.getElementById('hasil-sir'), pesan = document.getElementById('pesan-sir');
+    var garis = document.getElementById('sir-garis');
+    function tampil() {
+      var h = hitungSIR(bacaAngka(form, 'r0'), bacaAngka(form, 'durasi'), bacaAngka(form, 'n'), bacaAngka(form, 'awal'), bacaAngka(form, 'kebal'));
+      if (h.galat) { pesan.textContent = h.galat; pesan.hidden = false; keluaran.hidden = true; return; }
+      pesan.hidden = true; keluaran.hidden = false;
+      document.getElementById('sir-re').textContent = angka(h.re, 2);
+      document.getElementById('sir-ambang').textContent = angka(h.ambang * 100, 1) + '%';
+      document.getElementById('sir-total').textContent = ribuan(Math.round(h.total)) + ' dari ' + ribuan(Math.round(h.rentan)) + ' orang rentan';
+      document.getElementById('sir-puncak').textContent = h.puncak < 1.5 ? 'Tidak terjadi wabah' : ribuan(Math.round(h.puncak)) + ' orang, sekitar hari ke-' + Math.round(h.hariPuncak);
+      if (garis) {
+        var maks = Math.max.apply(null, h.kurva) || 1;
+        garis.setAttribute('points', h.kurva.map(function (v, i) {
+          return (40 + i * 270 / 365).toFixed(1) + ',' + (150 - v / maks * 130).toFixed(1);
+        }).join(' '));
+        document.getElementById('sir-maks').textContent = ribuan(Math.round(maks));
+      }
+    }
+    form.addEventListener('submit', function (e) { e.preventDefault(); tampil(); });
+    Array.prototype.forEach.call(form.querySelectorAll('[data-kebal]'), function (tombol) {
+      tombol.addEventListener('click', function () { form.elements.kebal.value = tombol.getAttribute('data-kebal'); tampil(); });
+    });
+  }
+
   /* ---------- Kuis ----------
      <fieldset class="soal" data-benar="b"> berisi tombol .pilihan[data-nilai]
      dan <p class="penjelasan" hidden>. */
@@ -591,6 +637,8 @@
       if (formKM) pasangKM(formKM);
       var formKt = document.getElementById('katastropik');
       if (formKt) pasangKesulitan(formKt);
+      var formSIR = document.getElementById('sir');
+      if (formSIR) pasangSIR(formSIR);
       pasangKuis();
       pasangPenanda();
     });
@@ -600,6 +648,6 @@
   if (typeof module !== 'undefined' && module.exports) {
     module.exports = { hitungRisiko: hitungRisiko, hitungRingkasan: hitungRingkasan, peluangNormal: peluangNormal, selangProporsi: selangProporsi, nilaiP: nilaiP, rasioOdds: rasioOdds, kaiKuadrat: kaiKuadrat, hitungSkrining: hitungSkrining, hitungRegresi: hitungRegresi,
       sampelProporsi: sampelProporsi, sampelRata: sampelRata, peluangLogistik: peluangLogistik,
-      hitungKM: hitungKM, hitungKesulitan: hitungKesulitan };
+      hitungKM: hitungKM, hitungKesulitan: hitungKesulitan, hitungSIR: hitungSIR };
   }
 })();

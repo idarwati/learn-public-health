@@ -143,6 +143,8 @@ a:hover { color: var(--hijau); }
 .jenjang.j2 { border-top-color: var(--j2); }
 .jenjang.j3 { border-top-color: var(--j3); }
 .jenjang.j4 { border-top-color: var(--j4); }
+.jenjang.sejarah { border-top-color: var(--kuning); }
+@media (min-width: 64rem) { .jenjang-kisi.dua { grid-template-columns: repeat(2, 1fr); } }
 .jenjang h3 { font-size: 1rem; margin-bottom: 0.6rem; }
 .jenjang ul { margin: 0; padding-left: 1.1rem; font-size: 0.95rem; }
 .jenjang li { margin-bottom: 0.35rem; }
