@@ -36,7 +36,7 @@
     <h1>Mengenali bias seleksi, bias informasi, dan perancu</h1>
     <p class="ringkas">Studi Anda menemukan rasio odds 2,25 untuk asap rokok dan pneumonia balita. Tiga penelaah mengajukan tiga keberatan. Anda harus menjawabnya dengan angka.</p>
     <ul class="modul-info">
-      <li>Waktu belajar: sekitar 60 menit</li>
+      <li>Waktu belajar: sekitar 75 menit</li>
       <li>Prasyarat: <a href="epidemiologi-06.html">Desain studi</a> dan <a href="epidemiologi-07.html">Rasio risiko dan rasio odds</a></li>
       <li>Alat: kalkulator biasa</li>
     </ul>
@@ -52,6 +52,69 @@
     <li>memperkirakan ke arah mana tiap kekeliruan menggeser hasil;</li>
     <li>memeriksa perancu dengan analisis berstrata dan menyebut cara mencegahnya.</li>
   </ul>
+</section>
+
+<section class="materi" aria-labelledby="m-materi">
+  <h2 id="m-materi">Materi</h2>
+  <p class="keterangan">Bacaan sekitar 15 menit. Pahami konsepnya dulu, lalu pakai di kasus.</p>
+
+  <h3>Mengapa hasil studi bisa keliru</h3>
+  <p>Hasil sebuah studi dapat menyimpang dari kenyataan karena dua jenis kesalahan. <strong>Kesalahan acak</strong> timbul karena kebetulan, dan mengecil bila sampel diperbesar; inilah yang diukur dengan selang kepercayaan dan nilai p. <strong>Kesalahan sistematis</strong>, atau <strong>bias</strong>, menggeser hasil ke satu arah dan <em>tidak</em> mengecil walaupun sampel diperbesar.</p>
+  <p>Ada tiga sumber kesalahan sistematis yang perlu selalu diperiksa: bias seleksi, bias informasi, dan perancu.</p>
+
+  <h3>Bias seleksi</h3>
+  <p><strong>Bias seleksi</strong> terjadi bila cara orang masuk atau keluar dari studi berkaitan dengan paparan dan hasil sekaligus, sehingga kelompok yang dibandingkan tidak lagi sebanding. Beberapa bentuk yang sering ditemui:</p>
+  <ul>
+    <li><strong>Kontrol dari rumah sakit</strong>: pasien rumah sakit sering punya paparan yang berbeda dari penduduk umum, misalnya lebih banyak yang merokok.</li>
+    <li><strong>Efek pekerja sehat</strong>: pekerja cenderung lebih sehat daripada penduduk umum, karena orang yang sakit berat tidak bekerja.</li>
+    <li><strong>Hilang dari pengamatan</strong>: dalam kohort, bila peserta yang keluar berbeda risikonya dari yang bertahan.</li>
+    <li><strong>Sukarelawan</strong>: orang yang mau ikut survei cenderung lebih peduli kesehatan.</li>
+  </ul>
+  <p>Bias seleksi sulit diperbaiki setelah data terkumpul. Pencegahannya ada pada rancangan: memilih kontrol dari populasi yang sama dengan kasus, dan menjaga agar peserta tidak hilang.</p>
+
+  <h3>Bias informasi</h3>
+  <p><strong>Bias informasi</strong> terjadi bila paparan atau hasil diukur dengan keliru. Hasilnya adalah <strong>salah klasifikasi</strong>: orang terpapar dicatat tidak terpapar, atau sebaliknya.</p>
+  <ul>
+    <li><strong>Salah klasifikasi tidak diferensial</strong>: kesalahannya sama besar pada kelompok yang dibandingkan, misalnya alat ukur yang kurang tepat untuk semua orang. Biasanya menggeser hasil <em>mendekati tidak ada hubungan</em>, sehingga hubungan yang nyata tampak lebih lemah.</li>
+    <li><strong>Salah klasifikasi diferensial</strong>: kesalahannya berbeda antarkelompok. Contoh klasik adalah <strong>bias ingatan</strong>: ibu yang bayinya lahir cacat cenderung mengingat obat yang diminumnya selama hamil lebih teliti daripada ibu yang bayinya sehat. Arah pergeserannya bisa ke mana saja.</li>
+    <li><strong>Bias pewawancara</strong>: pewawancara yang tahu status kasus bertanya lebih gigih kepada kasus.</li>
+  </ul>
+  <p>Pencegahannya: alat ukur baku, kuesioner yang sudah diuji, pewawancara yang tidak tahu status peserta, dan sumber data objektif seperti catatan medis bila tersedia.</p>
+
+  <h3>Perancu</h3>
+  <p><strong>Perancu</strong> (<em>confounder</em>) adalah faktor ketiga yang memengaruhi hasil dan sekaligus berkaitan dengan paparan, tetapi bukan perantara antara keduanya. Perancu mencampur pengaruhnya dengan pengaruh paparan.</p>
+  <p><strong>Contoh.</strong> Sebuah studi menemukan peminum kopi lebih sering terkena kanker paru. Padahal peminum kopi lebih banyak yang merokok.</p>
+  <div class="tabel-gulir">
+    <table class="teks">
+      <thead><tr><th scope="col">Kelompok</th><th scope="col">Peminum kopi</th><th scope="col">Bukan peminum kopi</th><th scope="col">Rasio risiko</th></tr></thead>
+      <tbody>
+        <tr><th scope="row">Perokok</th><td>40 dari 800 (5%)</td><td>10 dari 200 (5%)</td><td>1,0</td></tr>
+        <tr><th scope="row">Bukan perokok</th><td>2 dari 200 (1%)</td><td>8 dari 800 (1%)</td><td>1,0</td></tr>
+        <tr><th scope="row">Digabung</th><td>42 dari 1.000 (4,2%)</td><td>18 dari 1.000 (1,8%)</td><td>2,3</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p class="keterangan">Angka rekaan untuk contoh.</p>
+  <p>Bila semua orang digabung, peminum kopi tampak berisiko 2,3 kali lipat. Bila dipecah menurut kebiasaan merokok, rasio risikonya 1,0 di kedua strata: kopi tidak berpengaruh. Hubungan kasar itu seluruhnya akibat merokok. Inilah <strong>analisis berstrata</strong>: memeriksa hubungan di dalam setiap tingkat perancu. Angka gabungan dari strata dapat dihitung dengan cara <strong>Mantel-Haenszel</strong>; untuk contoh ini hasilnya 1,0.</p>
+
+  <h3>Mencegah dan menangani perancu</h3>
+  <p>Perancu dapat ditangani pada dua tahap:</p>
+  <ul>
+    <li><strong>Saat merancang</strong>: pengacakan (hanya pada uji acak), pembatasan (misalnya hanya meneliti bukan perokok), dan pencocokan (setiap kasus dipasangkan dengan kontrol yang sama umurnya).</li>
+    <li><strong>Saat analisis</strong>: analisis berstrata, standardisasi, dan regresi multivariabel.</li>
+  </ul>
+  <p>Semua cara saat analisis hanya dapat menangani perancu yang <em>diukur</em>. Perancu yang tidak diukur tetap tersisa. Karena itu, pikirkan perancu sejak awal, sebelum data dikumpulkan.</p>
+
+  <div class="catatan">
+    <p><strong>Poin penting</strong></p>
+    <ul>
+      <li>Bias tidak mengecil dengan memperbesar sampel.</li>
+      <li>Bias seleksi berasal dari cara orang masuk atau keluar studi; cegah lewat rancangan.</li>
+      <li>Salah klasifikasi tidak diferensial biasanya melemahkan hubungan; yang diferensial bisa ke mana saja.</li>
+      <li>Perancu berkaitan dengan paparan dan hasil; periksa dengan analisis berstrata.</li>
+    </ul>
+  </div>
+  <p>Sekarang Anda siap memakai konsep-konsep ini pada kasus berikut.</p>
 </section>
 
 <section aria-labelledby="m-kasus">

@@ -36,7 +36,7 @@
     <h1>Meringkas data dengan rata-rata, median, dan sebaran</h1>
     <p class="ringkas">Dua poliklinik memiliki rata-rata lama tunggu yang sama, tetapi hanya satu yang dibanjiri keluhan. Anda diminta menjelaskan sebabnya kepada direktur.</p>
     <ul class="modul-info">
-      <li>Waktu belajar: sekitar 45 menit</li>
+      <li>Waktu belajar: sekitar 60 menit</li>
       <li>Prasyarat: tidak ada</li>
       <li>Alat: kalkulator biasa</li>
     </ul>
@@ -52,6 +52,59 @@
     <li>mengukur sebaran dengan rentang dan simpangan baku;</li>
     <li>menulis ringkasan data yang tidak menyembunyikan masalah.</li>
   </ul>
+</section>
+
+<section class="materi" aria-labelledby="m-materi">
+  <h2 id="m-materi">Materi</h2>
+  <p class="keterangan">Bacaan sekitar 12 menit. Pahami konsepnya dulu, lalu pakai di kasus.</p>
+
+  <h3>Dua pertanyaan tentang data numerik</h3>
+  <p>Untuk meringkas data numerik, jawab dua pertanyaan: di mana <strong>pusat</strong> data, dan seberapa lebar <strong>sebarannya</strong>? Ringkasan yang hanya menyebut pusat dapat menyembunyikan masalah. Rata-rata waktu tunggu 30 menit bisa berarti semua pasien menunggu sekitar 30 menit, atau separuh pasien menunggu 5 menit dan separuh lagi hampir satu jam.</p>
+  <p>Semua contoh di bagian ini memakai lama rawat (hari) sepuluh pasien rekaan: 3, 4, 4, 5, 5, 6, 7, 8, 9, dan 19.</p>
+
+  <h3>Ukuran pusat</h3>
+  <ul>
+    <li><strong>Rata-rata</strong> (<em>mean</em>): jumlah semua nilai dibagi banyaknya nilai. Untuk contoh: 70 ÷ 10 = <strong>7,0 hari</strong>.</li>
+    <li><strong>Median</strong>: nilai tengah setelah data diurutkan. Bila banyaknya data genap, median adalah rata-rata dua nilai tengah. Untuk contoh: (5 + 6) ÷ 2 = <strong>5,5 hari</strong>.</li>
+    <li><strong>Modus</strong>: nilai yang paling sering muncul. Untuk contoh ada dua: 4 dan 5.</li>
+  </ul>
+  <p>Rata-rata dipengaruhi nilai ekstrem; median tidak. Satu pasien yang dirawat 19 hari menarik rata-rata ke 7,0, padahal enam dari sepuluh pasien dirawat kurang dari itu. Bila pasien itu dirawat 10 hari, rata-ratanya turun menjadi 6,1, sedangkan mediannya tetap 5,5.</p>
+  <p>Untuk data yang miring, seperti lama rawat, biaya, dan waktu tunggu, median biasanya lebih mewakili "pasien pada umumnya". Tetapi untuk anggaran, rata-rata tetap dibutuhkan, karena total biaya sama dengan rata-rata dikali jumlah pasien.</p>
+
+  <h3>Ukuran sebaran</h3>
+  <ul>
+    <li><strong>Rentang</strong>: nilai terbesar dikurangi nilai terkecil. Untuk contoh: 19 − 3 = 16 hari. Mudah, tetapi hanya bergantung pada dua nilai paling ekstrem.</li>
+    <li><strong>Rentang antarkuartil</strong>: jarak antara kuartil pertama (25% data di bawahnya) dan kuartil ketiga (75% data di bawahnya). Dilaporkan bersama median. Untuk contoh, kira-kira 4,25 sampai 7,75 hari.</li>
+    <li><strong>Simpangan baku</strong> (<em>standard deviation</em>): rata-rata jarak setiap nilai dari rata-ratanya. Dilaporkan bersama rata-rata.</li>
+  </ul>
+  <div class="rumus">simpangan baku = akar dari [jumlah (nilai − rata-rata)² ÷ (n − 1)]</div>
+  <p>Untuk contoh, simpangan bakunya 4,6 hari. Simpangan baku besar berarti nilai-nilai tersebar jauh dari rata-rata. Pembagi n − 1, bukan n, dipakai bila data adalah sampel dari populasi yang lebih besar.</p>
+
+  <h3>Pasangan ringkasan yang tepat</h3>
+  <div class="tabel-gulir">
+    <table class="teks">
+      <thead><tr><th scope="col">Bentuk data</th><th scope="col">Laporkan</th></tr></thead>
+      <tbody>
+        <tr><th scope="row">Kira-kira simetris, tanpa nilai ekstrem</th><td>Rata-rata dan simpangan baku</td></tr>
+        <tr><th scope="row">Miring atau ada nilai ekstrem</th><td>Median dan rentang antarkuartil, ditambah nilai terkecil dan terbesar</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p style="margin-top:1rem">Cara cepat memeriksa kemiringan: bila rata-rata jauh dari median, data miring ke arah rata-rata. Pada contoh, rata-rata 7,0 lebih besar daripada median 5,5, jadi data miring ke kanan karena beberapa pasien dirawat lama.</p>
+
+  <h3>Proporsi yang melewati batas</h3>
+  <p>Untuk keputusan program, ringkasan yang paling berguna sering kali bukan rata-rata, melainkan <strong>proporsi yang melewati batas</strong>. "Rata-rata lama rawat 7 hari" kurang berguna daripada "2 dari 10 pasien dirawat lebih dari 8 hari". Bila ada target layanan, laporkan berapa persen yang memenuhi target.</p>
+
+  <div class="catatan">
+    <p><strong>Poin penting</strong></p>
+    <ul>
+      <li>Ringkas data numerik dengan ukuran pusat dan ukuran sebaran.</li>
+      <li>Rata-rata dipengaruhi nilai ekstrem; median tidak.</li>
+      <li>Pasangkan rata-rata dengan simpangan baku, median dengan rentang antarkuartil.</li>
+      <li>Proporsi yang melewati batas sering lebih berguna untuk keputusan.</li>
+    </ul>
+  </div>
+  <p>Sekarang Anda siap memakai konsep-konsep ini pada kasus berikut.</p>
 </section>
 
 <section class="lebar" aria-labelledby="m-kasus">

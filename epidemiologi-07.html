@@ -36,7 +36,7 @@
     <h1>Mengukur hubungan dan dampak: rasio risiko, selisih risiko, dan rasio odds</h1>
     <p class="ringkas">Kepala dinas akan mengusulkan program rumah bebas asap rokok. Ia meminta tiga angka: seberapa besar bahayanya, berapa kasus yang disebabkannya, dan berapa yang dapat dicegah.</p>
     <ul class="modul-info">
-      <li>Waktu belajar: sekitar 60 menit</li>
+      <li>Waktu belajar: sekitar 75 menit</li>
       <li>Prasyarat: <a href="epidemiologi-06.html">Memilih desain studi yang tepat</a></li>
       <li>Alat: kalkulator biasa</li>
     </ul>
@@ -52,6 +52,55 @@
     <li>menjelaskan kapan rasio odds mendekati rasio risiko dan kapan tidak;</li>
     <li>menghitung berapa kasus yang dapat dicegah bila suatu paparan dihilangkan.</li>
   </ul>
+</section>
+
+<section class="materi" aria-labelledby="m-materi">
+  <h2 id="m-materi">Materi</h2>
+  <p class="keterangan">Bacaan sekitar 15 menit. Pahami konsepnya dulu, lalu pakai di kasus.</p>
+
+  <h3>Dua cara membandingkan risiko</h3>
+  <p>Setelah insidens pada kelompok terpapar dan tidak terpapar diketahui, keduanya dapat dibandingkan dengan dua cara: <strong>membagi</strong> atau <strong>mengurangi</strong>. Hasil pembagian disebut <strong>ukuran relatif</strong>; hasil pengurangan disebut <strong>ukuran mutlak</strong>. Keduanya menjawab pertanyaan yang berbeda, dan laporan yang baik biasanya menyajikan keduanya.</p>
+  <p>Semua contoh di bagian ini memakai satu kohort rekaan: 1.000 pekerja yang terpapar debu, 40 di antaranya terkena penyakit paru dalam lima tahun (4%), dan 2.000 pekerja yang tidak terpapar, 20 di antaranya terkena (1%).</p>
+
+  <h3>Rasio risiko</h3>
+  <p><strong>Rasio risiko</strong> (<em>risk ratio</em>, RR), disebut juga risiko relatif, menjawab: berapa kali lipat risiko pada kelompok terpapar dibanding kelompok tidak terpapar?</p>
+  <div class="rumus">rasio risiko = risiko pada yang terpapar ÷ risiko pada yang tidak terpapar</div>
+  <p>Dalam contoh, RR = 4% ÷ 1% = <strong>4</strong>. RR 1 berarti tidak ada hubungan, di atas 1 berarti paparan menaikkan risiko, di bawah 1 berarti paparan menurunkan risiko. Ukuran relatif berguna untuk menilai <em>kekuatan</em> hubungan, yang penting saat menimbang sebab akibat.</p>
+
+  <h3>Selisih risiko</h3>
+  <p><strong>Selisih risiko</strong> (<em>risk difference</em>) menjawab: berapa tambahan kasus per sekian orang yang disebabkan paparan?</p>
+  <div class="rumus">selisih risiko = risiko pada yang terpapar − risiko pada yang tidak terpapar</div>
+  <p>Dalam contoh, selisihnya 4% − 1% = <strong>3 per 100</strong> pekerja. Dari setiap 100 pekerja yang terpapar, 3 kasus tambahan muncul karena debu, bila hubungannya sebab akibat. Kebalikannya, 1 ÷ 0,03 ≈ 33, berarti satu kasus tambahan muncul untuk setiap 33 pekerja yang terpapar. Untuk tindakan pencegahan, angka ini disebut <strong>jumlah yang perlu ditangani</strong> (<em>number needed to treat</em>).</p>
+  <p>Ukuran mutlak penting untuk keputusan program, karena langsung menunjukkan berapa kasus yang dapat dicegah. RR 4 terdengar besar, tetapi bila risiko dasarnya sangat kecil, kasus yang dicegah pun sedikit.</p>
+
+  <h3>Rasio odds</h3>
+  <p><strong>Odds</strong> adalah peluang suatu kejadian dibagi peluang tidak terjadi. Risiko 4% sama dengan odds 4 ÷ 96. <strong>Rasio odds</strong> (<em>odds ratio</em>, OR) adalah odds pada yang terpapar dibagi odds pada yang tidak terpapar.</p>
+  <div class="rumus">rasio odds = (a × d) ÷ (b × c), dari tabel dua kali dua</div>
+  <p>Dalam tabel dua kali dua, a dan b adalah kelompok terpapar yang sakit dan tidak sakit, sedangkan c dan d kelompok tidak terpapar yang sakit dan tidak sakit. Dalam contoh, OR = (40 × 1.980) ÷ (960 × 20) = 4,1, sangat dekat dengan RR 4.</p>
+  <p>Rasio odds dipakai pada studi kasus-kontrol, karena di sana risiko tidak dapat dihitung, dan pada regresi logistik. Ia mendekati RR <em>hanya bila penyakitnya jarang</em>, kira-kira di bawah 10%. Bila penyakitnya sering, OR menjauh dari RR. Contoh: risiko 40% dibanding 20% memberi RR 2, tetapi OR 2,67. Membaca OR seperti RR pada penyakit yang sering akan melebih-lebihkan pengaruh paparan.</p>
+
+  <h3>Beban yang disebabkan paparan</h3>
+  <p>Dua ukuran lain menjawab pertanyaan perencana: seberapa besar bagian masalah yang dapat dihilangkan?</p>
+  <ul>
+    <li><strong>Fraksi yang dapat dikaitkan pada kelompok terpapar</strong>: (RR − 1) ÷ RR. Dalam contoh, (4 − 1) ÷ 4 = 75% kasus di antara pekerja yang terpapar disebabkan debu.</li>
+    <li><strong>Fraksi yang dapat dikaitkan pada penduduk</strong> (<em>population attributable fraction</em>, PAF): bagian dari <em>semua</em> kasus yang akan hilang bila paparan dihilangkan.</li>
+  </ul>
+  <div class="rumus">PAF = (risiko seluruh penduduk − risiko yang tidak terpapar) ÷ risiko seluruh penduduk</div>
+  <p>Dalam contoh, risiko seluruh 3.000 pekerja adalah 60 ÷ 3.000 = 2%. PAF = (2% − 1%) ÷ 2% = <strong>50%</strong>. Separuh dari semua kasus di perusahaan itu dapat dicegah dengan menghilangkan paparan debu. PAF bergantung pada kekuatan hubungan <em>dan</em> pada seberapa banyak orang yang terpapar.</p>
+
+  <h3>Anggapan di balik hitungan</h3>
+  <p>Semua ukuran dampak di atas mengandaikan hubungannya sebab akibat, bebas dari bias dan perancu, dan bahwa menghilangkan paparan benar-benar menurunkan risiko ke tingkat kelompok yang tidak terpapar. Di dunia nyata, program jarang menghilangkan paparan sepenuhnya, sehingga kasus yang dicegah biasanya lebih sedikit daripada hitungan.</p>
+
+  <div class="catatan">
+    <p><strong>Poin penting</strong></p>
+    <ul>
+      <li>Rasio risiko mengukur kekuatan hubungan; selisih risiko mengukur besarnya dampak.</li>
+      <li>Rasio odds mendekati rasio risiko hanya bila penyakitnya jarang.</li>
+      <li>PAF menunjukkan bagian semua kasus yang dapat dicegah, dan bergantung pada banyaknya orang yang terpapar.</li>
+      <li>Ukuran dampak selalu mengandaikan hubungan sebab akibat.</li>
+    </ul>
+  </div>
+  <p>Sekarang Anda siap memakai konsep-konsep ini pada kasus berikut.</p>
 </section>
 
 <section aria-labelledby="m-kasus">

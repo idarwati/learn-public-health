@@ -36,7 +36,7 @@
     <h1>Mengenali jenis data sebelum menghitung</h1>
     <p class="ringkas">Sebuah draf laporan menyebut "rata-rata jenis kelamin pasien 1,6". Anda diminta memperbaikinya sebelum sampai ke meja kepala puskesmas.</p>
     <ul class="modul-info">
-      <li>Waktu belajar: sekitar 40 menit</li>
+      <li>Waktu belajar: sekitar 55 menit</li>
       <li>Prasyarat: tidak ada</li>
       <li>Alat: kalkulator biasa</li>
     </ul>
@@ -52,6 +52,74 @@
     <li>menentukan skala ukur sebuah variabel: nominal, ordinal, interval, atau rasio;</li>
     <li>memilih ringkasan dan grafik yang sesuai dengan jenis datanya.</li>
   </ul>
+</section>
+
+<section class="materi" aria-labelledby="m-materi">
+  <h2 id="m-materi">Materi</h2>
+  <p class="keterangan">Bacaan sekitar 12 menit. Pahami konsepnya dulu, lalu pakai di kasus.</p>
+
+  <h3>Statistik dimulai dari data</h3>
+  <p><strong>Biostatistik</strong> adalah penerapan statistik pada masalah kesehatan dan biologi. Sebelum menghitung apa pun, tanyakan dulu: data apa ini? Jenis data menentukan cara meringkas, grafik yang cocok, dan uji statistik yang boleh dipakai. Kesalahan paling umum dalam laporan kesehatan bukan salah hitung, tetapi salah memperlakukan jenis data.</p>
+  <p>Beberapa istilah dasar:</p>
+  <ul>
+    <li><strong>Variabel</strong>: ciri yang nilainya berbeda-beda antarorang, misalnya umur, jenis kelamin, atau tekanan darah.</li>
+    <li><strong>Unit pengamatan</strong>: yang diukur, misalnya pasien, rumah tangga, atau puskesmas.</li>
+    <li><strong>Data</strong>: kumpulan nilai variabel dari unit-unit pengamatan, biasanya disusun dalam tabel satu baris per unit.</li>
+  </ul>
+
+  <h3>Kategorik dan numerik</h3>
+  <p>Pembagian pertama adalah antara data <strong>kategorik</strong> dan data <strong>numerik</strong>.</p>
+  <ul>
+    <li><strong>Kategorik</strong>: nilainya berupa kelompok atau label. Contoh: golongan darah, jenis kelamin, status gizi (buruk, kurang, baik, lebih).</li>
+    <li><strong>Numerik</strong>: nilainya berupa angka hasil mengukur atau menghitung. Contoh: berat badan, kadar hemoglobin, jumlah kunjungan.</li>
+  </ul>
+  <p>Hati-hati: data kategorik sering <em>disimpan</em> sebagai angka. Kode 1 untuk laki-laki dan 2 untuk perempuan adalah label, bukan ukuran. Rata-rata jenis kelamin 1,6 tidak bermakna apa pun.</p>
+
+  <h3>Empat skala ukur</h3>
+  <div class="tabel-gulir">
+    <table class="teks">
+      <thead><tr><th scope="col">Skala</th><th scope="col">Ciri</th><th scope="col">Contoh</th></tr></thead>
+      <tbody>
+        <tr><th scope="row">Nominal</th><td>Hanya nama kelompok, tanpa urutan</td><td>Golongan darah, agama, jenis penyakit</td></tr>
+        <tr><th scope="row">Ordinal</th><td>Kelompok yang berurutan, tetapi jaraknya tidak pasti sama</td><td>Stadium kanker, tingkat pendidikan, skor kepuasan 1–5</td></tr>
+        <tr><th scope="row">Interval</th><td>Angka dengan jarak yang sama, tanpa nol mutlak</td><td>Suhu dalam derajat Celsius</td></tr>
+        <tr><th scope="row">Rasio</th><td>Angka dengan jarak yang sama dan nol mutlak</td><td>Berat badan, umur, kadar gula darah, biaya</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p style="margin-top:1rem">Pada skala rasio, perbandingan bermakna: berat 80 kg dua kali berat 40 kg. Pada skala interval tidak: 30 °C bukan "dua kali lebih panas" daripada 15 °C. Dalam praktik, interval dan rasio sering diperlakukan sama.</p>
+  <p>Skala ordinal paling sering disalahgunakan. Skor kepuasan 1 sampai 5 berurutan, tetapi jarak antara "puas" dan "sangat puas" belum tentu sama dengan jarak antara "tidak puas" dan "cukup". Laporkan sebaran tiap kategori, bukan hanya rata-ratanya.</p>
+
+  <h3>Diskret dan kontinu</h3>
+  <p>Data numerik dibagi lagi menjadi dua:</p>
+  <ul>
+    <li><strong>Diskret</strong>: hasil mencacah, hanya bilangan bulat. Contoh: jumlah anak, jumlah kunjungan antenatal.</li>
+    <li><strong>Kontinu</strong>: hasil mengukur, dapat bernilai pecahan sekecil alat ukur memungkinkan. Contoh: tinggi badan, kadar hemoglobin.</li>
+  </ul>
+
+  <h3>Ringkasan dan grafik yang cocok</h3>
+  <div class="tabel-gulir">
+    <table class="teks">
+      <thead><tr><th scope="col">Jenis data</th><th scope="col">Ringkasan</th><th scope="col">Grafik</th></tr></thead>
+      <tbody>
+        <tr><th scope="row">Nominal</th><td>Jumlah dan persentase tiap kategori</td><td>Diagram batang</td></tr>
+        <tr><th scope="row">Ordinal</th><td>Jumlah dan persentase tiap kategori, menurut urutan; median</td><td>Diagram batang yang diurutkan</td></tr>
+        <tr><th scope="row">Numerik</th><td>Rata-rata dan simpangan baku, atau median dan rentang antarkuartil</td><td>Histogram, diagram kotak</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p style="margin-top:1rem">Data numerik dapat diubah menjadi kategorik, misalnya umur dikelompokkan menjadi balita, anak, dewasa, dan lansia. Pengelompokan memudahkan penyajian, tetapi membuang sebagian informasi. Simpan selalu data aslinya.</p>
+
+  <div class="catatan">
+    <p><strong>Poin penting</strong></p>
+    <ul>
+      <li>Tentukan jenis data sebelum menghitung.</li>
+      <li>Angka yang merupakan kode tidak boleh dirata-ratakan.</li>
+      <li>Empat skala ukur: nominal, ordinal, interval, rasio.</li>
+      <li>Jenis data menentukan ringkasan dan grafik yang cocok.</li>
+    </ul>
+  </div>
+  <p>Sekarang Anda siap memakai konsep-konsep ini pada kasus berikut.</p>
 </section>
 
 <section class="lebar" aria-labelledby="m-kasus">
